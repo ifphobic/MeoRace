@@ -1,4 +1,4 @@
 MeoRace
 =======
 
-Messenger Race Software by Meo
+Messenger Race Software by Meo.
