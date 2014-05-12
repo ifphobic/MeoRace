@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>MeoRace</title>
+    <style type="text/css">
+    
+    body {margin: 0px;}
+    p {margin:0em;}
+    
+    .header {width: 100%; height: 150px;
+    background: linear-gradient(#efefef, #dddddd); position:fixed;
+    border-bottom:1px solid #777777; text-align:center;}
+    .back {width:150px; height:150px; float:left; border-right:1px solid #777777;}
+    .menu {width:150px; height:150px; float:right; border-left:1px solid #777777;}
+    .headertitle {margin:0 150px; font-size:2em; display:inline;}
+    
+    .search {width:100%; height:150px; position:fixed; left:0px; top:150px;
+    border-bottom:1px solid #777777; text-align:center;}
+    
+    img {width: 300%;}
+    
+    @media
+    only screen and (orientation:landscape),
+    only screen and (min-device-width: 700px)
+    {img {height: 180px;}}
+    
+    @media
+    only screen and (min-device-width: 700px) and (orientation:landscape)
+    {img {height: 130px;}}
+    
+    @media
+    only screen and (min-device-width : 999px)
+    {img {height: 130px;}}
+    
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <div class="back"></div>
+    <p class=headertitle>test</p>
+    <div class="menu"></div>
+</div>
+<div class="search">
+    <input type=search>
+</div>
+
+</body>
+</html>
