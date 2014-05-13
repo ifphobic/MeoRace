@@ -3,22 +3,26 @@
 <html>
 <head>
     <title>MeoRace</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <style type="text/css">
     
-    body {margin: 0px;}
+    body {margin: 0px; width:100%; font: 12pt Helvetica, sans-serif;}
     p {margin:0em;}
     
-    .header {width: 100%; height: 150px;
-    background: linear-gradient(#efefef, #dddddd); position:fixed;
-    border-bottom:1px solid #777777; text-align:center;}
-    .back {width:150px; height:150px; float:left; border-right:1px solid #777777;}
-    .menu {width:150px; height:150px; float:right; border-left:1px solid #777777;}
-    .headertitle {margin:0 150px; font-size:2em; display:inline;}
+    .menu {position:fixed; width: 100%; height: 50px;
+     transition: top 400ms ease-out;}
     
-    .search {width:100%; height:150px; position:fixed; left:0px; top:150px;
+    .header {height:50px; background: linear-gradient(#efefef, #dddddd);
+    font-size:2em; 
     border-bottom:1px solid #777777; text-align:center;}
+    .but_back {width:50px; height:50px; float:left; border-right:1px solid #777777;}
+    .but_menu {width:50px; height:50px; float:right; border-left:1px solid #777777;}
+    .headertitle {margin:0 50px; display:inline;}
     
-    img {width: 300%;}
+    .search {width:100%; height:50px; position:fixed; left:0px; top:50px; vertical-align:middle;
+    border-bottom:1px solid #777777; text-align:center;
+    font-size:2em;}
     
     @media
     only screen and (orientation:landscape),
@@ -37,13 +41,16 @@
 </head>
 
 <body>
-<div class="header">
-    <div class="back"></div>
-    <p class=headertitle>test</p>
-    <div class="menu"></div>
+<div class="menu">
+    <div class="header">
+        <a class="but_back"><</a>
+        <p class=headertitle>test</p>
+        <a class="but_menu">≡</a>
+    </div>
 </div>
 <div class="search">
-    <input type=search>
+    <input type="number" size="3" style="font-size:large; width:3em; display:inline;"/>
+    <input type=search results=5 autosave=some_unique_value name=s style="font-size:large; width:50%;"/>
 </div>
 
 </body>
