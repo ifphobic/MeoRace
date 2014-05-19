@@ -5,52 +5,102 @@
     <title>MeoRace</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <style type="text/css">
-    
-    body {margin: 0px; width:100%; font: 12pt Helvetica, sans-serif;}
-    p {margin:0em;}
-    
-    .menu {position:fixed; width: 100%; height: 50px;
-     transition: top 400ms ease-out;}
-    
-    .header {height:50px; background: linear-gradient(#efefef, #dddddd);
-    font-size:2em; 
-    border-bottom:1px solid #777777; text-align:center;}
-    .but_back {width:50px; height:50px; float:left; border-right:1px solid #777777;}
-    .but_menu {width:50px; height:50px; float:right; border-left:1px solid #777777;}
-    .headertitle {margin:0 50px; display:inline;}
-    
-    .search {width:100%; height:50px; position:fixed; left:0px; top:50px; vertical-align:middle;
-    border-bottom:1px solid #777777; text-align:center;
-    font-size:2em;}
-    
-    @media
-    only screen and (orientation:landscape),
-    only screen and (min-device-width: 700px)
-    {img {height: 180px;}}
-    
-    @media
-    only screen and (min-device-width: 700px) and (orientation:landscape)
-    {img {height: 130px;}}
-    
-    @media
-    only screen and (min-device-width : 999px)
-    {img {height: 130px;}}
-    
-    </style>
+    <link href="design.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery-2.1.1.min.js" />
+    <script>
+        //function unfold() {
+        //    document.getElementById("menu").classList.add("menu_unfold");
+        //}
+        
+        var menuBox = document.getElementById('menu');
+        
+        document.getElementById('unfold').onclick = function() {
+            if(this.innerHTML === 'unfold') {
+                this.innerHTML = 'fold';
+                menuBox.classList.add('menu_unfold');
+            } else {
+                this.innerHTML = 'unfold';
+                menuBox.classList.remove('menu_unfold');
+            }
+            
+          }
+        
+        //$(function() {
+        //    $("unfold").click(function() {
+        //        $("menu").toggleClass("menu-unfold");
+        //    });
+        //});
+    </script>
 </head>
 
 <body>
-<div class="menu">
+<div class="menu" id="menu">
+    <div class=listitem>
+        menu 1
+    </div>
+    <div class=listitem>
+        menu 2
+    </div>
     <div class="header">
         <a class="but_back"><</a>
         <p class=headertitle>test</p>
-        <a class="but_menu">≡</a>
+        <button id="unfold" value="unfold">unfold</button>
+        <a class="but_menu" href="#menu">≡</a>
     </div>
 </div>
 <div class="search">
     <input type="number" size="3" style="font-size:large; width:3em; display:inline;"/>
     <input type=search results=5 autosave=some_unique_value name=s style="font-size:large; width:50%;"/>
+</div>
+<div class=list>
+    <div class=listitem>
+        racer 1
+    </div>
+    <div class=listitem>
+        racer 2
+    </div>
+    <div class=listitem>
+        racer 3
+    </div>
+    <div class=listitem>
+        racer 4
+    </div>
+    <div class=listitem>
+        racer 5
+    </div>
+    <div class=listitem>
+        racer 6
+    </div>
+    <div class=listitem>
+        racer 7
+    </div>
+    <div class=listitem>
+        racer 8
+    </div>
+    <div class=listitem>
+        racer 9
+    </div>
+    <div class=listitem>
+        racer 10
+    </div>
+    <div class=listitem>
+        racer 11
+    </div>
+    <div class=listitem>
+        racer 12
+    </div>
+    <div class=listitem>
+        racer 13
+    </div>
+    <div class=listitem>
+        racer 14
+    </div>
+    <div class=listitem>
+        racer 15
+    </div>
+    <div class=listitem>
+        racer 16
+    </div>
 </div>
 
 </body>
