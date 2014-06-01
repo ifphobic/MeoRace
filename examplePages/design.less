@@ -1,25 +1,39 @@
-body {margin: 0px; width:100%; font: 12pt Helvetica, sans-serif;}
+@c1: #FFFFFF;
+@degrade: @c1 / 10;
+@c2: @c1 - @degrade;
+@c3: @c2 - @degrade;
+@c4: @c3 - @degrade;
+@c5: @c4 - @degrade;
+@c6: @c5 - @degrade;
+@c7: @c6 - @degrade;
+@c8: @c7 - @degrade;
+@c9: @c8 - @degrade;
+@c10: #000000;
+
+@font: 13pt Helvetica, sans-serif;
+
+@border: 1px solid @c5;
+
+body {margin: 0px; width:100%; font: @font;}
 p {margin:0em;}
 
 .menu {position:fixed; width: 100%; top:-100px;
  transition: top 400ms ease-out; z-index: 100;}
-.menu-unfold {top:0px;}
+.menu.menu_unfold {top:0px !important;}
 
-.header {height:50px; background: linear-gradient(#efefef, #dddddd);
-font-size:2em; 
-border-bottom:1px solid #777777; text-align:center;}
-.but_back {width:50px; height:50px; float:left; border-right:1px solid #777777;}
-.but_menu {width:50px; height:50px; float:right; border-left:1px solid #777777;}
+.header {height:50px; background: linear-gradient(@c2, @c3); 
+border-bottom: @border; text-align:center;}
+.but_back {width:50px; height:50px; float:left; border-right: @border;}
+.but_menu {width:50px; height:50px; float:right; border-left: @border;}
 .headertitle {margin:0 50px; display:inline;}
 
 .search {width:100%; height:50px; position:absolute; left:0px; top:50px; vertical-align:middle;
-border-bottom:1px solid #777777; text-align:center;
+border-bottom: @border; text-align:center;
 font-size:2em;}
 
 .list {position:absolute; width:100%; top:102px;}
-.listitem {height:50px; background: linear-gradient(#ffffff, #eeeeee);
-font-size:2em; 
-border-bottom:1px solid #777777; text-align:center;}
+.listitem {height:50px; background: linear-gradient(@c1, @c2); 
+border-bottom: @border; text-align:center;}
 
 @media
 only screen and (orientation:landscape),
