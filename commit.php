@@ -26,9 +26,12 @@
    $nextPage = $action->commit( $_POST );
    
    $parameter = "";
-  
-   if ( $nextPage->isBothSet() ) {
-      $parameter = "module=" . $nextPage->getModule() . "&page=" . $nextPage->getPage(); 
+   
+   if ( $nextPage->getModule() != null ) {
+      $parameter = "module=" . $nextPage->getModule();
+      if ( $nextPage->getPage() != null ) {
+         $parameter .= "&page=" . $nextPage->getPage(); 
+      }
    }
 
 ?>

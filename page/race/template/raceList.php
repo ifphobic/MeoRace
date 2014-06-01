@@ -13,7 +13,7 @@
          <tr>
             <td>" . $race->name . "</td>
             <td>" . $race->status . "</td>
-            <td>" . CommonPageFunction::getLink("race", "editRace", $race->raceId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("race", "raceEdit", $race->raceId, "edit") . "</td>
          </tr>
       ");
       }
@@ -21,5 +21,5 @@
    ?>
 <table>
 
-<?php print( CommonPageFunction::getLink("race", "editRace", null, "New Race" ) );
+<?php print( CommonPageFunction::getLink("race", "raceEdit", null, "New Race" ) );
  

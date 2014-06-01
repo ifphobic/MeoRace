@@ -33,7 +33,7 @@
       public function insert( $racer ) {
          $query = "insert into Racer (racerNumber, name, city, country, email, raceFk, status) values (?, ?, ?, ?, ?, ?, ?)";
          $parameter = array( 
-            new Parameter( Parameter::INTEGER, $racer['raceNumber'] ), 
+            new Parameter( Parameter::INTEGER, $racer['racerNumber'] ), 
             new Parameter( Parameter::STRING, $racer['name'] ), 
             new Parameter( Parameter::STRING, $racer['city'] ), 
             new Parameter( Parameter::STRING, $racer['country'] ), 

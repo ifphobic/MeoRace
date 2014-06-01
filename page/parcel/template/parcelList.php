@@ -13,7 +13,7 @@
          <tr>
             <td>" . $parcel->name . "</td>
             <td>" . $parcel->description. "</td>
-            <td>" . CommonPageFunction::getLink("parcel", "editParcel", $parcel->parcelId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("parcel", "parcelEdit", $parcel->parcelId, "edit") . "</td>
          </tr>
       ");
       }
@@ -21,5 +21,5 @@
    ?>
 <table>
 
-<?php print( CommonPageFunction::getLink("parcel", "editParcel", null, "New Parcel" ) );
+<?php print( CommonPageFunction::getLink("parcel", "parcelEdit", null, "New Parcel" ) );
  

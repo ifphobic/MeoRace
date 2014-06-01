@@ -15,7 +15,7 @@
             <td>" . $user->user . "</td>
             <td>" . $user->role . "</td>
             <td>" . $user->raceName . "</td>
-            <td>" . CommonPageFunction::getLink("login", "editUser", $user->userId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("login", "userEdit", $user->userId, "edit") . "</td>
          </tr>
       ");
       }
@@ -23,5 +23,5 @@
    ?>
 <table>
 
-<?php print( CommonPageFunction::getLink("login", "editUser", null, "New User" ) );
+<?php print( CommonPageFunction::getLink("login", "userEdit", null, "New User" ) );
  

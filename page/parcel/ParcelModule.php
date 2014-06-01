@@ -7,7 +7,7 @@
       public function ParcelModule() {
          $this->pages = array(
             new ModulePage("parcelList", "Parcel List", array(Role::RACE_MASTER), null, false, true ), 
-            new ModulePage("editParcel", "Edit Parcel", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false )
+            new ModulePage("parcelEdit", "Edit Parcel", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false )
          );
       }
 

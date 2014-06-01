@@ -21,7 +21,7 @@
             <td>" . $racer->country . "</td>
             <td>" . $racer->email . "</td>
             <td>" . $racer->status . "</td>
-            <td>" . CommonPageFunction::getLink("racer", "editRacer", $racer->racerId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("racer", "racerEdit", $racer->racerId, "edit") . "</td>
          </tr>
       ");
       }
@@ -29,5 +29,5 @@
    ?>
 <table>
 
-<?php print( CommonPageFunction::getLink("racer", "editRacer", null, "New Racer" ) );
+<?php print( CommonPageFunction::getLink("racer", "racerEdit", null, "New Racer" ) );
  

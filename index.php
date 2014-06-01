@@ -19,7 +19,9 @@
    
    if ( isset( $_GET['module'] ) ) {
       $moduleName = $_GET['module'];
-      $pageName = $_GET['page'];
+      if ( isset( $_GET['page'] ) ) {
+         $pageName = $_GET['page'];
+      }
    } 
    
    $commonDbFunction->close();
