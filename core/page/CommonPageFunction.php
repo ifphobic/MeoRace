@@ -25,6 +25,11 @@
          return $result;
       }
 
+      public static function getCheckbox( $key, $object, $text) {
+         $result = "<tr><td>$text:</td><td><input type='checkbox' name='$key' value='1' " . ( ( isset( $object ) && $object->$key == 1) ? "checked" : "" ) . " /></td></tr>";
+         return $result;
+      }
+
       public static function getCombobox($key, $object, $text, $options, $optionKey = null ) {
          $result = "<tr><td>$text</td><td><select name='$key' size='1' >";
          foreach ( $options as $option ) {
