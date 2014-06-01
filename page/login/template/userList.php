@@ -6,7 +6,11 @@
    <?php
    
       $loginFunction = new LoginDbFunction();
-      $users = $loginFunction->findAll( null );
+      $raceFk = null;
+      if ( !Role::isAdmin( $GLOBALS['MeoRace']['user'] ) ) {
+         $raceFk = $GLOBALS['MeoRace']['user']->raceFk;
+      }
+      $users = $loginFunction->findAll( $raceFk );
       $loginFunction->close();
 
       foreach ( $users as $user ) {

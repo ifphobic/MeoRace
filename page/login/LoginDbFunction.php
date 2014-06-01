@@ -7,10 +7,15 @@
       }
 
 
-      public function findAll( $unused ) {
+      public function findAll( $raceId ) {
          
          $query = "select u.userId, u.user, u.role, r.name as raceName from User u left outer join Race r on u.raceFk = r.raceId";
-         $result = $this->query($query, null );
+         $parameter = null;
+         if ( isset( $raceId ) ) {
+            $query .= " where u.raceFk = ?";
+            $parameter = array( new Parameter( Parameter::INTEGER, $raceId ) );
+         }
+         $result = $this->query($query, $parameter );
          
          $users = array();
          for ( $i = 0; $i < $result->num_rows; $i++ ) {

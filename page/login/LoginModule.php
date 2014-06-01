@@ -7,8 +7,8 @@
       public function LoginModule() {
          $this->pages = array(
             new ModulePage("login", "Login", array(Role::NO_ROLE), array(Role::NO_ROLE), true, true ),
-            new ModulePage("userList", "User List", array(Role::ADMIN), null, false, true ), 
-            new ModulePage("userEdit", "Edit User", array(Role::ADMIN), array(Role::ADMIN), true, false, array( "race" ) )
+            new ModulePage("userList", "User List", array(Role::ADMIN, Role::RACE_MASTER), null, false, true ), 
+            new ModulePage("userEdit", "Edit User", array(Role::ADMIN, Role::RACE_MASTER), array(Role::ADMIN, Role::RACE_MASTER), true, false, array( "race" ) )
          );
       }
 
