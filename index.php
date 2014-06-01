@@ -7,8 +7,10 @@
    if ( isset($_COOKIE['sessionId'] ) ) {
       if ( !isset ( $_GET['logout'] ) ) {
          $user = $commonDbFunction->determineCurrentUser();
-         $role = $user->role;
-         $GLOBALS['MeoRace']['user'] = $user;
+         if ( isset( $user ) ) {
+            $role = $user->role;
+            $GLOBALS['MeoRace']['user'] = $user;
+         }
       } else {
          $commonDbFunction->logOut( $_COOKIE['sessionId'] );
       }

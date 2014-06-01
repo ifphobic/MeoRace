@@ -76,7 +76,8 @@ CREATE TABLE `Racer` (
   `email` varchar(80) NOT NULL,
   `raceFk` int(11) NOT NULL,
   `status` enum('registered','active') NOT NULL,
-  PRIMARY KEY (`racerId`)
+  PRIMARY KEY (`racerId`),
+  UNIQUE KEY `racerNumber` (`raceFk`, `racerNumber`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -116,6 +117,9 @@ CREATE TABLE `User` (
   PRIMARY KEY (`userId`),
   UNIQUE KEY `user` (`user`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+INSERT INTO `User` (`userId`, `user`, `password`, `role`, `raceFk`) VALUES
+(0, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin', -1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

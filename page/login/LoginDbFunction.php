@@ -9,7 +9,7 @@
 
       public function findAll( $unused ) {
          
-         $query = "select u.userId, u.user, u.role, r.name as raceName from User u join Race r on u.raceFk = r.raceId";
+         $query = "select u.userId, u.user, u.role, r.name as raceName from User u left outer join Race r on u.raceFk = r.raceId";
          $result = $this->query($query, null );
          
          $users = array();

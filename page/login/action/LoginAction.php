@@ -8,6 +8,7 @@
          $user = $dbFunction->findUser( $content["user"] );
          if ( isset( $user ) ) {
             
+            //if ( strcmp($user->password, $content["password"] ) == 0 ) {
             if ( strcmp($user->password, hash( "sha256" , $content["password"] ) ) == 0 ) {
                
                $sessionId = $dbFunction->insertSession($user);
