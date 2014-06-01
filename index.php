@@ -1,18 +1,30 @@
 <?php
 
-   require("core/page/ModuleReader.php");
-   require("core/page/ModulePage.php");
-   require("core/Configuration.php");
-   require("core/page/Page.php");
-   require("core/interface/Module.php");
- 
+   require("core/include.php");
 
-   $modules = ModuleReader::readAllLinks(ModulePage::NO_ROLE);
+   $role = Role::NO_ROLE;
+   $commonDbFunction = new CommonDbFunction();
+   if ( isset($_COOKIE['sessionId'] ) ) {
+      if ( !isset ( $_GET['logout'] ) ) {
+         $user = $commonDbFunction->determineCurrentUser();
+         $role = $user->role;
+         $GLOBALS['MeoRace']['user'] = $user;
+      } else {
+         $commonDbFunction->logOut( $_COOKIE['sessionId'] );
+      }
+   }
+
    
-   if ( isset( $GET['module'] ) ) {
-      $moduleName = $GET['module'];
-      $pageName = $GET['page'];
-   } else {
+   if ( isset( $_GET['module'] ) ) {
+      $moduleName = $_GET['module'];
+      $pageName = $_GET['page'];
+   } 
+   
+   $commonDbFunction->close();
+   
+   $modules = ModuleReader::readAllLinks( $role );
+
+   if ( !isset( $moduleName ) ) {
       $moduleName = array_keys( $modules )[0];
    }
 

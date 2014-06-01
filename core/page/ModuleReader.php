@@ -15,7 +15,7 @@
             $selected = array();
             $pages = $module->getPages();
             foreach ( $pages as $page ) {
-               $roles = $page->getRoles();
+               $roles = $page->getRolesPage();
                if ( in_array( $role, $roles ) ) {
                   $selected[ $page->getPage() ] = $page; 
                }

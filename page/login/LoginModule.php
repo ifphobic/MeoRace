@@ -5,7 +5,11 @@
       private $pages;
 
       public function LoginModule() {
-         $this->pages = array( new ModulePage("login", "Login", array(ModulePage::NO_ROLE), true ) );
+         $this->pages = array(
+            new ModulePage("login", "Login", array(Role::NO_ROLE), array(Role::NO_ROLE), true, true ),
+            new ModulePage("userList", "User List", array(Role::ADMIN), null, false, true ), 
+            new ModulePage("editUser", "Edit User", array(Role::ADMIN), array(Role::ADMIN), true, false, array( "race" ) )
+         );
       }
 
       public function getPages() {

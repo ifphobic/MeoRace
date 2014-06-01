@@ -2,7 +2,7 @@
    
    interface Action {
 
-      public function commit();
+      public function commit( $content );
 
    }
 
