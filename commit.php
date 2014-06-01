@@ -20,8 +20,12 @@
 
 
    $className = ucfirst( $pageName ) . "Action";
-   require( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst ( $moduleName ) .  "DbFunction.php" );
+   require( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName ) .  "DbFunction.php" );
    require( Configuration::MODULE_FOLDER . $moduleName . "/action/" . $className . ".php" );
+   foreach ( $page->getDependencies()  as $dependency ) {
+      require( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
+   }
+
    $action = new $className;
    $nextPage = $action->commit( $_POST );
    

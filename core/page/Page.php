@@ -43,7 +43,7 @@
        
          require( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName )  . "DbFunction.php" );
             foreach ( $page->getDependencies()  as $dependency ) {
-            require( Configuration::MODULE_FOLDER . $dependency . "/" . ucfirst ( $dependency ) .  "DbFunction.php" );
+            require( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
          }
 
          require( Configuration::MODULE_FOLDER . $moduleName . "/template/" . $page->getPage() . ".php" );

@@ -1,8 +1,8 @@
 <?php
 
-   class LoginDbFunction extends AbstractDbFunction implements ListDbFunction {
+   class UserDbFunction extends AbstractDbFunction implements ListDbFunction {
 
-      public function LoginDbFunction() {
+      public function UserDbFunction() {
          $this->AbstractDbFunction();
       }
 

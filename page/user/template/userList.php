@@ -5,13 +5,13 @@
    <th>Edit</th>
    <?php
    
-      $loginFunction = new LoginDbFunction();
+      $dbFunction = new UserDbFunction();
       $raceFk = null;
       if ( !Role::isAdmin( $GLOBALS['MeoRace']['user'] ) ) {
          $raceFk = $GLOBALS['MeoRace']['user']->raceFk;
       }
-      $users = $loginFunction->findAll( $raceFk );
-      $loginFunction->close();
+      $users = $dbFunction->findAll( $raceFk );
+      $dbFunction->close();
 
       foreach ( $users as $user ) {
       print ("
@@ -19,7 +19,7 @@
             <td>" . $user->user . "</td>
             <td>" . $user->role . "</td>
             <td>" . $user->raceName . "</td>
-            <td>" . CommonPageFunction::getLink("login", "userEdit", $user->userId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("user", "userEdit", $user->userId, "edit") . "</td>
          </tr>
       ");
       }
@@ -27,5 +27,5 @@
    ?>
 <table>
 
-<?php print( CommonPageFunction::getLink("login", "userEdit", null, "New User" ) );
+<?php print( CommonPageFunction::getLink("user", "userEdit", null, "New User" ) );
  

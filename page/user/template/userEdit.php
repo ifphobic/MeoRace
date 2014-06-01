@@ -2,9 +2,9 @@
    <?php
       $user = null;
       if ( isset( $_GET['id'] ) ) {
-         $loginFunction = new LoginDbFunction();
-         $user = $loginFunction->findById( $_GET['id'] );
-         $loginFunction->close();
+         $userFunction = new UserDbFunction();
+         $user = $userFunction->findById( $_GET['id'] );
+         $userFunction->close();
          print( "<input type='hidden' name='userId' value='" . $user->userId ."' />" );
       }
       $dbFunktion = new RaceDbFunction();

@@ -20,7 +20,7 @@
          if ( isset( $sessionId ) ) {
             $result = new NextPage( null, null );
          } else {
-            $result = new NextPage( "login", "login" );
+            $result = new NextPage( "user", "login" );
          }
          return $result;
       }
