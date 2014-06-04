@@ -1,0 +1,14 @@
+<?php
+
+   class Configuration {
+
+      const MODULE_FOLDER = "/var/www/localhost/htdocs/MeoRace/page/";
+      const DB_HOST = "localhost"; 
+      const DB_NAME = "meoRace"; 
+      const DB_USER = "meoRace"; 
+      const DB_PASSWORD = "meoRace"; 
+
+   }
+
+
+?>
