@@ -6,30 +6,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <link href="design.css" rel="stylesheet">
-    <script type="text/javascript" src="jquery-2.1.1.min.js" />
-    <script>
-        //function unfold() {
-        //    document.getElementById("menu").classList.add("menu_unfold");
-        //}
-        
+    <script language = 'JavaScript'>
         var menuBox = document.getElementById('menu');
+        var menuButton = document.getElementsByClassName('but_menu')[0];
         
-        document.getElementById('unfold').onclick = function() {
-            if(this.innerHTML === 'unfold') {
-                this.innerHTML = 'fold';
-                menuBox.classList.add('menu_unfold');
+        function toggleMenu() {
+            if(document.getElementById('but_menu').innerHTML == '≡') {
+                document.getElementById('but_menu').innerHTML = '▵';
+                document.getElementById('menu').classList.add('menu_unfold');
             } else {
-                this.innerHTML = 'unfold';
-                menuBox.classList.remove('menu_unfold');
+                document.getElementById('but_menu').innerHTML = '≡';
+                document.getElementById('menu').classList.remove('menu_unfold');
             }
-            
-          }
-        
-        //$(function() {
-        //    $("unfold").click(function() {
-        //        $("menu").toggleClass("menu-unfold");
-        //    });
-        //});
+        }
     </script>
 </head>
 
@@ -44,8 +33,7 @@
     <div class="header">
         <a class="but_back"><</a>
         <p class=headertitle>test</p>
-        <button id="unfold" value="unfold">unfold</button>
-        <a class="but_menu" href="#menu">≡</a>
+        <a class="but_menu" id="but_menu" href="javascript:toggleMenu()">≡</a>
     </div>
 </div>
 <div class="search">
