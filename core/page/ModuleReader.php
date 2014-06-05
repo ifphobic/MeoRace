@@ -10,7 +10,7 @@
          $modules = array();
          foreach ( $moduleNames as $moduleName ) {
             $className = ucfirst ( $moduleName ) . "Module";
-            require( Configuration::MODULE_FOLDER . $moduleName . "/" . $className . ".php");
+            include( Configuration::MODULE_FOLDER . $moduleName . "/" . $className . ".php");
             $module = new $className;
             $selected = array();
             $pages = $module->getPages();

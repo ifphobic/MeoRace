@@ -4,7 +4,7 @@
 
       public function commit( $content ) {
 
-         $dbFunction = new LoginDbFunction();
+         $dbFunction = new UserDbFunction();
          $user = $dbFunction->findUser( $content["user"] );
          if ( isset( $user ) ) {
             
