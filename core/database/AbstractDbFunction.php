@@ -6,7 +6,7 @@
 
       protected function AbstractDbFunction() {
 
-         $this->mysqli = new mysqli(Configuration::DB_HOST, Configuration::DB_NAME, Configuration::DB_USER, Configuration::DB_PASSWORD);
+         $this->mysqli = new mysqli(Configuration::DB_HOST, Configuration::DB_USER, Configuration::DB_PASSWORD, Configuration::DB_NAME);
          if ( $this->mysqli->connect_errno ) {
              throw new Exception( "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error );
          }
