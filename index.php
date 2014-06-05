@@ -1,6 +1,6 @@
 <?php
 
-   require("core/include.php");
+   include("core/include.php");
 
    $role = Role::NO_ROLE;
    $commonDbFunction = new CommonDbFunction();

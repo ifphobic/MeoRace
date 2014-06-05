@@ -1,16 +1,16 @@
 <?php
 
-   require "core/database/AbstractDbFunction.php"; 
-   require "core/database/CommonDbFunction.php";
-   require("core/page/Role.php");
-   require("core/page/CommonPageFunction.php");
-   require("core/page/ModuleReader.php");
-   require("core/page/ModulePage.php");
-   require("core/Configuration.php");
-   require("core/page/Page.php");
-   require("core/page/AbstractEditAction.php");
-   require("core/interface/Module.php");
-   require("core/interface/Action.php");
-   require("core/interface/ListDbFunction.php");
+   include "core/database/AbstractDbFunction.php"; 
+   include "core/database/CommonDbFunction.php";
+   include("core/page/Role.php");
+   include("core/page/CommonPageFunction.php");
+   include("core/page/ModuleReader.php");
+   include("core/page/ModulePage.php");
+   include("core/Configuration.php");
+   include("core/page/Page.php");
+   include("core/page/AbstractEditAction.php");
+   include("core/interface/Module.php");
+   include("core/interface/Action.php");
+   include("core/interface/ListDbFunction.php");
 
 ?>

@@ -41,12 +41,12 @@
             print ( "   <input name='page' value='" . $page->getPage() . "' type='hidden' />");
          }
        
-         require( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName )  . "DbFunction.php" );
+         include( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName )  . "DbFunction.php" );
             foreach ( $page->getDependencies()  as $dependency ) {
-            require( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
+            include( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
          }
 
-         require( Configuration::MODULE_FOLDER . $moduleName . "/template/" . $page->getPage() . ".php" );
+         include( Configuration::MODULE_FOLDER . $moduleName . "/template/" . $page->getPage() . ".php" );
          
          if ( $page->isForm() ) {
             print ( "  <input type='submit' />" );

@@ -1,6 +1,6 @@
 <?php
    
-   require( "core/include.php" );
+   include( "core/include.php" );
 
    $moduleName = $_POST['module'];
    $pageName = $_POST['page'];
@@ -20,10 +20,10 @@
 
 
    $className = ucfirst( $pageName ) . "Action";
-   require( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName ) .  "DbFunction.php" );
-   require( Configuration::MODULE_FOLDER . $moduleName . "/action/" . $className . ".php" );
+   include( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName ) .  "DbFunction.php" );
+   include( Configuration::MODULE_FOLDER . $moduleName . "/action/" . $className . ".php" );
    foreach ( $page->getDependencies()  as $dependency ) {
-      require( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
+      include( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
    }
 
    $action = new $className;
