@@ -1,10 +1,20 @@
+.menubuttons {
+  min-width: 50px;
+  height: 50px;
+  border-right: 1px solid #999999;
+  border-left: 1px solid #999999;
+}
+p {
+  margin: 0em;
+}
 body {
   margin: 0px;
   width: 100%;
   font: 13pt Helvetica, sans-serif;
 }
-p {
-  margin: 0em;
+a.ohne {
+  color: #4d4d4d;
+  text-decoration: none;
 }
 .menu {
   position: fixed;
@@ -18,45 +28,51 @@ p {
 }
 .header {
   height: 50px;
-  background: linear-gradient(#e6e6e6, #cccccc);
+  background: linear-gradient(#ffffff, #e6e6e6);
   border-bottom: 1px solid #999999;
   text-align: center;
+}
+div.title {
+  display: inline;
+  padding: 0 25px;
 }
 .but_back {
-  width: 50px;
+  min-width: 50px;
   height: 50px;
-  float: left;
   border-right: 1px solid #999999;
+  border-left: 1px solid #999999;
+  float: left;
+  font-size: 1.5em;
+  line-height: 1.5em;
 }
 .but_menu {
-  width: 50px;
+  min-width: 50px;
   height: 50px;
-  float: right;
+  border-right: 1px solid #999999;
   border-left: 1px solid #999999;
-}
-.headertitle {
-  margin: 0 50px;
-  display: inline;
-}
-.search {
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  left: 0px;
-  top: 50px;
-  vertical-align: middle;
-  border-bottom: 1px solid #999999;
-  text-align: center;
+  float: right;
   font-size: 2em;
 }
-.list {
+.headertitle {
+  display: inline;
+}
+div.content {
   position: absolute;
+  max-width: 700px;
   width: 100%;
-  top: 102px;
+  left: 0px;
+  top: 50px;
+}
+.search {
+  height: 50px;
+  left: 0px;
+  right: 0px;
+  border-bottom: 1px solid #999999;
+  text-align: center;
 }
 .listitem {
   height: 50px;
-  background: linear-gradient(#ffffff, #e6e6e6);
+  background: linear-gradient(#ffffff, #f2f2f2);
   border-bottom: 1px solid #999999;
   text-align: center;
 }
