@@ -29,13 +29,15 @@
    $modules = ModuleReader::readAllLinks( $role );
 
    if ( !isset( $moduleName ) ) {
-      $moduleName = array_keys( $modules )[0];
+      $moduleName = array_keys( $modules );
+      $moduleName = $moduleName[0];
    }
 
    if ( !isset( $pageName ) ) {
-      $pageName = array_keys( $modules[ $moduleName ] )[0];
+      $pageName = array_keys( $modules[ $moduleName ] );
+      $pageName = $pageName[0];
    }
-   
+
    $page = $modules[ $moduleName ][ $pageName ];
 
 
