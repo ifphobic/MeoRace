@@ -14,25 +14,31 @@
 
 @border: 1px solid @c5;
 
+@line-heigth: 50px;
+
+.menubuttons {min-width:@line-heigth; height: @line-heigth; border-right: @border; border-left: @border;}
+p {margin: 0em;}
 body {margin: 0px; width:100%; font: @font;}
-p {margin:0em;}
+a.ohne {color: @c8; text-decoration: none;}
 
 .menu {position:fixed; width: 100%; top:-100px;
  transition: top 400ms ease-out; z-index: 100;}
 .menu.menu_unfold {top:0px !important;}
 
-.header {height:50px; background: linear-gradient(@c2, @c3); 
+.header {height:@line-heigth; background: linear-gradient(@c1, @c2); 
 border-bottom: @border; text-align:center;}
-.but_back {width:50px; height:50px; float:left; border-right: @border;}
-.but_menu {width:50px; height:50px; float:right; border-left: @border;}
-.headertitle {margin:0 50px; display:inline;}
 
-.search {width:100%; height:50px; position:absolute; left:0px; top:50px; vertical-align:middle;
-border-bottom: @border; text-align:center;
-font-size:2em;}
+div.title {display: inline; padding: 0 25px;}
+.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
+.but_menu {.menubuttons; float:right; font-size: 2em;}
+.headertitle {display:inline;}
 
-.list {position:absolute; width:100%; top:102px;}
-.listitem {height:50px; background: linear-gradient(@c1, @c2); 
+div.content {position:absolute; max-width: 700px; width: 100%; left:0px; top:@line-heigth; } 
+
+.search { height:@line-heigth; left: 0px; right:0px; border-bottom: @border; text-align:center;}
+
+.list {}
+.listitem {height:@line-heigth; background: linear-gradient(@c1, @c1 - @degrade/2); 
 border-bottom: @border; text-align:center;}
 
 @media
