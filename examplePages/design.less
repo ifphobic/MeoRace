@@ -19,7 +19,8 @@
 
 @line-heigth: 50px;
 
-.menubuttons {color: @c8; min-width:@line-heigth; height: @line-heigth; border-right: @border; border-left: @border; cursor: default;}
+.menubuttons {color: @c8; min-width:@line-heigth; height: @line-heigth;
+    border-right: @border; border-left: @border; cursor: default;}
 p {margin: 0em;}
 body html {width:100%; height: 100%;}
 body {margin: 0px; font: @font; color: @c9;}
@@ -35,16 +36,20 @@ border-bottom: @border; text-align:center;}
 div.title {display: inline; padding: 0 25px;}
 div.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
 div.but_menu {.menubuttons; float:right; font-size: 2em;}
-div.nav_button {float:right; cursor: default; margin: 5px; padding: 0.25em 5px; color: @c8; border: @border; border-radius: 10px; display: none;}
+div.nav_button {float:right; cursor: default; margin: 5px; padding: 0.25em 5px;
+    color: @c8; border: @border; border-radius: 10px; display: none;}
 div.nav_button:hover {background: @c2;}
 .headertitle {display:inline;}
 
-.content {position:absolute; max-width: @col_max; width: 100%; height: 100%; border-left: @border; border-right: @border; overflow-y: auto;} 
-div.content {.content; left: 0px;}
-div.content2 {.content; right: -100%;}
-div.content3 {.content; right: -200%;}
+.content {position:absolute; max-width: @col_max; width: 100%; height: 100%;
+    border-left: @border; border-right: @border; overflow-y: auto;
+    transition: width 200ms ease-out, left 200ms ease-out;} 
+div.content {.content; left: 0%;}
+div.content2 {.content; left: 100%;}
+div.content3 {.content; left: 200%;}
 
-.search { height:@line-heigth; margin-top:@line-heigth; left: 0px; right:0px; border-bottom: @border; text-align:center;}
+.search { height:@line-heigth; margin-top:@line-heigth;
+    left: 0px; right:0px; border-bottom: @border; text-align:center;}
 
 .list {}
 .listitem {height:@line-heigth; padding: 0 5px; background: linear-gradient(@c1, @c1 - @degrade/2); 
@@ -59,7 +64,7 @@ border-bottom: @border; text-align:center;}
     .content {width: 50%;}
     div.content {.content;}
     div.content2 {.content; left: 50%;}
-    div.content3 {.content; right: -50%;}
+    div.content3 {.content; left: 100%;}
     .header {padding-right: 5px;}
     div.but_menu {display: none;}
     div.nav_button {display: block}

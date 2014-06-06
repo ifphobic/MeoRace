@@ -87,6 +87,7 @@ div.nav_button:hover {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
+  transition: width 200ms ease-out, left 200ms ease-out;
 }
 div.content {
   position: absolute;
@@ -96,7 +97,8 @@ div.content {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  left: 0px;
+  transition: width 200ms ease-out, left 200ms ease-out;
+  left: 0%;
 }
 div.content2 {
   position: absolute;
@@ -106,7 +108,8 @@ div.content2 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  right: -100%;
+  transition: width 200ms ease-out, left 200ms ease-out;
+  left: 100%;
 }
 div.content3 {
   position: absolute;
@@ -116,7 +119,8 @@ div.content3 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  right: -200%;
+  transition: width 200ms ease-out, left 200ms ease-out;
+  left: 200%;
 }
 .search {
   height: 50px;
@@ -163,7 +167,7 @@ div.content3 {
   }
   div.content3 {
     width: 50%;
-    right: -50%;
+    left: 100%;
   }
   .header {
     padding-right: 5px;
