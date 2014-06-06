@@ -1,20 +1,20 @@
 <?php
-
+   
    abstract class AbstractDbFunction {
 
-      private $mysqli;
+      private $connection;
 
       protected function AbstractDbFunction() {
-
-         $this->mysqli = new mysqli(Configuration::DB_HOST, Configuration::DB_USER, Configuration::DB_PASSWORD, Configuration::DB_NAME);
-         if ( $this->mysqli->connect_errno ) {
-             throw new Exception( "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error );
-         }
+         
+         $this->connection = new PDO("mysql:host=" . Configuration::DB_HOST . ";dbname=" . Configuration::DB_NAME, Configuration::DB_USER, Configuration::DB_PASSWORD);
+         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       }
 
       protected function query( $query, $parameters ) {
          
-         $statement = $this->mysqli->prepare( $query );
+         
+         $statement = $this->connection->prepare( $query );
+
          if ( !$statement ) {
             throw new Exception( "Prepare failed: (" . $this->mysqli->errno . ") " . $this->mysqli->error );
          }
@@ -42,7 +42,7 @@
 
 
       public function close() {
-         $this->mysqli->close();
+         $this->connection = null;
       }
 
    }
