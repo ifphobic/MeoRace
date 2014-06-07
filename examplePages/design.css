@@ -177,6 +177,7 @@ div.content_menu_spacer {
 }
 .racerpic img {
   height: 120px;
+  margin-left: -10px;
 }
 .racer_number {
   margin: 5px;
