@@ -17,9 +17,10 @@
 
 @border: 1px solid @c5;
 
-@line-heigth: 50px;
+@line-height: 49px;
+@tile-height: 149px;
 
-.menubuttons {color: @c8; min-width:@line-heigth; height: @line-heigth;
+.menubuttons {color: @c8; min-width:@line-height; height: @line-height;
     border-right: @border; border-left: @border; cursor: default;}
 p {margin: 0em;}
 body html {width:100%; height: 100%;}
@@ -30,7 +31,7 @@ a.ohne {color: @c8; text-decoration: none;}
  transition: top 300ms ease-out; z-index: 100;}
 .menu.menu_unfold {top:0px !important;}
 
-.header {height:@line-heigth; background: linear-gradient(@c2, @c3); 
+.header {height:@line-height; background: linear-gradient(@c2, @c3); 
 border-bottom: @border; text-align:center;}
 
 div.title {display: inline; padding: 0 25px;}
@@ -43,16 +44,19 @@ div.nav_button:hover {background: @c2;}
 
 .content {position:absolute; max-width: @col_max; width: 100%; height: 100%;
     border-left: @border; border-right: @border; overflow-y: auto;
-    transition: width 200ms ease-out, left 200ms ease-out;} 
+    transition: width 200ms ease, left 200ms ease;} 
 div.content {.content; left: 0%;}
+div.content.drilldown {left: -100%;}
 div.content2 {.content; left: 100%;}
+div.content2.drilldown {left: 0%;}
 div.content3 {.content; left: 200%;}
+div.content3.drilldown {left: 100%;}
+div.content_menu_spacer {height: @line-height;}
 
-.search { height:@line-heigth; margin-top:@line-heigth;
-    left: 0px; right:0px; border-bottom: @border; text-align:center;}
+.search { height:@line-height; border-bottom: @border; text-align:center;}
 
 .list {}
-.listitem {height:@line-heigth; padding: 0 5px; background: linear-gradient(@c1, @c1 - @degrade/2); 
+.listitem {height:@line-height; padding: 0 5px; background: linear-gradient(@c1, @c1 - @degrade/2); 
 border-bottom: @border; text-align:center;}
 .li_head {margin: 5px; font-size: 2em; float:left; color: @c5}
 .li_content {margin: 5px; float:left; text-align: left;}
@@ -60,11 +64,19 @@ border-bottom: @border; text-align:center;}
 .li_secondline {color: @c5;}
 .listitem:hover {background: @c1;}
 
+.racerdetail {height: @tile-height; border-bottom: @border; }
+.racerpic {height: 120px; width: 120px; margin: 15px; float: left; overflow: hidden; border-radius: 60px;}
+.racerpic img {height: 120px;}
+.racer_number {.li_head;}
+
 @media only screen and (min-width: @col_max){
     .content {width: 50%;}
     div.content {.content;}
+    div.content.drilldown {left: -50%;}
     div.content2 {.content; left: 50%;}
+    div.content2.drilldown {left: 0%;}
     div.content3 {.content; left: 100%;}
+    div.content3.drilldown {left: 50%;}
     .header {padding-right: 5px;}
     div.but_menu {display: none;}
     div.nav_button {display: block}

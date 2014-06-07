@@ -1,7 +1,7 @@
 .menubuttons {
   color: #4d4d4d;
-  min-width: 50px;
-  height: 50px;
+  min-width: 49px;
+  height: 49px;
   border-right: 1px solid #999999;
   border-left: 1px solid #999999;
   cursor: default;
@@ -33,7 +33,7 @@ a.ohne {
   top: 0px !important;
 }
 .header {
-  height: 50px;
+  height: 49px;
   background: linear-gradient(#e6e6e6, #cccccc);
   border-bottom: 1px solid #999999;
   text-align: center;
@@ -44,8 +44,8 @@ div.title {
 }
 div.but_back {
   color: #4d4d4d;
-  min-width: 50px;
-  height: 50px;
+  min-width: 49px;
+  height: 49px;
   border-right: 1px solid #999999;
   border-left: 1px solid #999999;
   cursor: default;
@@ -55,8 +55,8 @@ div.but_back {
 }
 div.but_menu {
   color: #4d4d4d;
-  min-width: 50px;
-  height: 50px;
+  min-width: 49px;
+  height: 49px;
   border-right: 1px solid #999999;
   border-left: 1px solid #999999;
   cursor: default;
@@ -87,7 +87,7 @@ div.nav_button:hover {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 200ms ease-out, left 200ms ease-out;
+  transition: width 200ms ease, left 200ms ease;
 }
 div.content {
   position: absolute;
@@ -97,8 +97,11 @@ div.content {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 200ms ease-out, left 200ms ease-out;
+  transition: width 200ms ease, left 200ms ease;
   left: 0%;
+}
+div.content.drilldown {
+  left: -100%;
 }
 div.content2 {
   position: absolute;
@@ -108,8 +111,11 @@ div.content2 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 200ms ease-out, left 200ms ease-out;
+  transition: width 200ms ease, left 200ms ease;
   left: 100%;
+}
+div.content2.drilldown {
+  left: 0%;
 }
 div.content3 {
   position: absolute;
@@ -119,19 +125,22 @@ div.content3 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 200ms ease-out, left 200ms ease-out;
+  transition: width 200ms ease, left 200ms ease;
   left: 200%;
 }
+div.content3.drilldown {
+  left: 100%;
+}
+div.content_menu_spacer {
+  height: 49px;
+}
 .search {
-  height: 50px;
-  margin-top: 50px;
-  left: 0px;
-  right: 0px;
+  height: 49px;
   border-bottom: 1px solid #999999;
   text-align: center;
 }
 .listitem {
-  height: 50px;
+  height: 49px;
   padding: 0 5px;
   background: linear-gradient(#ffffff, #f2f2f2);
   border-bottom: 1px solid #999999;
@@ -154,6 +163,27 @@ div.content3 {
 .listitem:hover {
   background: #ffffff;
 }
+.racerdetail {
+  height: 149px;
+  border-bottom: 1px solid #999999;
+}
+.racerpic {
+  height: 120px;
+  width: 120px;
+  margin: 15px;
+  float: left;
+  overflow: hidden;
+  border-radius: 60px;
+}
+.racerpic img {
+  height: 120px;
+}
+.racer_number {
+  margin: 5px;
+  font-size: 2em;
+  float: left;
+  color: #999999;
+}
 @media only screen and (min-width: 700px) {
   .content {
     width: 50%;
@@ -161,13 +191,22 @@ div.content3 {
   div.content {
     width: 50%;
   }
+  div.content.drilldown {
+    left: -50%;
+  }
   div.content2 {
     width: 50%;
     left: 50%;
   }
+  div.content2.drilldown {
+    left: 0%;
+  }
   div.content3 {
     width: 50%;
     left: 100%;
+  }
+  div.content3.drilldown {
+    left: 50%;
   }
   .header {
     padding-right: 5px;
