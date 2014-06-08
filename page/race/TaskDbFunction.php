@@ -10,34 +10,25 @@
       public function findAll( $unused ) {
          
          $query = "select * from Task ";
-         $result = $this->query($query, null );
-         
-         $tasks = array();
-         for ( $i = 0; $i < $result->num_rows; $i++ ) {
-            $tasks[] = $result->fetch_object();
-         }
-         return $tasks;
+         $result = $this->queryArray($query, array() );
+         return $result; 
       }
          
       public function findById( $taskId ) {
          
          $query = "select * from Task where taskId = ?";
-         $result = $this->query($query, array( new Parameter( Parameter::INTEGER, $taskId ) ) );
-         if ( $result->num_rows != 0 ) {
-            return $result->fetch_object();
-         } else {
-            return null;
-         }
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $taskId ) ) );
+         return $result[0];
       }
 
       public function insert( $task ) {
          $query = "insert into Task (name, maxDuration, currentPrice, description, raceFk ) values (?, ?, ?, ?, ?)";
          $parameter = array( 
-            new Parameter( Parameter::STRING, $task['name'] ), 
-            new Parameter( Parameter::INTEGER, $task['maxDuration'] ), 
-            new Parameter( Parameter::INTEGER, $task['currentPrice'] ), 
-            new Parameter( Parameter::STRING, $task['description'] ), 
-            new Parameter( Parameter::INTEGER, $task['raceFk'] ), 
+            new Parameter( PDO::PARAM_STR, $task['name'] ), 
+            new Parameter( PDO::PARAM_INT, $task['maxDuration'] ), 
+            new Parameter( PDO::PARAM_INT, $task['currentPrice'] ), 
+            new Parameter( PDO::PARAM_STR, $task['description'] ), 
+            new Parameter( PDO::PARAM_INT, $task['raceFk'] ), 
          );
          $this->query($query, $parameter);
       }
@@ -45,11 +36,11 @@
       public function update( $task) {
          $query = "update Task set name = ?, maxDuration = ?, currentPrice = ?, description = ? where taskId = ?";
          $parameter = array( 
-            new Parameter( Parameter::STRING, $task['name'] ), 
-            new Parameter( Parameter::INTEGER, $task['maxDuration'] ), 
-            new Parameter( Parameter::INTEGER, $task['currentPrice'] ), 
-            new Parameter( Parameter::STRING, $task['description'] ), 
-            new Parameter( Parameter::INTEGER, $task['taskId'] ),
+            new Parameter( PDO::PARAM_STR, $task['name'] ), 
+            new Parameter( PDO::PARAM_INT, $task['maxDuration'] ), 
+            new Parameter( PDO::PARAM_INT, $task['currentPrice'] ), 
+            new Parameter( PDO::PARAM_STR, $task['description'] ), 
+            new Parameter( PDO::PARAM_INT, $task['taskId'] ),
          );
          $this->query($query, $parameter);
       }

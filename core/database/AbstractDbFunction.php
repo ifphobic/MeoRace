@@ -10,8 +10,24 @@
          $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       }
 
+      protected function queryArray( $query, $parameters ) {
+
+         $statement = $this->query( $query, $parameters );
+         return $statement->fetchAll( PDO::FETCH_OBJ );   
+      
+      }
+      
+      protected function queryColumn( $query, $parameters ) {
+
+         $statement = $this->query( $query, $parameters );
+         return $statement->fetchAll( PDO::FETCH_COLUMN );   
+      
+      }
+
+
       protected function query( $query, $parameters ) {
-         
+        
+         //print($query);
          
          $statement = $this->connection->prepare( $query );
 
@@ -19,21 +35,14 @@
             throw new Exception( "Prepare failed: (" . $this->mysqli->errno . ") " . $this->mysqli->error );
          }
          
-         if ( isset( $parameters ) ) {
-            $references = array();
-            $references[] = "";
-
-            foreach ( $parameters as $key => $value ) {
-               $references[0] = $references[0] . $value->type;
-               $references[] = &$value->value;
-            }
-            
-            call_user_func_array(array($statement, 'bind_param'), $references );
+         $index = 1;
+         foreach ( $parameters as $parameter ) {
+            $statement->bindParam( $index++, $parameter->value, $parameter->type );
          }
          $result = $statement->execute();
 
          if ( $result ) {
-            return $statement->get_result();   
+            return $statement;
          } else {
             throw new Exception( "Execute failed: (" . $statement->errno . ") " . $statement->error );
          }

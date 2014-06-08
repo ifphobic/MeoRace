@@ -10,36 +10,27 @@
       public function findAll( $raceFk ) {
          
          $query = "select * from Racer where raceFk = ? order by racerNumber";
-         $result = $this->query($query, array( new Parameter( Parameter::INTEGER, $raceFk ) ) );
-         
-         $racers = array();
-         for ( $i = 0; $i < $result->num_rows; $i++ ) {
-            $racers[] = $result->fetch_object();
-         }
-         return $racers;
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceFk ) ) );
+         return $result; 
       }
          
       public function findById( $racerId ) {
          
          $query = "select * from Racer where racerId = ?";
-         $result = $this->query($query, array( new Parameter( Parameter::INTEGER, $racerId ) ) );
-         if ( $result->num_rows != 0 ) {
-            return $result->fetch_object();
-         } else {
-            return null;
-         }
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerId ) ) );
+         return $result[0];
       }
 
       public function insert( $racer ) {
          $query = "insert into Racer (racerNumber, name, city, country, email, raceFk, status) values (?, ?, ?, ?, ?, ?, ?)";
          $parameter = array( 
-            new Parameter( Parameter::INTEGER, $racer['racerNumber'] ), 
-            new Parameter( Parameter::STRING, $racer['name'] ), 
-            new Parameter( Parameter::STRING, $racer['city'] ), 
-            new Parameter( Parameter::STRING, $racer['country'] ), 
-            new Parameter( Parameter::STRING, $racer['email'] ), 
-            new Parameter( Parameter::INTEGER, $racer['raceFk'] ), 
-            new Parameter( Parameter::STRING, $racer['status'] ), 
+            new Parameter( PDO::PARAM_INT, $racer['racerNumber'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['name'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['city'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['country'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['email'] ), 
+            new Parameter( PDO::PARAM_INT, $racer['raceFk'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['status'] ), 
          );
          $this->query($query, $parameter);
       }
@@ -47,13 +38,13 @@
       public function update( $racer) {
          $query = "update Racer set racerNumber = ?, name = ?, city = ?, country = ?, email = ?, status = ? where racerId = ?";
          $parameter = array( 
-            new Parameter( Parameter::INTEGER, $racer['racerNumber'] ), 
-            new Parameter( Parameter::STRING, $racer['name'] ), 
-            new Parameter( Parameter::STRING, $racer['city'] ), 
-            new Parameter( Parameter::STRING, $racer['country'] ), 
-            new Parameter( Parameter::STRING, $racer['email'] ), 
-            new Parameter( Parameter::STRING, $racer['status'] ), 
-            new Parameter( Parameter::STRING, $racer['racerId'] ), 
+            new Parameter( PDO::PARAM_INT, $racer['racerNumber'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['name'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['city'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['country'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['email'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['status'] ), 
+            new Parameter( PDO::PARAM_STR, $racer['racerId'] ), 
          );
          $this->query($query, $parameter);
       }
@@ -66,10 +57,7 @@
 
          $dbNumbers = array();
          $query = "select racerNumber from Racer where raceFk = ?";
-         $result = $this->query($query, array( new Parameter( Parameter::INTEGER, $raceFk ) ) );
-         for ( $i = 0; $i < $result->num_rows; $i++ ) {
-            $dbNumbers[] = $result->fetch_row()[0];
-         }
+         $dbNumbers = $this->queryColumn($query, array( new Parameter( PDO::PARAM_INT, $raceFk ) ) );
 
          $freeNumbers = array();
          for ( $i = 0; $i < 100; $i++ ) {

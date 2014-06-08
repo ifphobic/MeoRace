@@ -10,53 +10,36 @@
       public function findAll( $raceId ) {
          
          $query = "select u.userId, u.user, u.role, r.name as raceName from User u left outer join Race r on u.raceFk = r.raceId";
-         $parameter = null;
+         $parameter = array();
          if ( isset( $raceId ) ) {
             $query .= " where u.raceFk = ?";
-            $parameter = array( new Parameter( Parameter::INTEGER, $raceId ) );
+            $parameter[] = new Parameter( PDO::PARAM_INT, $raceId );
          }
-         $result = $this->query($query, $parameter );
-         
-         $users = array();
-         for ( $i = 0; $i < $result->num_rows; $i++ ) {
-            $users[] = $result->fetch_object();
-         }
-         return $users;
+         $result = $this->queryArray($query, $parameter );
+         return $result;
       }
          
       public function findById( $userId ) {
          
          $query = "select * from User where userId = ?";
-         $result = $this->query($query, array( new Parameter( Parameter::INTEGER, $userId ) ) );
-         if ( $result->num_rows == 1 ) {
-            return $result->fetch_object();
-         } else if ( $result->num_rows > 1) {
-            throw new Exception("More than one User ($userId) in Db!");
-         } else {
-            return null;
-         }
+         $result = $this->queryArray( $query, array( new Parameter( PDO::PARAM_INT, $userId ) ) );
+         return $result[0];
       }
 
       public function findUser( $userName ) {
          
          $query = "select * from User where user = ?";
-         $result = $this->query($query, array( new Parameter( Parameter::STRING, $userName ) ) );
-         if ( $result->num_rows == 1 ) {
-            return $result->fetch_object();
-         } else if ( $result->num_rows > 1) {
-            throw new Exception("More than one User ($username) in Db!");
-         } else {
-            return null;
-         }
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_STR, $userName ) ) );
+         return $result[0];
       }
 
       public function insert( $user ) {
          $query = "insert into User (user, password, role, raceFk ) values (?, ?, ?, ?)";
          $parameter = array( 
-            new Parameter( Parameter::STRING, $user['user'] ), 
-            new Parameter( Parameter::STRING, hash ( "sha256" , $user['password']) ),
-            new Parameter( Parameter::STRING, $user['role'] ),
-            new Parameter( Parameter::INTEGER, $user['raceFk'] )
+            new Parameter( PDO::PARAM_STR, $user['user'] ), 
+            new Parameter( PDO::PARAM_STR, hash ( "sha256" , $user['password']) ),
+            new Parameter( PDO::PARAM_STR, $user['role'] ),
+            new Parameter( PDO::PARAM_INT, $user['raceFk'] )
          );
          $this->query($query, $parameter);
       }
@@ -64,10 +47,10 @@
       public function update( $user ) {
          $query = "update User set user = ?, role = ?, raceFk = ? where userId = ?";
          $parameter = array( 
-            new Parameter( Parameter::STRING, $user['user'] ), 
-            new Parameter( Parameter::STRING, $user['role'] ),
-            new Parameter( Parameter::INTEGER, $user['raceFk'] ),
-            new Parameter( Parameter::INTEGER, $user['userId'] )
+            new Parameter( PDO::PARAM_STR, $user['user'] ), 
+            new Parameter( PDO::PARAM_STR, $user['role'] ),
+            new Parameter( PDO::PARAM_INT, $user['raceFk'] ),
+            new Parameter( PDO::PARAM_INT, $user['userId'] )
          );
          $this->query($query, $parameter);
       }
@@ -76,7 +59,7 @@
          
          $sessionId = $this->generateSessionId();
          $query = "insert into Session ( sessionId, userFk, loginTime, lastActive) values ( ?, ?, now(), now() )";
-         $this->query($query, array( new Parameter( Parameter::STRING, $sessionId ), new Parameter( Parameter::INTEGER, $user->userId ) ) );
+         $this->query($query, array( new Parameter( PDO::PARAM_STR, $sessionId ), new Parameter( PDO::PARAM_INT, $user->userId ) ) );
          setcookie("sessionId", $sessionId, time()+3600); 
          return $sessionId;
       }
