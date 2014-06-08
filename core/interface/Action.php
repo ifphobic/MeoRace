@@ -11,10 +11,12 @@
 
       private $module;
       private $page;
+      private $parameter;
 
-      public function NextPage( $module, $page ) {
+      public function NextPage( $module, $page, $parameter = null ) {
          $this->module = $module;
          $this->page = $page;
+         $this->parameter= $parameter;
       }
 
       public function getModule() {
@@ -25,9 +27,10 @@
          return $this->page;
       }
 
-      public function isBothSet() {
-         return isset( $this->module ) && isset( $this->module );
+      public function getParameter() {
+         return $this->parameter;
       }
+
 
    }
 

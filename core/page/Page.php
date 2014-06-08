@@ -36,9 +36,7 @@
 
       public static function printContent($moduleName, $page) {
          if ( $page->isForm() ) {
-            print ( "<form method='post' action='commit.php' >" );
-            print ( "   <input name='module' value='$moduleName' type='hidden' />");
-            print ( "   <input name='page' value='" . $page->getPage() . "' type='hidden' />");
+            Page::printFormStart( $moduleName, $page->getPage() );
          }
        
          include( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName )  . "DbFunction.php" );
@@ -49,10 +47,21 @@
          include( Configuration::MODULE_FOLDER . $moduleName . "/template/" . $page->getPage() . ".php" );
          
          if ( $page->isForm() ) {
-            print ( "  <input type='submit' />" );
-            print ( "</form>" );
+            Page::printFormEnd();
          }
       }
+
+      public static function printFormStart( $moduleName, $pageName ) {
+            print ( "<form method='post' action='commit.php' >" );
+            print ( "   <input name='module' value='$moduleName' type='hidden' />");
+            print ( "   <input name='page' value='" . $pageName . "' type='hidden' />");
+      }
+
+      public static function printFormEnd( ) {
+            print ( "  <input type='submit' />" );
+            print ( "</form>" );
+      }
+
 
       public static function printFooter() {
       

@@ -31,7 +31,12 @@
       }
 
       public static function getCombobox($key, $object, $text, $options, $optionKey = null ) {
-         $result = "<tr><td>$text</td><td><select name='$key' size='1' >";
+         $result = "";
+         if ( $text != null ) {
+            $result = "<tr><td>$text</td><td>";
+         }
+         $result .= "<select name='$key' size='1' >";
+         
          foreach ( $options as $option ) {
             if ( isset( $optionKey ) ) {
                $value = $option->$optionKey;
@@ -42,7 +47,10 @@
             }
             $result .= "<option value='" . $value . "' " . ( ( isset( $object ) && strcmp( $value, $object->$key)  == 0) ? "selected" : "" ). " >$name</option>";
          }
-         $result .= "</select></td></tr>";
+         $result .= "</select>";
+         if ( $text != null ) {
+            $result .= "</td></tr>";
+         }
          return $result;
          
       }

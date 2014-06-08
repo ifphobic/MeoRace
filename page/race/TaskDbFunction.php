@@ -7,10 +7,10 @@
       }
 
 
-      public function findAll( $unused ) {
+      public function findAll( $raceFk ) {
          
-         $query = "select * from Task ";
-         $result = $this->queryArray($query, array() );
+         $query = "select * from Task where raceFk = ?";
+         $result = $this->queryArray($query, array(new Parameter( PDO::PARAM_INT, $raceFk ) ) );
          return $result; 
       }
          

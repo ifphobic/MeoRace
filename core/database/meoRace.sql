@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2014 at 06:58 PM
+-- Generation Time: Jun 08, 2014 at 04:24 PM
 -- Server version: 5.1.70-log
 -- PHP Version: 5.5.12-pl0-gentoo
 
@@ -33,19 +33,61 @@ CREATE TABLE IF NOT EXISTS `Checkpoint` (
   `manned` tinyint(1) NOT NULL,
   `raceFk` int(11) NOT NULL,
   PRIMARY KEY (`checkpointId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Truncate table before insert `Checkpoint`
---
-
-TRUNCATE TABLE `Checkpoint`;
 --
 -- Dumping data for table `Checkpoint`
 --
 
 INSERT INTO `Checkpoint` (`checkpointId`, `name`, `manned`, `raceFk`) VALUES
-(1, 'Checkpoint 1', 1, 4);
+(1, 'Checkpoint 1', 1, 4),
+(2, 'Checkpoint2', 0, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Delivery`
+--
+
+DROP TABLE IF EXISTS `Delivery`;
+CREATE TABLE IF NOT EXISTS `Delivery` (
+  `deliveryId` int(11) NOT NULL AUTO_INCREMENT,
+  `taskFk` int(11) NOT NULL,
+  `parcelFk` int(11) DEFAULT NULL,
+  `pickupFk` int(11) NOT NULL,
+  `dropoffFk` int(11) NOT NULL,
+  PRIMARY KEY (`deliveryId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `Delivery`
+--
+
+INSERT INTO `Delivery` (`deliveryId`, `taskFk`, `parcelFk`, `pickupFk`, `dropoffFk`) VALUES
+(1, 1, 4, 1, 1),
+(2, 0, 3, 1, 2),
+(3, 1, 3, 1, 2),
+(4, 1, 3, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `DeliveryCondition`
+--
+
+DROP TABLE IF EXISTS `DeliveryCondition`;
+CREATE TABLE IF NOT EXISTS `DeliveryCondition` (
+  `deliveryFk` int(11) NOT NULL,
+  `previousDeliveryFk` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `DeliveryCondition`
+--
+
+INSERT INTO `DeliveryCondition` (`deliveryFk`, `previousDeliveryFk`) VALUES
+(1, 4),
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -60,19 +102,15 @@ CREATE TABLE IF NOT EXISTS `Parcel` (
   `description` varchar(256) NOT NULL,
   `raceFk` int(11) NOT NULL,
   PRIMARY KEY (`parcelId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
---
--- Truncate table before insert `Parcel`
---
-
-TRUNCATE TABLE `Parcel`;
 --
 -- Dumping data for table `Parcel`
 --
 
 INSERT INTO `Parcel` (`parcelId`, `name`, `description`, `raceFk`) VALUES
-(3, 'Parcel 2', 'for Race 1', 4);
+(3, 'Parcel 2', 'for Race 1', 4),
+(4, 'Parcel1', 'for Race 1', 4);
 
 -- --------------------------------------------------------
 
@@ -88,11 +126,6 @@ CREATE TABLE IF NOT EXISTS `Race` (
   PRIMARY KEY (`raceId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
---
--- Truncate table before insert `Race`
---
-
-TRUNCATE TABLE `Race`;
 --
 -- Dumping data for table `Race`
 --
@@ -122,11 +155,6 @@ CREATE TABLE IF NOT EXISTS `Racer` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Truncate table before insert `Racer`
---
-
-TRUNCATE TABLE `Racer`;
---
 -- Dumping data for table `Racer`
 --
 
@@ -149,11 +177,6 @@ CREATE TABLE IF NOT EXISTS `Session` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `Session`
---
-
-TRUNCATE TABLE `Session`;
---
 -- Dumping data for table `Session`
 --
 
@@ -171,7 +194,15 @@ INSERT INTO `Session` (`sessionId`, `userFk`, `loginTime`, `lastActive`) VALUES
 ('MYDuuUKWoCNM4odKkD9ytZWMGWMY5IipE459NjCQWE', 7, '2014-06-01 20:00:15', '2014-06-01 20:00:15'),
 ('UhCREk7VPP7u1ofYqiSeXwaxjFzVZvVREPtV8qvvJy', 0, '2014-06-01 20:01:26', '2014-06-01 20:01:26'),
 ('pJFOZKvhCY3WpV1C3eiuVBrW6PvJA2wMSnsGGzOG66', 7, '2014-06-01 20:02:37', '2014-06-01 20:02:37'),
-('Z1JfGa3xmIrLaZP7Jjz50RSEPJI0GQ6XTQYOsfxLHh', 7, '2014-06-01 20:18:50', '2014-06-01 20:18:50');
+('Z1JfGa3xmIrLaZP7Jjz50RSEPJI0GQ6XTQYOsfxLHh', 7, '2014-06-01 20:18:50', '2014-06-01 20:18:50'),
+('uKfwzGcQSgU85gpIrwovs8pLH73shf573AGsbT5Dso', 0, '2014-06-08 11:57:23', '2014-06-08 11:57:23'),
+('0VwaKGO1iWAZ1U98k7cVAuq6NoaOoYwlGrnMvdamYI', 0, '2014-06-08 12:05:14', '2014-06-08 12:05:14'),
+('RWwcGe4ymqOv8DyRb7kpqdrs3rDy5CU2rAEUNN6fkd', 0, '2014-06-08 12:10:38', '2014-06-08 12:10:38'),
+('XCbEjVU3utV45ozcSIPvYQxKQUuTYDSsRM0ZyNDZ9I', 0, '2014-06-08 12:18:07', '2014-06-08 12:18:07'),
+('8zo0O3vCsaEk8qsayDfLbGXc7ZLsa9bLVgifhnFZHc', 7, '2014-06-08 13:31:53', '2014-06-08 13:31:53'),
+('T4XxhD7zZA7hkapvvtm84KoMEEhrUD32XrQ3gswhpv', 7, '2014-06-08 15:04:07', '2014-06-08 15:04:07'),
+('mMITXZEi3MN2Oc5hfmK0WAlaSM6ldvcEmNt6Vtmw4W', 7, '2014-06-08 16:36:31', '2014-06-08 16:36:31'),
+('WlhN53frC6JVRRkh7n8SajJIwj7NSD6EUnAJ2abGF7', 7, '2014-06-08 17:38:29', '2014-06-08 17:38:29');
 
 -- --------------------------------------------------------
 
@@ -190,11 +221,6 @@ CREATE TABLE IF NOT EXISTS `Task` (
   PRIMARY KEY (`taskId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
---
--- Truncate table before insert `Task`
---
-
-TRUNCATE TABLE `Task`;
 --
 -- Dumping data for table `Task`
 --
@@ -219,11 +245,6 @@ CREATE TABLE IF NOT EXISTS `User` (
   UNIQUE KEY `user` (`user`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
---
--- Truncate table before insert `User`
---
-
-TRUNCATE TABLE `User`;
 --
 -- Dumping data for table `User`
 --

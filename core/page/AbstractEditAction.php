@@ -2,7 +2,7 @@
 
    class AbstractEditAction {
 
-      protected function genericCommit( $moduleName, $key, $pageName, $content, $subModule = null ) {
+      protected function genericCommit( $moduleName, $key, $pageName, $content, $subModule = null, $parameter = null ) {
          if ( $subModule == null ) {
             $classname = ucfirst( $moduleName ) . "DbFunction";
          } else {
@@ -16,7 +16,7 @@
             $dbFunction->insert( $content );
          }
          $dbFunction->close();
-         return new NextPage( $moduleName, $pageName );
+         return new NextPage( $moduleName, $pageName, $parameter );
 
       }
 

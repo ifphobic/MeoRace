@@ -22,7 +22,7 @@
          
          if ( Role::isAdmin( $GLOBALS['MeoRace']['user'] ) ) {
             print( CommonPageFunction::getCombobox("role", $user, "Role", Role::getAllRoles( true ) ) );
-            print( CommonPageFunction::getCombobox("raceFk", $user, "RaceId", $races, "raceId") );
+            print( CommonPageFunction::getCombobox("raceFk", $user, "Race", $races, "raceId") );
          } else {
             print( CommonPageFunction::getCombobox("role", $user, "Role", Role::getAllRoles( false ) ) );
             print( "<input type='hidden' name='raceFk' value='" . $GLOBALS['MeoRace']['user']->raceFk . "' />");

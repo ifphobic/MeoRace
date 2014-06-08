@@ -10,7 +10,7 @@
    $tasks = $dbFunction->findAll( $GLOBALS['MeoRace']['user']->raceFk );
    $dbFunction->close();
 ?>                     
-
+<h1>Tasks</h1>
 <table>
    <th>Name</th>
    <th>MaxDuration</th>
@@ -26,6 +26,7 @@
             <td>" . $task->currentPrice . "</td>
             <td>" . $task->description. "</td>
             <td>" . CommonPageFunction::getLink("race", "taskEdit", $task->taskId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("race", "deliveryList", $task->taskId, "configure") . "</td>
          </tr>
       ");
    }

@@ -37,6 +37,9 @@
       if ( $nextPage->getPage() != null ) {
          $parameter .= "&page=" . $nextPage->getPage(); 
       }
+      if ( $nextPage->getParameter() != null ) {
+         $parameter .= "&". $nextPage->getParameter();
+      }
    }
 
 ?>
