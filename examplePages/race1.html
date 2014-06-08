@@ -19,6 +19,18 @@
                 document.getElementById('menu').classList.remove('menu_unfold');
             }
         }
+        
+        function drilldown($page) {
+            document.getElementById('content').classList.add('drilldown');
+            document.getElementById('content2').classList.add('drilldown');
+            document.getElementById('content2').classList.add('drilldown');
+        }
+        
+        function drillup($page) {
+            document.getElementById('content').classList.remove('drilldown');
+            document.getElementById('content2').classList.remove('drilldown');
+            document.getElementById('content2').classList.remove('drilldown');
+        }
     </script>
 </head>
 
@@ -31,30 +43,49 @@
         menu 2
     </div>
     <div class="header">
-        <a class="but_back ohne"><</a>
-        <a class="but_menu ohne" id="but_menu" href="javascript:toggleMenu()">≡</a>
+        <div class="but_back" onclick="drillup()"><</div>
+        <div class="nav_button" onclick="drilldown()">menu 2</div>
+        <div class="nav_button">menu 3</div>
+        <div class="but_menu" id="but_menu" onclick="toggleMenu()">≡</div>
         <div class="title">
             Title
         </div>
     </div>
 </div>
-<div class="content">
+<div class="content" id="content">
+    <div class="content_menu_spacer"></div>
 <div class="search">
     <input type="number" size="3" style="font-size:large; width:3em; display:inline;"/>
     <input type=search results=5 autosave=some_unique_value name=s style="font-size:large; width:50%;"/>
 </div>
 <div class=list>
-    <div class=listitem>
-        racer 1
+    <div class=listitem onclick="drilldown()">
+        <div class=li_head>666</div>
+        <div class=li_content>
+        <span class=li_firstline>Jerome "Strom" Thiriet</span><br>
+        <span class=li_secondline>Basel, Switzerland</span>
+        </div>
     </div>
     <div class=listitem>
-        racer 2
+        <div class=li_head>000</div>
+        <div class=li_content>
+        <span class=li_firstline>Philip Lüscher</span><br>
+        <span class=li_secondline>Colonia, Germany</span>
+        </div>
     </div>
     <div class=listitem>
-        racer 3
+        <div class=li_head>576</div>
+        <div class=li_content>
+        <span class=li_firstline>Jakob "Kobli" Boss</span><br>
+        <span class=li_secondline>Basel, Switzerland</span>
+        </div>
     </div>
     <div class=listitem>
-        racer 4
+        <div class=li_head>588</div>
+        <div class=li_content>
+        <span class=li_firstline>Dominique Candik</span><br>
+        <span class=li_secondline>Basel, Switzerland</span>
+        </div>
     </div>
     <div class=listitem>
         racer 5
@@ -94,6 +125,36 @@
     </div>
 </div>
 </div>
-
+<div class="content2" id="content2">
+    <div class="content_menu_spacer"></div>
+    <div class=racerdetail>
+        <div class=racerpic>
+            <img src="strom.jpg">
+        </div>
+        <div class=racer_number>666</div>
+        <div class=li_content>
+        <span class=li_firstline>Jerome "Strom" Thiriet</span><br>
+        <span class=li_secondline>Basel, Switzerland</span>
+        </div>
+    </div>
+    <div class=list>
+    <div class=listitem>
+        Auftrag 1
+    </div>
+    <div class=listitem>
+        Auftrag 2
+    </div>
+    <div class=listitem>
+        Auftrag 3
+    </div>
+    <div class=listitem>
+        Auftrag 4
+    </div>
+    </div>
+</div>
+<div class="content3" id="content3">
+    <div class="content_menu_spacer"></div>
+    <div class=search>Brumm</div>
+</div>
 </body>
 </html>

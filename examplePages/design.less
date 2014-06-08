@@ -10,46 +10,84 @@
 @c9: @c8 - @degrade;
 @c10: #000000;
 
+@col_max: 700px;
+@desktop: 2*@col_max;
+
 @font: 13pt Helvetica, sans-serif;
 
 @border: 1px solid @c5;
 
-@line-heigth: 50px;
+@line-height: 49px;
+@tile-height: 149px;
 
-.menubuttons {min-width:@line-heigth; height: @line-heigth; border-right: @border; border-left: @border;}
+.menubuttons {color: @c8; min-width:@line-height; height: @line-height;
+    border-right: @border; border-left: @border; cursor: default;}
 p {margin: 0em;}
-body {margin: 0px; width:100%; font: @font;}
+body html {width:100%; height: 100%;}
+body {margin: 0px; font: @font; color: @c9;}
 a.ohne {color: @c8; text-decoration: none;}
 
 .menu {position:fixed; width: 100%; top:-100px;
- transition: top 400ms ease-out; z-index: 100;}
+ transition: top 300ms ease-out; z-index: 100;}
 .menu.menu_unfold {top:0px !important;}
 
-.header {height:@line-heigth; background: linear-gradient(@c1, @c2); 
+.header {height:@line-height; background: linear-gradient(@c2, @c3); 
 border-bottom: @border; text-align:center;}
 
 div.title {display: inline; padding: 0 25px;}
-.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
-.but_menu {.menubuttons; float:right; font-size: 2em;}
+div.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
+div.but_menu {.menubuttons; float:right; font-size: 2em;}
+div.nav_button {float:right; cursor: default; margin: 5px; padding: 0.25em 5px;
+    color: @c8; border: @border; border-radius: 10px; display: none;}
+div.nav_button:hover {background: @c2;}
 .headertitle {display:inline;}
 
-div.content {position:absolute; max-width: 700px; width: 100%; left:0px; top:@line-heigth; } 
+.content {position:absolute; max-width: @col_max; width: 100%; height: 100%;
+    border-left: @border; border-right: @border; overflow-y: auto;
+    transition: width 200ms ease, left 200ms ease;} 
+div.content {.content; left: 0%;}
+div.content.drilldown {left: -100%;}
+div.content2 {.content; left: 100%;}
+div.content2.drilldown {left: 0%;}
+div.content3 {.content; left: 200%;}
+div.content3.drilldown {left: 100%;}
+div.content_menu_spacer {height: @line-height;}
 
-.search { height:@line-heigth; left: 0px; right:0px; border-bottom: @border; text-align:center;}
+.search { height:@line-height; border-bottom: @border; text-align:center;}
 
 .list {}
-.listitem {height:@line-heigth; background: linear-gradient(@c1, @c1 - @degrade/2); 
+.listitem {height:@line-height; padding: 0 5px; background: linear-gradient(@c1, @c1 - @degrade/2); 
 border-bottom: @border; text-align:center;}
+.li_head {margin: 5px; font-size: 2em; float:left; color: @c5}
+.li_content {margin: 5px; float:left; text-align: left;}
+.li_firstline {}
+.li_secondline {color: @c5;}
+.listitem:hover {background: @c1;}
 
-@media
-only screen and (orientation:landscape),
-only screen and (min-device-width: 700px)
-{img {height: 180px;}}
+.racerdetail {height: @tile-height; border-bottom: @border; }
+.racerpic {height: 120px; width: 120px; margin: 15px; float: left; overflow: hidden; border-radius: 60px;}
+.racerpic img {height: 120px; margin-left: -10px;}
+.racer_number {.li_head;}
 
-@media
-only screen and (min-device-width: 700px) and (orientation:landscape)
-{img {height: 130px;}}
+@media only screen and (min-width: @col_max){
+    .content {width: 50%;}
+    div.content {.content;}
+    div.content.drilldown {left: -50%;}
+    div.content2 {.content; left: 50%;}
+    div.content2.drilldown {left: 0%;}
+    div.content3 {.content; left: 100%;}
+    div.content3.drilldown {left: 50%;}
+    .header {padding-right: 5px;}
+    div.but_menu {display: none;}
+    div.nav_button {display: block}
+}
 
-@media
-only screen and (min-device-width : 999px)
-{img {height: 130px;}}
+@media only screen and (min-width: @desktop){
+    .content {width: 33%}
+    div.content {.content;}
+    div.content2 {.content; left: 33%;}
+    div.content3 {.content; left: 66%; width: 34%;}
+    .header {padding-right: 5px;}
+    div.but_menu {display: none;}
+    div.nav_button {display: block}
+}
