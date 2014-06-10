@@ -5,7 +5,7 @@
       $delivery = null;
       if ( isset( $_GET['id'] ) ) {
          $dbFunction = new DeliveryDbFunction();
-         $delivery = $dbFunction->findById( $taskId);
+         $delivery = $dbFunction->findById( $_GET['id'] );
          $dbFunction->close();
          print( "<input type='hidden' name='deliveryId' value='" . $delivery->deliveryId ."' />" );
       }

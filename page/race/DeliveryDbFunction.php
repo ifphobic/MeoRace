@@ -91,6 +91,49 @@
          $result = $delivery->pickupName . " => " . $delivery->dropoffName . " (" . $delivery->parcelName . ")";
          return $result;
       }
+
+      public static function getPossibleDeliveries( $deliveries, $conditions, $doneDeliveries ) {
+
+         $doneIds = array();
+         foreach ( $doneDeliveries as $done ) {
+            $doneIds[] = $done->deliveryId;
+         }
+
+         $result = array();
+         foreach ( $deliveries as $delivery ) {
+            $allConditionsOk = true;
+            foreach ( $conditions as $condition ) {
+               if ( $delivery->deliveryId == $condition->deliveryFk ) {
+                  $allConditionsOk = $allConditionsOk && in_array( $condition->previousDeliveryFk, $doneIds );
+               }
+         
+            }
+            
+            if ( $allConditionsOk & !in_array( $delivery->deliveryId, $doneIds ) ) {
+               $result[] = $delivery;
+
+
+            }
+
+         }
+         return $result;
+      }
+
+      public static function getImpossibleDeliveries( $deliveries, $doneDeliveries ) {
+         
+         $doneIds = array();
+         foreach ( $doneDeliveries as $done ) {
+            $doneIds[] = $done->deliveryId;
+         }
+
+         $result = array();
+         foreach ( $deliveries as $delivery ) {
+            if ( !in_array( $delivery->deliveryId, $doneIds ) ) {
+               $result[] = $delivery;
+            }
+         }
+         return $result;
+      }
    }
 
 ?>

@@ -15,24 +15,13 @@
    $conditions = $dbFunction->findAll( $taskId );
    $dbFunction->close();
 
-?>                     
 
-<h1>Deliveries</h1>
-<table>
-   <th>Previous</th>
-   <th>Pick Up</th>
-   <th></th>
-   <th>Drop Off</th>
-   <th>Parcel</th>
-   <th></th>
-
-<?php
-   foreach ( $deliveries as $delivery ) {
+   function printDelivery( $delivery, $deliveries, $conditions, $taskId, $get ) {
 
       print("<tr><td>");
       print( DeliveryDbFunction::getPrevious( $delivery, $deliveries, $conditions ) );
       $filtered = DeliveryDbFunction::filterCurrent( $deliveries, $delivery, $conditions );
-      if ( array_key_exists( "addPrevious", $_GET ) && $_GET['addPrevious'] == $delivery->deliveryId ) {
+      if ( array_key_exists( "addPrevious", $get ) && $get['addPrevious'] == $delivery->deliveryId ) {
          Page::printFormStart("race", "deliveryConditionAdd");
          print("<input type='hidden' name='taskId' value='$taskId' />");
          print("<input type='hidden' name='deliveryFk' value='" . $delivery->deliveryId . "' />");
@@ -48,10 +37,44 @@
             <td>=></td>
             <td>" . $delivery->dropoffName . "</td>
             <td> (" . $delivery->parcelName . ")</td>
-            <td>" . CommonPageFunction::getLink("race", "deliveryEdit", $delivery->deliveryId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("race", "deliveryEdit", $delivery->deliveryId, "edit", "taskId=$taskId") . "</td>
          </tr>
       ");
+
    }
+?>                     
+
+<h1>Deliveries</h1>
+<table>
+   <th>Previous</th>
+   <th>Pick Up</th>
+   <th></th>
+   <th>Drop Off</th>
+   <th>Parcel</th>
+   <th></th>
+
+<?php
+   
+   $doneDeliveries = array();
+   $possibleDeliveries = DeliveryDbFunction::getPossibleDeliveries( $deliveries, $conditions, $doneDeliveries );
+   while ( count( $possibleDeliveries ) > 0 ) {
+      foreach ( $possibleDeliveries as $delivery ) {
+         printDelivery( $delivery, $deliveries, $conditions, $taskId, $_GET );
+      }
+
+      $doneDeliveries = array_merge( $doneDeliveries, $possibleDeliveries);
+      $possibleDeliveries = DeliveryDbFunction::getPossibleDeliveries( $deliveries, $conditions, $doneDeliveries );
+      print("<tr><td colspan='6'><hr/></td></tr>");
+   }
+
+   if ( count( $deliveries ) != count( $doneDeliveries ) ) {
+      print("<tr><td colspan='6'><br><h2>Not reachable</h2></td></tr>");
+      $impossibleDeliveries = DeliveryDbFunction::getImpossibleDeliveries( $deliveries, $doneDeliveries ); 
+      foreach ( $impossibleDeliveries as $delivery ) {
+         printDelivery( $delivery, $deliveries, $conditions, $taskId, $_GET );
+      }
+   }
+
 ?>   
 
 
