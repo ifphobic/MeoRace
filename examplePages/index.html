@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>MeoRace</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link href="design.css" rel="stylesheet">
+    <script language = 'JavaScript'>
+        function $(id) {
+            return document.getElementById(id);
+        }
+        
+        function toggleMenu() {
+            if($('but_menu').innerHTML == '≡') {
+                $('but_menu').innerHTML = '▵';
+                $('menu').classList.add('menu_unfold');
+            } else {
+                $('but_menu').innerHTML = '≡';
+                $('menu').classList.remove('menu_unfold');
+            }
+        }
+        
+        function drilldown($page) {
+            $('content').classList.add('drilldown');
+            $('content2').classList.add('drilldown');
+            $('content2').classList.add('drilldown');
+        }
+        
+        function drillup($page) {
+            $('content').classList.remove('drilldown');
+            $('content2').classList.remove('drilldown');
+            $('content2').classList.remove('drilldown');
+        }
+        
+        
+        function getHttpRequest() {
+            var xmlhttp = null;
+            // Mozilla
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            // IE
+            else if (window.ActiveXObject) {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+           
+            xmlhttp.open("GET", 'racerlist.html', true);
+            xmlhttp.onreadystatechange = function() {
+                if(xmlhttp.readyState != 4) {
+                    $('content').innerHTML = 'Seite wird geladen ...';
+                }
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    $('content').innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.send(null);
+        }
+    </script>
+</head>
+
+<body>
+<div class="menu" id="menu">
+    <div class=listitem>
+        menu 1
+    </div>
+    <div class=listitem>
+        menu 2
+    </div>
+    <div class="header">
+        <div class="but_back" onclick="drillup()"><</div>
+        <div class="nav_button" onclick="drilldown()">menu 2</div>
+        <div class="nav_button">menu 3</div>
+        <div class="but_menu" id="but_menu" onclick="toggleMenu()">≡</div>
+        <div class="title" onclick="getHttpRequest();">
+            Title
+        </div>
+    </div>
+</div>
+<div class="content" id="content">
+    
+</div>
+<div class="content2" id="content2">
+    
+</div>
+<div class="content3" id="content3">
+
+</div>
+</body>
+</html>
