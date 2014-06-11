@@ -52,13 +52,13 @@
       }
 
       public static function printFormStart( $moduleName, $pageName ) {
-            print ( "<form method='post' action='commit.php' >" );
+            print ( "<form method='post' action='commit.php' style='display:inline'>" );
             print ( "   <input name='module' value='$moduleName' type='hidden' />");
             print ( "   <input name='page' value='" . $pageName . "' type='hidden' />");
       }
 
-      public static function printFormEnd( ) {
-            print ( "  <input type='submit' />" );
+      public static function printFormEnd( $buttonText = "save" ) {
+            print ( "  <input type='submit' value='$buttonText' />" );
             print ( "</form>" );
       }
 

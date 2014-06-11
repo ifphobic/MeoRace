@@ -14,7 +14,7 @@
          $query .= "join Checkpoint pickup on d.pickupFk = pickup.checkpointId ";
          $query .= "join Checkpoint dropoff on d.dropoffFk = dropoff.checkpointId ";
          $query .= "join Parcel p on d.parcelFk = p.parcelId ";
-         $query .= "where taskFk = ?";
+         $query .= "where taskFk = ? order by deliveryId";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $taskFk ) ) );
          $deliveries = array();
          foreach ($result as $delivery ) {

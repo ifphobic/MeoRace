@@ -10,7 +10,7 @@
       public function findAll( $taskFk ) {
          $query = "select dc.* from DeliveryCondition dc ";
          $query .= "join Delivery current on dc.deliveryFk = current.deliveryId ";
-         $query .= "where current.taskFk = ?";
+         $query .= "where current.taskFk = ? order by deliveryConditionId";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $taskFk ) ) );
          return $result;
       }

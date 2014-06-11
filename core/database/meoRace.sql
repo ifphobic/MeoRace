@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 08, 2014 at 04:24 PM
+-- Generation Time: Jun 11, 2014 at 06:24 PM
 -- Server version: 5.1.70-log
 -- PHP Version: 5.5.12-pl0-gentoo
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `Checkpoint` (
   `manned` tinyint(1) NOT NULL,
   `raceFk` int(11) NOT NULL,
   PRIMARY KEY (`checkpointId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `Checkpoint`
@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `Checkpoint` (
 
 INSERT INTO `Checkpoint` (`checkpointId`, `name`, `manned`, `raceFk`) VALUES
 (1, 'Checkpoint 1', 1, 4),
-(2, 'Checkpoint2', 0, 4);
+(2, 'Checkpoint2', 0, 4),
+(3, 'Checkpoint3', 0, 4);
 
 -- --------------------------------------------------------
 
@@ -57,17 +58,16 @@ CREATE TABLE IF NOT EXISTS `Delivery` (
   `pickupFk` int(11) NOT NULL,
   `dropoffFk` int(11) NOT NULL,
   PRIMARY KEY (`deliveryId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `Delivery`
 --
 
 INSERT INTO `Delivery` (`deliveryId`, `taskFk`, `parcelFk`, `pickupFk`, `dropoffFk`) VALUES
-(1, 1, 4, 1, 1),
-(2, 0, 3, 1, 2),
-(3, 1, 3, 1, 2),
-(4, 1, 3, 2, 2);
+(16, 3, 4, 1, 2),
+(17, 3, 4, 2, 3),
+(18, 3, 4, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -77,17 +77,19 @@ INSERT INTO `Delivery` (`deliveryId`, `taskFk`, `parcelFk`, `pickupFk`, `dropoff
 
 DROP TABLE IF EXISTS `DeliveryCondition`;
 CREATE TABLE IF NOT EXISTS `DeliveryCondition` (
+  `deliveryConditionId` int(11) NOT NULL AUTO_INCREMENT,
   `deliveryFk` int(11) NOT NULL,
-  `previousDeliveryFk` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `previousDeliveryFk` int(11) NOT NULL,
+  PRIMARY KEY (`deliveryConditionId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `DeliveryCondition`
 --
 
-INSERT INTO `DeliveryCondition` (`deliveryFk`, `previousDeliveryFk`) VALUES
-(1, 4),
-(1, 3);
+INSERT INTO `DeliveryCondition` (`deliveryConditionId`, `deliveryFk`, `previousDeliveryFk`) VALUES
+(22, 18, 17),
+(21, 17, 16);
 
 -- --------------------------------------------------------
 
@@ -202,7 +204,10 @@ INSERT INTO `Session` (`sessionId`, `userFk`, `loginTime`, `lastActive`) VALUES
 ('8zo0O3vCsaEk8qsayDfLbGXc7ZLsa9bLVgifhnFZHc', 7, '2014-06-08 13:31:53', '2014-06-08 13:31:53'),
 ('T4XxhD7zZA7hkapvvtm84KoMEEhrUD32XrQ3gswhpv', 7, '2014-06-08 15:04:07', '2014-06-08 15:04:07'),
 ('mMITXZEi3MN2Oc5hfmK0WAlaSM6ldvcEmNt6Vtmw4W', 7, '2014-06-08 16:36:31', '2014-06-08 16:36:31'),
-('WlhN53frC6JVRRkh7n8SajJIwj7NSD6EUnAJ2abGF7', 7, '2014-06-08 17:38:29', '2014-06-08 17:38:29');
+('WlhN53frC6JVRRkh7n8SajJIwj7NSD6EUnAJ2abGF7', 7, '2014-06-08 17:38:29', '2014-06-08 17:38:29'),
+('pTy5FkjMkUbZX9HQdFP1jabF685ZzZ6InCv2BN0kcz', 7, '2014-06-10 18:08:18', '2014-06-10 18:08:18'),
+('ZicNej3OCXzHKJQn79tGHmHN2E6bEKkTeRYCQj9b4n', 7, '2014-06-11 18:24:15', '2014-06-11 18:24:15'),
+('Bd7GVoptUpTbpHs9t97WDEnc1xRglAnZkZEkYfgMKQ', 7, '2014-06-11 19:24:35', '2014-06-11 19:24:35');
 
 -- --------------------------------------------------------
 
@@ -219,14 +224,14 @@ CREATE TABLE IF NOT EXISTS `Task` (
   `description` varchar(256) NOT NULL,
   `raceFk` int(11) NOT NULL,
   PRIMARY KEY (`taskId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `Task`
 --
 
 INSERT INTO `Task` (`taskId`, `name`, `maxDuration`, `currentPrice`, `description`, `raceFk`) VALUES
-(1, 'Task1', 60, 123, 'Short Task', 4);
+(3, 'Manifest1', 60, 100, 'Rundfahrt', 4);
 
 -- --------------------------------------------------------
 

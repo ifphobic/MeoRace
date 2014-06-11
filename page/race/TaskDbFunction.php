@@ -9,7 +9,7 @@
 
       public function findAll( $raceFk ) {
          
-         $query = "select * from Task where raceFk = ?";
+         $query = "select * from Task where raceFk = ? order by taskId";
          $result = $this->queryArray($query, array(new Parameter( PDO::PARAM_INT, $raceFk ) ) );
          return $result; 
       }

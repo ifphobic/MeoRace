@@ -9,7 +9,7 @@
 
       public function findAll( $unused ) {
          
-         $query = "select * from Race ";
+         $query = "select * from Race order by raceId";
          $result = $this->queryArray($query, array() );
          return $result; 
       }
