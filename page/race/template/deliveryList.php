@@ -48,8 +48,9 @@
             <td>" . $delivery->name . "</td>
             <td>" . $delivery->pickupName . "</td>
             <td>=></td>
+            <td>" . $delivery->parcelName . "</td>
+            <td>=></td>
             <td>" . $delivery->dropoffName . "</td>
-            <td> (" . $delivery->parcelName . ")</td>
             <td>" . CommonPageFunction::getLink("race", "deliveryEdit", $delivery->deliveryId, "edit", "taskId=$taskId") . "</td>
             <td>
       ");
@@ -96,8 +97,9 @@
    <th>Number</th>
    <th>Pick Up</th>
    <th></th>
-   <th>Drop Off</th>
    <th>Parcel</th>
+   <th></th>
+   <th>Drop Off</th>
 
 <?php
    $groupedDeliveries = groupDeliveries( $deliveries, $conditions ); 
@@ -105,12 +107,12 @@
       foreach ( $groupedDeliveries[$i] as $delivery ) {
          printDelivery( $delivery, $deliveries, $conditions, $taskId, $_GET );
       }
-      print("<tr><td colspan='8'><hr/></td></tr>");
+      print("<tr><td colspan='9'><hr/></td></tr>");
    }
    
 
    if ( $groupedDeliveries[ count( $groupedDeliveries) - 1 ] != null ) {
-      print("<tr><td colspan='8'><br><h2>Not reachable</h2></td></tr>");
+      print("<tr><td colspan='9'><br><h2>Not reachable</h2></td></tr>");
       foreach ( $groupedDeliveries[ count( $groupedDeliveries) - 1 ] as $delivery ) {
          printDelivery( $delivery, $deliveries, $conditions, $taskId, $_GET );
       }

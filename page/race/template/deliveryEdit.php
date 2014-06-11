@@ -15,8 +15,9 @@
       $dbFunction = new CheckpointDbFunction();
       $checkpoints = $dbFunction->findAll( $raceFk );
       $dbFunction->close();
+      $parcels = array( (object) array( "name" => "none", "parcelId" => -1) );
       $dbFunction = new ParcelDbFunction();
-      $parcels = $dbFunction->findAll( $raceFk );
+      $parcels = array_merge($parcels, $dbFunction->findAll( $raceFk ));
       $dbFunction->close();
 
    ?>

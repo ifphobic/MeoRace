@@ -13,7 +13,7 @@
          $query .= "from Delivery d ";
          $query .= "join Checkpoint pickup on d.pickupFk = pickup.checkpointId ";
          $query .= "join Checkpoint dropoff on d.dropoffFk = dropoff.checkpointId ";
-         $query .= "join Parcel p on d.parcelFk = p.parcelId ";
+         $query .= "left outer join Parcel p on d.parcelFk = p.parcelId ";
          $query .= "where taskFk = ? order by deliveryId";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $taskFk ) ) );
          $deliveries = array();
@@ -32,24 +32,32 @@
       }
 
       public function insert( $delivery ) {
-         $query = "insert into Delivery ( taskFk, parcelFk, pickupFk, dropoffFk ) values (?, ?, ?, ?)";
+         $query = "insert into Delivery ( taskFk, pickupFk, dropoffFk, parcelFk ) values (?, ?, ?, ?)";
          $parameter = array( 
             new Parameter( PDO::PARAM_INT, $delivery['taskFk'] ), 
-            new Parameter( PDO::PARAM_INT, $delivery['parcelFk'] ), 
             new Parameter( PDO::PARAM_INT, $delivery['pickupFk'] ), 
             new Parameter( PDO::PARAM_INT, $delivery['dropoffFk'] ), 
          );
+         if ( $delivery['parcelFk'] != -1 ) {
+            $parameter[]  = new Parameter( PDO::PARAM_INT, $delivery['parcelFk'] );
+         } else {
+            $parameter[]  = new Parameter( PDO::PARAM_NULL, null );
+         }
          $this->query($query, $parameter);
       }
 
       public function update( $delivery) {
-         $query = "update Delivery set parcelFk = ?, pickupFk = ?, dropoffFk = ? where deliveryId = ?";
+         $query = "update Delivery set pickupFk = ?, dropoffFk = ?, parcelFk = ? where deliveryId = ?";
          $parameter = array( 
-            new Parameter( PDO::PARAM_INT, $delivery['parcelFk'] ), 
             new Parameter( PDO::PARAM_INT, $delivery['pickupFk'] ), 
             new Parameter( PDO::PARAM_INT, $delivery['dropoffFk'] ), 
-            new Parameter( PDO::PARAM_INT, $delivery['deliveryId'] ),
          );
+         if ( $delivery['parcelFk'] != -1 ) {
+            $parameter[] = new Parameter( PDO::PARAM_INT, $delivery['parcelFk'] );
+         } else {
+            $parameter[] = new Parameter( PDO::PARAM_NULL, null );
+         }
+         $parameter[] = new Parameter( PDO::PARAM_INT, $delivery['deliveryId'] );
          $this->query($query, $parameter);
       }
 

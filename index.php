@@ -28,9 +28,10 @@
    
    $modules = ModuleReader::readAllLinks( $role );
 
-   if ( !isset( $moduleName ) ) {
+   if ( !isset( $moduleName ) || ! array_key_exists($moduleName, $modules ) ) {
       $moduleName = array_keys( $modules );
       $moduleName = $moduleName[0];
+      unset( $pageName );
    }
 
    if ( !isset( $pageName ) ) {
