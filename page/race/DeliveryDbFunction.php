@@ -9,7 +9,7 @@
 
       public function findAll( $taskFk ) {
          
-         $query =  "select d.*, concat( pickup.name, ' => ', dropoff.name, ' (', p.name, ')') as name, pickup.name as pickupName, dropoff.name as dropoffName, p.name as parcelName ";
+         $query =  "select d.*, pickup.name as pickupName, dropoff.name as dropoffName, p.name as parcelName, -1 as name ";
          $query .= "from Delivery d ";
          $query .= "join Checkpoint pickup on d.pickupFk = pickup.checkpointId ";
          $query .= "join Checkpoint dropoff on d.dropoffFk = dropoff.checkpointId ";
@@ -53,6 +53,21 @@
          $this->query($query, $parameter);
       }
 
+      public function delete( $deliveryId ) {
+         $query = "delete from DeliveryCondition where deliveryFk = ? or previousDeliveryFk = ?";
+         $parameter = array( 
+            new Parameter( PDO::PARAM_INT, $deliveryId ), 
+            new Parameter( PDO::PARAM_INT, $deliveryId ), 
+         );
+         $this->query($query, $parameter);
+         
+         $query = "delete from Delivery where deliveryId = ?";
+         $parameter = array( 
+            new Parameter( PDO::PARAM_INT, $deliveryId ), 
+         );
+         $this->query($query, $parameter);
+      }
+
       public static function filterCurrent( $deliveries, $current, $conditions ) {
          $existing = array();
          foreach ( $conditions as $condition ) {
@@ -74,21 +89,13 @@
 
       public static function getPrevious( $currentDelivery, $deliveries, $conditions ) {
 
-         $result = "";
+         $result = array();
          foreach ( $conditions as $condition ) {
             if ( $condition->deliveryFk == $currentDelivery->deliveryId ) {
-               $previous = "deleted";
-               if ( array_key_exists( $condition->previousDeliveryFk, $deliveries ) ) {
-                  $previous = DeliveryDbFunction::getDeliveryString( $deliveries[$condition->previousDeliveryFk] );
-               }
-              $result .= $previous . "<br>";
+              $name = $deliveries[$condition->previousDeliveryFk]->name;
+              $result[] = new Condition( $name, $condition->deliveryConditionId );
             }
          }
-         return $result;
-      }
-
-      private static function getDeliveryString( $delivery ) {
-         $result = $delivery->pickupName . " => " . $delivery->dropoffName . " (" . $delivery->parcelName . ")";
          return $result;
       }
 
@@ -136,4 +143,14 @@
       }
    }
 
+   class Condition {
+      public $name;
+      public $deliveryConditionId;
+
+      public function Condition( $name, $deliveryConditionId) {
+         $this->name = $name;
+         $this->deliveryConditionId = $deliveryConditionId;
+      }
+
+   }
 ?>

@@ -16,7 +16,6 @@
       }
         
       public function insert( $deliveryCondition ) {
-//         print_r($deliveryCondition);
          $query = "insert into DeliveryCondition ( deliveryFk, previousDeliveryFk ) values (?, ?)";
          $parameter = array( 
             new Parameter( PDO::PARAM_INT, $deliveryCondition['deliveryFk'] ), 
@@ -31,6 +30,14 @@
 
       public function findById( $unused ) {
          throw new Exception("DeliveryDbFunction::findById not implemented!");
+      }
+
+      public function delete( $deliveryConditionId ) {
+         $query = "delete from DeliveryCondition where deliveryConditionId = ?";
+         $parameter = array( 
+            new Parameter( PDO::PARAM_INT, $deliveryConditionId ), 
+         );
+         $this->query($query, $parameter);
       }
 
    }

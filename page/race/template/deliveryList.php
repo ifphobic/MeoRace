@@ -17,9 +17,21 @@
 
 
    function printDelivery( $delivery, $deliveries, $conditions, $taskId, $get ) {
-
+      
       print("<tr><td>");
-      print( DeliveryDbFunction::getPrevious( $delivery, $deliveries, $conditions ) );
+      $previous = DeliveryDbFunction::getPrevious( $delivery, $deliveries, $conditions );
+      foreach ( $previous as $next ) {
+         if ( array_key_exists( "deleteCondition", $get ) && $get['deleteCondition'] == $next->deliveryConditionId ) {
+            Page::printFormStart("race", "deliveryConditionDelete");
+            print("<input type='hidden' name='taskId' value='$taskId' />");
+            print("<input type='hidden' name='deliveryConditionId' value='" . $next->deliveryConditionId . "' />");
+            Page::printFormEnd("delete: " . $next->name);
+         } else {
+            print( CommonPageFunction::getLink("race", "deliveryList", $taskId, $next->name, "deleteCondition=" . $next->deliveryConditionId ) );
+         }
+         print(", ");
+      }
+
       $filtered = DeliveryDbFunction::filterCurrent( $deliveries, $delivery, $conditions );
       if ( array_key_exists( "addPrevious", $get ) && $get['addPrevious'] == $delivery->deliveryId ) {
          Page::printFormStart("race", "deliveryConditionAdd");
@@ -33,44 +45,73 @@
 
       print("
             </td>
+            <td>" . $delivery->name . "</td>
             <td>" . $delivery->pickupName . "</td>
             <td>=></td>
             <td>" . $delivery->dropoffName . "</td>
             <td> (" . $delivery->parcelName . ")</td>
             <td>" . CommonPageFunction::getLink("race", "deliveryEdit", $delivery->deliveryId, "edit", "taskId=$taskId") . "</td>
-         </tr>
+            <td>
       ");
+      if ( array_key_exists( "deleteDelivery", $get ) && $get['deleteDelivery'] == $delivery->deliveryId ) {
+         Page::printFormStart("race", "deliveryDelete");
+         print("<input type='hidden' name='taskId' value='$taskId' />");
+         print("<input type='hidden' name='deliveryId' value='" . $delivery->deliveryId . "' />");
+         Page::printFormEnd("confirm delete");
+      } else {
+         print( CommonPageFunction::getLink("race", "deliveryList", $taskId, "delete", "deleteDelivery=" . $delivery->deliveryId ) );
+      }
+      print("</td></tr>");
+   }
 
+   function groupDeliveries( $deliveries, $conditions ) {
+      $doneDeliveries = array();
+      $possibleDeliveries = DeliveryDbFunction::getPossibleDeliveries( $deliveries, $conditions, $doneDeliveries );
+      $deliveryNumber = 1;
+      $result = array();
+      while ( count( $possibleDeliveries ) > 0 ) {
+         foreach( $possibleDeliveries as $delivery ) {
+            $delivery->name = $deliveryNumber++;
+         }
+         $result[] = $possibleDeliveries;
+         $doneDeliveries = array_merge( $doneDeliveries, $possibleDeliveries);
+         $possibleDeliveries = DeliveryDbFunction::getPossibleDeliveries( $deliveries, $conditions, $doneDeliveries );
+      }
+      if ( count( $deliveries ) != count( $doneDeliveries ) ) {
+         $impossibleDeliveries = DeliveryDbFunction::getImpossibleDeliveries( $deliveries, $doneDeliveries );
+         foreach( $impossibleDeliveries as $delivery ) {
+            $delivery->name = $deliveryNumber++;
+         }
+         $result[] = $impossibleDeliveries;
+      } else {
+         $result[] = null;
+      }
+      return $result;
    }
 ?>                     
 
 <h1>Deliveries</h1>
 <table>
    <th>Previous</th>
+   <th>Number</th>
    <th>Pick Up</th>
    <th></th>
    <th>Drop Off</th>
    <th>Parcel</th>
-   <th></th>
 
 <?php
-   
-   $doneDeliveries = array();
-   $possibleDeliveries = DeliveryDbFunction::getPossibleDeliveries( $deliveries, $conditions, $doneDeliveries );
-   while ( count( $possibleDeliveries ) > 0 ) {
-      foreach ( $possibleDeliveries as $delivery ) {
+   $groupedDeliveries = groupDeliveries( $deliveries, $conditions ); 
+   for ( $i = 0; $i < count( $groupedDeliveries ) - 1; $i++ ) {
+      foreach ( $groupedDeliveries[$i] as $delivery ) {
          printDelivery( $delivery, $deliveries, $conditions, $taskId, $_GET );
       }
-
-      $doneDeliveries = array_merge( $doneDeliveries, $possibleDeliveries);
-      $possibleDeliveries = DeliveryDbFunction::getPossibleDeliveries( $deliveries, $conditions, $doneDeliveries );
-      print("<tr><td colspan='6'><hr/></td></tr>");
+      print("<tr><td colspan='8'><hr/></td></tr>");
    }
+   
 
-   if ( count( $deliveries ) != count( $doneDeliveries ) ) {
-      print("<tr><td colspan='6'><br><h2>Not reachable</h2></td></tr>");
-      $impossibleDeliveries = DeliveryDbFunction::getImpossibleDeliveries( $deliveries, $doneDeliveries ); 
-      foreach ( $impossibleDeliveries as $delivery ) {
+   if ( $groupedDeliveries[ count( $groupedDeliveries) - 1 ] != null ) {
+      print("<tr><td colspan='8'><br><h2>Not reachable</h2></td></tr>");
+      foreach ( $groupedDeliveries[ count( $groupedDeliveries) - 1 ] as $delivery ) {
          printDelivery( $delivery, $deliveries, $conditions, $taskId, $_GET );
       }
    }

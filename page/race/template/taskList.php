@@ -27,8 +27,19 @@
             <td>" . $task->description. "</td>
             <td>" . CommonPageFunction::getLink("race", "taskEdit", $task->taskId, "edit") . "</td>
             <td>" . CommonPageFunction::getLink("race", "deliveryList", $task->taskId, "configure") . "</td>
-         </tr>
+            <td>
       ");
+
+      if ( array_key_exists( "deleteTask", $_GET ) && $_GET['deleteTask'] == $task->taskId ) {
+         Page::printFormStart("race", "taskDelete");
+         print("<input type='hidden' name='raceId' value='" . $race->raceId . "' />");
+         print("<input type='hidden' name='taskId' value='" . $task->taskId . "' />");
+         Page::printFormEnd( "confirm delete" );
+      } else {
+         print( CommonPageFunction::getLink("race", "taskList", $race->raceId, "delete", "deleteTask=" . $task->taskId ) );
+      }      
+
+      print("</td></tr> ");
    }
 ?>   
 

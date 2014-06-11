@@ -33,6 +33,20 @@
          $this->query($query, $parameter);
       }
 
+      public function delete( $taskId ) {
+         $dbFunction = new DeliveryDbFunction();
+         $deliveries = $dbFunction->findAll( $taskId );
+         foreach ( $deliveries as $delivery ) {
+            $dbFunction->delete( $delivery->deliveryId);
+         }
+         $dbFunction->close();
+         $query = "delete from Task where taskId = ?";
+         $parameter = array( 
+            new Parameter( PDO::PARAM_INT, $taskId ), 
+         );
+         $this->query($query, $parameter);
+      }
+
       public function update( $task) {
          $query = "update Task set name = ?, maxDuration = ?, currentPrice = ?, description = ? where taskId = ?";
          $parameter = array( 
