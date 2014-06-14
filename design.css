@@ -23,9 +23,9 @@ a.ohne {
   text-decoration: none;
 }
 .menu {
-  position: fixed;
+  position: absolute;
   width: 100%;
-  top: -100px;
+  top: 0px;
   transition: top 300ms ease-out;
   z-index: 100;
 }
@@ -90,6 +90,10 @@ div.nav_button:hover {
   transition: width 200ms ease, left 200ms ease;
 }
 div.content {
+  position: fixed;
+  top:50px;
+}
+div.content0 {
   position: absolute;
   max-width: 700px;
   width: 100%;
@@ -99,9 +103,25 @@ div.content {
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
   left: 0%;
+  top:50px;
 }
-div.content.drilldown {
+div.content0.drilldown {
   left: -100%;
+}
+div.content1 {
+  position: absolute;
+  max-width: 700px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  top:50px;
+  left: 100%;
+}
+div.content1.drilldown {
+  left: 0%;
 }
 div.content2 {
   position: absolute;
@@ -112,27 +132,14 @@ div.content2 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
-  left: 100%;
+  left: 200%;
+  top:50px;
 }
 div.content2.drilldown {
-  left: 0%;
-}
-div.content3 {
-  position: absolute;
-  max-width: 700px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: 200%;
-}
-div.content3.drilldown {
   left: 100%;
 }
 div.content_menu_spacer {
-  height: 49px;
+  height: 55px;
 }
 .search {
   height: 49px;
@@ -189,24 +196,24 @@ div.content_menu_spacer {
   .content {
     width: 50%;
   }
-  div.content {
+  div.content0 {
     width: 50%;
   }
-  div.content.drilldown {
+  div.content0.drilldown {
     left: -50%;
   }
-  div.content2 {
+  div.content1 {
     width: 50%;
     left: 50%;
   }
-  div.content2.drilldown {
+  div.content1.drilldown {
     left: 0%;
   }
-  div.content3 {
+  div.content2 {
     width: 50%;
     left: 100%;
   }
-  div.content3.drilldown {
+  div.content2.drilldown {
     left: 50%;
   }
   .header {
@@ -223,14 +230,14 @@ div.content_menu_spacer {
   .content {
     width: 33%;
   }
-  div.content {
+  div.content0 {
     width: 33%;
   }
-  div.content2 {
+  div.content1 {
     width: 33%;
     left: 33%;
   }
-  div.content3 {
+  div.content2 {
     width: 33%;
     left: 66%;
     width: 34%;

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+    <script language = 'JavaScript'>
+        function $(id) {
+            return document.getElementById(id);
+        }
+        
+        function toggleMenu() {
+            if($('but_menu').innerHTML == '≡') {
+                $('but_menu').innerHTML = '▵';
+                $('menu').classList.add('menu_unfold');
+            } else {
+                $('but_menu').innerHTML = '≡';
+                $('menu').classList.remove('menu_unfold');
+            }
+        }
+        

@@ -45,12 +45,12 @@ div.nav_button:hover {background: @c2;}
 .content {position:absolute; max-width: @col_max; width: 100%; height: 100%;
     border-left: @border; border-right: @border; overflow-y: auto;
     transition: width 200ms ease, left 200ms ease;} 
-div.content {.content; left: 0%;}
-div.content.drilldown {left: -100%;}
-div.content2 {.content; left: 100%;}
-div.content2.drilldown {left: 0%;}
-div.content3 {.content; left: 200%;}
-div.content3.drilldown {left: 100%;}
+div.content0 {.content; left: 0%;}
+div.content0.drilldown {left: -100%;}
+div.content1 {.content; left: 100%;}
+div.content1.drilldown {left: 0%;}
+div.content2 {.content; left: 200%;}
+div.content2.drilldown {left: 100%;}
 div.content_menu_spacer {height: @line-height;}
 
 .search { height:@line-height; border-bottom: @border; text-align:center;}
@@ -71,12 +71,12 @@ border-bottom: @border; text-align:center;}
 
 @media only screen and (min-width: @col_max){
     .content {width: 50%;}
-    div.content {.content;}
-    div.content.drilldown {left: -50%;}
-    div.content2 {.content; left: 50%;}
-    div.content2.drilldown {left: 0%;}
-    div.content3 {.content; left: 100%;}
-    div.content3.drilldown {left: 50%;}
+    div.content0 {.content;}
+    div.content0.drilldown {left: -50%;}
+    div.content1 {.content; left: 50%;}
+    div.content1.drilldown {left: 0%;}
+    div.content2 {.content; left: 100%;}
+    div.content2.drilldown {left: 50%;}
     .header {padding-right: 5px;}
     div.but_menu {display: none;}
     div.nav_button {display: block}
@@ -84,9 +84,9 @@ border-bottom: @border; text-align:center;}
 
 @media only screen and (min-width: @desktop){
     .content {width: 33%}
-    div.content {.content;}
-    div.content2 {.content; left: 33%;}
-    div.content3 {.content; left: 66%; width: 34%;}
+    div.content0 {.content;}
+    div.content1 {.content; left: 33%;}
+    div.content2 {.content; left: 66%; width: 34%;}
     .header {padding-right: 5px;}
     div.but_menu {display: none;}
     div.nav_button {display: block}

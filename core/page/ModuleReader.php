@@ -2,15 +2,15 @@
 
 
    class ModuleReader {
-   
+      
 
-      public static function readAllLinks( $role ) {
+      public static function readAllModules( $role ) {
    
          $moduleNames = self::readModuleNames( Configuration::MODULE_FOLDER );
          $modules = array();
          foreach ( $moduleNames as $moduleName ) {
             $className = ucfirst ( $moduleName ) . "Module";
-            include( Configuration::MODULE_FOLDER . $moduleName . "/" . $className . ".php");
+            include_once( Configuration::MODULE_FOLDER . $moduleName . "/" . $className . ".php");
             $module = new $className;
             $selected = array();
             $pages = $module->getPages();

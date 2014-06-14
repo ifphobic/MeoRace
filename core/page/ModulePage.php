@@ -3,13 +3,13 @@
 
 class ModulePage {
 
-   private $page;
-   private $title;
-   private $rolesPage;
-   private $rolesCommit;
-   private $form;
-   private $navigation;
-   private $depencenies;
+   public $page;
+   public $title;
+   public $rolesPage;
+   public $rolesCommit;
+   public $form;
+   public $navigation;
+   public $depencenies;
 
 
    public function ModulePage ( $page, $title, $rolesPage, $rolesCommit, $form, $navigation, $depencenies = array() ) {

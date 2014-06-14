@@ -1,54 +1,86 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>MeoRace</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+      <link href="design.css" rel="stylesheet">
+      <script language = 'JavaScript'>
+
+        function element(id) {
+            return document.getElementById(id);
+        }
+        
+        function toggleMenu() {
+            if(element('but_menu').innerHTML == 'a' ) {
+               element('but_menu').innerHTML = 'b';
+               element('menu').classList.add('menu_unfold');
+            } else {
+               element('but_menu').innerHTML = 'a';
+               element('menu').classList.remove('menu_unfold');
+            }
+        }
+        
+        function drillup() {
+            element('content0').classList.remove('drilldown');
+            element('content1').classList.remove('drilldown');
+            element('content2').classList.remove('drilldown');
+        }
+
+
+
+        function drilldown() {
+            element('content0').classList.add('drilldown');
+            element('content1').classList.add('drilldown');
+            element('content2').classList.add('drilldown');
+        }
+
+        
+        function getHttpRequest(parameter) {
+            var xmlhttp = null;
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            element('content0').innerHTML = 'Seite wird geladen';
+            xmlhttp.open("GET", 'content.php?'+ parameter, true);
+            xmlhttp.onreadystatechange = function() {
+                if(xmlhttp.readyState != 4) {
+                    element('content0').innerHTML = 'Seite wird geladen ...';
+                } else if(xmlhttp.status == 200) {
+                    element('content0').innerHTML = xmlhttp.responseText;
+                } else {
+                    element('content0').innerHTML = xmlhttp.status;
+                }
+            }
+            xmlhttp.send(null);
+        }
+        
+        
+      </script>
+   </head>
 <?php
-
-   include("core/include.php");
-
-   $role = Role::NO_ROLE;
-   $commonDbFunction = new CommonDbFunction();
-   if ( isset($_COOKIE['sessionId'] ) ) {
-      if ( !isset ( $_GET['logout'] ) ) {
-         $user = $commonDbFunction->determineCurrentUser();
-         if ( isset( $user ) ) {
-            $role = $user->role;
-            $GLOBALS['MeoRace']['user'] = $user;
-         }
-      } else {
-         $commonDbFunction->logOut( $_COOKIE['sessionId'] );
-      }
-   }
-
-   
-   if ( isset( $_GET['module'] ) ) {
-      $moduleName = $_GET['module'];
-      if ( isset( $_GET['page'] ) ) {
-         $pageName = $_GET['page'];
-      }
-   } 
-   
-   $commonDbFunction->close();
-   
-   $modules = ModuleReader::readAllLinks( $role );
-
-   if ( !isset( $moduleName ) || ! array_key_exists($moduleName, $modules ) ) {
-      $moduleName = array_keys( $modules );
-      $moduleName = $moduleName[0];
-      unset( $pageName );
-   }
-
-   if ( !isset( $pageName ) ) {
-      $pageName = array_keys( $modules[ $moduleName ] );
-      $pageName = $pageName[0];
-   }
-
-   $page = $modules[ $moduleName ][ $pageName ];
-
-
-   Page::printHeader( $page );
-   Page::printNavigation($modules);
-
-   Page::printContent( $moduleName, $page );
-
-   Page::printFooter();
-
-
-
+   include "core/page/Page.php";
+   print( "<body onLoad=\"getHttpRequest('" . Page::getParameter('menu', 'menuList') . "')\">" );
 ?>
+
+      <div class="menu" id="menu">
+         <div class="header">
+            <div class="but_back" onclick="drillup()"><</div>
+            <div class="nav_button" onclick="drilldown()">menu 2</div>
+            <div class="nav_button">menu 3</div>
+            <div class="but_menu" id="but_menu" onclick="toggleMenu()">aaa</div>
+            <div class="title" onclick="getHttpRequest();"> Title </div>
+         </div>
+      </div>
+
+      <div class="content0" id="content0"> </div>
+      <div class="content1" id="content1">aaasss </div>
+      <div class="content2" id="content2">ddddddddddd </div>
+   </body>
+</html>
+
+
+
