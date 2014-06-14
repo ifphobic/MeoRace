@@ -7,7 +7,14 @@
             foreach ( $page->getDependencies()  as $dependency ) {
             include( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
          }
+         $form = $page->isForm();
+         if ( $form ) {
+            Page::printFormStart( $moduleName, $page->page );
+         }
          include( Configuration::MODULE_FOLDER . $moduleName . "/template/" . $page->getPage() . ".php" );
+         if ( $form ) {
+            Page::printFormEnd( );
+         }
       }
 
       public static function printFormStart( $moduleName, $pageName ) {

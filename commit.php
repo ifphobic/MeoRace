@@ -12,7 +12,7 @@
       $commonDbFunction->close();
    }
 
-   $modules = ModuleReader::readAllLinks( $role );
+   $modules = ModuleReader::readAllModules( $role );
    //print("module: " . $moduleName . ", page: " . $pageName);
    $page = $modules[ $moduleName ][ $pageName ];
    if ( ! in_array( $role, $page->getRolesCommit() ) ) {
