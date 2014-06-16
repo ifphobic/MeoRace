@@ -1,13 +1,14 @@
 <?php
 
+   $user = CommonDbFunction::getUser();
    $dbFunction = new RaceDbFunction();
-   $race = $dbFunction->findById( $GLOBALS['MeoRace']['user']->raceFk );
+   $race = $dbFunction->findById( $user->raceFk );
    $dbFunction->close();
-   print( "<b>Race: " . $race->name . "</b> (" . CommonPageFunction::getLink("race", "raceEdit", $GLOBALS['MeoRace']['user']->raceFk, "edit" ) . ")<br>" );
+   print( "<b>Race: " . $race->name . "</b> (" . CommonPageFunction::getLink("race", "raceEdit", $user->raceFk, "edit" ) . ")<br>" );
    print( "Status: " . $race->status . "<br><br>" );
    
    $dbFunction = new TaskDbFunction();
-   $tasks = $dbFunction->findAll( $GLOBALS['MeoRace']['user']->raceFk );
+   $tasks = $dbFunction->findAll( $user->raceFk );
    $dbFunction->close();
 ?>                     
 <h1>Tasks</h1>

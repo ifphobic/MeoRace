@@ -6,7 +6,7 @@
 
       public function MenuModule() {
          $this->pages = array(
-            new ModulePage("menuList", "Menu List", Role::getAllRoles(false), null, false, false ), 
+            new ModulePage("menuList", "Menu List", Role::getAllRoles(true), null, false, false ), 
          );
       }
 

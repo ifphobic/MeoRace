@@ -29,14 +29,15 @@
 
 
 
-        function drilldown() {
+        function drilldown(index, parameter) {
             element('content0').classList.add('drilldown');
             element('content1').classList.add('drilldown');
             element('content2').classList.add('drilldown');
+            getHttpRequest(index, parameter); 
         }
 
         
-        function getHttpRequest(parameter) {
+        function getHttpRequest(index, parameter) {
             var xmlhttp = null;
 
             if (window.XMLHttpRequest) {
@@ -44,15 +45,16 @@
             } else if (window.ActiveXObject) {
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
-            element('content0').innerHTML = 'Seite wird geladen';
-            xmlhttp.open("GET", 'content.php?'+ parameter, true);
+            elementId = 'content' + index;
+            element(elementId).innerHTML = 'Seite wird geladen';
+            xmlhttp.open("GET", 'content.php?index=' + ( index + 1 ) + "&"+ parameter, true);
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState != 4) {
-                    element('content0').innerHTML = 'Seite wird geladen ...';
+                    element(elementId).innerHTML = 'Seite wird geladen ...';
                 } else if(xmlhttp.status == 200) {
-                    element('content0').innerHTML = xmlhttp.responseText;
+                    element(elementId).innerHTML = xmlhttp.responseText;
                 } else {
-                    element('content0').innerHTML = xmlhttp.status;
+                    element(elementId).innerHTML = xmlhttp.status;
                 }
             }
             xmlhttp.send(null);
@@ -63,7 +65,7 @@
    </head>
 <?php
    include "core/page/Page.php";
-   print( "<body onLoad=\"getHttpRequest('" . Page::getParameter('menu', 'menuList') . "')\">" );
+   print( "<body onLoad=\"getHttpRequest(0, '" . Page::getParameter('menu', 'menuList') . "')\">" );
 ?>
 
       <div class="menu" id="menu">

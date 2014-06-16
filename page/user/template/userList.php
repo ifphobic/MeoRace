@@ -7,8 +7,9 @@
    
       $dbFunction = new UserDbFunction();
       $raceFk = null;
-      if ( !Role::isAdmin( $GLOBALS['MeoRace']['user'] ) ) {
-         $raceFk = $GLOBALS['MeoRace']['user']->raceFk;
+      $currentUser = CommonDbFunction::getUser();
+      if ( !Role::isAdmin( $currentUser ) ) {
+         $raceFk = $currentUser->raceFk;
       }
       $users = $dbFunction->findAll( $raceFk );
       $dbFunction->close();

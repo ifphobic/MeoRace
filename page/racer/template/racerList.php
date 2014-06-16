@@ -9,7 +9,7 @@
    <?php
    
       $dbFunction = new RacerDbFunction();
-      $racers = $dbFunction->findAll( $GLOBALS['MeoRace']['user']->raceFk );
+      $racers = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
       $dbFunction->close();
 
       foreach ( $racers as $racer ) {

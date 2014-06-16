@@ -5,7 +5,7 @@
    <?php
       
       $dbFunction = new ParcelDbFunction();
-      $parcels = $dbFunction->findAll( $GLOBALS['MeoRace']['user']->raceFk );
+      $parcels = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
       $dbFunction->close();
 
       foreach ( $parcels as $parcel ) {

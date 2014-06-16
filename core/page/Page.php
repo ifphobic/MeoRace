@@ -51,9 +51,9 @@
          return $parameter;
       }
 
-      public static function getListItem($title, $firstLine = "", $secondLine = "") {
+      public static function getListItem($index, $title, $parameter, $firstLine = "", $secondLine = "") {
          $result = " 
-            <div class=listitem onclick='drilldown()'>
+            <div class=listitem onclick='drilldown( $index, \"$parameter\" )'>
                <div class=li_head>$title</div>
                <div class=li_content>
                   <span class=li_firstline>$firstLine</span><br>

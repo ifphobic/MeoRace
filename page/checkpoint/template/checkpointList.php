@@ -1,3 +1,4 @@
+
 <table>
    <th>Name</th>
    <th>Manned</th>
@@ -5,7 +6,7 @@
    <?php
       
       $dbFunction = new CheckpointDbFunction();
-      $checkpoints = $dbFunction->findAll( $GLOBALS['MeoRace']['user']->raceFk );
+      $checkpoints = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
       $dbFunction->close();
 
       foreach ( $checkpoints as $checkpoint ) {
