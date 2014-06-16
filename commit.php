@@ -30,10 +30,10 @@
    $action = new $className;
    $nextPage = $action->commit( $_POST );
    
-   $parameter = "";
+   $parameter = "index=" . $_POST['index'];
    
    if ( $nextPage->getModule() != null ) {
-      $parameter = "module=" . $nextPage->getModule();
+      $parameter = "&module=" . $nextPage->getModule();
       if ( $nextPage->getPage() != null ) {
          $parameter .= "&page=" . $nextPage->getPage(); 
       }

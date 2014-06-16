@@ -19,13 +19,13 @@
             <tr><td>Passwort:</td><td><input name="password" type="password" /></td></tr>
       <?php 
          }
-         
-         if ( Role::isAdmin( $GLOBALS['MeoRace']['user'] ) ) {
+         $currentUser = CommonDbFunction::getUser(); 
+         if ( Role::isAdmin( $currentUser ) ) {
             print( CommonPageFunction::getCombobox("role", $user, "Role", Role::getAllRoles( true ) ) );
             print( CommonPageFunction::getCombobox("raceFk", $user, "Race", $races, "raceId") );
          } else {
             print( CommonPageFunction::getCombobox("role", $user, "Role", Role::getAllRoles( false ) ) );
-            print( "<input type='hidden' name='raceFk' value='" . $GLOBALS['MeoRace']['user']->raceFk . "' />");
+            print( "<input type='hidden' name='raceFk' value='" . $currentUser->raceFk . "' />");
          }
       
       ?>

@@ -7,7 +7,7 @@
          $dbFunction->close();
          print( "<input type='hidden' name='checkpointId' value='" . $checkpoint->checkpointId ."' />" );
       } else {
-         print( "<input type='hidden' name='raceFk' value='" . $GLOBALS['MeoRace']['user']->raceFk  ."' />" );
+         print( "<input type='hidden' name='raceFk' value='" . CommonDbFunction::getUser()->raceFk  ."' />" );
       }
    ?>
   

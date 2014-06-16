@@ -11,7 +11,7 @@
       }
       print( "<input type='hidden' name='taskFk' value='" . $taskId ."' />" );
       
-      $raceFk = $GLOBALS['MeoRace']['user']->raceFk;
+      $raceFk = CommonDbFunction::getUser()->raceFk;
       $dbFunction = new CheckpointDbFunction();
       $checkpoints = $dbFunction->findAll( $raceFk );
       $dbFunction->close();

@@ -39,5 +39,5 @@
 
    $page = $modules[ $moduleName ][ $pageName ];
 
-   Page::printContent($moduleName, $page);
+   Page::printContent( $_GET['index'], $moduleName, $page);
 ?>

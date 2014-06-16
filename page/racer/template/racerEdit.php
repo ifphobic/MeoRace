@@ -7,8 +7,8 @@
          print( "<input type='hidden' name='racerId' value='" . $racer->racerId ."' />" );
          $raceId = $racer->raceFk;
       } else {
-         print( "<input type='hidden' name='raceFk' value='" . $GLOBALS['MeoRace']['user']->raceFk  ."' />" );
-         $raceId = $GLOBALS['MeoRace']['user']->raceFk;
+         $raceId = CommonDbFunction::getUser()->raceFk;
+         print( "<input type='hidden' name='raceFk' value='" . $raceId  ."' />" );
       }
       $freeRaceNumbers = $dbFunction->getFreeRaceNumbers( $raceId, $racer );
       $dbFunction->close();

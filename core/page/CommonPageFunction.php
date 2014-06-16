@@ -2,15 +2,9 @@
 
    class CommonPageFunction {
       
-      public static function getLink( $module, $page, $id, $text, $parameter = null ) {
-         $link = "<a href='index.php?module=$module&page=$page";
-         if ( isset( $id ) ) {
-            $link .= "&id=$id";
-         }
-         if ( isset( $parameter ) ) {
-            $link .= "&$parameter";
-         }
-         $link .= "'>$text</a>";
+      public static function getLink( $index, $module, $page, $id, $text, $parameter = null ) {
+         $link = "<a href=\"javascript:getHttpRequest($index, '" . Page::getParameter($module, $page, $id, $parameter) . "')\">";
+         $link .= "$text</a>";
 
          return $link;
       }

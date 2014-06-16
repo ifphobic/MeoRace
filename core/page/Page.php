@@ -2,14 +2,14 @@
 
    class Page {
 
-      public static function printContent($moduleName, $page) {
+      public static function printContent( $index, $moduleName, $page) {
          include( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName )  . "DbFunction.php" );
             foreach ( $page->getDependencies()  as $dependency ) {
             include( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
          }
          $form = $page->isForm();
          if ( $form ) {
-            Page::printFormStart( $moduleName, $page->page );
+            Page::printFormStart( $index, $moduleName, $page->page );
          }
          include( Configuration::MODULE_FOLDER . $moduleName . "/template/" . $page->getPage() . ".php" );
          if ( $form ) {
@@ -17,10 +17,11 @@
          }
       }
 
-      public static function printFormStart( $moduleName, $pageName ) {
+      public static function printFormStart( $index, $moduleName, $pageName ) {
             print ( "<form method='post' action='commit.php' style='display:inline'>" );
             print ( "   <input name='module' value='$moduleName' type='hidden' />");
             print ( "   <input name='page' value='" . $pageName . "' type='hidden' />");
+            print ( "   <input name='index' value='" . $index . "' type='hidden' />");
       }
 
       public static function printFormEnd( $buttonText = "save" ) {
@@ -42,7 +43,7 @@
          if ( $pageName != null ) {
             $parameter .= "&page=" . $pageName;
          }
-         if ( $id = null ) {
+         if ( $id != null ) {
             $parameter .= "&id=" . $id;
          }
          if ( $parameters != null ) {
