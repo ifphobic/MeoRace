@@ -2,8 +2,8 @@
 
    class CommonPageFunction {
       
-      public static function getLink( $index, $module, $page, $id, $text, $parameter = null ) {
-         $link = "<a href=\"javascript:getHttpRequest($index, '" . Page::getParameter($module, $page, $id, $parameter) . "')\">";
+      public static function getLink( $module, $page, $id, $text, $parameter = null ) {
+         $link = "<a href=\"javascript:getHttpRequest(" . (Page::getTabIndex() + 1) . ", '" . Page::getParameter($module, $page, $id, $parameter) . "')\">";
          $link .= "$text</a>";
 
          return $link;

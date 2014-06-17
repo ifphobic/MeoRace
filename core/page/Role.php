@@ -8,7 +8,7 @@
       const RACE_MASTER = "race master";
       const REGISTRATION = "registration";
       
-      private static $ALL_ROLES = array( self::ADMIN, self::RACE_MASTER, self::REGISTRATION );
+      private static $ALL_ROLES = array( self::ADMIN, self::RACE_MASTER, self::REGISTRATION, self::NO_ROLE );
       private static $ALL_ROLES_WITHOUT_ADMIN = array( self::RACE_MASTER, self::REGISTRATION );
 
        

@@ -1,3 +1,12 @@
+<?php 
+   include "core/include.php";
+   $dbFunction = new CommonDbFunction();
+   $user = $dbFunction->determineCurrentUSer();
+   if ( $user == null) {
+      print("<head><meta http-equiv='refresh' content='0; URL=login.php' /></head> ");
+      exit;
+   }
+?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -36,10 +45,53 @@
             getHttpRequest(index, parameter); 
         }
 
+         
+         function postHttpRequest() {
+            var xmlhttp = null;
+
+
+            var data = '';
+            var elements = element('myForm').elements;
+            var index = -1;
+            for(var i = 0; i < elements.length; i++) {
+               data += elements[i].name + "=" + elements[i].value + "&";
+               if ( elements[i].name == "index" ) {
+                  index = elements[i].value;
+               }
+            } 
+            
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+
+            elementId = 'content' + (index - 1);
+            element(elementId).innerHTML = 'Seite wird geladen';
+            xmlhttp.open("POST", "commit.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.setRequestHeader("Content-length", data.length);
+
+            xmlhttp.onreadystatechange = function() {
+                if(xmlhttp.readyState != 4) {
+                    element(elementId).innerHTML = 'Seite wird geladen ...';
+                } else if(xmlhttp.status == 200) {
+                    element(elementId).innerHTML = xmlhttp.responseText;
+                } else {
+                    element(elementId).innerHTML = xmlhttp.status;
+                }
+               element('content' + index).innerHTML = "";
+            }
+            xmlhttp.send(data);
+            return false;
+        }
+        
+
+
         
         function getHttpRequest(index, parameter) {
             var xmlhttp = null;
-
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
             } else if (window.ActiveXObject) {
@@ -47,7 +99,7 @@
             }
             elementId = 'content' + index;
             element(elementId).innerHTML = 'Seite wird geladen';
-            xmlhttp.open("GET", 'content.php?index=' + ( index + 1 ) + "&"+ parameter, true);
+            xmlhttp.open("GET", 'content.php?index=' + index + "&"+ parameter, true);
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState != 4) {
                     element(elementId).innerHTML = 'Seite wird geladen ...';
@@ -64,7 +116,6 @@
       </script>
    </head>
 <?php
-   include "core/page/Page.php";
    print( "<body onLoad=\"getHttpRequest(0, '" . Page::getParameter('menu', 'menuList') . "')\">" );
 ?>
 

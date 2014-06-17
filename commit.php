@@ -4,6 +4,7 @@
 
    $moduleName = $_POST['module'];
    $pageName = $_POST['page'];
+   $GLOBALS['MeoRace']['tabIndex'] = $_POST['index'] - 1;
 
    $role = Role::NO_ROLE;
    if ( isset( $_COOKIE['sessionId'] ) ) {
@@ -21,30 +22,13 @@
 
 
    $className = ucfirst( $pageName ) . "Action";
-   include( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName ) .  "DbFunction.php" );
    include( Configuration::MODULE_FOLDER . $moduleName . "/action/" . $className . ".php" );
-   foreach ( $page->getDependencies()  as $dependency ) {
-      include( Configuration::MODULE_FOLDER . $dependency . "DbFunction.php" );
-   }
+   Page::includeDependency( $moduleName, $page );
 
    $action = new $className;
    $nextPage = $action->commit( $_POST );
-   
-   $parameter = "index=" . $_POST['index'];
-   
-   if ( $nextPage->getModule() != null ) {
-      $parameter = "&module=" . $nextPage->getModule();
-      if ( $nextPage->getPage() != null ) {
-         $parameter .= "&page=" . $nextPage->getPage(); 
-      }
-      if ( $nextPage->getParameter() != null ) {
-         $parameter .= "&". $nextPage->getParameter();
-      }
-   }
+   $page = $modules[ $nextPage->getModule() ][ $nextPage->getPage() ];
+
+   Page::printContent( $nextPage->getModule(), $page);
 
 ?>
-
-
-<head>
-   <meta http-equiv="refresh" content="0; URL=index.php?<?php print( $parameter ); ?>" />
-</head>

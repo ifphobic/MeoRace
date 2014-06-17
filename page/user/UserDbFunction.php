@@ -30,7 +30,10 @@
          
          $query = "select * from User where user = ?";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_STR, $userName ) ) );
-         return $result[0];
+         if ( count( $result ) > 0 ) {
+            return $result[0];
+         }
+         return null;
       }
 
       public function insert( $user ) {

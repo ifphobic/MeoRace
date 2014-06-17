@@ -14,7 +14,7 @@
          <tr>
             <td>" . $checkpoint->name . "</td>
             <td>" . ( $checkpoint->manned ? "X" : "-" ). "</td>
-            <td>" . CommonPageFunction::getLink($_GET['index'], "checkpoint", "checkpointEdit", $checkpoint->checkpointId, "edit") . "</td>
+            <td>" . CommonPageFunction::getLink("checkpoint", "checkpointEdit", $checkpoint->checkpointId, "edit") . "</td>
          </tr>
       ");
       }
@@ -22,5 +22,5 @@
    ?>
 <table>
 
-<?php print( CommonPageFunction::getLink( $_GET['index'], "checkpoint", "checkpointEdit", null, "New Checkpoint" ) );
+<?php print( CommonPageFunction::getLink( "checkpoint", "checkpointEdit", null, "New Checkpoint" ) );
  
