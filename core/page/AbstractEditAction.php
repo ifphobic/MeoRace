@@ -2,7 +2,7 @@
 
    class AbstractEditAction {
 
-      protected function genericCommit( $moduleName, $key, $pageName, $content, $subModule = null, $parameter = null ) {
+      protected function genericCommit( $moduleName, $key, $pageName, $content, $subModule = null, $parameter = array() ) {
          if ( $subModule == null ) {
             $classname = ucfirst( $moduleName ) . "DbFunction";
          } else {
@@ -12,6 +12,7 @@
 
          if ( isSet( $content[$key. 'Id'] ) ) {
             $dbFunction->update( $content );
+            $parameter = array_merge(array("id" => $content[$key. 'Id'] ),  $parameter);
          } else {
             $dbFunction->insert( $content );
          }
