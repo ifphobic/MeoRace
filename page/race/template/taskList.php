@@ -37,7 +37,7 @@
          print("<input type='hidden' name='taskId' value='" . $task->taskId . "' />");
          Page::printFormEnd( "confirm delete" );
       } else {
-         print( CommonPageFunction::getLink("race", "taskList", $race->raceId, "delete", "deleteTask=" . $task->taskId ) );
+         print( CommonPageFunction::getLink("race", "taskList", $race->raceId, "delete", "deleteTask=" . $task->taskId, 0 ) );
       }      
 
       print("</td></tr> ");

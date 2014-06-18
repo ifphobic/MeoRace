@@ -6,7 +6,7 @@
          $dbFunction = new DeliveryConditionDbFunction ();
          $dbFunction->delete( $content['deliveryConditionId'] );
          $dbFunction->close();
-         return new NextPage( "race", "deliveryList", array( "id" => $content['taskId'] ) );
+         return new NextPage( "race", "deliveryList", array( "taskId" => $content['taskId'] ) );
       }
    
    }
