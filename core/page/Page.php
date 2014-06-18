@@ -6,6 +6,10 @@
          return $GLOBALS['MeoRace']['tabIndex'];
       }
 
+      public static function getContent() {
+         return $GLOBALS['MeoRace']['content'];
+      }
+
       public static function includeDependency( $moduleName, $page ) {
          include( Configuration::MODULE_FOLDER . $moduleName . "/" . ucfirst( $moduleName )  . "DbFunction.php" );
          foreach ( $page->getDependencies()  as $dependency ) {
@@ -14,7 +18,6 @@
       }
 
       public static function printContent( $moduleName, $page) {
-         print(Page::getTabIndex());
          $form = $page->isForm();
          if ( $form ) {
             Page::printFormStart( $moduleName, $page->page );
@@ -47,7 +50,7 @@
             $parameter .= "&id=" . $id;
          }
          if ( $parameters != null ) {
-            $parameter .= $parameters;
+            $parameter .= "&" . $parameters;
          }
          return $parameter;
       }

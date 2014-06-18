@@ -1,12 +1,14 @@
 <?php
 
-   $taskId = $_GET{'id'};
+   print_R(Page::getContent());
+   $content = Page::getContent();
+   $taskId = $content["id"] ;
    $dbFunction = new TaskDbFunction();
    $task = $dbFunction->findById( $taskId );
    $dbFunction->close();
    print( "<b>Task: " . $task->name . "</b> (" 
       . CommonPageFunction::getLink("race", "taskEdit", $taskId, "edit" ) . ", " 
-      . CommonPageFunction::getLink("race", "taskList", $GLOBALS['MeoRace']['user']->raceFk, "configure race" ) . ")<br><br><br>" );
+      . CommonPageFunction::getLink("race", "taskList", CommonDbFunction::getUser()->raceFk, "configure race" ) . ")<br><br><br>" );
    
    $dbFunction = new DeliveryDbFunction();
    $deliveries = $dbFunction->findAll( $taskId );
@@ -27,7 +29,7 @@
             print("<input type='hidden' name='deliveryConditionId' value='" . $next->deliveryConditionId . "' />");
             Page::printFormEnd("delete: " . $next->name);
          } else {
-            print( CommonPageFunction::getLink("race", "deliveryList", $taskId, $next->name, "deleteCondition=" . $next->deliveryConditionId ) );
+            print( CommonPageFunction::getLink("race", "deliveryList", $taskId, $next->name, "deleteCondition=" . $next->deliveryConditionId, 0 ) );
          }
          print(", ");
       }
@@ -40,7 +42,7 @@
          print( CommonPageFunction::getComboBox( "previousDeliveryFk", null, null, $filtered, "deliveryId" ) );
          Page::printFormEnd();
       } else if ( count( $filtered ) > 0 ) {
-         print( CommonPageFunction::getLink("race", "deliveryList", $taskId, "add", "addPrevious=" . $delivery->deliveryId ) );
+         print( CommonPageFunction::getLink("race", "deliveryList", $taskId, "add", "addPrevious=" . $delivery->deliveryId, 0 ) );
       }
 
       print("
@@ -60,7 +62,7 @@
          print("<input type='hidden' name='deliveryId' value='" . $delivery->deliveryId . "' />");
          Page::printFormEnd("confirm delete");
       } else {
-         print( CommonPageFunction::getLink("race", "deliveryList", $taskId, "delete", "deleteDelivery=" . $delivery->deliveryId ) );
+         print( CommonPageFunction::getLink("race", "deliveryList", $taskId, "delete", "deleteDelivery=" . $delivery->deliveryId, 0 ) );
       }
       print("</td></tr>");
    }

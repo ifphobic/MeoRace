@@ -15,7 +15,8 @@
       <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
       <link href="design.css" rel="stylesheet">
       <script language = 'JavaScript'>
-
+         
+         var tabParameter = new Array();
         function element(id) {
             return document.getElementById(id);
         }
@@ -34,6 +35,7 @@
             element('content0').classList.remove('drilldown');
             element('content1').classList.remove('drilldown');
             element('content2').classList.remove('drilldown');
+            element('content3').classList.remove('drilldown');
         }
 
 
@@ -42,6 +44,7 @@
             element('content0').classList.add('drilldown');
             element('content1').classList.add('drilldown');
             element('content2').classList.add('drilldown');
+            element('content3').classList.add('drilldown');
             getHttpRequest(index, parameter); 
         }
 
@@ -54,10 +57,16 @@
             var elements = element('myForm').elements;
             var index = -1;
             for(var i = 0; i < elements.length; i++) {
-               data += elements[i].name + "=" + elements[i].value + "&";
                if ( elements[i].name == "index" ) {
                   index = elements[i].value;
                }
+               data += elements[i].name + "=";
+              if ( elements[i].type != "checkbox" ) {
+                  data += elements[i].value;
+               } else {
+                  data += elements[i].checked ? 1 : 0;
+               }
+               data += "&";
             } 
             
             if (window.XMLHttpRequest) {
@@ -67,7 +76,7 @@
             }
 
 
-            elementId = 'content' + (index - 1);
+            elementId = 'content' + index;
             element(elementId).innerHTML = 'Seite wird geladen';
             xmlhttp.open("POST", "commit.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -78,19 +87,35 @@
                     element(elementId).innerHTML = 'Seite wird geladen ...';
                 } else if(xmlhttp.status == 200) {
                     element(elementId).innerHTML = xmlhttp.responseText;
+                    refreshTab();
                 } else {
                     element(elementId).innerHTML = xmlhttp.status;
                 }
-               element('content' + index).innerHTML = "";
             }
             xmlhttp.send(data);
             return false;
-        }
+         }
         
-
-
+         function refreshTab() {
+            for (var i = 0; i < tabParameter.length; i++) {
+               if ( tabParameter[i] != null ) {
+                  getHttpRequest( i, tabParameter[i], true );
+               } else {
+                  element("content" + i).innerHTML = "";
+               }
+            }
+          }
         
-        function getHttpRequest(index, parameter) {
+         function getHttpRequest( index, parameter, refresh ) {
+            if ( typeof refresh == 'undefined' ) {
+               refresh = false;
+            }
+            
+            tabParameter[index] = parameter;
+            for ( i = index + 1; !refresh && i < tabParameter.length; i++ ) {
+               tabParameter[i] = null;
+               element("content" + i).innerHTML = "";
+            }
             var xmlhttp = null;
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -99,7 +124,7 @@
             }
             elementId = 'content' + index;
             element(elementId).innerHTML = 'Seite wird geladen';
-            xmlhttp.open("GET", 'content.php?index=' + index + "&"+ parameter, true);
+            xmlhttp.open("GET", "content.php?index=" + index + "&" + parameter, false);
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState != 4) {
                     element(elementId).innerHTML = 'Seite wird geladen ...';
@@ -111,8 +136,7 @@
             }
             xmlhttp.send(null);
         }
-        
-        
+
       </script>
    </head>
 <?php
@@ -130,8 +154,9 @@
       </div>
 
       <div class="content0" id="content0"> </div>
-      <div class="content1" id="content1">aaasss </div>
-      <div class="content2" id="content2">ddddddddddd </div>
+      <div class="content1" id="content1"> </div>
+      <div class="content2" id="content2"> </div>
+      <div class="content3" id="content3"> </div>
    </body>
 </html>
 

@@ -3,6 +3,7 @@
    include("core/include.php");
 
    $GLOBALS['MeoRace']['tabIndex'] = $_GET['index'];
+   $GLOBALS['MeoRace']['content'] = $_GET;
 
    $role = Role::NO_ROLE;
    $commonDbFunction = new CommonDbFunction();

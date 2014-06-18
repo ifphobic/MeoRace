@@ -138,6 +138,21 @@ div.content2 {
 div.content2.drilldown {
   left: 100%;
 }
+div.content3 {
+  position: absolute;
+  max-width: 700px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  left: 300%;
+  top:50px;
+}
+div.content3.drilldown {
+  left: 200%;
+}
 div.content_menu_spacer {
   height: 55px;
 }
@@ -215,6 +230,13 @@ div.content_menu_spacer {
   }
   div.content2.drilldown {
     left: 50%;
+   }
+  div.content3 {
+    width: 50%;
+    left: 150%;
+  }
+  div.content3.drilldown {
+    left: 100%;
   }
   .header {
     padding-right: 5px;
@@ -228,19 +250,22 @@ div.content_menu_spacer {
 }
 @media only screen and (min-width: 1400px) {
   .content {
-    width: 33%;
+    width: 25%;
   }
   div.content0 {
-    width: 33%;
+    width: 25%;
   }
   div.content1 {
-    width: 33%;
-    left: 33%;
+    width: 25%;
+    left: 25%;
   }
   div.content2 {
-    width: 33%;
-    left: 66%;
-    width: 34%;
+    width: 25%;
+    left: 50%;
+  }
+  div.content3 {
+    width: 25%;
+    left: 75%;
   }
   .header {
     padding-right: 5px;

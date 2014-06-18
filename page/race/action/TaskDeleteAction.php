@@ -6,7 +6,7 @@
          $dbFunction = new TaskDbFunction ();
          $dbFunction->delete( $content['taskId'] );
          $dbFunction->close();
-         return new NextPage( "race", "taskList", "id=" . $content['raceId'] );
+         return new NextPage( "race", "taskList", array( "id" => $content['raceId'] ) );
       }
    
    }

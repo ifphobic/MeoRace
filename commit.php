@@ -5,6 +5,7 @@
    $moduleName = $_POST['module'];
    $pageName = $_POST['page'];
    $GLOBALS['MeoRace']['tabIndex'] = $_POST['index'] - 1;
+   $GLOBALS['MeoRace']['content'] = $_POST;
 
    $role = Role::NO_ROLE;
    if ( isset( $_COOKIE['sessionId'] ) ) {
@@ -28,7 +29,8 @@
    $action = new $className;
    $nextPage = $action->commit( $_POST );
    $page = $modules[ $nextPage->getModule() ][ $nextPage->getPage() ];
-
+   
+   $GLOBALS['MeoRace']['content'] = $nextPage->getParameter();
    Page::printContent( $nextPage->getModule(), $page);
 
 ?>
