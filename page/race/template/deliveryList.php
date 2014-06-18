@@ -1,6 +1,5 @@
 <?php
 
-   print_R(Page::getContent());
    $content = Page::getContent();
    $taskId = $content["id"] ;
    $dbFunction = new TaskDbFunction();

@@ -31,6 +31,14 @@
    $page = $modules[ $nextPage->getModule() ][ $nextPage->getPage() ];
    
    $GLOBALS['MeoRace']['content'] = $nextPage->getParameter();
-   Page::printContent( $nextPage->getModule(), $page);
+   //Page::printContent( $nextPage->getModule(), $page);
 
+   $parameter = "module=" . $nextPage->getModule();
+   $parameter .= "&page=" . $nextPage->getPage();
+   foreach ( $nextPage->getParameter() as $key => $value ) {
+      $parameter .= "&" . $key . "=" . $value;
+   }
+   
+   ob_clean();
+   print( $parameter );
 ?>

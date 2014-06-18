@@ -86,7 +86,7 @@
                 if(xmlhttp.readyState != 4) {
                     element(elementId).innerHTML = 'Seite wird geladen ...';
                 } else if(xmlhttp.status == 200) {
-                    element(elementId).innerHTML = xmlhttp.responseText;
+                    tabParameter[index] = xmlhttp.responseText;
                     refreshTab();
                 } else {
                     element(elementId).innerHTML = xmlhttp.status;
