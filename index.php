@@ -45,7 +45,7 @@
             element('content1').classList.add('drilldown');
             element('content2').classList.add('drilldown');
             element('content3').classList.add('drilldown');
-            getHttpRequest(index, parameter); 
+            getHttpRequest(index, parameter, false); 
         }
 
          
@@ -107,10 +107,6 @@
           }
         
          function getHttpRequest( index, parameter, refresh ) {
-            if ( typeof refresh == 'undefined' ) {
-               refresh = false;
-            }
-            
             tabParameter[index] = parameter;
             for ( i = index + 1; !refresh && i < tabParameter.length; i++ ) {
                tabParameter[i] = null;
@@ -140,7 +136,7 @@
       </script>
    </head>
 <?php
-   print( "<body onLoad=\"getHttpRequest(0, '" . Page::getParameter('menu', 'menuList') . "')\">" );
+   print( "<body onLoad=\"getHttpRequest(0, '" . Page::getParameter('menu', 'menuList') . "', false)\">" );
 ?>
 
       <div class="menu" id="menu">
