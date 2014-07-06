@@ -18,6 +18,7 @@
       }
 
       public static function printContent( $moduleName, $page) {
+         print("<div class='headspacer'></div>");
          $form = $page->isForm();
          if ( $form ) {
             Page::printFormStart( $moduleName, $page->page );
