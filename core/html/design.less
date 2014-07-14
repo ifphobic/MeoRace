@@ -1,3 +1,52 @@
+/* CSS reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End of CSS Reset*/
+
+
+
 @c1: #FFFFFF;
 @degrade: @c1 / 10;
 @c2: @c1 - @degrade;
@@ -19,6 +68,68 @@
 
 @line-height: 49px;
 @tile-height: 149px;
+
+
+.content_tab {
+    max-width: 600px;
+}
+
+h1 {
+    color: #FFF;
+    font-size: 14px;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #333;
+    text-transform: uppercase;   
+}
+
+#registration {
+    background-color: @c1;
+    width: 100%;
+}
+
+.content_wrapper{
+    padding: 15px;
+}
+
+.rider_picture {
+    height: 120px;
+    width: 120px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+#registration > div > div.rider_picture > img {
+    height: 120px;
+    }
+
+.registration_values {
+    margin-top: 15px;
+}
+
+
+input {
+    display: block;
+    font-size: 14px;
+    line-height: normal;
+    border-bottom: 1px solid @c10;
+    width: 100%;
+    padding: 15px 0;
+    color: black;
+}
+
+
+input[type="submit"] {
+  color: #FFF;
+   margin-top: 15px;
+   border-radius: 5px;
+   border: none;
+   background-color: #71C671;
+   text-transform: uppercase;
+}
+
+
+
 
 .menubuttons {color: @c8; min-width:@line-height; height: @line-height;
     border-right: @border; border-left: @border; cursor: default;}
@@ -91,3 +202,6 @@ border-bottom: @border; text-align:center;}
     div.but_menu {display: none;}
     div.nav_button {display: block}
 }
+
+
+
