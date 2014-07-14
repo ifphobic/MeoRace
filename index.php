@@ -15,7 +15,6 @@
       <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
       <link href="design.css" rel="stylesheet">
       <script language = 'JavaScript'>
-         
          var tabParameter = new Array();
         function element(id) {
             return document.getElementById(id);
@@ -32,19 +31,19 @@
         }
         
         function drillup() {
-            element('content0').classList.remove('drilldown');
-            element('content1').classList.remove('drilldown');
-            element('content2').classList.remove('drilldown');
-            element('content3').classList.remove('drilldown');
+            element('content0').classList.remove('drilldown1');
+            element('content1').classList.remove('drilldown1');
+            element('content2').classList.remove('drilldown1');
+            element('content3').classList.remove('drilldown1');
         }
 
 
 
         function drilldown(index, parameter) {
-            element('content0').classList.add('drilldown');
-            element('content1').classList.add('drilldown');
-            element('content2').classList.add('drilldown');
-            element('content3').classList.add('drilldown');
+            add = 'drilldown' + index;
+            for (var i = 0; i < 4; i++) {
+               element('content' + i).classList.add(add);
+            }
             getHttpRequest(index, parameter, false); 
         }
 
@@ -119,11 +118,11 @@
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
             elementId = 'content' + index;
-            element(elementId).innerHTML = 'Seite wird geladen';
+            element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen';
             xmlhttp.open("GET", "content.php?index=" + index + "&" + parameter, false);
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState != 4) {
-                    element(elementId).innerHTML = 'Seite wird geladen ...';
+                    element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen ...';
                 } else if(xmlhttp.status == 200) {
                     element(elementId).innerHTML = xmlhttp.responseText;
                 } else {
@@ -142,17 +141,14 @@
       <div class="menu" id="menu">
          <div class="header">
             <div class="but_back" onclick="drillup()"><</div>
-            <div class="nav_button" onclick="drilldown()">menu 2</div>
-            <div class="nav_button">menu 3</div>
-            <div class="but_menu" id="but_menu" onclick="toggleMenu()">aaa</div>
+            <!--<div class="but_menu" id="but_menu" onclick="toggleMenu()">aaa</div>-->
             <div class="title" onclick="getHttpRequest();"> Title </div>
          </div>
       </div>
-
-      <div class="content0" id="content0"> </div>
-      <div class="content1" id="content1"> </div>
-      <div class="content2" id="content2"> </div>
-      <div class="content3" id="content3"> </div>
+      <div class="content0 drilldown0" id="content0"> </div>
+      <div class="content1 drilldown0" id="content1"> </div>
+      <div class="content2 drilldown0" id="content2"> </div>
+      <div class="content3 drilldown0" id="content3"> </div>
    </body>
 </html>
 
