@@ -138,11 +138,18 @@
    print( "<body onLoad=\"getHttpRequest(0, '" . Page::getParameter('menu', 'menuList') . "', false)\">" );
 ?>
 
-      <div class="menu" id="menu">
-         <div class="header">
-            <div class="but_back" onclick="drillup()"><</div>
-            <!--<div class="but_menu" id="but_menu" onclick="toggleMenu()">aaa</div>-->
-            <div class="title" onclick="getHttpRequest();"> Title </div>
+      <div class="header">
+         <div class="but_back" onclick="drillup()"><</div>
+         <div class="title">
+            <h1>Current Module Title</h1>
+            <h1 class=sub>
+<?php
+   $user = CommonDbFunction::getUser();         
+   if ( $user != null ) {
+      print("" . $user->raceName . " >< " . $user->user . " (" . $user->role . ")");
+   }
+?>
+            </h1>
          </div>
       </div>
       <div class="content0 drilldown0" id="content0"> </div>
