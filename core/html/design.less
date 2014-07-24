@@ -75,21 +75,17 @@ table {
     clear: both;
 }
 
-<<<<<<< HEAD
 html, body{
     height: 100%;
     background-color: @g1;
 }
 
-=======
 /* gianfett temporary */
->>>>>>> FETCH_HEAD
 .content_tab {
 }
 
 h1 {
     color: @c1;
-<<<<<<< HEAD
     font-size: 14px;
     text-align: center;
     padding: 15px 0;
@@ -97,20 +93,17 @@ h1 {
     text-transform: uppercase;   
 }
 
+h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
+
 .top_content_wrapper{
     height: 66px;
     background-color: @g1;
-=======
     text-align: center;
     text-transform: uppercase;
 }
 
-h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
-
-#registration {
-    background-color: @c1;
-    width: 100%;
->>>>>>> FETCH_HEAD
+.top_content_wrapper.registration{
+    height: 132px;
 }
 
 .top_info_wrapper {
@@ -118,12 +111,18 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
     margin: 0 15px;
     position: relative;
     top: 9.5px;
+    text-transform: none;
+}
+
+.top_content_wrapper.registration > div{
+    height: 99px;
+    position: relative;
+    top: 22px;
 }
 
 .bottom_content_wrapper{
     margin: 0 15px 0 15px ;
 }
-
 
 //top_info structure
 
@@ -135,18 +134,27 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
     float: left;
 }
 
+ .top_content_wrapper.registration > div > div.left_info {
+    height: 99px;
+    width: 99px;
+ }
+     
 .left_info > img {
     height: 44px;
+    }
+    
+ body > div > div.top_content_wrapper.registration > div > div.left_info > div > div > img{
+    height: 99px;
     }
 
 .middle_info {
     float: left;
     margin: 0px 15px;
+    text-align: left;
 }
 
 .right_info {
     float: right;
-    display: block;
 }
 
 .middle_info .rider_name {
@@ -180,12 +188,13 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
 
 input {
     display: block;
-    font-size: 14px;
+    font-size: 16px;
     line-height: normal;
     border-bottom: 1px solid @c10;
     width: 100%;
     padding: 15px 0px;
     color: black;
+    background-color: transparent;
 }
 
 input:focus,
@@ -213,22 +222,29 @@ input[type="search"] {
    height: 44px;
 }
 
-::-webkit-input-placeholder {
-   padding-left: 5px;
-}
 
-:-moz-placeholder { /* Firefox 18- */
-   padding-left: 5px;
-}
+// Upload Input
 
-::-moz-placeholder {  /* Firefox 19+ */
-  padding-left: 5px; 
-}
+input[type="file"]{
+display: block;
+width: 88px;
+height: 99px;
+margin: 0;
+position: relative;
+top: 10px;
+padding-left: 5px;
+} 
 
-:-ms-input-placeholder {  
-   padding-left: 5px;  
+.photo_upload {
+z-index:1; 
+width: 99px; 
+height: 99px; 
+pointer-events: none; 
+position:absolute; 
+top:0;
+overflow: hidden;
+border-radius: 50px;
 }
-
 
 
 // tables
@@ -340,7 +356,6 @@ div.but_menu {.menubuttons; float:right; font-size: 2em;}
 
 .content {position:absolute; min-width: 260px; width: @colw; height: 100%;
     border-left: @border; border-right: @border; overflow-y: auto;
-<<<<<<< HEAD
 
     transition: width 200ms ease, left 200ms ease;} 
 div.content0 {.content; left: 0%;}
@@ -353,9 +368,9 @@ div.content_menu_spacer {height: @line-height;}
 
 
 transition  {width: 200ms ease, left 200ms ease; display: none;}
-=======
-    transition: width 200ms ease, left 200ms ease; display: none;}
->>>>>>> FETCH_HEAD
+
+    transition{ width: 200ms ease, left 200ms ease; display: none;}
+
 .show() {display: block;}
 @colw: 100%;
 div.headspacer {width: @colw; height: @line-height;}
@@ -376,10 +391,9 @@ div.content3.drilldown1 {.content; left: 2*@colw;}
 div.content3.drilldown2 {.content; left: @colw;}
 div.content3.drilldown3 {.content; .show; left: 0%;}
 div.content_menu_spacer {height: 55px;}
-<<<<<<< HEAD
 
-=======
->>>>>>> FETCH_HEAD
+
+
 
 .search { height:@line-height; border-bottom: @border; text-align:center;}
 
