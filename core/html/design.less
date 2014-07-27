@@ -184,8 +184,34 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
     background-color: @g1;
 }
 
-// registration input
+#riderlist li{
+    height: 44px;
+    width: 100%;
+    clear: both;
+    padding: 5.5px 0;
+    border-bottom: 1px solid @c2;
+    background-image: url(../../icons/play45.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px;
+}
 
+#riderlist li:first-child{
+    border-top: 1px solid @c2;
+}
+
+#riderlist .left_info {
+    margin-left: 5px;
+    }
+
+#riderlist .right_info {
+    float: left;
+    margin-right: 5px;
+}
+
+
+
+// registration input
 input {
     display: block;
     font-size: 16px;
@@ -221,6 +247,14 @@ input[type="search"] {
    line-height: normal;
    height: 44px;
 }
+
+.select_status{
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    color: @c3;
+}
+    
 
 
 // Upload Input
@@ -325,9 +359,6 @@ td.task_status.task_completed{
    background-image: url(../../icons/check26.png);
    background-size: 24px;
 }
-
-
-
 
 
 
