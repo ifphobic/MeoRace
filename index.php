@@ -207,15 +207,16 @@
 
       <div class="header">
          <div class="but_back" onclick="drillup()"><</div>
+         <div class="but_menu"><p>log<br />out</p></div>
          <div class="title">
             <h1>Current Module Title</h1>
             <h1 class=sub>
-<?php
-   $user = CommonDbFunction::getUser();         
-   if ( $user != null ) {
-      print("" . $user->raceName . " >< " . $user->user . " (" . $user->role . ")");
-   }
-?>
+               <?php
+                  $user = CommonDbFunction::getUser();         
+                  if ( $user != null ) {
+                     print(" Logged in as: " . $user->user . " (" . $user->role . "/" . $user->raceName . ") " );
+                  }
+               ?>
             </h1>
          </div>
       </div>

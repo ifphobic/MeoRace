@@ -404,7 +404,7 @@ div.but_menu {
   border-left: 1px solid #999999;
   cursor: default;
   float: right;
-  font-size: 2em;
+  font-size: 1em;
 }
 .headertitle {
   display: inline;
@@ -463,10 +463,6 @@ div.content2.drilldown {
 }
 div.content_menu_spacer {
   height: 44px;
-}
-transition {
-  width: 200ms ease, left 200ms ease;
-  display: none;
 }
 transition {
   width: 200ms ease, left 200ms ease;
