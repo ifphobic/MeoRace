@@ -88,7 +88,7 @@ h1 {
     color: @c1;
     font-size: 14px;
     text-align: center;
-    padding: 15px 0;
+    padding: 0px 15px;
     background-color: @c9;
     text-transform: uppercase;   
 }
@@ -222,6 +222,15 @@ input[type="search"] {
    height: 44px;
 }
 
+.new_button {
+    color: @c1;
+   margin-top: 15px;
+   border-radius: 5px;
+   border: none;
+   background-color: #71C671;
+   text-transform: uppercase;
+   }
+
 
 // Upload Input
 
@@ -334,7 +343,7 @@ td.task_status.task_completed{
 
 
 
-.menubuttons {color: @c8; min-width:@line-height; height: @line-height;
+.menubuttons {color: @c3; min-width:@line-height; height: @line-height;
     border-right: @border; border-left: @border; cursor: default;}
 p {margin: 0em;}
 body html {width:100%; height: 100%;}
@@ -350,7 +359,7 @@ height:@line-height; background: @c9;
 border-bottom: @border; text-align:center;}
 
 div.title {padding: 10px 25px;}
-div.but_back {.menubuttons; float:left; color: @c3; font-size: 1.5em; line-height: 1.5em;}
+div.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
 div.but_menu {.menubuttons; float:right; font-size: 2em;}
 .headertitle {display:inline;}
 
@@ -455,7 +464,7 @@ border-bottom: @border; text-align:center;}
     div.content3.drilldown3 {.content; left: 2*@colw;}
 }
 
-@media only screen and (min-width: 1040px){
+@media only screen and (min-width: 1120px){
     @colw: 25%;
     .content {display: block; width: @colw;}
     div.headspacer {width: @colw; height: @line-height;}
