@@ -28,17 +28,20 @@
 
    $action = new $className;
    $nextPage = $action->commit( $_POST );
-   $page = $modules[ $nextPage->getModule() ][ $nextPage->getPage() ];
-   
-   $GLOBALS['MeoRace']['content'] = $nextPage->getParameter();
-   //Page::printContent( $nextPage->getModule(), $page);
-
-   $parameter = "module=" . $nextPage->getModule();
-   $parameter .= "&page=" . $nextPage->getPage();
-   foreach ( $nextPage->getParameter() as $key => $value ) {
-      $parameter .= "&" . $key . "=" . $value;
-   }
    
    ob_clean();
-   print( $parameter );
+   if ( $nextPage != null ) {
+      $page = $modules[ $nextPage->getModule() ][ $nextPage->getPage() ];
+   
+      $GLOBALS['MeoRace']['content'] = $nextPage->getParameter();
+      //Page::printContent( $nextPage->getModule(), $page);
+
+      $parameter = "module=" . $nextPage->getModule();
+      $parameter .= "&page=" . $nextPage->getPage();
+      foreach ( $nextPage->getParameter() as $key => $value ) {
+         $parameter .= "&" . $key . "=" . $value;
+      }
+   
+      print( $parameter );
+   };
 ?>
