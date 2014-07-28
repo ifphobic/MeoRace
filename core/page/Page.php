@@ -69,8 +69,18 @@
          return $result;
       }
 
-   }
 
+      public static function readableDuration( $seconds ) {
+
+         $hours = intval( $seconds / 3600 );
+         $seconds -= $hours * 3600;
+         $minutes = intval( $seconds / 60 );
+         $seconds -= $minutes * 60;
+
+         $result = sprintf( "%02d:%02d:%02d", $hours, $minutes, $seconds);
+         return $result; 
+      }
+   }
 
 ?>
 

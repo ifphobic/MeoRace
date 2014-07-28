@@ -15,7 +15,7 @@
    <table>
       <?php print( CommonPageFunction::getInputField( "name", $task, "Name") ) ?>
       <?php print( CommonPageFunction::getInputField( "maxDuration", $task, "Max. Duration") ) ?>
-      <?php print( CommonPageFunction::getInputField( "currentPrice", $task, "Price") ) ?>
+      <?php print( CommonPageFunction::getInputField( "price", $task, "Price") ) ?>
       <?php print( CommonPageFunction::getInputField( "description", $task, "Description") ) ?>
    </table>
    

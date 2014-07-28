@@ -3,6 +3,12 @@
    include "core/include.php";
    include "page/user/UserDbFunction.php";
 
+   if ( isset( $_COOKIE['sessionId'] ) ) {
+      $dbFunction = new CommonDbFunction();
+      $dbFunction->logout( $_COOKIE['sessionId'] );
+      $dbFunction->close();
+   }
+
    if ( isset( $_POST["user"] ) && isset( $_POST["password"] ) ) {
          $dbFunction = new UserDbFunction();
          $user = $dbFunction->findUser( $_POST["user"] );

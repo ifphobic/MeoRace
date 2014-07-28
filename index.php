@@ -16,10 +16,8 @@
       <link href="design.css" rel="stylesheet">
       <script language = 'JavaScript'>
          var tabParameter = new Array();
-         
-         function element(id) {
-            return document.getElementById(id);
-         }
+         var reloadTabs = new Array();
+         var reloadTask = null;
          
          // @philip: start review
          var tabFocus = 0;
@@ -33,14 +31,11 @@
          function mediaqueryresponse(){
             if (twoCol.matches){
                colNumber = 2;
-            }
-            else if (treeCol.matches){
+            } else if (treeCol.matches){
                colNumber = 3;
-            }
-            else if (fourCol.matches){
+            } else if (fourCol.matches){
                colNumber = 4;
-            }
-            else {
+            } else {
                colNumber = 1;
             }
             setColWidth(colNumber);
@@ -62,8 +57,7 @@
                for (var i = 0; i < 4; i++) {
                   if (i <= tabFocus) {
                      element('content' + i).style.display = 'block';
-                  }
-                  else{
+                  } else{
                      element('content' + i).style.display = 'none';
                   }
                }
@@ -72,14 +66,59 @@
                for (var i = 0; i < 4; i++) {
                   if (i <= tabFocus && i >= (tabFocus-colNumber)) {
                      element('content' + i).style.display = 'block';
-                  }
-                  else{
+                  } else{
                      element('content' + i).style.display = 'none';
                   }
                }
             }
          }
          // @philip: finish review
+         
+
+        function element(id) {
+            return document.getElementById(id);
+        }
+       
+         function initReload( input, tabId ) {
+        
+            var result = input.match( /<reload interval=\"([0-9]+)\" *\/ *>/ );
+            if ( result != null && result.length > 0 ) {
+                  
+                  var found = false;
+                  for (var i = 0; i < reloadTabs.length && !found; ++i) {
+                     found = ( reloadTabs[i] == tabId);
+                  }
+
+                  if ( found ) {
+                     return;
+                  }
+      
+                  if ( reloadTask != null ) {
+                     clearInterval( reloadTask );
+                  }
+                  reloadTask = window.setInterval("reloadTasks()", RegExp.$1 * 1000 );
+
+            }
+
+         }
+
+         function reloadTasks() {
+            for (var i = 0; i < reloadTabs.length; i++) {
+               getHttpRequest( reloadTabs[i], tabParameter[reloadTabs[i]], true );
+            }
+         }
+
+        function toggleMenu() {
+            if(element('but_menu').innerHTML == 'a' ) {
+               element('but_menu').innerHTML = 'b';
+               element('menu').classList.add('menu_unfold');
+            } else {
+               element('but_menu').innerHTML = 'a';
+               element('menu').classList.remove('menu_unfold');
+            }
+         }
+
+         
         
         function drillup() {
             element('content0').classList.remove('drilldown1');
@@ -173,6 +212,7 @@
           }
         
          function getHttpRequest( index, parameter, refresh ) {
+            
             tabParameter[index] = parameter;
             for ( i = index + 1; !refresh && i < tabParameter.length; i++ ) {
                tabParameter[i] = null;
@@ -192,6 +232,7 @@
                     element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen ...';
                 } else if(xmlhttp.status == 200) {
                     element(elementId).innerHTML = xmlhttp.responseText;
+                     initReload( xmlhttp.responseText, index );
                 } else {
                     element(elementId).innerHTML = xmlhttp.status;
                 }
@@ -207,7 +248,7 @@
 
       <div class="header">
          <div class="but_back" onclick="drillup()"><</div>
-         <div class="but_menu"><p>log<br />out</p></div>
+         <div class="but_menu"><p><a href="login.php">log<br />out</a></p></div>
          <div class="title">
             <h1>Current Module Title</h1>
             <h1 class=sub>
