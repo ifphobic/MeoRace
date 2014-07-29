@@ -9,7 +9,7 @@
    $dbFunction->close();
 
    foreach ( $tasks as $task ) {
-      print ( Page::getListItem( $task->name, Page::getParameter( "stockExchangeDispatch", "racerList", $task->taskFk ), $task->price . "/" . "max. " . Page::readableDuration( $task->maxDuration ), $task->description ) );
+      print ( Page::getListItem( $task->name, Page::getParameter( "stockExchangeDispatch", "racerList", $task->taskFk ), round( $task->price ) . "/" . "max. " . Page::readableDuration( $task->maxDuration ), $task->description ) );
 
    }
 

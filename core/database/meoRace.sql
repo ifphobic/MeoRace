@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 29, 2014 at 04:14 PM
+-- Generation Time: Jul 29, 2014 at 05:24 PM
 -- Server version: 5.1.70-log
 -- PHP Version: 5.5.12-pl0-gentoo
 
@@ -26,8 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `Checkpoint`
 --
 
-DROP TABLE IF EXISTS `Checkpoint`;
-CREATE TABLE `Checkpoint` (
+CREATE TABLE IF NOT EXISTS `Checkpoint` (
   `checkpointId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
   `manned` tinyint(1) NOT NULL,
@@ -55,8 +54,7 @@ INSERT INTO `Checkpoint` (`checkpointId`, `name`, `manned`, `raceFk`) VALUES
 -- Table structure for table `Delivery`
 --
 
-DROP TABLE IF EXISTS `Delivery`;
-CREATE TABLE `Delivery` (
+CREATE TABLE IF NOT EXISTS `Delivery` (
   `deliveryId` int(11) NOT NULL AUTO_INCREMENT,
   `taskFk` int(11) NOT NULL,
   `parcelFk` int(11) DEFAULT NULL,
@@ -65,22 +63,13 @@ CREATE TABLE `Delivery` (
   PRIMARY KEY (`deliveryId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
---
--- Dumping data for table `Delivery`
---
-
-INSERT INTO `Delivery` (`deliveryId`, `taskFk`, `parcelFk`, `pickupFk`, `dropoffFk`) VALUES
-(23, 3, NULL, 1, 1),
-(26, 3, NULL, 1, 1);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `DeliveryCondition`
 --
 
-DROP TABLE IF EXISTS `DeliveryCondition`;
-CREATE TABLE `DeliveryCondition` (
+CREATE TABLE IF NOT EXISTS `DeliveryCondition` (
   `deliveryConditionId` int(11) NOT NULL AUTO_INCREMENT,
   `deliveryFk` int(11) NOT NULL,
   `previousDeliveryFk` int(11) NOT NULL,
@@ -93,8 +82,7 @@ CREATE TABLE `DeliveryCondition` (
 -- Table structure for table `Parcel`
 --
 
-DROP TABLE IF EXISTS `Parcel`;
-CREATE TABLE `Parcel` (
+CREATE TABLE IF NOT EXISTS `Parcel` (
   `parcelId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
   `description` varchar(256) NOT NULL,
@@ -119,8 +107,7 @@ INSERT INTO `Parcel` (`parcelId`, `name`, `description`, `raceFk`) VALUES
 -- Table structure for table `Race`
 --
 
-DROP TABLE IF EXISTS `Race`;
-CREATE TABLE `Race` (
+CREATE TABLE IF NOT EXISTS `Race` (
   `raceId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
   `status` enum('prepare','running','closed') NOT NULL,
@@ -141,8 +128,7 @@ INSERT INTO `Race` (`raceId`, `name`, `status`) VALUES
 -- Table structure for table `Racer`
 --
 
-DROP TABLE IF EXISTS `Racer`;
-CREATE TABLE `Racer` (
+CREATE TABLE IF NOT EXISTS `Racer` (
   `racerId` int(11) NOT NULL AUTO_INCREMENT,
   `racerNumber` int(11) NOT NULL,
   `name` varchar(256) NOT NULL,
@@ -170,8 +156,7 @@ INSERT INTO `Racer` (`racerId`, `racerNumber`, `name`, `city`, `country`, `email
 -- Table structure for table `Session`
 --
 
-DROP TABLE IF EXISTS `Session`;
-CREATE TABLE `Session` (
+CREATE TABLE IF NOT EXISTS `Session` (
   `sessionId` varchar(42) NOT NULL,
   `userFk` int(11) NOT NULL,
   `loginTime` datetime NOT NULL,
@@ -237,7 +222,7 @@ INSERT INTO `Session` (`sessionId`, `userFk`, `loginTime`, `lastActive`) VALUES
 ('hPXCBJuxSaIVbi7NY9dgCNPiXGUxxCC81nkAQKgm0n', 11, '2014-07-28 18:32:05', '2014-07-28 18:32:05'),
 ('eHotAkSVLstdXHe2msV3cPV8yayiHGhxIZQRzen0zZ', 11, '2014-07-28 19:36:23', '2014-07-28 19:36:23'),
 ('os9GF0RecGOm1Zpf6EcyIKDPFX90Z4U7TTA8NfG4R8', 7, '2014-07-29 17:04:14', '2014-07-29 17:04:14'),
-('HxUTssKQFZtdBN5UzMqX6T5vwRz02r7lCRJ9RvcSTH', 7, '2014-07-29 18:12:35', '2014-07-29 18:12:35');
+('yOx28UkxS5Z4xdNc58baieh0rSqJCxA25GqUKqCsZB', 11, '2014-07-29 19:04:27', '2014-07-29 19:04:27');
 
 -- --------------------------------------------------------
 
@@ -245,11 +230,10 @@ INSERT INTO `Session` (`sessionId`, `userFk`, `loginTime`, `lastActive`) VALUES
 -- Table structure for table `StockExchangeDispatch`
 --
 
-DROP TABLE IF EXISTS `StockExchangeDispatch`;
-CREATE TABLE `StockExchangeDispatch` (
+CREATE TABLE IF NOT EXISTS `StockExchangeDispatch` (
   `taskFk` int(11) NOT NULL,
   `raceFk` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` double NOT NULL,
   `lastUpdate` datetime NOT NULL,
   `counter` int(11) NOT NULL,
   PRIMARY KEY (`taskFk`)
@@ -260,8 +244,15 @@ CREATE TABLE `StockExchangeDispatch` (
 --
 
 INSERT INTO `StockExchangeDispatch` (`taskFk`, `raceFk`, `price`, `lastUpdate`, `counter`) VALUES
-(3, 4, 25, '2014-07-28 18:19:21', 2),
-(6, 4, 13, '2014-07-28 18:02:57', 2);
+(9, 4, 36.851780732057, '2014-07-29 19:22:13', 3),
+(7, 4, 70.035475553865, '2014-07-29 19:22:13', 2),
+(10, 4, 36.587074849706, '2014-07-29 19:22:13', 3),
+(11, 4, 71.396016707086, '2014-07-29 19:22:13', 2),
+(12, 4, 137.02593043147, '2014-07-29 19:22:13', 1),
+(13, 4, 137.02593043147, '2014-07-29 19:22:13', 1),
+(14, 4, 137.02593043147, '2014-07-29 19:22:13', 1),
+(15, 4, 137.02593043146, '2014-07-29 19:22:13', 1),
+(16, 4, 137.02593043147, '2014-07-29 19:22:13', 1);
 
 -- --------------------------------------------------------
 
@@ -269,8 +260,7 @@ INSERT INTO `StockExchangeDispatch` (`taskFk`, `raceFk`, `price`, `lastUpdate`, 
 -- Table structure for table `Task`
 --
 
-DROP TABLE IF EXISTS `Task`;
-CREATE TABLE `Task` (
+CREATE TABLE IF NOT EXISTS `Task` (
   `taskId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
   `maxDuration` int(11) NOT NULL COMMENT '[seconds]',
@@ -278,15 +268,22 @@ CREATE TABLE `Task` (
   `description` varchar(256) NOT NULL,
   `raceFk` int(11) NOT NULL,
   PRIMARY KEY (`taskId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `Task`
 --
 
 INSERT INTO `Task` (`taskId`, `name`, `maxDuration`, `price`, `description`, `raceFk`) VALUES
-(3, 'Manifest4dd', 602, 100, 'Rundfahrt', 4),
-(6, 'Manifest 2', 508, 50, 'Nop', 4);
+(9, 'M2', 3600, 100, '', 4),
+(7, 'M1', 60, 100, 'description', 4),
+(10, 'M3', 3600, 100, '', 4),
+(11, 'M4', 3600, 100, '', 4),
+(12, 'M5', 0, 100, '', 4),
+(13, 'M6', 0, 100, '', 4),
+(14, 'M7', 0, 100, '', 4),
+(15, 'M8', 0, 100, '', 4),
+(16, 'M9', 0, 100, '', 4);
 
 -- --------------------------------------------------------
 
@@ -294,8 +291,7 @@ INSERT INTO `Task` (`taskId`, `name`, `maxDuration`, `price`, `description`, `ra
 -- Table structure for table `User`
 --
 
-DROP TABLE IF EXISTS `User`;
-CREATE TABLE `User` (
+CREATE TABLE IF NOT EXISTS `User` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(80) NOT NULL,
   `password` varchar(80) NOT NULL,

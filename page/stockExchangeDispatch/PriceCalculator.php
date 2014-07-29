@@ -15,8 +15,8 @@
          foreach ( $racerTasks as $racerTask ) {
             if ( $racerTask->taskFk == $taskId ) {
                $racerTask->counter++;
-               $priceDelta = $racerTask->price - ( $racerTask->price / 2 ); 
-               $racerTask->price /= 2;
+               $priceDelta = $racerTask->price / 2; 
+               $racerTask->price -= $priceDelta;
             }
             if ( $min > $racerTask->counter ) {
                $min = $racerTask->counter;
@@ -33,7 +33,7 @@
          }
 
          foreach ( $racerTasks as $racerTask ) {
-            $racerTask->price += round( $priceDelta * ( $max - $racerTask->counter) / $totalDifference, 0, PHP_ROUND_HALF_DOWN );
+            $racerTask->price += $priceDelta * ( $max - $racerTask->counter) / $totalDifference ;
             $dbFunction->update( $racerTask );
          }
       }
