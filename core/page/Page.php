@@ -41,6 +41,21 @@
             print ( "</form>" );
       }
 
+      public static function printValue( $object, $fields, $delimiter = " ") {
+         if ( $object == null ) {
+            return;
+         }
+         if ( ! is_array( $fields ) ) {
+            $fields = array( $fields);
+         }
+
+         $result = "";
+         foreach ( $fields as $field ) {
+            $result .= $object->$field . $delimiter;
+         }
+         $result = substr( $result, 0, -1 * strlen( $delimiter ) );
+         print( $result );
+      }
 
       public static function getParameter( $moduleName, $pageName = null, $id = null, $parameters = null ) {
          $parameter = "module=" . $moduleName;
