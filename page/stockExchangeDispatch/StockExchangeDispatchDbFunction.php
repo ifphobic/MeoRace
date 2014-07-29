@@ -36,7 +36,7 @@
          $query .= "(taskFk, raceFk, price, lastUpdate, counter) ";
          $query .= "select t.taskId, t.raceFk, t.price, now(), 0 ";
          $query .= "from Task t left outer join StockExchangeDispatch sed on t.taskId = sed.taskFk ";
-         $query .= "where sed.taskFk is null and t.raseFk = ?";
+         $query .= "where sed.taskFk is null and t.raceFk = ?";
          $parameter = array( new Parameter( PDO::PARAM_STR, $raceId ));
          $this->query($query, $parameter);
       }
