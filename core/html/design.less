@@ -61,7 +61,7 @@ table {
 
 @g1: #f7f7f7;
 
-@font: 12pt Helvetica, sans-serif;
+@font: 12pt 'Open Sans', sans-serif, Helvetica, ;
 
 @border: 1px solid @c5;
 
@@ -89,6 +89,7 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
 html, body{
     height: 100%;
     background-color: lighten(@c2, 6%);
+    font-style: @font;
 }
 
 li {
@@ -100,7 +101,6 @@ li {
 
 .top_content_wrapper{
     height: 66px;
-    background-color: @g1;
     text-align: center;
     text-transform: uppercase;
 }
@@ -165,23 +165,33 @@ li {
 }
 
 .middle_info .rider_name {
-  padding-bottom: 5px; 
-  font-size: 18px;
-  color: @c5;
+  padding-bottom: 2px;
+  font-size: 16px;
+  color: @c9;
   letter-spacing: @letter-spacing;
+  font-weight: bold;
 }
 
 .middle_info .rider_city_country {
-  color: @c3;
+  color: @c7;
   font-size: 14px;
 }
 
+.middle_info .rider_name, .middle_info .rider_city_country{
+ width: 200px;
+ overflow: hidden;
+ white-space:nowrap;
+ text-overflow: ellipsis;
+}
+
+
 .right_info .rider_number {
-  font-size: 35px;
+  font-size: 36px;
   color: @c5;
   float: right;
   display: block;
   letter-spacing: @letter-spacing;
+  margin-top: -6px;
 }
 
 // Main Navigation
@@ -212,13 +222,8 @@ background-image: url(../../icons/business64.png);
 background-size: 35px;
 }
 
-#main_navigation .rider_name, #main_navigation .rider_city_country{
-display: inline-block;
-}
-
-#main_navigation .rider_name{
-margin-top: 5px;
-padding-bottom: 0;
+li{
+padding: 5px 0;
 }
 
 #main_navigation .right_info{
@@ -227,7 +232,6 @@ background-repeat: no-repeat;
 background-position: center center;
 background-size: 15px; 
 }
-
 
 //Rider Task List
 
@@ -282,8 +286,10 @@ background-size: 26px;
 }
     
 td.task_confirmation{
-width: 44px;
 background-color: #71C671;
+color: @c1;
+font-weight: bold;
+width: 88px;
 }
 
 td.task_confirmation.checked{
