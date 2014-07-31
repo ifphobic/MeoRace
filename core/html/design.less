@@ -69,31 +69,34 @@ table {
 @tile-height: 149px;
 @letter-spacing: 1px;
 
-//main structure
+/* ****** gianfett temporary ******* */
 
-.clear {
-    clear: both;
-}
-
-html, body{
-    height: 100%;
-    background-color: @g1;
-}
-
-/* gianfett temporary */
-.content_tab {
-}
-
+// Fonts
 h1 {
     color: @c1;
     font-size: 14px;
     text-align: center;
-    padding: 0px 15px;
+    padding: 15px 0px;
     background-color: @c9;
     text-transform: uppercase;   
+    font-style: @font;
 }
 
 h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
+
+//main structure
+
+html, body{
+    height: 100%;
+    background-color: lighten(@c2, 6%);
+}
+
+li {
+    height: 44px;
+    width: 100%;
+    border-bottom: 1px solid @c2;
+    clear: both;
+}
 
 .top_content_wrapper{
     height: 66px;
@@ -106,6 +109,12 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
     height: 132px;
 }
 
+.top_content_wrapper.registration > div{
+    height: 99px;
+    position: relative;
+    top: 22px;
+}
+
 .top_info_wrapper {
     height: 44px;
     margin: 0 15px;
@@ -114,42 +123,40 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
     text-transform: none;
 }
 
-.top_content_wrapper.registration > div{
-    height: 99px;
-    position: relative;
-    top: 22px;
-}
-
 .bottom_content_wrapper{
     margin: 0 15px 0 15px ;
 }
 
 //top_info structure
 
-.left_info {
+.left_info, .right_info {
     height: 44px;
     width: 44px;
-    overflow: hidden;
-    border-radius: 50px;
-    float: left;
 }
 
+.left_info{
+    float: left;
+    overflow: hidden;
+    border-radius: 50px;
+}
+    
+.left_info > img {
+    height: 44px;
+    }   
+    
  .top_content_wrapper.registration > div > div.left_info {
     height: 99px;
     width: 99px;
  }
-     
-.left_info > img {
-    height: 44px;
-    }
     
  body > div > div.top_content_wrapper.registration > div > div.left_info > div > div > img{
     height: 99px;
     }
 
 .middle_info {
+    height: 44px;
     float: left;
-    margin: 0px 15px;
+    padding: 0 15px;
     text-align: left;
 }
 
@@ -177,12 +184,126 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
   letter-spacing: @letter-spacing;
 }
 
-//bottom_info structure
+// Main Navigation
+#main_navigation .left_info{
+margin-left: 5px;
+background-repeat: no-repeat;
+background-position: center center;
+border-radius: 0;
+}
+.racer_list_navigation{
+background-image: url(../../icons/cyclist.png);
+}
+
+.configure_race_navigation{
+background-image: url(../../icons/gear1.png);
+}
+
+.configure_parcel_navigation{
+background-image: url(../../icons/close13.png);
+}
+
+.checkpoint_list_navigation{
+background-image: url(../../icons/information33.png);
+}
+
+.user_list_navigation{
+background-image: url(../../icons/business64.png);
+background-size: 35px;
+}
+
+#main_navigation .rider_name, #main_navigation .rider_city_country{
+display: inline-block;
+}
+
+#main_navigation .rider_name{
+margin-top: 5px;
+padding-bottom: 0;
+}
+
+#main_navigation .right_info{
+background-image: url(../../icons/play45.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-size: 15px; 
+}
+
+
+//Rider Task List
 
 .rider_task_list {
     padding: 0 15px;
     background-color: @g1;
 }
+
+#riderlist li{
+    padding: 5.5px 0;
+    border-bottom: 1px solid @c2;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px;
+}
+
+#riderlist li:first-child{
+    border-top: 1px solid @c2;
+}
+
+#riderlist .left_info {
+    margin-left: 5px;
+    }
+
+#riderlist .right_info {
+    float: right;
+    margin-right: 5px;
+}
+
+//Checkpoint Rider Task List
+
+p.racer_checkpointlist_heading, p.racer_tasklist_heading{
+display: inline-block;
+width: 100%;
+font-weight: bold;
+border-bottom: 2px solid #ccc;
+padding: 5px 0;
+}
+
+th.task_number{
+background-image: url(../../icons/task1.png) !important;
+}
+
+th.task_parcel{
+background-image: url(../../icons/close13.png);
+background-size: 30px;
+}
+
+th.task_confirmation{
+background-image: url(../../icons/up64.png);
+background-size: 26px;
+}
+    
+td.task_confirmation{
+width: 44px;
+background-color: #71C671;
+}
+
+td.task_confirmation.checked{
+background-color: #71C671;
+}
+
+td.task_confirmation.unchecked{
+background-color: red;
+}
+
+td.task_confirmation.pickup_parcel{
+background-image: url(../../icons/arrow.png);
+}
+
+td.task_confirmation.drop_parcel{
+background-image: url(../../icons/arrow218.png);
+}
+
+
+// Racer Registration
 
 // registration input
 
@@ -206,7 +327,7 @@ button:focus {
 
 input[type="submit"] {
   color: @c1;
-   margin-top: 15px;
+   margin: 15px 0 15px 0;
    border-radius: 5px;
    border: none;
    background-color: #71C671;
@@ -222,8 +343,15 @@ input[type="search"] {
    height: 44px;
 }
 
+.select_status, .select_racernumber{
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    color: @c3;
+}
+
 .new_button {
-    color: @c1;
+color: @c1;
    margin-top: 15px;
    border-radius: 5px;
    border: none;
@@ -234,7 +362,7 @@ input[type="search"] {
 
 // Upload Input
 
-input[type="file"]{
+input[type="file"]{ // Photo Upload
 display: block;
 width: 88px;
 height: 99px;
@@ -253,15 +381,19 @@ position:absolute;
 top:0;
 overflow: hidden;
 border-radius: 50px;
+background-color: lighten(@c2, 6%);
 }
 
+// tables for detail pages
 
-// tables
-
-.bottom_rider_tasks > table {
+table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0px 10px;
+}
+
+tr{
+    width: 500px;
 }
 
 th {
@@ -273,7 +405,6 @@ th, tr {
    background-repeat: no-repeat;
    background-position: center center;
    background-color: @c1;
- 
 }
 
 th, td {
@@ -281,35 +412,33 @@ th, td {
     padding: 0 4px;
 }
 
-
-
-td {
-    background-repeat: no-repeat;
+td, th {
     background-position: center center;
+    background-repeat: no-repeat;
 }
 
+th.task_points {
+   background-image: url(../../icons/dollar4.png); 
+   background-size: 25px;
+}
 
 th.task_number {
    background-image: url(../../icons/tasks.png);
       background-size: 25px;
 }
 
-th.task_name {
-   background-image: url(../../icons/close13.png); 
+th.task_description {
+   background-image: url(../../icons/information33.png);
    background-size: 20px;
 }
 
-th.task_description {
-   background-image: url(../../icons/information33.png);
-   background-size: 16px;
+th.task_status {
+   background-image: url(../../icons/speedometer2.png);
+   background-size: 30px;
 }
 
-td.task_number, td.task_name{
+td.task_points, td.task_number, td.task_name, td.task_description{
     color: @c6;
-}
-
-td.task_description{
-    color: @c4;
 }
 
 td.task_number{
@@ -323,18 +452,23 @@ td.task_status{
 td.task_status.task_assigned{
    background-image: url(../../icons/attach1.png);
    background-size: 24px;
+   background-color: red;
 }
 
 td.task_status.task_pickedup{
    background-image: url(../../icons/delivery39.png);
    background-size: 24px;
+    background-color: yellow;
 }
 
 td.task_status.task_completed{
    background-image: url(../../icons/check26.png);
    background-size: 24px;
+   background-color: #71C671;
 }
 
+
+/* End of gianfett CSS */
 
 
 
