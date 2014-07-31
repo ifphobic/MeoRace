@@ -22,7 +22,7 @@
       <div class="left_info">
           <div>
           <input type="file" name="photo" accept="image/*" capture="camera"></input>
-          <div class="photo_upload" /><img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/224772_10150301758538298_5948223_n.jpg?oh=16fa88602ac2da9dc2f927f091637d85&oe=541195B5&__gda__=1412144473_b10848b4a4b08509b69f92f603521d4d" alt="dont mess with rolling ruedy"></div>
+          <div class="photo_upload" /><img src="../../icons/add99.png" alt="upload racer image"></div>
           </div>
 
           
@@ -45,14 +45,19 @@
     <div class="bottom_content_wrapper">
     
       <div class="registration_values">
-        <label for="ridernumber" class="ridernumber"> <input type="tel" name="ridernumber" placeholder="Number"/> </label>
-        <label for="ridername" class="ridername"> <input type="text" name="ridername" placeholder="Name" /> </label> 
-        <label for="ridercity" class="ridercity"> <input type="text" name="ridercity" placeholder="City" /> </label>
+      <select required name="racernumber" size="1" class="select_racernumber">
+	    <option value="">Choose Racernumber</option>
+		 <option value="registered">1</option>
+      <option value="active">2</option></select>
+		<label for="ridername" class="ridername"> <input type="text" name="ridername" placeholder="Name" /> </label> 
+		<label for="ridercity" class="ridercity"> <input type="text" name="ridercity" placeholder="City" /> </label>
         <label for="ridercountry" class="ridercountry"> <input type="text" name="ridercountry" placeholder="Country" /> </label>
-        <label for="rideremail" class="rideremail"> <input type="text" name="rideremail" placeholder="Email" /> </label>
-        <select name="status" size="1" class="select_status"><option value="registered">registered</option>
-        <option value="active" selected="">active</option></select>
-        <label for="submit" class="submit"><input type="submit" name="submit" value="Save Rider Details" /></label>
+        <label for="rideremail" class="rideremail"> <input type="email" name="rideremail" placeholder="Email" /> </label>
+        <select required name="status" size="1" class="select_status">
+        <option value="" selected >Status</option>
+		  <option value="registered">registered</option>
+        <option value="active">active</option></select>
+        <label for="submit" class="submit"><input type="submit" name="submit" value="Save Racer Details" /></label>
       </div>  
       </div>   
 </div>

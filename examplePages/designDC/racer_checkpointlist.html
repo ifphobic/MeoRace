@@ -5,15 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<title>Racer Tasklist</title>
+<title>Checkpoint</title>
 <link rel="stylesheet" type"text/css" href="../../core/html/design.css">
+
+<style type="text/css">
+
+
+</style>
+
+
+
 </head>
 
 <body>
 
-<div class="content_tab">
+<div class="content_tab" id="checkpoint_rider_task_list">
   
-  <h1>Racer Tasklist</h1>
+  <h1>Checkpoint</h1>
   
    
    <div class="top_content_wrapper""> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
@@ -40,45 +48,37 @@
     
   
   
-    <div class="bottom_content_wrapper">
+<div class="bottom_content_wrapper">
    
-    <div class="bottom_info_wrapper bottom_rider_tasks">
+   <div class="bottom_info_wrapper bottom_rider_tasks">
 
- <label for="submit" class="submit"><input type="submit" name="submit" value="+ Add Tasks" /></label>
+<p class="racer_checkpointlist_heading">Tasks Checkpoint C</p>
 
-<p class="racer_tasklist_heading">Tasks</p>
+      <table>
+         <tr>
+            <th class="task_number"></th>
+            <th class="task_parcel"></th>
+            <th class="task_confirmation"></th>
+         </tr>
 
-     <table>
-  <tr>
-	 <th class="task_points"></th>
-    <th class="task_number"></th>
-    <th class="task_description"></th>
-    <th class="task_status"></th>
-  </tr>
-
-  <tr>
-	 <td class="task_points">100</td>
-    <td class="task_number">3</td>
-    <td class="task_description">Short and fun</td>
-    <td class="task_status task_assigned"></td>
-  </tr>
+         <tr>
+            <td class="task_number">3</td>
+            <td class="task_parcel">Parcel 1</td>
+            <td class="task_confirmation drop_parcel checked"></td>
+         </tr>
   
-  <tr>
- <td class="task_points">200</td>
-    <td class="task_number">3</td>
-    <td class="task_description">Middle Distance</td>
-    <td class="task_status task_pickedup"></td>
-  </tr>
-  
-  <tr>
- <td class="task_points">250</td>
-    <td class="task_number">3</td>
-    <td class="task_description">Long but priceless</td>
-    <td class="task_status task_completed"></td>
-  </tr>
-  
+         <tr>
+            <td class="task_number">3</td>
+            <td class="task_parcel">Parcel 2</td>
+            <td class="task_confirmation pickup_parcel unchecked"></td>
+         </tr>
 
-   
+         <tr>
+            <td class="task_number">1</td>
+            <td class="task_parcel">Parcel 4</td>
+            <td class="task_confirmation drop_parcel unchecked"></td>
+         </tr>
+  
   
     </div> <!-- bottom_content_wrapper xxx --> 
 
