@@ -3,8 +3,7 @@
    class CommonPageFunction {
       
       public static function getLink( $module, $page, $id, $text, $parameter = null, $tabOffset = 1 ) {
-         $link = "<a href=\"javascript:Page::getOnClickFunction()\">";
-         $link = "<a href=\"javascript:getHttpRequest(" . Page::getTabIndex($module, $page, $id, $parameter, $tabOffset) . "', false )\">";
+         $link = "<a href='javascript:" . Page::getOnClickFunction( $module, $page, $id, $parameter, $tabOffset ) . "'>";
          $link .= "$text</a>";
 
          return $link;

@@ -126,7 +126,7 @@
 
          function reloadTasks() {
             for (var i = 0; i < reloadTabs.length; i++) {
-               getHttpRequest( reloadTabs[i], tabParameter[reloadTabs[i]], true );
+               showPage( reloadTabs[i], tabParameter[reloadTabs[i]], false );
             }
          }
 

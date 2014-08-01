@@ -8,7 +8,7 @@
          $this->pages = array(
             new ModulePage("racerList", "Racer List", array(Role::DISPATCHER), null, false, true, array( "racer/Racer" ) ), 
             new ModulePage("racerTask", "RacerTask", array(Role::DISPATCHER), null, false, true ), 
-            new ModulePage("confirmAction", "xxx", array(Role::DISPATCHER), array(Role::DISPATCHER), true, false ), 
+            new ModulePage("actionConfirm", "xxx", array(Role::DISPATCHER), array(Role::DISPATCHER), true, false ), 
          );
       }
 

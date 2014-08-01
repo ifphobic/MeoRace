@@ -8,9 +8,9 @@
 
    foreach ( $actions as $action ) {
       print ( Page::getListItem(
-         $action->parcel,  
-         Page::getOnClickFunction( "racerTask", "confirmAction", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ),
-         ( $action->isDropoff ) ? $action->pickup . "-> " : "-> " . $action->dropoff 
+         (($action->isDropoff) ? "Dropoff: " : "Pickup: " ) . $action->parcel,  
+         Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ),
+         ( $action->isDropoff ) ? $action->pickup . "-> " : "-> " . $action->dropoff, "manned: " . $action->manned . ", " . $action->racerDeliveryId
        ) );
 
    }
