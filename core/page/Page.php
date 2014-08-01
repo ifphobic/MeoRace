@@ -30,7 +30,7 @@
       }
 
       public static function printFormStart( $moduleName, $pageName ) {
-            print ( "<form method='post' id='myForm' onSubmit='return postHttpRequest()' style='display:inline' action='ddd'>" );
+            print ( "<form method='post' id='myForm' onSubmit='return postData()' style='display:inline' action='ddd'>" );
             print ( "   <input name='module' value='$moduleName' type='hidden' />");
             print ( "   <input name='page' value='" . $pageName . "' type='hidden' />");
             print ( "   <input name='index' value='" . Page::getTabIndex() . "' type='hidden' />");
@@ -57,7 +57,8 @@
          print( $result );
       }
 
-      public static function getParameter( $moduleName, $pageName = null, $id = null, $parameters = null ) {
+      public static function getOnClickFunction( $moduleName, $pageName = null, $id = null, $parameters = null, $tabOffset = 1 ) {
+         
          $parameter = "module=" . $moduleName;
          if ( $pageName != null ) {
             $parameter .= "&page=" . $pageName;
@@ -68,12 +69,14 @@
          if ( $parameters != null ) {
             $parameter .= "&" . $parameters;
          }
-         return $parameter;
+
+         $result = "showPage( " . ( Page::getTabIndex()  + $tabOffset ) . ", \"$parameter\", true )";
+         return $result;
       }
 
-      public static function getListItem( $title, $parameter, $firstLine = "", $secondLine = "") {
+      public static function getListItem( $title, $onClickFunction, $firstLine = "", $secondLine = "") {
          $result = " 
-            <div class=listitem onclick='drilldown( " . (Page::getTabIndex()  + 1) . ", \"$parameter\" )'>
+            <div class=listitem onclick='" . $onClickFunction . "'>
                <div class=li_head>$title</div>
                <div class=li_content>
                   <span class=li_firstline>$firstLine</span><br>

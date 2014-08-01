@@ -14,7 +14,7 @@
       $module = $modules[ $moduleName ];
       foreach ( $module as $page ) {
          if ( $page->isNavigation() ) {
-            print (  Page::getListItem( $page->title, Page::getParameter( $moduleName, $page->page) ) );
+            print (  Page::getListItem( $page->title, Page::getOnClickFunction( $moduleName, $page->page) ) );
          }
       }
    }

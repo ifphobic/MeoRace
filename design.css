@@ -1,5 +1,4 @@
 /* CSS reset */
-/* CSS reset */
 html,
 body,
 div,
@@ -126,15 +125,7 @@ table {
   border-spacing: 0;
 }
 /* End of CSS Reset*/
-.clear {
-  clear: both;
-}
-html,
-body {
-  height: 100%;
-  background-color: #f7f7f7;
-}
-/* gianfett temporary */
+/* ****** gianfett temporary ******* */
 h1 {
   color: #ffffff;
   font-size: 14px;
@@ -142,20 +133,37 @@ h1 {
   padding: 0px 15px;
   background-color: #333333;
   text-transform: uppercase;
+  font-style: 12pt 'Open Sans', sans-serif, Helvetica;
 }
 h1.sub {
   color: #cccccc;
   text-transform: none;
   font-size: 0.6em;
 }
+html,
+body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-style: 12pt 'Open Sans', sans-serif, Helvetica;
+}
+li {
+  height: 44px;
+  width: 100%;
+  border-bottom: 1px solid #e6e6e6;
+  clear: both;
+}
 .top_content_wrapper {
   height: 66px;
-  background-color: #f7f7f7;
   text-align: center;
   text-transform: uppercase;
 }
 .top_content_wrapper.registration {
   height: 132px;
+}
+.top_content_wrapper.registration > div {
+  height: 99px;
+  position: relative;
+  top: 22px;
 }
 .top_info_wrapper {
   height: 44px;
@@ -164,59 +172,227 @@ h1.sub {
   top: 9.5px;
   text-transform: none;
 }
-.top_content_wrapper.registration > div {
-  height: 99px;
-  position: relative;
-  top: 22px;
-}
 .bottom_content_wrapper {
   margin: 0 15px 0 15px ;
 }
-.left_info {
+.left_info,
+.right_info {
   height: 44px;
   width: 44px;
+}
+.left_info {
+  float: left;
   overflow: hidden;
   border-radius: 50px;
-  float: left;
-}
-.top_content_wrapper.registration > div > div.left_info {
-  height: 99px;
-  width: 99px;
 }
 .left_info > img {
   height: 44px;
 }
-body > div > div.top_content_wrapper.registration > div > div.left_info > div > div > img {
-  height: 99px;
-}
 .middle_info {
+  height: 44px;
   float: left;
-  margin: 0px 15px;
+  padding: 0 15px;
   text-align: left;
 }
 .right_info {
   float: right;
 }
-.middle_info .rider_name {
-  padding-bottom: 5px;
-  font-size: 18px;
-  color: #999999;
+.middle_info p.title {
+  padding-bottom: 2px;
+  font-size: 16px;
+  color: #333333;
   letter-spacing: 1px;
+  font-weight: bold;
 }
 .middle_info .rider_city_country {
-  color: #cccccc;
+  color: #666666;
   font-size: 14px;
 }
+.middle_info .title,
+.middle_info .description {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .right_info .rider_number {
-  font-size: 35px;
+  font-size: 36px;
   color: #999999;
   float: right;
   display: block;
   letter-spacing: 1px;
+  margin-top: -6px;
 }
-.rider_task_list {
-  padding: 0 15px;
-  background-color: #f7f7f7;
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0px 10px;
+}
+th {
+  height: 44px;
+}
+th,
+tr {
+  line-height: 44px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #ffffff;
+}
+th,
+td {
+  text-align: center;
+  padding: 0 4px;
+}
+td,
+th {
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+th.task_manifest {
+  background-image: url(../../icons/document127.png);
+  background-size: 24px;
+}
+th.task_pickup {
+  background-image: url(../../icons/upload62.png);
+  background-size: 30px;
+}
+th.task_parcel {
+  background-image: url(../../icons/close13.png);
+  background-size: 30px;
+}
+th.task_drop {
+  background-image: url(../../icons/download87.png);
+  background-size: 29px;
+}
+th.task_restrictions {
+  background-image: url(../../icons/one8.png);
+  background-size: 30px;
+  min-width: 40px;
+}
+th.task_number {
+  background-image: url(../../icons/icomoon1.png);
+  background-size: 25px;
+  min-width: 25px;
+}
+th.task_pickup_time {
+  background-image: url(../../icons/hourglass1.png);
+  background-size: 22px;
+}
+th.task_drop_time {
+  background-image: url(../../icons/sand1.png);
+  background-size: 22px;
+}
+th.manifest_points {
+  background-image: url(../../icons/coins16.png);
+  background-size: 30px;
+}
+th.manifest_description {
+  background-image: url(../../icons/information33.png);
+  background-size: 20px;
+}
+th.manifest_edit {
+  width: 44px;
+}
+th.manifest_configure {
+  width: 44px;
+}
+th.manifest_delete {
+  width: 44px;
+}
+td.task_confirmation {
+  background-image: url(../../icons/up64.png);
+  background-size: 26px;
+  color: #ffffff;
+  font-weight: bold;
+  width: 88px;
+}
+td.task_confirmation.checked {
+  background-color: #71C671;
+}
+td.task_confirmation.unchecked {
+  background-color: red;
+}
+td.task_status,
+td.manifest_status {
+  width: 44px;
+}
+td.task_status.task_completed {
+  background-image: url(../../icons/check26.png);
+  background-size: 24px;
+  background-color: #71C671;
+}
+td.task_status.task_assigned,
+td.manifest_status.manifest_assigned {
+  background-image: url(../../icons/attach1.png);
+  background-size: 24px;
+  background-color: red;
+}
+td.task_status.task_pickedup,
+td.manifest_status.manifest_pickedup {
+  background-image: url(../../icons/delivery39.png);
+  background-size: 24px;
+  background-color: yellow;
+}
+td.task_status.task_completed,
+td.manifest_status.manifest_completed {
+  background-image: url(../../icons/check26.png);
+  background-size: 24px;
+  background-color: #71C671;
+}
+td.manifest_edit {
+  background-image: url(../../icons/pencil44.png);
+  background-size: 20px;
+}
+td.manifest_configure {
+  background-image: url(../../icons/settings39.png);
+  background-size: 20px;
+}
+td.manifest_delete {
+  background-image: url(../../icons/delete30.png);
+  background-size: 32px;
+}
+#main_navigation .left_info {
+  margin-left: 5px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 0;
+}
+.racer_list_navigation {
+  background-image: url(../../icons/cyclist.png);
+}
+.configure_race_navigation {
+  background-image: url(../../icons/gear1.png);
+}
+.configure_parcel_navigation {
+  background-image: url(../../icons/close13.png);
+}
+.checkpoint_list_navigation {
+  background-image: url(../../icons/information33.png);
+}
+.user_list_navigation {
+  background-image: url(../../icons/call37.png);
+  background-size: 35px;
+}
+li {
+  padding: 5px 0;
+}
+#main_navigation .right_info {
+  background-image: url(../../icons/play45.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 15px;
+}
+.top_content_wrapper.registration > div > div.left_info {
+  height: 99px;
+  width: 99px;
+}
+body > div > div.top_content_wrapper.registration > div > div.left_info > div > div > img {
+  height: 64px;
+  margin-top: 12px;
+}
+.top_content_wrapper.registration > div > div.right_info {
+  float: left;
+  margin-left: 35px;
 }
 input {
   display: block;
@@ -236,7 +412,7 @@ button:focus {
 }
 input[type="submit"] {
   color: #ffffff;
-  margin-top: 15px;
+  margin: 15px 0 15px 0;
   border-radius: 5px;
   border: none;
   background-color: #71C671;
@@ -249,6 +425,14 @@ input[type="search"] {
   padding: 15px 3px;
   line-height: normal;
   height: 44px;
+}
+.select_status,
+.select_racernumber,
+.select_manifestnumber {
+  width: 100%;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #cccccc;
 }
 .new_button {
   color: #ffffff;
@@ -275,69 +459,83 @@ input[type="file"] {
   position: absolute;
   top: 0;
   overflow: hidden;
+  border: 1px dashed #999999;
   border-radius: 50px;
+  background-color: #f5f5f5;
 }
-.bottom_rider_tasks > table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0px 10px;
+.rider_task_list {
+  padding: 0 15px;
+  background-color: #f7f7f7;
 }
-th {
-  height: 44px;
-}
-th,
-tr {
-  line-height: 44px;
+#riderlist li {
+  padding: 5.5px 0;
+  border-bottom: 1px solid #e6e6e6;
   background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #ffffff;
-}
-th,
-td {
-  text-align: center;
-  padding: 0 4px;
-}
-td {
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-th.task_number {
-  background-image: url(../../icons/tasks.png);
-  background-size: 25px;
-}
-th.task_name {
-  background-image: url(../../icons/close13.png);
-  background-size: 20px;
-}
-th.task_description {
-  background-image: url(../../icons/information33.png);
+  background-position: right center;
   background-size: 16px;
 }
-td.task_number,
-td.task_name {
-  color: #808080;
+#riderlist li:first-child {
+  border-top: 1px solid #e6e6e6;
 }
-td.task_description {
-  color: #b3b3b3;
+#riderlist .left_info {
+  margin-left: 5px;
 }
-td.task_number {
-  width: 32px;
+#riderlist .right_info {
+  float: right;
+  margin-right: 5px;
 }
-td.task_status {
+#tasklist .middle_info {
+  padding-left: 0;
+}
+#tasklist .middle_info .title {
+  background-image: url(../../icons/pencil44.png);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 70px;
+}
+p.racer_checkpointlist_heading,
+p.racer_tasklist_heading {
+  display: inline-block;
+  width: 100%;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 0;
+}
+#manifest_detail .manifest_number,
+#manifest_edit .manifest_number {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #000000;
+  display: block;
   width: 44px;
+  height: 44px;
+  padding-top: 4px;
 }
-td.task_status.task_assigned {
-  background-image: url(../../icons/attach1.png);
-  background-size: 24px;
+#manifest_detail .manifest_name,
+#manifest_edit .manifest_name {
+  font-weight: bold;
 }
-td.task_status.task_pickedup {
-  background-image: url(../../icons/delivery39.png);
-  background-size: 24px;
+#manifest_detail .right_info,
+#manifest_edit .right_info {
+  text-align: left;
+  width: 100px;
 }
-td.task_status.task_completed {
-  background-image: url(../../icons/check26.png);
-  background-size: 24px;
+#manifest_detail .right_info .manifest_points,
+#manifest_edit .right_info .manifest_points {
+  background-image: url(../../icons/coins16.png);
+  background-size: 16px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
 }
+#manifest_detail .right_info .manifest_maxduration,
+#manifest_edit .right_info .manifest_maxduration {
+  background-image: url(../../icons/time21.png);
+  background-size: 16px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+/* End of gianfett CSS */
 .menubuttons {
   color: #cccccc;
   min-width: 44px;
@@ -355,7 +553,7 @@ body html {
 }
 body {
   margin: 0px;
-  font: 12pt Helvetica, sans-serif;
+  font: 12pt 'Open Sans', sans-serif, Helvetica;
   color: #333333;
 }
 a.ohne {
@@ -404,7 +602,7 @@ div.but_menu {
   border-left: 1px solid #999999;
   cursor: default;
   float: right;
-  font-size: 2em;
+  font-size: 1em;
 }
 .headertitle {
   display: inline;
@@ -430,9 +628,6 @@ div.content0 {
   transition: width 200ms ease, left 200ms ease;
   left: 0%;
 }
-div.content0.drilldown {
-  left: -100%;
-}
 div.content1 {
   position: absolute;
   min-width: 260px;
@@ -442,10 +637,7 @@ div.content1 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
-  left: 100%;
-}
-div.content1.drilldown {
-  left: 0%;
+  left: 25%;
 }
 div.content2 {
   position: absolute;
@@ -456,10 +648,18 @@ div.content2 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
-  left: 200%;
+  left: 50%;
 }
-div.content2.drilldown {
-  left: 100%;
+div.content3 {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  left: 75%;
 }
 div.content_menu_spacer {
   height: 44px;
@@ -468,193 +668,9 @@ transition {
   width: 200ms ease, left 200ms ease;
   display: none;
 }
-transition {
-  width: 200ms ease, left 200ms ease;
-  display: none;
-}
 div.headspacer {
   width: 100%;
   height: 44px;
-}
-div.content0.drilldown0 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  display: block;
-  left: 0%;
-}
-div.content0.drilldown1 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: -100%;
-}
-div.content0.drilldown2 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: -200%;
-}
-div.content0.drilldown3 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: -300%;
-}
-div.content1.drilldown0 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: 100%;
-}
-div.content1.drilldown1 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  display: block;
-  left: 0%;
-}
-div.content1.drilldown2 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: -100%;
-}
-div.content1.drilldown3 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: -200%;
-}
-div.content2.drilldown0 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: 200%;
-}
-div.content2.drilldown1 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: 100%;
-}
-div.content2.drilldown2 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  display: block;
-  left: 0%;
-}
-div.content2.drilldown3 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: -100%;
-}
-div.content3.drilldown0 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: 300%;
-}
-div.content3.drilldown1 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: 200%;
-}
-div.content3.drilldown2 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  left: 100%;
-}
-div.content3.drilldown3 {
-  position: absolute;
-  min-width: 260px;
-  width: 100%;
-  height: 100%;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-  overflow-y: auto;
-  transition: width 200ms ease, left 200ms ease;
-  display: block;
-  left: 0%;
 }
 div.content_menu_spacer {
   height: 55px;
@@ -709,256 +725,4 @@ div.content_menu_spacer {
   font-size: 2em;
   float: left;
   color: #999999;
-}
-@media only screen and (min-width: 560px) {
-  .content {
-    width: 50%;
-  }
-  div.headspacer {
-    width: 50%;
-    height: 44px;
-  }
-  div.content0.drilldown0 {
-    width: 50%;
-    display: block;
-    left: 0%;
-  }
-  div.content0.drilldown1 {
-    width: 50%;
-    display: block;
-    left: 0%;
-  }
-  div.content0.drilldown2 {
-    width: 50%;
-    left: -50%;
-  }
-  div.content0.drilldown3 {
-    width: 50%;
-    left: -100%;
-  }
-  div.content1.drilldown0 {
-    width: 50%;
-    display: block;
-    left: 50%;
-  }
-  div.content1.drilldown1 {
-    width: 50%;
-    display: block;
-    left: 50%;
-  }
-  div.content1.drilldown2 {
-    width: 50%;
-    display: block;
-    left: 0%;
-  }
-  div.content1.drilldown3 {
-    width: 50%;
-    left: -50%;
-  }
-  div.content2.drilldown0 {
-    width: 50%;
-    left: 100%;
-  }
-  div.content2.drilldown1 {
-    width: 50%;
-    left: 100%;
-  }
-  div.content2.drilldown2 {
-    width: 50%;
-    display: block;
-    left: 50%;
-  }
-  div.content2.drilldown3 {
-    width: 50%;
-    display: block;
-    left: 0%;
-  }
-  div.content3.drilldown0 {
-    width: 50%;
-    left: 150%;
-  }
-  div.content3.drilldown1 {
-    width: 50%;
-    left: 150%;
-  }
-  div.content3.drilldown2 {
-    width: 50%;
-    left: 100%;
-  }
-  div.content3.drilldown3 {
-    width: 50%;
-    display: block;
-    left: 50%;
-  }
-}
-@media only screen and (min-width: 840px) {
-  .content {
-    width: 33%;
-  }
-  div.headspacer {
-    width: 33%;
-    height: 44px;
-  }
-  div.content0.drilldown0 {
-    width: 33%;
-    display: block;
-    left: 0%;
-  }
-  div.content0.drilldown1 {
-    width: 33%;
-    display: block;
-    left: 0%;
-  }
-  div.content0.drilldown2 {
-    width: 33%;
-    display: block;
-    left: 0%;
-  }
-  div.content0.drilldown3 {
-    width: 33%;
-    left: -33%;
-  }
-  div.content1.drilldown0 {
-    width: 33%;
-    display: block;
-    left: 33%;
-  }
-  div.content1.drilldown1 {
-    width: 33%;
-    display: block;
-    left: 33%;
-  }
-  div.content1.drilldown2 {
-    width: 33%;
-    display: block;
-    left: 33%;
-  }
-  div.content1.drilldown3 {
-    width: 33%;
-    display: block;
-    left: 0%;
-  }
-  div.content2.drilldown0 {
-    width: 33%;
-    left: 66%;
-  }
-  div.content2.drilldown1 {
-    width: 33%;
-    left: 66%;
-  }
-  div.content2.drilldown2 {
-    width: 33%;
-    left: 66%;
-  }
-  div.content2.drilldown3 {
-    width: 33%;
-    display: block;
-    left: 33%;
-  }
-  div.content3.drilldown0 {
-    width: 33%;
-    left: 99%;
-  }
-  div.content3.drilldown1 {
-    width: 33%;
-    left: 99%;
-  }
-  div.content3.drilldown2 {
-    width: 33%;
-    left: 99%;
-  }
-  div.content3.drilldown3 {
-    width: 33%;
-    left: 66%;
-  }
-}
-@media only screen and (min-width: 1120px) {
-  .content {
-    display: block;
-    width: 25%;
-  }
-  div.headspacer {
-    width: 25%;
-    height: 44px;
-  }
-  div.content0.drilldown0 {
-    display: block;
-    width: 25%;
-    left: 0%;
-  }
-  div.content0.drilldown1 {
-    display: block;
-    width: 25%;
-    left: 0%;
-  }
-  div.content0.drilldown2 {
-    display: block;
-    width: 25%;
-    left: 0%;
-  }
-  div.content0.drilldown3 {
-    display: block;
-    width: 25%;
-    left: 0%;
-  }
-  div.content1.drilldown0 {
-    display: block;
-    width: 25%;
-    left: 25%;
-  }
-  div.content1.drilldown1 {
-    display: block;
-    width: 25%;
-    left: 25%;
-  }
-  div.content1.drilldown2 {
-    display: block;
-    width: 25%;
-    left: 25%;
-  }
-  div.content1.drilldown3 {
-    display: block;
-    width: 25%;
-    left: 25%;
-  }
-  div.content2.drilldown0 {
-    display: block;
-    width: 25%;
-    left: 50%;
-  }
-  div.content2.drilldown1 {
-    display: block;
-    width: 25%;
-    left: 50%;
-  }
-  div.content2.drilldown2 {
-    display: block;
-    width: 25%;
-    left: 50%;
-  }
-  div.content2.drilldown3 {
-    display: block;
-    width: 25%;
-    left: 50%;
-  }
-  div.content3.drilldown0 {
-    display: block;
-    width: 25%;
-    left: 75%;
-  }
-  div.content3.drilldown1 {
-    display: block;
-    width: 25%;
-    left: 75%;
-  }
-  div.content3.drilldown2 {
-    display: block;
-    width: 25%;
-    left: 75%;
-  }
-  div.content3.drilldown3 {
-    display: block;
-    width: 25%;
-    left: 75%;
-  }
 }

@@ -2,6 +2,7 @@
    <th>User</th>
    <th>Role</th>
    <th>Race</th>
+   <th>Checkpoint</th>
    <th>Edit</th>
    <?php
    
@@ -20,6 +21,7 @@
             <td>" . $user->user . "</td>
             <td>" . $user->role . "</td>
             <td>" . $user->raceName . "</td>
+            <td>" . $user->checkpoint . "</td>
             <td>" . CommonPageFunction::getLink( "user", "userEdit", $user->userId, "edit") . "</td>
          </tr>
       ");

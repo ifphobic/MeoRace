@@ -15,91 +15,113 @@
       <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
       <link href="design.css" rel="stylesheet">
       <script language = 'JavaScript'>
+
+         var numberOfTabs = 4;
+         var screenSizes = new Array( 1120, 840, 560 ); 
+         var currentTab = 0;
+         var viewportLeftIndex = 0;
+         var numberOfColums = 0;
          var tabParameter = new Array();
+         
+         // ---------- screen resize ---------
+         
+         
+         function resizeScreen() {
+            var newNumber = determineNumberOfColumns();
+            if ( newNumber != numberOfColums ) {
+               numberOfColums = newNumber;
+               setColumnWidth();
+               moveToCurrentTab();
+            }
+            showTab(currentTab);
+         }
+         
+         function determineNumberOfColumns() {
+            var counter = screenSizes.length + 1;
+            for ( var i = 0; i < screenSizes.length; i++ ) {
+               if ( window.matchMedia("only screen and (min-width: " + screenSizes[i] + "px)").matches ) {
+                  return counter;
+               }
+               counter--;
+            }
+            return counter;
+         }
+         
+         function setColumnWidth() {
+            var columnWidth = 100 / numberOfColums;
+            for (var i = 0; i < numberOfTabs; i++) {
+               element('content' + i).style.width = columnWidth + '%';
+            }
+         }
+
+
+         // ---------- show tab ----------
+
+         function showTab( tabIndex ) {
+
+            currentTab = tabIndex;
+            viewportMove = determineViewportMove( tabIndex );
+            if ( viewportMove == 0 ) {
+               return;
+            } 
+
+            viewportLeftIndex += viewportMove;
+            moveToCurrentTab();
+         }
+
+         function determineViewportMove( tabIndex ) {
+
+            if ( tabIndex < viewportLeftIndex ) {
+               return tabIndex - viewportLeftIndex;
+            } else if ( tabIndex < ( viewportLeftIndex + numberOfColums ) ) {
+               return 0;
+            } else {
+               return tabIndex - ( viewportLeftIndex + numberOfColums ) + 1;
+            }
+         }
+
+         function moveToCurrentTab() {
+            for (var i = 0; i < numberOfTabs; i++) {
+               setVisibility(i);
+               setLeft(i);
+            }
+         }
+
+         function setVisibility( index ) {
+            var visible = ( index >= viewportLeftIndex && index < (viewportLeftIndex + numberOfColums) );
+            element('content' + index).style.display = ( visible) ? 'block' : 'none';
+//            alert ( "visible: " + visible + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
+         }
+         
+         function setLeft( index ) {
+            var left = ( index - viewportLeftIndex ) * 100 / numberOfColums;
+//            alert ( "left: " + left + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
+            element('content' + index).style.left = left + "%";
+         }
+
+
+
+         // ---------- interval reload --------
+         
          var reloadTabs = new Array();
          var reloadTask = null;
          
-         // @philip: start review
-         var tabFocus = 0;
-         var colNumber = 1;
-         
-         // min Column width is 280px...
-         var twoCol = window.matchMedia("only screen and (min-width: 560px)")
-         var treeCol = window.matchMedia("only screen and (min-width: 840px)")
-         var fourCol = window.matchMedia("only screen and (min-width: 1120px)")
-         
-         function mediaqueryresponse(){
-            if (twoCol.matches){
-               colNumber = 2;
-            } else if (treeCol.matches){
-               colNumber = 3;
-            } else if (fourCol.matches){
-               colNumber = 4;
-            } else {
-               colNumber = 1;
-            }
-            setColWidth(colNumber);
-            setVisibility(tabFocus, colNumber);
-         }
-         
-         window.addEventListener('resize', mediaqueryresponse, true);
-         mediaqueryresponse() // call listener function explicitly at run time
-         
-         function setColWidth(colNumber) {
-            var colWidth = 100/colNumber;
-            for (var i = 0; i < 4; i++) {
-               element('content' + i).style.width = colWidth + '%';
-            }
-         }
-         
-         function setVisibility(tabFocus, colNumber) {
-            if (tabFocus < colNumber) {
-               for (var i = 0; i < 4; i++) {
-                  if (i <= tabFocus) {
-                     element('content' + i).style.display = 'block';
-                  } else{
-                     element('content' + i).style.display = 'none';
-                  }
-               }
-            }
-            else {
-               for (var i = 0; i < 4; i++) {
-                  if (i <= tabFocus && i >= (tabFocus-colNumber)) {
-                     element('content' + i).style.display = 'block';
-                  } else{
-                     element('content' + i).style.display = 'none';
-                  }
-               }
-            }
-         }
-         // @philip: finish review
-         
-
-        function element(id) {
-            return document.getElementById(id);
-        }
-       
          function initReload( input, tabId ) {
         
             var result = input.match( /<reload interval=\"([0-9]+)\" *\/ *>/ );
             if ( result != null && result.length > 0 ) {
-                  
                   var found = false;
                   for (var i = 0; i < reloadTabs.length && !found; ++i) {
                      found = ( reloadTabs[i] == tabId);
                   }
-
                   if ( found ) {
                      return;
                   }
-      
                   if ( reloadTask != null ) {
                      clearInterval( reloadTask );
                   }
                   reloadTask = window.setInterval("reloadTasks()", RegExp.$1 * 1000 );
-
             }
-
          }
 
          function reloadTasks() {
@@ -108,78 +130,42 @@
             }
          }
 
-        function toggleMenu() {
-            if(element('but_menu').innerHTML == 'a' ) {
-               element('but_menu').innerHTML = 'b';
-               element('menu').classList.add('menu_unfold');
-            } else {
-               element('but_menu').innerHTML = 'a';
-               element('menu').classList.remove('menu_unfold');
+
+         // --------- tab content ----------
+
+         function showPage( index, parameter, clicked ) {
+            
+            tabParameter[index] = parameter;
+            for ( i = index + 1; clicked && i < tabParameter.length; i++ ) {
+               tabParameter[i] = null;
+               element("content" + i).innerHTML = "";
             }
+            var xmlhttp = createRequest();
+            elementId = 'content' + index;
+            element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen';
+            xmlhttp.open("GET", "content.php?index=" + index + "&" + parameter, false);
+            xmlhttp.onreadystatechange = function() {
+               if(xmlhttp.readyState != 4) {
+                 element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen ...';
+               } else if(xmlhttp.status == 200) {
+                  element(elementId).innerHTML = xmlhttp.responseText;
+                  initReload( xmlhttp.responseText, index );
+                  if ( clicked ) {
+                     showTab( index );
+                  }
+               } else {
+                 element(elementId).innerHTML = xmlhttp.status;
+               }
+            }
+            xmlhttp.send(null);
          }
 
-         
-        
-        function drillup() {
-            element('content0').classList.remove('drilldown1');
-            element('content1').classList.remove('drilldown1');
-            element('content2').classList.remove('drilldown1');
-            element('content3').classList.remove('drilldown1');
-            tabFocus--;
-        }
+         function postData() {
+            var xmlhttp = createRequest();
 
-
-
-        function drilldown(index, parameter) {
-            // @philip: meine strategie:
-            // 1. drilldown nur (evtl) nötig, wenn tab nicht bereits sichtbar, sonst update
-            // wenn drilldown, dann bisher nicht sichtbares tab sichtbar machen, alle tabs nach links verschieben und dann sichtbarkeit neu setzen (das tab, das links rausgeschoben wurde unsichtbar machen)
-            // setzen der sichtbarkeit müsste wohl als funktion ausgeführt sein, abhängig von der spaltenzahl...
-            if (element('content' + index).style.display == 'none') {
-               element('content' + index).style.display = 'block';
-               var colWidth = element('content' + i).style.width;
-               var left = "";
-               for (var i = 0; i < 4; i++) {
-                  left = (i-index)*colWidth + "%";
-                  element('content' + i).style.left = left;
-               }
-               
-            }
-            add = 'drilldown' + index;
-            for (var i = 0; i < 4; i++) {
-               element('content' + i).classList.add(add);
-            }
-            tabFocus = index;
-            getHttpRequest(index, parameter, false); 
-        }
-
-         
-         function postHttpRequest() {
-            var xmlhttp = null;
-
-
-            var data = '';
-            var elements = element('myForm').elements;
-            var index = -1;
-            for(var i = 0; i < elements.length; i++) {
-               if ( elements[i].name == "index" ) {
-                  index = elements[i].value;
-               }
-               data += elements[i].name + "=";
-              if ( elements[i].type != "checkbox" ) {
-                  data += elements[i].value;
-               } else {
-                  data += elements[i].checked ? 1 : 0;
-               }
-               data += "&";
-            } 
-            
-            if (window.XMLHttpRequest) {
-                xmlhttp = new XMLHttpRequest();
-            } else if (window.ActiveXObject) {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-
+            result = createFormData();
+            index = result[0];
+            data = result[1];
 
             elementId = 'content' + index;
             element(elementId).innerHTML = 'Seite wird geladen';
@@ -196,6 +182,7 @@
                      tabParameter[index] = null;
                   }
                   refreshTab();
+                  showTab( index - 1 );
                 } else {
                     element(elementId).innerHTML = xmlhttp.status;
                     tabParameter[index] = null;
@@ -208,50 +195,74 @@
          function refreshTab() {
             for (var i = 0; i < tabParameter.length; i++) {
                if ( tabParameter[i] != null ) {
-                  getHttpRequest( i, tabParameter[i], true );
+                  showPage( i, tabParameter[i], false );
                } else {
                   element("content" + i).innerHTML = "";
                }
             }
-          }
-        
-         function getHttpRequest( index, parameter, refresh ) {
-            
-            tabParameter[index] = parameter;
-            for ( i = index + 1; !refresh && i < tabParameter.length; i++ ) {
-               tabParameter[i] = null;
-               element("content" + i).innerHTML = "";
-            }
-            var xmlhttp = null;
+         }
+
+         function createFormData() {
+            var data = '';
+            var elements = element('myForm').elements;
+            var index = -1;
+            for(var i = 0; i < elements.length; i++) {
+               if ( elements[i].name == "index" ) {
+                  index = elements[i].value;
+               }
+               data += elements[i].name + "=";
+              if ( elements[i].type != "checkbox" ) {
+                  data += elements[i].value;
+               } else {
+                  data += elements[i].checked ? 1 : 0;
+               }
+               data += "&";
+            } 
+            return new Array(index, data);
+         }
+
+
+         function createRequest() {
             if (window.XMLHttpRequest) {
-                xmlhttp = new XMLHttpRequest();
+                return new XMLHttpRequest();
             } else if (window.ActiveXObject) {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                return xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
-            elementId = 'content' + index;
-            element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen';
-            xmlhttp.open("GET", "content.php?index=" + index + "&" + parameter, false);
-            xmlhttp.onreadystatechange = function() {
-                if(xmlhttp.readyState != 4) {
-                    element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen ...';
-                } else if(xmlhttp.status == 200) {
-                    element(elementId).innerHTML = xmlhttp.responseText;
-                     initReload( xmlhttp.responseText, index );
-                } else {
-                    element(elementId).innerHTML = xmlhttp.status;
-                }
+         }
+
+
+         // -------- util ---------
+        
+         function element(id) {
+            return document.getElementById(id);
+         }
+
+         function onload() {
+           
+           numberOfColums = determineNumberOfColumns();
+           setColumnWidth();
+           moveToCurrentTab();
+           showPage(0, "module=menu&page=menuList" , true);
+           window.addEventListener('resize', resizeScreen, true);
+         }
+
+         function back() {
+            if ( currentTab < 1 ) {
+               return;
             }
-            xmlhttp.send(null);
-        }
+
+            currentTab--;
+            if ( viewportLeftIndex > 0 ) {
+               viewportLeftIndex--;
+            }
+            moveToCurrentTab();
+         }
 
       </script>
    </head>
-<?php
-   print( "<body onLoad=\"getHttpRequest(0, '" . Page::getParameter('menu', 'menuList') . "', false)\">" );
-?>
-
+   <body onload="onload()">
       <div class="header">
-         <div class="but_back" onclick="drillup()"><</div>
+         <div class="but_back" onclick="back()"><</div>
          <div class="but_menu"><p><a href="login.php">log<br />out</a></p></div>
          <div class="title">
             <h1>Current Module Title</h1>
@@ -265,10 +276,10 @@
             </h1>
          </div>
       </div>
-      <div class="content0 drilldown0" id="content0"> </div>
-      <div class="content1 drilldown0" id="content1"> </div>
-      <div class="content2 drilldown0" id="content2"> </div>
-      <div class="content3 drilldown0" id="content3"> </div>
+      <div class="content0" id="content0"> </div>
+      <div class="content1" id="content1"> </div>
+      <div class="content2" id="content2"> </div>
+      <div class="content3" id="content3"> </div>
    </body>
 </html>
 

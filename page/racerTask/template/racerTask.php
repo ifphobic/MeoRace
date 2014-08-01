@@ -1,6 +1,23 @@
 
-   <?php
-   ?>
+<?php
+   
+   $dbFunction = new RacerTaskDbFunction();
+   $checkpointId = CommonDbFunction::getUser()->checkpointFk; 
+   $actions = $dbFunction->determineActions( $_GET['id'], $checkpointId );
+   $dbFunction->close();
+
+   foreach ( $actions as $action ) {
+      print ( Page::getListItem(
+         $action->parcel,  
+         Page::getOnClickFunction( "racerTask", "confirmAction", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ),
+         ( $action->isDropoff ) ? $action->pickup . "-> " : "-> " . $action->dropoff 
+       ) );
+
+   }
+
+
+
+?>
  
  racerTask
   <!-- 

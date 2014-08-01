@@ -76,7 +76,7 @@ h1 {
     color: @c1;
     font-size: 14px;
     text-align: center;
-    padding: 15px 0px;
+    padding: 0px 15px;
     background-color: @c9;
     text-transform: uppercase;   
     font-style: @font;
@@ -569,40 +569,22 @@ div.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
 div.but_menu {.menubuttons; float:right; font-size: 1em;}
 .headertitle {display:inline;}
 
+@colw: 100%;
 .content {position:absolute; min-width: 260px; width: @colw; height: 100%;
     border-left: @border; border-right: @border; overflow-y: auto;
-
     transition: width 200ms ease, left 200ms ease;} 
+
 div.content0 {.content; left: 0%;}
-div.content0.drilldown {left: -100%;}
-div.content1 {.content; left: 100%;}
-div.content1.drilldown {left: 0%;}
-div.content2 {.content; left: 200%;}
-div.content2.drilldown {left: 100%;}
+div.content1 {.content; left: 25%;}
+div.content2 {.content; left: 50%;}
+div.content3 {.content; left: 75%;}
 div.content_menu_spacer {height: @line-height;}
 
 
 transition  {width: 200ms ease, left 200ms ease; display: none;}
 
 .show() {display: block;}
-@colw: 100%;
 div.headspacer {width: @colw; height: @line-height;}
-div.content0.drilldown0 {.content; .show; left: 0%;}
-div.content0.drilldown1 {.content; left: -@colw;}
-div.content0.drilldown2 {.content; left: -2*@colw;}
-div.content0.drilldown3 {.content; left: -3*@colw;}
-div.content1.drilldown0 {.content; left: @colw;}
-div.content1.drilldown1 {.content; .show; left: 0%;}
-div.content1.drilldown2 {.content; left: -@colw;}
-div.content1.drilldown3 {.content; left: -2*@colw;}
-div.content2.drilldown0 {.content; left: 2*@colw;}
-div.content2.drilldown1 {.content; left: @colw;}
-div.content2.drilldown2 {.content; .show; left: 0%;}
-div.content2.drilldown3 {.content; left: -@colw;}
-div.content3.drilldown0 {.content; left: 3*@colw;}
-div.content3.drilldown1 {.content; left: 2*@colw;}
-div.content3.drilldown2 {.content; left: @colw;}
-div.content3.drilldown3 {.content; .show; left: 0%;}
 div.content_menu_spacer {height: 55px;}
 
 
@@ -623,72 +605,4 @@ border-bottom: @border; text-align:center;}
 .racerpic {height: 120px; width: 120px; margin: 15px; float: left; overflow: hidden; border-radius: 60px;}
 .racerpic img {height: 120px; margin-left: -10px;}
 .racer_number {.li_head;}
-
-@media only screen and (min-width: 560px){
-    @colw: 50%;
-    .content {width: @colw;}
-    div.headspacer {width: @colw; height: @line-height;}
-    div.content0.drilldown0 {.content; .show; left: 0%;}
-    div.content0.drilldown1 {.content; .show; left: 0%;}
-    div.content0.drilldown2 {.content; left: -@colw;}
-    div.content0.drilldown3 {.content; left: -2*@colw;}
-    div.content1.drilldown0 {.content; .show; left: @colw;}
-    div.content1.drilldown1 {.content; .show; left: @colw;}
-    div.content1.drilldown2 {.content; .show; left: 0%;}
-    div.content1.drilldown3 {.content; left: -@colw;}
-    div.content2.drilldown0 {.content; left: 2*@colw;}
-    div.content2.drilldown1 {.content; left: 2*@colw;}
-    div.content2.drilldown2 {.content; .show; left: @colw;}
-    div.content2.drilldown3 {.content; .show; left: 0%;}
-    div.content3.drilldown0 {.content; left: 3*@colw;}
-    div.content3.drilldown1 {.content; left: 3*@colw;}
-    div.content3.drilldown2 {.content; left: 2*@colw;}
-    div.content3.drilldown3 {.content; .show; left: @colw;}
-}
-
-@media only screen and (min-width: 840px){
-    @colw: 33%;
-    .content {width: @colw;}
-    div.headspacer {width: @colw; height: @line-height;}
-    div.content0.drilldown0 {.content; .show; left: 0%;}
-    div.content0.drilldown1 {.content; .show; left: 0%;}
-    div.content0.drilldown2 {.content; .show; left: 0%;}
-    div.content0.drilldown3 {.content; left: -@colw;}
-    div.content1.drilldown0 {.content; .show; left: @colw;}
-    div.content1.drilldown1 {.content; .show; left: @colw;}
-    div.content1.drilldown2 {.content; .show; left: @colw;}
-    div.content1.drilldown3 {.content; .show; left: 0%;}
-    div.content2.drilldown0 {.content; left: 2*@colw;}
-    div.content2.drilldown1 {.content; left: 2*@colw;}
-    div.content2.drilldown2 {.content; left: 2*@colw;}
-    div.content2.drilldown3 {.content; .show; left: @colw;}
-    div.content3.drilldown0 {.content; left: 3*@colw;}
-    div.content3.drilldown1 {.content; left: 3*@colw;}
-    div.content3.drilldown2 {.content; left: 3*@colw;}
-    div.content3.drilldown3 {.content; left: 2*@colw;}
-}
-
-@media only screen and (min-width: 1120px){
-    @colw: 25%;
-    .content {display: block; width: @colw;}
-    div.headspacer {width: @colw; height: @line-height;}
-    div.content0.drilldown0 {.content; left: 0%;}
-    div.content0.drilldown1 {.content; left: 0%;}
-    div.content0.drilldown2 {.content; left: 0%;}
-    div.content0.drilldown3 {.content; left: 0%;}
-    div.content1.drilldown0 {.content; left: @colw;}
-    div.content1.drilldown1 {.content; left: @colw;}
-    div.content1.drilldown2 {.content; left: @colw;}
-    div.content1.drilldown3 {.content; left: @colw;}
-    div.content2.drilldown0 {.content; left: 2*@colw;}
-    div.content2.drilldown1 {.content; left: 2*@colw;}
-    div.content2.drilldown2 {.content; left: 2*@colw;}
-    div.content2.drilldown3 {.content; left: 2*@colw;}
-    div.content3.drilldown0 {.content; left: 3*@colw;}
-    div.content3.drilldown1 {.content; left: 3*@colw;}
-    div.content3.drilldown2 {.content; left: 3*@colw;}
-    div.content3.drilldown3 {.content; left: 3*@colw;}
-}
-
-
 

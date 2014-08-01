@@ -7,7 +7,7 @@
    foreach ( $racers as $racer ) {
       print ( Page::getListItem( 
          $racer->racerNumber . "" . $racer->name, 
-         Page::getOnClickFunction( "stockExchangeDispatch", "racerDispatch", $racer->racerId, "taskId=" . $_GET['id'] ) 
+         Page::getOnClickFunction( "racerTask", "racerTask", $racer->racerId ) 
       ) );
 
    }

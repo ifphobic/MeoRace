@@ -10,6 +10,7 @@
       $dbFunktion = new RaceDbFunction();
       $races = $dbFunktion->findAll( null );
       $dbFunktion->close();
+      $dbFunktion = new CheckpointDbFunction();
    ?>
   
    <table>
@@ -27,6 +28,7 @@
             print( CommonPageFunction::getCombobox("role", $user, "Role", Role::getAllRoles( false ) ) );
             print( "<input type='hidden' name='raceFk' value='" . $currentUser->raceFk . "' />");
          }
+         print( "<input type='hidden' name='checkpointFk' value='" . (($user != null) ? $user->checkpointFk : "" ) . "' />");
       
       ?>
    </table>

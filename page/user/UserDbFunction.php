@@ -9,7 +9,10 @@
 
       public function findAll( $raceId ) {
          
-         $query = "select u.userId, u.user, u.role, r.name as raceName from User u left outer join Race r on u.raceFk = r.raceId";
+         $query  = "select u.userId, u.user, u.role, u.checkpointFk, r.name as raceName, c.name as checkpoint ";
+         $query .= "from User u ";
+         $query .= "left outer join Race r on u.raceFk = r.raceId ";
+         $query .= "left outer join Checkpoint c on u.checkpointFk = c.checkpointId ";
          $parameter = array();
          if ( isset( $raceId ) ) {
             $query .= " where u.raceFk = ?";
@@ -28,7 +31,7 @@
 
       public function findUser( $userName ) {
          
-         $query = "select * from User where user = ?";
+         $query = "select u.* from User u left outer join Checkpoint c on u.checkpointFk = c.checkpointId  where user = ?";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_STR, $userName ) ) );
          if ( count( $result ) > 0 ) {
             return $result[0];
@@ -37,22 +40,24 @@
       }
 
       public function insert( $user ) {
-         $query = "insert into User (user, password, role, raceFk ) values (?, ?, ?, ?)";
+         $query = "insert into User (user, password, role, raceFk, checkpointFk ) values (?, ?, ?, ?, ?)";
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $user['user'] ), 
             new Parameter( PDO::PARAM_STR, hash ( "sha256" , $user['password']) ),
             new Parameter( PDO::PARAM_STR, $user['role'] ),
-            new Parameter( PDO::PARAM_INT, $user['raceFk'] )
+            new Parameter( PDO::PARAM_INT, $user['raceFk'] ),
+            new Parameter( PDO::PARAM_INT, $user['checkpointFk'] )
          );
          $this->query($query, $parameter);
       }
 
       public function update( $user ) {
-         $query = "update User set user = ?, role = ?, raceFk = ? where userId = ?";
+         $query = "update User set user = ?, role = ?, raceFk = ?, checkpointFk = ? where userId = ?";
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $user['user'] ), 
             new Parameter( PDO::PARAM_STR, $user['role'] ),
             new Parameter( PDO::PARAM_INT, $user['raceFk'] ),
+            new Parameter( PDO::PARAM_INT, $user['checkpointFk'] ),
             new Parameter( PDO::PARAM_INT, $user['userId'] )
          );
          $this->query($query, $parameter);

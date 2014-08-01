@@ -6,8 +6,9 @@
 
       public function commit( $content ) {
         
-        PriceCalculator::dispatchTask( CommonDbFunction::getUser()->raceFk, $content['taskId'] );
-        
+        $price = PriceCalculator::dispatchTask( CommonDbFunction::getUser()->raceFk, $content['taskId'] );
+        $dbFunction = new RacerTaskDbFunction();
+        $racerTaskId = $dbFunction->dispatch( $content['racerId'],$content['taskId'], $price );
 
         return null;
       }
