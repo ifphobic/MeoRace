@@ -24,13 +24,17 @@
          return $result;
       }
 
-      public static function getCombobox($key, $object, $text, $options, $optionKey = null ) {
+      public static function getCombobox($key, $object, $text, $options, $optionKey = null, $addNone = false ) {
          $result = "";
          if ( $text != null ) {
             $result = "<tr><td>$text</td><td>";
          }
          $result .= "<select name='$key' size='1' >";
          
+         if ( $addNone ) {
+            $result .= "<option value='' " . ( ( isset( $object ) && strcmp( "", $object->$key)  == 0) ? "selected" : "" ). " > </option>";
+         }
+
          foreach ( $options as $option ) {
             if ( isset( $optionKey ) ) {
                $value = $option->$optionKey;

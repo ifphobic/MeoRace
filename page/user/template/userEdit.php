@@ -10,7 +10,11 @@
       $dbFunktion = new RaceDbFunction();
       $races = $dbFunktion->findAll( null );
       $dbFunktion->close();
+         
+      $currentUser = CommonDbFunction::getUser(); 
       $dbFunktion = new CheckpointDbFunction();
+      $checkpoints = $dbFunktion->findAll( $currentUser->raceFk );
+      $dbFunktion->close();
    ?>
   
    <table>
@@ -20,7 +24,6 @@
             <tr><td>Passwort:</td><td><input name="password" type="password" /></td></tr>
       <?php 
          }
-         $currentUser = CommonDbFunction::getUser(); 
          if ( Role::isAdmin( $currentUser ) ) {
             print( CommonPageFunction::getCombobox("role", $user, "Role", Role::getAllRoles( true ) ) );
             print( CommonPageFunction::getCombobox("raceFk", $user, "Race", $races, "raceId") );
@@ -28,7 +31,7 @@
             print( CommonPageFunction::getCombobox("role", $user, "Role", Role::getAllRoles( false ) ) );
             print( "<input type='hidden' name='raceFk' value='" . $currentUser->raceFk . "' />");
          }
-         print( "<input type='hidden' name='checkpointFk' value='" . (($user != null) ? $user->checkpointFk : "" ) . "' />");
+         print( CommonPageFunction::getCombobox("checkpointFk", $user, "Checkpoint",  $checkpoints, "checkpointId", true ) );
       
       ?>
    </table>

@@ -24,26 +24,6 @@
          return $result[0]; 
       }
 
-      public function insert( $racerTask ) {
-//         $query = "insert into RacerTask (name, description, raceFk ) values (?, ?, ?)";
-//         $parameter = array( 
-//            new Parameter( PDO::PARAM_STR, $racerTask['name'] ), 
-//            new Parameter( PDO::PARAM_STR, $racerTask['description'] ), 
-//            new Parameter( PDO::PARAM_STR, $racerTask['raceFk'] ) 
-//         );
-//         $this->query($query, $parameter);
-      }
-
-      public function update( $racerTask ) {
-//         $query = "update RacerTask set name = ?, description = ? where racerTaskId = ?";
-//         $parameter = array( 
-//            new Parameter( PDO::PARAM_STR, $racerTask['name'] ), 
-//            new Parameter( PDO::PARAM_STR, $racerTask['description'] ),
-//            new Parameter( PDO::PARAM_INT, $racerTask['racerTaskId'] )
-//         );
-//         $this->query($query, $parameter);
-      }
-
       public function doAction( $racerDeliveryId, $dropoff, $manned ) {
          $query = "update RacerDelivery set ";
          if ( !$dropoff || !$manned ) {
@@ -86,7 +66,12 @@
          $query .= "   join Checkpoint pickupC on d.pickupFk = pickupC.checkpointId ";
          $query .= "   join Checkpoint dropoffC on d.dropoffFk = dropoffC.checkpointId ";
          $query .= "   join Parcel p on d.parcelFk = p.parcelId ";
-         $query .= "   where rt.racerFk = ? and ( ( rd.pickupTime is null and d.pickupFk = ? ) ";
+         $query .= "   where rt.racerFk = ? ";
+         $query .= "    and not exists ( ";
+         $query .= "       select * from DeliveryCondition dc ";
+         $query .= "          join RacerDelivery previousRd on dc.previousDeliveryFk = previousRd.deliveryFk ";
+         $query .= "          where dc.deliveryFk = d.deliveryId and previousRd.dropoffTime is null ) ";
+         $query .= "    and ( ( rd.pickupTime is null and d.pickupFk = ? ) ";
          $query .= "      or ( (rd.pickupTime is not null or not pickupC.manned ) and rd.dropoffTime is null and d.dropoffFk = ? ) ) ";
          $query .= "   order by isDropoff ";
 

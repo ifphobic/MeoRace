@@ -8,9 +8,10 @@
       const RACE_MASTER = "race master";
       const REGISTRATION = "registration";
       const DISPATCHER = "dispatcher";
+      const CHECKPOINT = "checkpoint";
       
-      private static $ALL_ROLES = array( self::ADMIN, self::RACE_MASTER, self::REGISTRATION, self::NO_ROLE, self::DISPATCHER );
-      private static $ALL_ROLES_WITHOUT_ADMIN = array( self::RACE_MASTER, self::REGISTRATION, self::DISPATCHER );
+      private static $ALL_ROLES = array( self::ADMIN, self::RACE_MASTER, self::REGISTRATION, self::CHECKPOINT, self::NO_ROLE, self::DISPATCHER );
+      private static $ALL_ROLES_WITHOUT_ADMIN = array( self::RACE_MASTER, self::REGISTRATION, self::DISPATCHER, self::CHECKPOINT );
 
        
       public static function getAllRoles( $includeAdmin ) {
