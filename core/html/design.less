@@ -150,7 +150,8 @@ li {
  }
     
  body > div > div.top_content_wrapper.registration > div > div.left_info > div > div > img{
-    height: 99px;
+    height: 64px;
+    margin-top: 12px;
     }
 
 .middle_info {
@@ -194,6 +195,121 @@ li {
   margin-top: -6px;
 }
 
+//Tables
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+}
+
+th {
+    height: 44px;
+}
+
+th, tr {
+   line-height: @line-height;
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-color: @c1;
+}
+
+th, td {
+    text-align: center;
+    padding: 0 4px;
+}
+
+td, th {
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+th{
+&.task_manifest{
+background-image: url(../../icons/document127.png) !important;
+background-size: 24px;
+}
+&.task_pickup{
+background-image: url(../../icons/upload62.png) !important;
+background-size: 30px;
+}
+&.task_parcel{
+background-image: url(../../icons/close13.png);
+background-size: 30px;
+}
+&.task_drop{
+background-image: url(../../icons/download87.png);
+background-size: 29px;
+}
+&.task_restrictions{
+background-image: url(../../icons/one8.png);
+background-size: 30px;
+min-width: 40px;
+}
+&.task_number{
+background-image: url(../../icons/icomoon1.png);
+background-size: 25px;
+min-width: 25px;
+}
+&.task_pickup_time{
+background-image: url(../../icons/hourglass1.png);
+background-size: 22px;
+}
+&.task_drop_time{
+background-image: url(../../icons/sand1.png);
+background-size: 22px;
+}
+&.task_points {
+   background-image: url(../../icons/dollar4.png); 
+   background-size: 25px;
+}
+&.task_description {
+   background-image: url(../../icons/information33.png);
+   background-size: 20px;
+}
+}
+
+td{
+&.task_confirmation{
+background-image: url(../../icons/up64.png);
+background-size: 26px;
+color: @c1;
+font-weight: bold;
+width: 88px;
+&.checked{
+background-color: #71C671;
+}
+&.unchecked{
+background-color: red;
+}
+}
+&.task_status{
+    width: 44px;
+}
+&.task_status.task_completed{
+   background-image: url(../../icons/check26.png);
+   background-size: 24px;
+   background-color: #71C671;
+}
+&.task_status.task_assigned{
+   background-image: url(../../icons/attach1.png);
+   background-size: 24px;
+   background-color: red;
+}
+
+&.task_status.task_pickedup{
+   background-image: url(../../icons/delivery39.png);
+   background-size: 24px;
+    background-color: yellow;
+}
+
+&.task_status.task_completed{
+   background-image: url(../../icons/check26.png);
+   background-size: 24px;
+   background-color: #71C671;
+}
+}
+
 // Main Navigation
 #main_navigation .left_info{
 margin-left: 5px;
@@ -218,7 +334,7 @@ background-image: url(../../icons/information33.png);
 }
 
 .user_list_navigation{
-background-image: url(../../icons/business64.png);
+background-image: url(../../icons/call37.png);
 background-size: 35px;
 }
 
@@ -233,85 +349,7 @@ background-position: center center;
 background-size: 15px; 
 }
 
-//Rider Task List
-
-.rider_task_list {
-    padding: 0 15px;
-    background-color: @g1;
-}
-
-#riderlist li{
-    padding: 5.5px 0;
-    border-bottom: 1px solid @c2;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 16px;
-}
-
-#riderlist li:first-child{
-    border-top: 1px solid @c2;
-}
-
-#riderlist .left_info {
-    margin-left: 5px;
-    }
-
-#riderlist .right_info {
-    float: right;
-    margin-right: 5px;
-}
-
-//Checkpoint Rider Task List
-
-p.racer_checkpointlist_heading, p.racer_tasklist_heading{
-display: inline-block;
-width: 100%;
-font-weight: bold;
-border-bottom: 2px solid #ccc;
-padding: 5px 0;
-}
-
-th.task_number{
-background-image: url(../../icons/task1.png) !important;
-}
-
-th.task_parcel{
-background-image: url(../../icons/close13.png);
-background-size: 30px;
-}
-
-th.task_confirmation{
-background-image: url(../../icons/up64.png);
-background-size: 26px;
-}
-    
-td.task_confirmation{
-background-color: #71C671;
-color: @c1;
-font-weight: bold;
-width: 88px;
-}
-
-td.task_confirmation.checked{
-background-color: #71C671;
-}
-
-td.task_confirmation.unchecked{
-background-color: red;
-}
-
-td.task_confirmation.pickup_parcel{
-background-image: url(../../icons/arrow.png);
-}
-
-td.task_confirmation.drop_parcel{
-background-image: url(../../icons/arrow218.png);
-}
-
-
 // Racer Registration
-
-// registration input
 
 input {
     display: block;
@@ -365,9 +403,6 @@ color: @c1;
    text-transform: uppercase;
    }
 
-
-// Upload Input
-
 input[type="file"]{ // Photo Upload
 display: block;
 width: 88px;
@@ -386,101 +421,85 @@ pointer-events: none;
 position:absolute; 
 top:0;
 overflow: hidden;
+border: 1px dashed @c5;
 border-radius: 50px;
 background-color: lighten(@c2, 6%);
 }
 
-// tables for detail pages
+//Rider Task List
 
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0px 10px;
+.rider_task_list {
+    padding: 0 15px;
+    background-color: @g1;
 }
 
-tr{
-    width: 500px;
-}
-
-th {
-    height: 44px;
-}
-
-th, tr {
-   line-height: @line-height;
-   background-repeat: no-repeat;
-   background-position: center center;
-   background-color: @c1;
-}
-
-th, td {
-    text-align: center;
-    padding: 0 4px;
-}
-
-td, th {
-    background-position: center center;
+#riderlist li{
+    padding: 5.5px 0;
+    border-bottom: 1px solid @c2;
     background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px;
 }
 
-th.task_points {
-   background-image: url(../../icons/dollar4.png); 
-   background-size: 25px;
+#riderlist li:first-child{
+    border-top: 1px solid @c2;
 }
 
-th.task_number {
-   background-image: url(../../icons/tasks.png);
-      background-size: 25px;
+#riderlist .left_info {
+    margin-left: 5px;
+    }
+
+#riderlist .right_info {
+    float: right;
+    margin-right: 5px;
 }
 
-th.task_description {
-   background-image: url(../../icons/information33.png);
-   background-size: 20px;
+//Checkpoint Rider Task List
+
+p.racer_checkpointlist_heading, p.racer_tasklist_heading{
+display: inline-block;
+width: 100%;
+font-weight: bold;
+border-bottom: 2px solid #ccc;
+padding: 5px 0;
 }
 
-th.task_status {
-   background-image: url(../../icons/speedometer2.png);
-   background-size: 30px;
+// Task Detail
+#manifest_detail {
+.manifest_number{
+color: @c1;
+font-size: 24px;
+font-weight: bold;
+background-color: @c10;
+display: block;
+width: 44px;
+height: 44px;
+padding-top: 4px;
 }
-
-td.task_points, td.task_number, td.task_name, td.task_description{
-    color: @c6;
+.manifest_name{
+font-weight: bold;
 }
+.right_info{
+text-align: left;
+width: 100px;
+.task_points{
+background-image: url(../../icons/coins16.png);
+background-size: 16px;
+background-repeat: no-repeat;
+padding-left: 25px;
 
-td.task_number{
-    width: 32px;
 }
-
-td.task_status{
-    width: 44px;
+.task_maxduration{
+background-image: url(../../icons/time21.png);
+background-size: 16px;
+background-repeat: no-repeat;
+padding-left: 25px;
 }
-
-td.task_status.task_assigned{
-   background-image: url(../../icons/attach1.png);
-   background-size: 24px;
-   background-color: red;
 }
-
-td.task_status.task_pickedup{
-   background-image: url(../../icons/delivery39.png);
-   background-size: 24px;
-    background-color: yellow;
-}
-
-td.task_status.task_completed{
-   background-image: url(../../icons/check26.png);
-   background-size: 24px;
-   background-color: #71C671;
 }
 
 
 /* End of gianfett CSS */
-
-
-
-
-
-
 
 
 .menubuttons {color: @c3; min-width:@line-height; height: @line-height;

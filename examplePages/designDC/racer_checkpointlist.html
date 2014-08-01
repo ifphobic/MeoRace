@@ -30,16 +30,16 @@
    <div class="top_info_wrapper top_info_rider"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
       
       <div class="left_info">
-      <img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/224772_10150301758538298_5948223_n.jpg?oh=16fa88602ac2da9dc2f927f091637d85&oe=541195B5&__gda__=1412144473_b10848b4a4b08509b69f92f603521d4d" alt="dont mess with rolling ruedy">
+      <img src="http://ux.crealogix.com/wp-content/uploads/2013/03/portrait_jakob.png" alt="dont mess with rolling ruedy">
       </div> 
        
       <div class="middle_info">
-      <span class="rider_name"">Jakob "The" Boss</span><br />
-      <span class="rider_city_country">Basel, Switzerland</span>
+      <p class="rider_name"">Jakob "The" Boss</p>
+      <p class="rider_city_country">Basel, Switzerland</span>
       </div>
       
       <div class="right_info">
-      <span class="rider_number">777</span> 
+      <p class="rider_number">777</p> 
       </div>
      
 
@@ -58,25 +58,33 @@
       <table>
          <tr>
             <th class="task_manifest"></th>
+				<th class="task_pickup"></th>
             <th class="task_parcel"></th>
+  				<th class="task_drop"></th>
             <th class="task_confirmation"></th>
          </tr>
 
          <tr>
-            <td class="task_manifest">3</td>
-            <td class="task_parcel">Parcel 1</td>
+            <td class="task_manifest">M3</td>
+				<td class="task_pickup">A</td>
+            <td class="task_parcel">P1</td>
+				<td class="task_drop">C</td>
             <td class="task_confirmation drop_parcel checked">DROP</td>
          </tr>
   
          <tr>
-            <td class="task_manifest">3</td>
-            <td class="task_parcel">Parcel 2</td>
-            <td class="task_confirmation pickup_parcel unchecked">PICKUP</td>
+            <td class="task_manifest">M1</td>
+            <td class="task_pickup">C</td>
+            <td class="task_parcel">P1</td>
+				<td class="task_drop">B</td>
+            <td class="task_confirmation pickup_parcel checked">PICKUP</td>
          </tr>
 
          <tr>
-            <td class="task_manifest">1</td>
-            <td class="task_parcel">Parcel 4</td>
+            <td class="task_manifest">M2</td>
+            <td class="task_pickup">B</td>
+            <td class="task_parcel">P1</td>
+				<td class="task_drop">C</td>
             <td class="task_confirmation drop_parcel unchecked">DROP</td>
          </tr>
   
