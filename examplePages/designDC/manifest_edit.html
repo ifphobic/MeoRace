@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Manifest Edit</title>
+<link rel="stylesheet" type"text/css" href="../../core/html/design.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div class="content_tab" id="manifest_edit">
+  
+  <h1>Manifest Edit</h1>
+
+<div class="top_content_wrapper""> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
+
+   <div class="top_info_wrapper"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
+    
+      <div class="left_info">
+      <p class="manifest_number">12</p>
+      </div> 
+       
+      <div class="middle_info">
+      <p class="manifest_name">M12</p>
+	  <p class="manifest_description">Rock'n'Roll</p>
+	 
+      </div>
+      
+      <div class="right_info">
+      <p class="manifest_points">100</p>
+	   <p class="manifest_maxduration">00:02:10</p>
+      </div>
+
+   </div> <!-- top info wrapper -->
+      
+   </div> <!-- top content wrapper -->     
+      
+      
+    
+    <div class="bottom_content_wrapper">
+    
+      <div class="registration_values">
+      <select required name="select_manifestnumber" size="1" class="select_manifestnumber">
+	    <option value="">Choose Manifest Number</option>
+		 <option value="registered">1</option>
+      <option value="active">2</option></select>
+		<label for="manifest_name" class="manifest_name"> <input type="text" name="manifest_name" placeholder="Name" /> </label> 
+		<label for="manifest_maxduration" class="manifest_maxduration"> <input type="text" name="manifest_maxduration" placeholder="Max. Duration" /> </label>
+        <label for="manifest_price" class="manifest_price"> <input type="text" name="manifest_price" placeholder="Price" /> </label>
+        <label for="manifest_description" class="manifest_description"> <input type="text" name="manifest_description" placeholder="Description" /> </label>
+        <label for="submit" class="submit"><input type="submit" name="submit" value="Save Manifest Details" /></label>
+      </div>  
+      </div>   
+</div>
+</div>
+
+</body>
+
+</html>
+

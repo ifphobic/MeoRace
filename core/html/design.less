@@ -144,15 +144,6 @@ li {
     height: 44px;
     }   
     
- .top_content_wrapper.registration > div > div.left_info {
-    height: 99px;
-    width: 99px;
- }
-    
- body > div > div.top_content_wrapper.registration > div > div.left_info > div > div > img{
-    height: 64px;
-    margin-top: 12px;
-    }
 
 .middle_info {
     height: 44px;
@@ -165,7 +156,7 @@ li {
     float: right;
 }
 
-.middle_info .rider_name {
+.middle_info p.title {
   padding-bottom: 2px;
   font-size: 16px;
   color: @c9;
@@ -178,7 +169,7 @@ li {
   font-size: 14px;
 }
 
-.middle_info .rider_name, .middle_info .rider_city_country{
+.middle_info .title, .middle_info .description{
  width: 200px;
  overflow: hidden;
  white-space:nowrap;
@@ -226,11 +217,11 @@ td, th {
 
 th{
 &.task_manifest{
-background-image: url(../../icons/document127.png) !important;
+background-image: url(../../icons/document127.png);
 background-size: 24px;
 }
 &.task_pickup{
-background-image: url(../../icons/upload62.png) !important;
+background-image: url(../../icons/upload62.png);
 background-size: 30px;
 }
 &.task_parcel{
@@ -259,13 +250,22 @@ background-size: 22px;
 background-image: url(../../icons/sand1.png);
 background-size: 22px;
 }
-&.task_points {
-   background-image: url(../../icons/dollar4.png); 
-   background-size: 25px;
+&.manifest_points{
+   background-image: url(../../icons/coins16.png); 
+   background-size: 30px;
 }
-&.task_description {
+&.manifest_description {
    background-image: url(../../icons/information33.png);
    background-size: 20px;
+}
+&.manifest_edit {
+   width: 44px;
+}
+&.manifest_configure {
+   width: 44px;
+}
+&.manifest_delete {
+   width: 44px;
 }
 }
 
@@ -283,7 +283,7 @@ background-color: #71C671;
 background-color: red;
 }
 }
-&.task_status{
+&.task_status, &.manifest_status{
     width: 44px;
 }
 &.task_status.task_completed{
@@ -291,22 +291,36 @@ background-color: red;
    background-size: 24px;
    background-color: #71C671;
 }
-&.task_status.task_assigned{
+&.task_status.task_assigned, &.manifest_status.manifest_assigned {
    background-image: url(../../icons/attach1.png);
    background-size: 24px;
    background-color: red;
 }
 
-&.task_status.task_pickedup{
+&.task_status.task_pickedup, &.manifest_status.manifest_pickedup{
    background-image: url(../../icons/delivery39.png);
    background-size: 24px;
     background-color: yellow;
 }
 
-&.task_status.task_completed{
+&.task_status.task_completed, &.manifest_status.manifest_completed{
    background-image: url(../../icons/check26.png);
    background-size: 24px;
    background-color: #71C671;
+}
+&.manifest_edit {
+   background-image: url(../../icons/pencil44.png);
+   background-size: 20px;
+ 
+}
+&.manifest_configure {
+   background-image: url(../../icons/settings39.png);
+   background-size: 20px;
+
+}
+&.manifest_delete {
+   background-image: url(../../icons/delete30.png);
+   background-size: 32px;
 }
 }
 
@@ -351,6 +365,22 @@ background-size: 15px;
 
 // Racer Registration
 
+.top_content_wrapper.registration > div > div.left_info {
+    height: 99px;
+    width: 99px;
+ }
+    
+body > div > div.top_content_wrapper.registration > div > div.left_info > div > div > img{
+    height: 64px;
+    margin-top: 12px;
+    }
+
+.top_content_wrapper.registration > div > div.right_info {
+    float: left;
+    margin-left: 35px;
+ }
+
+
 input {
     display: block;
     font-size: 16px;
@@ -387,7 +417,7 @@ input[type="search"] {
    height: 44px;
 }
 
-.select_status, .select_racernumber{
+.select_status, .select_racernumber, .select_manifestnumber{
     width: 100%;
     margin-top: 15px;
     font-size: 16px;
@@ -454,7 +484,23 @@ background-color: lighten(@c2, 6%);
     margin-right: 5px;
 }
 
-//Checkpoint Rider Task List
+// Tasklist
+
+#tasklist{
+    .middle_info{
+        padding-left: 0;
+        .title{
+            background-image: url(../../icons/pencil44.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: 70px;
+            
+        }
+    }
+}
+        
+
+// Checkpoint Rider Task List
 
 p.racer_checkpointlist_heading, p.racer_tasklist_heading{
 display: inline-block;
@@ -465,7 +511,8 @@ padding: 5px 0;
 }
 
 // Task Detail
-#manifest_detail {
+
+#manifest_detail, #manifest_edit {
 .manifest_number{
 color: @c1;
 font-size: 24px;
@@ -482,14 +529,14 @@ font-weight: bold;
 .right_info{
 text-align: left;
 width: 100px;
-.task_points{
+.manifest_points{
 background-image: url(../../icons/coins16.png);
 background-size: 16px;
 background-repeat: no-repeat;
 padding-left: 25px;
 
 }
-.task_maxduration{
+.manifest_maxduration{
 background-image: url(../../icons/time21.png);
 background-size: 16px;
 background-repeat: no-repeat;
