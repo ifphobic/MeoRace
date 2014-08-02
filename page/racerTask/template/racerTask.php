@@ -1,4 +1,30 @@
+<?php
+   $racer = null;
+   $dbFunction = new RacerTaskDbFunction();
+   if ( isset( $_GET['id'] ) ) {
+      $racer = $dbFunction->findById( $_GET['id'] );
+      $raceId = $racer->raceFk;
+   } else {
+      $raceId = CommonDbFunction::getUser()->raceFk;
+   }
+   $dbFunction->close();
+?>
 
+<div class="top_content_wrapper""> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
+   <div class="top_info_wrapper top_info_rider"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
+      <div class='left_info'>
+         <img src='http://static.wixstatic.com/media/87f473_013e75dfc64446ea98841a8f4c96056a.jpg_srz_321_273_75_22_0.50_1.20_0.00_jpg_srz' alt='strom praesi'>
+      </div> 
+      <div class='middle_info'>
+         <p class='title'><?php Page::printValue( $racer, "name" ) ?></p>
+         <p class='description'><?php Page::printValue($racer, array( "city", "country" ), ", ") ?></p>
+      </div>
+      <div class='right_info'>
+         <p class='rider_number'><?php Page::printValue( $racer, "racerNumber" ) ?></p>
+      </div>
+   </div><!-- top info wrapper -->
+</div> <!-- top content wrapper -->
+   
 <?php
    
    $dbFunction = new RacerTaskDbFunction();
@@ -19,12 +45,46 @@
 
 ?>
  
- racerTask
-  <!-- 
+<div class="bottom_content_wrapper">
+   
+   <div class="bottom_info_wrapper bottom_rider_tasks">
 
-   hier bitte html fuer die seite wenn ein fahrer zum checkpoint kommt.
-   das soll die zweite sein. die erste seite wird eine racerliste und man springt nach der auswahl eines racers auf diese seite
+<p class="racer_checkpointlist_heading">Tasks Checkpoint C</p>
 
-   inhalt: was kann der fahrer aktuell an diesem checkpoint erledigen (mit moeglichkeit zur auswahl der aktion)
+      <table>
+         <tr>
+            <th class="task_manifest"></th>
+				<th class="task_pickup"></th>
+            <th class="task_parcel"></th>
+  				<th class="task_drop"></th>
+            <th class="task_confirmation"></th>
+         </tr>
 
-  -->
+         <tr>
+            <td class="task_manifest">M3</td>
+				<td class="task_pickup">A</td>
+            <td class="task_parcel"><div class="indicator_pos">P1</div></td>
+				<td class="task_drop"><div class="indicator_pos">C</div></td>
+            <td class="task_confirmation drop_parcel checked">DROP</td>
+         </tr>
+  
+         <tr>
+            <td class="task_manifest">M1</td>
+            <td class="task_pickup"><div class="indicator_pos">C</div></td>
+            <td class="task_parcel"><div class="indicator_pos">P1</div></td>
+				<td class="task_drop">B</td>
+            <td class="task_confirmation pickup_parcel checked">PICKUP</td>
+         </tr>
+
+         <tr>
+            <td class="task_manifest">M2</td>
+            <td class="task_pickup">B</td>
+            <td class="task_parcel">P1</td>
+				<td class="task_drop">C</td>
+            <td class="task_confirmation drop_parcel unchecked">BLOCKED</td>
+         </tr>
+  
+  
+    </div> <!-- bottom_content_wrapper xxx --> 
+
+    </div> <!-- bottom_info_wrapper xxx --> 

@@ -59,6 +59,9 @@ table {
 @c9: @c8 - @degrade;
 @c10: #000000;
 
+@c_pos: #71C671;
+@c_neg: red;
+
 @g1: #f7f7f7;
 
 @font: 12pt 'Open Sans', sans-serif, Helvetica, ;
@@ -74,7 +77,6 @@ table {
 // Fonts
 h1 {
     color: @c1;
-    font-size: 14px;
     text-align: center;
     padding: 0px 15px;
     background-color: @c9;
@@ -97,6 +99,7 @@ li {
     width: 100%;
     border-bottom: 1px solid @c2;
     clear: both;
+    position: relative;
 }
 
 .top_content_wrapper{
@@ -135,7 +138,7 @@ li {
 }
 
 .left_info{
-    float: left;
+    position: absolute;
     overflow: hidden;
     border-radius: 50px;
 }
@@ -147,30 +150,35 @@ li {
 
 .middle_info {
     height: 44px;
-    float: left;
+    margin: 0px 44px;
     padding: 0 15px;
     text-align: left;
 }
 
 .right_info {
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 5px;
 }
 
 .middle_info p.title {
   padding-bottom: 2px;
-  font-size: 16px;
+  font-size: 1.2em;
   color: @c9;
   letter-spacing: @letter-spacing;
-  font-weight: bold;
+}
+
+.middle_info p.description{
+    font-size: 1em;
+    color: @c4;
 }
 
 .middle_info .rider_city_country {
-  color: @c7;
-  font-size: 14px;
+  color: @c4;
+  font-size: 1em;
 }
 
 .middle_info .title, .middle_info .description{
- width: 200px;
  overflow: hidden;
  white-space:nowrap;
  text-overflow: ellipsis;
@@ -178,8 +186,9 @@ li {
 
 
 .right_info .rider_number {
-  font-size: 36px;
-  color: @c5;
+  font-size: 3em;
+  font-weight: lighter;
+  color: @c4;
   float: right;
   display: block;
   letter-spacing: @letter-spacing;
@@ -277,10 +286,10 @@ color: @c1;
 font-weight: bold;
 width: 88px;
 &.checked{
-background-color: #71C671;
+background-color: @c_pos;
 }
 &.unchecked{
-background-color: red;
+background-color: @c_neg;
 }
 }
 &.task_status, &.manifest_status{
@@ -289,7 +298,7 @@ background-color: red;
 &.task_status.task_completed{
    background-image: url(../../icons/check26.png);
    background-size: 24px;
-   background-color: #71C671;
+   background-color: @c_pos;
 }
 &.task_status.task_assigned, &.manifest_status.manifest_assigned {
    background-image: url(../../icons/attach1.png);
@@ -306,7 +315,7 @@ background-color: red;
 &.task_status.task_completed, &.manifest_status.manifest_completed{
    background-image: url(../../icons/check26.png);
    background-size: 24px;
-   background-color: #71C671;
+   background-color: @c_pos;
 }
 &.manifest_edit {
    background-image: url(../../icons/pencil44.png);
@@ -322,6 +331,12 @@ background-color: red;
    background-image: url(../../icons/delete30.png);
    background-size: 32px;
 }
+}
+
+div.indicator_pos{
+    background-color: @c_pos;
+    color: @c1;
+    border-radius: 20px;
 }
 
 // Main Navigation
@@ -564,7 +579,7 @@ a.ohne {color: @c8; text-decoration: none;}
 height:@line-height; background: @c9; 
 border-bottom: @border; text-align:center;}
 
-div.title {padding: 10px 25px;}
+div.title {padding: 5px 25px;}
 div.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
 div.but_menu {.menubuttons; float:right; font-size: 1em;}
 .headertitle {display:inline;}

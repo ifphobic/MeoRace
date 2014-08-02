@@ -1,4 +1,5 @@
 /* CSS reset */
+/* CSS reset */
 html,
 body,
 div,
@@ -128,7 +129,6 @@ table {
 /* ****** gianfett temporary ******* */
 h1 {
   color: #ffffff;
-  font-size: 14px;
   text-align: center;
   padding: 0px 15px;
   background-color: #333333;
@@ -151,6 +151,7 @@ li {
   width: 100%;
   border-bottom: 1px solid #e6e6e6;
   clear: both;
+  position: relative;
 }
 .top_content_wrapper {
   height: 66px;
@@ -181,7 +182,7 @@ li {
   width: 44px;
 }
 .left_info {
-  float: left;
+  position: absolute;
   overflow: hidden;
   border-radius: 50px;
 }
@@ -190,34 +191,39 @@ li {
 }
 .middle_info {
   height: 44px;
-  float: left;
+  margin: 0px 44px;
   padding: 0 15px;
   text-align: left;
 }
 .right_info {
-  float: right;
+  position: absolute;
+  right: 0px;
+  top: 5px;
 }
 .middle_info p.title {
   padding-bottom: 2px;
-  font-size: 16px;
+  font-size: 1.2em;
   color: #333333;
   letter-spacing: 1px;
-  font-weight: bold;
+}
+.middle_info p.description {
+  font-size: 1em;
+  color: #b3b3b3;
 }
 .middle_info .rider_city_country {
-  color: #666666;
-  font-size: 14px;
+  color: #b3b3b3;
+  font-size: 1em;
 }
 .middle_info .title,
 .middle_info .description {
-  width: 200px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .right_info .rider_number {
-  font-size: 36px;
-  color: #999999;
+  font-size: 3em;
+  font-weight: lighter;
+  color: #b3b3b3;
   float: right;
   display: block;
   letter-spacing: 1px;
@@ -307,10 +313,10 @@ td.task_confirmation {
   width: 88px;
 }
 td.task_confirmation.checked {
-  background-color: #71C671;
+  background-color: #71c671;
 }
 td.task_confirmation.unchecked {
-  background-color: red;
+  background-color: #ff0000;
 }
 td.task_status,
 td.manifest_status {
@@ -319,7 +325,7 @@ td.manifest_status {
 td.task_status.task_completed {
   background-image: url(../../icons/check26.png);
   background-size: 24px;
-  background-color: #71C671;
+  background-color: #71c671;
 }
 td.task_status.task_assigned,
 td.manifest_status.manifest_assigned {
@@ -337,7 +343,7 @@ td.task_status.task_completed,
 td.manifest_status.manifest_completed {
   background-image: url(../../icons/check26.png);
   background-size: 24px;
-  background-color: #71C671;
+  background-color: #71c671;
 }
 td.manifest_edit {
   background-image: url(../../icons/pencil44.png);
@@ -350,6 +356,11 @@ td.manifest_configure {
 td.manifest_delete {
   background-image: url(../../icons/delete30.png);
   background-size: 32px;
+}
+div.indicator_pos {
+  background-color: #71c671;
+  color: #ffffff;
+  border-radius: 20px;
 }
 #main_navigation .left_info {
   margin-left: 5px;
@@ -581,7 +592,7 @@ a.ohne {
   text-align: center;
 }
 div.title {
-  padding: 10px 25px;
+  padding: 5px 25px;
 }
 div.but_back {
   color: #cccccc;

@@ -13,6 +13,13 @@
 //         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
 //         return $result; 
       }
+      
+      public function findById( $racerId ) {
+         
+         $query = "select * from Racer where racerId = ?";
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerId ) ) );
+         return $result[0];
+      }
          
       public function findRacerDeliveryById( $racerDeliveryId ) {
          
