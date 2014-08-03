@@ -291,6 +291,10 @@ background-color: @c_pos;
 &.unchecked{
 background-color: @c_neg;
 }
+&.na{
+    background-color: @c3;
+    color: @c7;
+}
 }
 &.task_status, &.manifest_status{
     width: 44px;
@@ -333,10 +337,23 @@ background-color: @c_neg;
 }
 }
 
-div.indicator_pos{
-    background-color: @c_pos;
+.indicator {
     color: @c1;
     border-radius: 20px;
+}
+
+tr.no_action {
+    color: @c5;
+}
+
+div.indicator_pos{
+    .indicator;
+    background-color: @c_pos;   
+}
+
+div.indicator_current{
+    .indicator;
+    background-color: @c8;
 }
 
 // Main Navigation

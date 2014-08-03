@@ -318,6 +318,10 @@ td.task_confirmation.checked {
 td.task_confirmation.unchecked {
   background-color: #ff0000;
 }
+td.task_confirmation.na {
+  background-color: #cccccc;
+  color: #666666;
+}
 td.task_status,
 td.manifest_status {
   width: 44px;
@@ -357,10 +361,22 @@ td.manifest_delete {
   background-image: url(../../icons/delete30.png);
   background-size: 32px;
 }
-div.indicator_pos {
-  background-color: #71c671;
+.indicator {
   color: #ffffff;
   border-radius: 20px;
+}
+tr.no_action {
+  color: #999999;
+}
+div.indicator_pos {
+  color: #ffffff;
+  border-radius: 20px;
+  background-color: #71c671;
+}
+div.indicator_current {
+  color: #ffffff;
+  border-radius: 20px;
+  background-color: #4d4d4d;
 }
 #main_navigation .left_info {
   margin-left: 5px;

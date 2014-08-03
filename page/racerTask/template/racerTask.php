@@ -64,13 +64,13 @@
             <td class="task_manifest">M3</td>
 				<td class="task_pickup">A</td>
             <td class="task_parcel"><div class="indicator_pos">P1</div></td>
-				<td class="task_drop"><div class="indicator_pos">C</div></td>
+				<td class="task_drop"><div class="indicator_current">C</div></td>
             <td class="task_confirmation drop_parcel checked">DROP</td>
          </tr>
   
          <tr>
             <td class="task_manifest">M1</td>
-            <td class="task_pickup"><div class="indicator_pos">C</div></td>
+            <td class="task_pickup"><div class="indicator_current">C</div></td>
             <td class="task_parcel"><div class="indicator_pos">P1</div></td>
 				<td class="task_drop">B</td>
             <td class="task_confirmation pickup_parcel checked">PICKUP</td>
@@ -80,11 +80,32 @@
             <td class="task_manifest">M2</td>
             <td class="task_pickup">B</td>
             <td class="task_parcel">P1</td>
-				<td class="task_drop">C</td>
+				<td class="task_drop"><div class="indicator_current">C</div></td>
             <td class="task_confirmation drop_parcel unchecked">BLOCKED</td>
          </tr>
-  
-  
-    </div> <!-- bottom_content_wrapper xxx --> 
+      </table>
+    </div> <!-- bottom_content_wrapper xxx -->
+    
+    <div class="bottom_info_wrapper bottom_rider_tasks">
+      <p class="racer_checkpointlist_heading"> Foreign Tasks</p>
 
-    </div> <!-- bottom_info_wrapper xxx --> 
+      <table>
+         <tr>
+            <th class="task_manifest"></th>
+				<th class="task_pickup"></th>
+            <th class="task_parcel"></th>
+  				<th class="task_drop"></th>
+            <th class="task_confirmation"></th>
+         </tr>
+         
+         <tr class="no_action">
+            <td class="task_manifest">M4</td>
+            <td class="task_pickup">B</td>
+            <td class="task_parcel">P1</td>
+				<td class="task_drop">A</td>
+            <td class="task_confirmation drop_parcel na">NO MATCH</td>
+         </tr>
+      </table>
+         
+    </div> <!-- bottom_content_wrapper xxx -->
+   </div> <!-- bottom_info_wrapper xxx --> 
