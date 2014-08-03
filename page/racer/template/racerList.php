@@ -8,9 +8,8 @@
    
     <div class="bottom_info_wrapper">
 
-<?php print( CommonPageFunction::getLink( "racer", "racerEdit", null, "<div class='new_button'><label for="submit" class="submit"><input type="submit" name="submit" value="+ Add Racer" /></label></div>") );?>
 
-
+<?php print( CommonPageFunction::getLink( "racer", "racerEdit", null, "<div class='new_button'>+ Add Racer</div>") );?>
 
 
 <ul>
@@ -43,7 +42,11 @@
       ");
       }
    ?>
-</ul><p><br /></p>
+</ul>
+
+		</div>
+	</div>
+</div>
 
 
 
