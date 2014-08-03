@@ -1,3 +1,16 @@
+<div class="content_tab" id="riderlist">
+  
+  <h1>Racer List</h1>
+    
+  
+  
+    <div class="bottom_content_wrapper">
+   
+    <div class="bottom_info_wrapper">
+
+
+<?php print( CommonPageFunction::getLink( "racer", "racerEdit", null, "<div class='new_button'>+ Add Racer</div>") );?>
+
 
 <ul>
    <?php
@@ -8,18 +21,18 @@
       
       foreach ( $racers as $racer ) {
       print ("
-         <li class='listitem'>
+         <li class='riderlist'>
             " . CommonPageFunction::getLink( "racer", "racerEdit", $racer->racerId, "
             <div class='left_info'>
-               <img src='https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/224772_10150301758538298_5948223_n.jpg?oh=16fa88602ac2da9dc2f927f091637d85&oe=541195B5&__gda__=1412144473_b10848b4a4b08509b69f92f603521d4d' alt='dont mess with rolling ruedy'>
+               <img src='http://ux.crealogix.com/wp-content/uploads/2013/03/portrait_jakob.png' alt='dont mess with jakob the boss'>
             </div> 
             <div class='middle_info'>
-               <span class='rider_name''>" . $racer->name . "</span><br />
-               <span class='rider_city_country'>" . $racer->city . ", " . $racer->country . "</span>
+               <span class='title'>" . $racer->name . "</span><br />
+               <span class='description'>" . $racer->city . ", " . $racer->country . "</span>
             </div> 
             <div class='middle_info'>
-               <span class='rider_name''>" . $racer->email . "</span><br />
-               <span class='rider_city_country'>" . $racer->status . "</span>
+               <span class='title'>" . $racer->email . "</span><br />
+               <span class='description'>" . $racer->status . "</span>
             </div>
             <div class='right_info'>
                <span class='rider_number'>" . $racer->racerNumber . "</span> 
@@ -29,9 +42,13 @@
       ");
       }
    ?>
-</ul><p><br /></p>
+</ul>
 
-<?php print( CommonPageFunction::getLink( "racer", "racerEdit", null, "<div class='new_button'>New Racer</div>") );?>
+		</div>
+	</div>
+</div>
+
+
 
 
 
