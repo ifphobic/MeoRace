@@ -1,16 +1,8 @@
 <div class="content_tab" id="riderlist">
-  
-  <h1>Racer List</h1>
-    
-  
-  
     <div class="bottom_content_wrapper">
-   
-    <div class="bottom_info_wrapper">
+      <div class="bottom_info_wrapper">
 
-
-<?php print( CommonPageFunction::getLink( "racer", "racerEdit", null, "<div class='new_button'>+ Add Racer</div>") );?>
-
+<div class="new_button" onclick=" <?php Page::getOnClickFunction( "racer", "racerEdit", null); ?> ">+ Add Racer</div>
 
 <ul>
    <?php

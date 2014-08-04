@@ -24,27 +24,7 @@
       </div>
    </div><!-- top info wrapper -->
 </div> <!-- top content wrapper -->
-   
-<?php
-   
-   $dbFunction = new RacerTaskDbFunction();
-   $checkpointId = CommonDbFunction::getUser()->checkpointFk; 
-   $actions = $dbFunction->determineActions( $_GET['id'], $checkpointId );
-   $dbFunction->close();
 
-   foreach ( $actions as $action ) {
-      print ( Page::getListItem(
-         (($action->isDropoff) ? "Dropoff: " : "Pickup: " ) . $action->parcel,  
-         Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ),
-         ( $action->isDropoff ) ? $action->pickup . "-> " : "-> " . $action->dropoff, "manned: " . $action->manned . ", " . $action->racerDeliveryId
-       ) );
-
-   }
-
-
-
-?>
- 
 <div class="bottom_content_wrapper">
    
    <div class="bottom_info_wrapper bottom_rider_tasks">
@@ -59,6 +39,36 @@
   				<th class="task_drop"></th>
             <th class="task_confirmation"></th>
          </tr>
+         
+<?php
+   
+   $dbFunction = new RacerTaskDbFunction();
+   $checkpointId = CommonDbFunction::getUser()->checkpointFk; 
+   $actions = $dbFunction->determineActions( $_GET['id'], $checkpointId );
+   $dbFunction->close();
+
+   foreach ( $actions as $action ) {
+      print('<tr>
+            <td class="task_manifest">M3</td>
+				<td class="task_pickup">A</td>
+            <td class="task_parcel"><div class="indicator_pos">' . $action->parcel . '</div></td>
+				<td class="task_drop"><div class="indicator_current">C</div></td>
+            <td class="task_confirmation drop_parcel checked">' . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . '</td>
+         </tr>');
+      
+      print ( Page::getListItem(
+         (($action->isDropoff) ? "Dropoff: " : "Pickup: " ) . $action->parcel,  
+         Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ),
+         ( $action->isDropoff ) ? $action->pickup . "-> " : "-> " . $action->dropoff, "manned: " . $action->manned . ", " . $action->racerDeliveryId
+       ) );
+
+   }
+
+
+
+?>
+ 
+
 
          <tr>
             <td class="task_manifest">M3</td>
@@ -87,25 +97,9 @@
     </div> <!-- bottom_content_wrapper xxx -->
     
     <div class="bottom_info_wrapper bottom_rider_tasks">
-      <p class="racer_checkpointlist_heading"> Foreign Tasks</p>
+      <p class="racer_checkpointlist_heading">Open Manifests</p>
 
-      <table>
-         <tr>
-            <th class="task_manifest"></th>
-				<th class="task_pickup"></th>
-            <th class="task_parcel"></th>
-  				<th class="task_drop"></th>
-            <th class="task_confirmation"></th>
-         </tr>
-         
-         <tr class="no_action">
-            <td class="task_manifest">M4</td>
-            <td class="task_pickup">B</td>
-            <td class="task_parcel">P1</td>
-				<td class="task_drop">A</td>
-            <td class="task_confirmation drop_parcel na">NO MATCH</td>
-         </tr>
-      </table>
+      
          
     </div> <!-- bottom_content_wrapper xxx -->
    </div> <!-- bottom_info_wrapper xxx --> 
