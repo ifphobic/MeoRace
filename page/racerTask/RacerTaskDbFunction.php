@@ -23,7 +23,7 @@
          
       public function findRacerDeliveryById( $racerDeliveryId ) {
          
-         $query  = "select rd.racerDeliveryId, rd.racerTaskFk, p.name as parcel from RacerDelivery rd ";
+         $query  = "select rd.racerDeliveryId, rd.racerTaskFk, p.name as parcel, p.description as description from RacerDelivery rd ";
          $query .= "join Delivery d on rd.deliveryFk = d.deliveryId ";
          $query .= "join Parcel p on d.parcelFk = p.parcelId ";
          $query .= "where racerDeliveryId = ?";
@@ -66,9 +66,10 @@
       public function determineActions( $racerId, $checkpointId ) {
          
          $query  = "select rd.racerDeliveryId, pickupC.name as pickup, dropoffC.name as dropoff, p.name as parcel, ";
-         $query .= "      (rd.pickupTime is not null or !pickupC.manned ) as isDropoff, pickupC.manned ";
+         $query .= "      (rd.pickupTime is not null or !pickupC.manned ) as isDropoff, pickupC.manned, t.name as task ";
          $query .= "   from RacerDelivery rd ";
          $query .= "   join RacerTask rt on rd.racerTaskFk = rt.racerTaskId ";
+         $query .= "   join Task t on rt.taskFK = t.taskId ";
          $query .= "   join Delivery d on rd.deliveryFk = d.deliveryId ";
          $query .= "   join Checkpoint pickupC on d.pickupFk = pickupC.checkpointId ";
          $query .= "   join Checkpoint dropoffC on d.dropoffFk = dropoffC.checkpointId ";

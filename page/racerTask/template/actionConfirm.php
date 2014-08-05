@@ -37,7 +37,7 @@
       print( "Pickup" );
    }
    print("</p>
-         <p class='description'>" . $racerDelivery->parcel . " Parcel-Description</p>
+         <p class='description'>" . $racerDelivery->description . "</p>
    ");
 ?>
       </div>

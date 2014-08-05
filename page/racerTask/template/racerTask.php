@@ -48,58 +48,21 @@
    $dbFunction->close();
 
    foreach ( $actions as $action ) {
-      print('<tr>
-            <td class="task_manifest">M3</td>
-				<td class="task_pickup">A</td>
+      print('<tr onclick="' . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ) . '">
+            <td class="task_manifest">' . $action->task . '</td>
+				<td class="task_pickup">' . (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . '</div> ></td>
             <td class="task_parcel"><div class="indicator_pos">' . $action->parcel . '</div></td>
-				<td class="task_drop"><div class="indicator_current">C</div></td>
-            <td class="task_confirmation drop_parcel checked">' . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . '</td>
+				<td class="task_drop">> ' . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . '</div></td>
+            <td class="">' . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . '</td>
          </tr>');
-      
-      print ( Page::getListItem(
-         (($action->isDropoff) ? "Dropoff: " : "Pickup: " ) . $action->parcel,  
-         Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ),
-         ( $action->isDropoff ) ? $action->pickup . "-> " : "-> " . $action->dropoff, "manned: " . $action->manned . ", " . $action->racerDeliveryId
-       ) );
-
    }
-
-
-
 ?>
- 
 
-
-         <tr>
-            <td class="task_manifest">M3</td>
-				<td class="task_pickup">A</td>
-            <td class="task_parcel"><div class="indicator_pos">P1</div></td>
-				<td class="task_drop"><div class="indicator_current">C</div></td>
-            <td class="task_confirmation drop_parcel checked">DROP</td>
-         </tr>
-  
-         <tr>
-            <td class="task_manifest">M1</td>
-            <td class="task_pickup"><div class="indicator_current">C</div></td>
-            <td class="task_parcel"><div class="indicator_pos">P1</div></td>
-				<td class="task_drop">B</td>
-            <td class="task_confirmation pickup_parcel checked">PICKUP</td>
-         </tr>
-
-         <tr>
-            <td class="task_manifest">M2</td>
-            <td class="task_pickup">B</td>
-            <td class="task_parcel">P1</td>
-				<td class="task_drop"><div class="indicator_current">C</div></td>
-            <td class="task_confirmation drop_parcel unchecked">BLOCKED</td>
-         </tr>
       </table>
     </div> <!-- bottom_content_wrapper xxx -->
     
     <div class="bottom_info_wrapper bottom_rider_tasks">
       <p class="racer_checkpointlist_heading">Open Manifests</p>
-
-      
-         
+         <!-- @philip: put a list with all open manifest (even from other checkpoints) in here -->
     </div> <!-- bottom_content_wrapper xxx -->
    </div> <!-- bottom_info_wrapper xxx --> 
