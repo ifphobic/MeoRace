@@ -13,7 +13,8 @@
       <title>MeoRace</title>
       <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
       <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-      <link href="design.css" rel="stylesheet">
+      <link href="core/html/design.css" rel="stylesheet">
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
       <script language = 'JavaScript'>
 
          var numberOfTabs = 4;
@@ -263,7 +264,7 @@
    <body onload="onload()">
       <div class="header">
          <div class="but_back" onclick="back()"><</div>
-         <div class="but_menu"><p><a href="login.php">log<br />out</a></p></div>
+         <div class="but_menu"><p><a class="ohne" style="color: #ccc;" href="login.php">log<br />out</a></p></div>
          <div class="title">
             <h1>Current Module Title</h1>
             <h1 class=sub>

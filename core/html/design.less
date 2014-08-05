@@ -59,13 +59,19 @@ table {
 @c9: @c8 - @degrade;
 @c10: #000000;
 
+@main_bgcolor:  lighten(@c2, 6%);
+
+@c_pos: #71C671;
+@c_neg: red;
+@c_neutral: yellow;
+
 @g1: #f7f7f7;
 
-@font: 12pt 'Open Sans', sans-serif, Helvetica, ;
+@font: 12pt 'Open Sans', Helvetica, sans-serif, ;
 
 @border: 1px solid @c5;
 
-@line-height: 44px;
+@line-height: 49px;
 @tile-height: 149px;
 @letter-spacing: 1px;
 
@@ -74,7 +80,6 @@ table {
 // Fonts
 h1 {
     color: @c1;
-    font-size: 14px;
     text-align: center;
     padding: 0px 15px;
     background-color: @c9;
@@ -88,15 +93,16 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
 
 html, body{
     height: 100%;
-    background-color: lighten(@c2, 6%);
+    background-color: @main_bgcolor;
     font-style: @font;
 }
 
 li {
-    height: 44px;
+    height: @line-height;
     width: 100%;
     border-bottom: 1px solid @c2;
     clear: both;
+    position: relative;
 }
 
 .top_content_wrapper{
@@ -116,7 +122,7 @@ li {
 }
 
 .top_info_wrapper {
-    height: 44px;
+    height: @line-height;
     margin: 0 15px;
     position: relative;
     top: 9.5px;
@@ -129,48 +135,53 @@ li {
 
 //top_info structure
 
-.left_info, .right_info {
-    height: 44px;
-    width: 44px;
+.left_info, .right_info, {
+    height: @line-height;
+    width: @line-height;
 }
 
 .left_info{
-    float: left;
+    position: absolute;
     overflow: hidden;
     border-radius: 50px;
 }
     
 .left_info > img {
-    height: 44px;
+    height: @line-height;
     }   
     
 
 .middle_info {
-    height: 44px;
-    float: left;
+    height: @line-height;
+    margin: 0px 84px 0 @line-height;
     padding: 0 15px;
     text-align: left;
 }
 
 .right_info {
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 5px;
 }
 
 .middle_info p.title {
   padding-bottom: 2px;
-  font-size: 16px;
+  font-size: 1.2em;
   color: @c9;
   letter-spacing: @letter-spacing;
-  font-weight: bold;
+}
+
+.middle_info p.description{
+    font-size: 1em;
+    color: @c4;
 }
 
 .middle_info .rider_city_country {
-  color: @c7;
-  font-size: 14px;
+  color: @c4;
+  font-size: 1em;
 }
 
 .middle_info .title, .middle_info .description{
- width: 200px;
  overflow: hidden;
  white-space:nowrap;
  text-overflow: ellipsis;
@@ -178,8 +189,9 @@ li {
 
 
 .right_info .rider_number {
-  font-size: 36px;
-  color: @c5;
+  font-size: 3em;
+  font-weight: lighter;
+  color: @c4;
   float: right;
   display: block;
   letter-spacing: @letter-spacing;
@@ -194,8 +206,14 @@ table {
     border-spacing: 0px 10px;
 }
 
+#manifest_detail table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
 th {
-    height: 44px;
+    height: @line-height;
 }
 
 th, tr {
@@ -232,23 +250,22 @@ background-size: 30px;
 background-image: url(../../icons/download87.png);
 background-size: 29px;
 }
-&.task_restrictions{
-background-image: url(../../icons/one8.png);
-background-size: 30px;
-min-width: 40px;
+&.task_status.task_completed{
+background-color: @c_pos;
 }
+
+&.task_status.task_possible{
+background-color: @c_neutral;
+}
+
+&.task_status.task_notpossible{
+background-color: @c_neg;
+}
+
 &.task_number{
 background-image: url(../../icons/icomoon1.png);
 background-size: 25px;
 min-width: 25px;
-}
-&.task_pickup_time{
-background-image: url(../../icons/hourglass1.png);
-background-size: 22px;
-}
-&.task_drop_time{
-background-image: url(../../icons/sand1.png);
-background-size: 22px;
 }
 &.manifest_points{
    background-image: url(../../icons/coins16.png); 
@@ -259,17 +276,17 @@ background-size: 22px;
    background-size: 20px;
 }
 &.manifest_edit {
-   width: 44px;
+   width: @line-height;
 }
 &.manifest_configure {
-   width: 44px;
+   width: @line-height;
 }
 &.manifest_delete {
-   width: 44px;
+   width: @line-height;
 }
 }
 
-td{
+td{   
 &.task_confirmation{
 background-image: url(../../icons/up64.png);
 background-size: 26px;
@@ -277,19 +294,23 @@ color: @c1;
 font-weight: bold;
 width: 88px;
 &.checked{
-background-color: #71C671;
+background-color: @c_pos;
 }
 &.unchecked{
-background-color: red;
+background-color: @c_neg;
+}
+&.na{
+    background-color: @c3;
+    color: @c7;
 }
 }
 &.task_status, &.manifest_status{
-    width: 44px;
+    width: @line-height;
 }
 &.task_status.task_completed{
    background-image: url(../../icons/check26.png);
    background-size: 24px;
-   background-color: #71C671;
+   background-color: @c_pos;
 }
 &.task_status.task_assigned, &.manifest_status.manifest_assigned {
    background-image: url(../../icons/attach1.png);
@@ -306,7 +327,7 @@ background-color: red;
 &.task_status.task_completed, &.manifest_status.manifest_completed{
    background-image: url(../../icons/check26.png);
    background-size: 24px;
-   background-color: #71C671;
+   background-color: @c_pos;
 }
 &.manifest_edit {
    background-image: url(../../icons/pencil44.png);
@@ -322,6 +343,25 @@ background-color: red;
    background-image: url(../../icons/delete30.png);
    background-size: 32px;
 }
+}
+
+.indicator {
+    color: @c1;
+    border-radius: 20px;
+}
+
+tr.no_action {
+    color: @c5;
+}
+
+div.indicator_pos{
+    .indicator;
+    background-color: @c_pos;   
+}
+
+div.indicator_current{
+    .indicator;
+    background-color: @c8;
 }
 
 // Main Navigation
@@ -399,8 +439,8 @@ button:focus {
     outline: none;
 }
 
-input[type="submit"] {
-  color: @c1;
+input[type="submit"], .new_button {
+   color: @c1;
    margin: 15px 0 15px 0;
    border-radius: 5px;
    border: none;
@@ -414,7 +454,7 @@ input[type="search"] {
    border-radius: 5px;
    padding: 15px 3px;
    line-height: normal;
-   height: 44px;
+   height: @line-height;
 }
 
 .select_status, .select_racernumber, .select_manifestnumber{
@@ -484,6 +524,8 @@ background-color: lighten(@c2, 6%);
     margin-right: 5px;
 }
 
+
+
 // Tasklist
 
 #tasklist{
@@ -510,17 +552,20 @@ border-bottom: 2px solid #ccc;
 padding: 5px 0;
 }
 
-// Task Detail
+// Manifest Detail
 
 #manifest_detail, #manifest_edit {
+.top_content_wrapper{
+margin-bottom: 30px;
+}
 .manifest_number{
 color: @c1;
 font-size: 24px;
 font-weight: bold;
 background-color: @c10;
 display: block;
-width: 44px;
-height: 44px;
+width: @line-height;
+height: @line-height;
 padding-top: 4px;
 }
 .manifest_name{
@@ -534,7 +579,6 @@ background-image: url(../../icons/coins16.png);
 background-size: 16px;
 background-repeat: no-repeat;
 padding-left: 25px;
-
 }
 .manifest_maxduration{
 background-image: url(../../icons/time21.png);
@@ -543,7 +587,46 @@ background-repeat: no-repeat;
 padding-left: 25px;
 }
 }
+ul{
+    margin: 10px 0 40px 0;
+li{
+padding: 5px 0;
+border-bottom: none;
+background-color: @c1;
+.right_info{
+    background-color: @c_pos;
+    margin-right: 5px;
+p{
+        color: @c1;
+        display: inline-block;
+        position: absolute;
+        top: 13px;
+        left: 15px;
+    }
 }
+}
+}
+}
+
+p.racer_checkpointlist_heading.manifest_detail_heading{
+margin-bottom: 10px;
+}
+
+p.task_restrictions{
+color: red;
+background-color: @main_bgcolor;
+margin: 20px 0 5px 0;
+}
+
+.task_wrapper_notpossible tr, .task_wrapper_notpossible th{
+    background-color: lighten(@c2, 4%);
+    color: @c4
+}
+
+.task_wrapper_possible tr, .task_wrapper_possible th{
+    color: @c4
+}
+    
 
 
 /* End of gianfett CSS */
@@ -564,7 +647,7 @@ a.ohne {color: @c8; text-decoration: none;}
 height:@line-height; background: @c9; 
 border-bottom: @border; text-align:center;}
 
-div.title {padding: 10px 25px;}
+div.title {padding: 5px 25px;}
 div.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
 div.but_menu {.menubuttons; float:right; font-size: 1em;}
 .headertitle {display:inline;}
@@ -572,7 +655,7 @@ div.but_menu {.menubuttons; float:right; font-size: 1em;}
 @colw: 100%;
 .content {position:absolute; min-width: 260px; width: @colw; height: 100%;
     border-left: @border; border-right: @border; overflow-y: auto;
-    transition: width 200ms ease, left 200ms ease;} 
+    transition: width 1200ms ease, left 1200ms ease;} 
 
 div.content0 {.content; left: 0%;}
 div.content1 {.content; left: 25%;}
@@ -600,6 +683,7 @@ border-bottom: @border; text-align:center;}
 .li_firstline {}
 .li_secondline {color: @c5;}
 .listitem:hover {background: @c1;}
+li:hover {background: @c1;}
 
 .racerdetail {height: @tile-height; border-bottom: @border; }
 .racerpic {height: 120px; width: 120px; margin: 15px; float: left; overflow: hidden; border-radius: 60px;}

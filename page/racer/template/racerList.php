@@ -1,3 +1,8 @@
+<div class="content_tab" id="riderlist">
+    <div class="bottom_content_wrapper">
+      <div class="bottom_info_wrapper">
+
+<div class="new_button" onclick=" <?php Page::getOnClickFunction( "racer", "racerEdit", null); ?> ">+ Add Racer</div>
 
 <ul>
    <?php
@@ -8,18 +13,18 @@
       
       foreach ( $racers as $racer ) {
       print ("
-         <li class='listitem'>
+         <li class='riderlist'>
             " . CommonPageFunction::getLink( "racer", "racerEdit", $racer->racerId, "
             <div class='left_info'>
-               <img src='https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/224772_10150301758538298_5948223_n.jpg?oh=16fa88602ac2da9dc2f927f091637d85&oe=541195B5&__gda__=1412144473_b10848b4a4b08509b69f92f603521d4d' alt='dont mess with rolling ruedy'>
+               <img src='http://static.wixstatic.com/media/87f473_013e75dfc64446ea98841a8f4c96056a.jpg_srz_321_273_75_22_0.50_1.20_0.00_jpg_srz' alt='strom praesi'>
             </div> 
             <div class='middle_info'>
-               <span class='rider_name''>" . $racer->name . "</span><br />
-               <span class='rider_city_country'>" . $racer->city . ", " . $racer->country . "</span>
+               <span class='title'>" . $racer->name . "</span><br />
+               <span class='description'>" . $racer->city . ", " . $racer->country . "</span>
             </div> 
             <div class='middle_info'>
-               <span class='rider_name''>" . $racer->email . "</span><br />
-               <span class='rider_city_country'>" . $racer->status . "</span>
+               <span class='title'>" . $racer->email . "</span><br />
+               <span class='description'>" . $racer->status . "</span>
             </div>
             <div class='right_info'>
                <span class='rider_number'>" . $racer->racerNumber . "</span> 
@@ -29,9 +34,13 @@
       ");
       }
    ?>
-</ul><p><br /></p>
+</ul>
 
-<?php print( CommonPageFunction::getLink( "racer", "racerEdit", null, "<div class='new_button'>New Racer</div>") );?>
+		</div>
+	</div>
+</div>
+
+
 
 
 
