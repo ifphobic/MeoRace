@@ -59,8 +59,11 @@ table {
 @c9: @c8 - @degrade;
 @c10: #000000;
 
+@main_bgcolor:  lighten(@c2, 6%);
+
 @c_pos: #71C671;
 @c_neg: red;
+@c_neutral: yellow;
 
 @g1: #f7f7f7;
 
@@ -90,12 +93,12 @@ h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
 
 html, body{
     height: 100%;
-    background-color: lighten(@c2, 6%);
+    background-color: @main_bgcolor;
     font-style: @font;
 }
 
 li {
-    height: 44px;
+    height: @line-height;
     width: 100%;
     border-bottom: 1px solid @c2;
     clear: both;
@@ -119,7 +122,7 @@ li {
 }
 
 .top_info_wrapper {
-    height: 44px;
+    height: @line-height;
     margin: 0 15px;
     position: relative;
     top: 9.5px;
@@ -133,8 +136,8 @@ li {
 //top_info structure
 
 .left_info, .right_info, {
-    height: 44px;
-    width: 44px;
+    height: @line-height;
+    width: @line-height;
 }
 
 .left_info{
@@ -144,13 +147,13 @@ li {
 }
     
 .left_info > img {
-    height: 44px;
+    height: @line-height;
     }   
     
 
 .middle_info {
-    height: 44px;
-    margin: 0px 84px 0 44px;
+    height: @line-height;
+    margin: 0px 84px 0 @line-height;
     padding: 0 15px;
     text-align: left;
 }
@@ -203,8 +206,14 @@ table {
     border-spacing: 0px 10px;
 }
 
+#manifest_detail table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
 th {
-    height: 44px;
+    height: @line-height;
 }
 
 th, tr {
@@ -241,23 +250,22 @@ background-size: 30px;
 background-image: url(../../icons/download87.png);
 background-size: 29px;
 }
-&.task_restrictions{
-background-image: url(../../icons/one8.png);
-background-size: 30px;
-min-width: 40px;
+&.task_status.task_completed{
+background-color: @c_pos;
 }
+
+&.task_status.task_possible{
+background-color: @c_neutral;
+}
+
+&.task_status.task_notpossible{
+background-color: @c_neg;
+}
+
 &.task_number{
 background-image: url(../../icons/icomoon1.png);
 background-size: 25px;
 min-width: 25px;
-}
-&.task_pickup_time{
-background-image: url(../../icons/hourglass1.png);
-background-size: 22px;
-}
-&.task_drop_time{
-background-image: url(../../icons/sand1.png);
-background-size: 22px;
 }
 &.manifest_points{
    background-image: url(../../icons/coins16.png); 
@@ -268,17 +276,17 @@ background-size: 22px;
    background-size: 20px;
 }
 &.manifest_edit {
-   width: 44px;
+   width: @line-height;
 }
 &.manifest_configure {
-   width: 44px;
+   width: @line-height;
 }
 &.manifest_delete {
-   width: 44px;
+   width: @line-height;
 }
 }
 
-td{
+td{   
 &.task_confirmation{
 background-image: url(../../icons/up64.png);
 background-size: 26px;
@@ -297,7 +305,7 @@ background-color: @c_neg;
 }
 }
 &.task_status, &.manifest_status{
-    width: 44px;
+    width: @line-height;
 }
 &.task_status.task_completed{
    background-image: url(../../icons/check26.png);
@@ -446,7 +454,7 @@ input[type="search"] {
    border-radius: 5px;
    padding: 15px 3px;
    line-height: normal;
-   height: 44px;
+   height: @line-height;
 }
 
 .select_status, .select_racernumber, .select_manifestnumber{
@@ -516,6 +524,8 @@ background-color: lighten(@c2, 6%);
     margin-right: 5px;
 }
 
+
+
 // Tasklist
 
 #tasklist{
@@ -542,17 +552,20 @@ border-bottom: 2px solid #ccc;
 padding: 5px 0;
 }
 
-// Task Detail
+// Manifest Detail
 
 #manifest_detail, #manifest_edit {
+.top_content_wrapper{
+margin-bottom: 30px;
+}
 .manifest_number{
 color: @c1;
 font-size: 24px;
 font-weight: bold;
 background-color: @c10;
 display: block;
-width: 44px;
-height: 44px;
+width: @line-height;
+height: @line-height;
 padding-top: 4px;
 }
 .manifest_name{
@@ -566,7 +579,6 @@ background-image: url(../../icons/coins16.png);
 background-size: 16px;
 background-repeat: no-repeat;
 padding-left: 25px;
-
 }
 .manifest_maxduration{
 background-image: url(../../icons/time21.png);
@@ -575,7 +587,46 @@ background-repeat: no-repeat;
 padding-left: 25px;
 }
 }
+ul{
+    margin: 10px 0 40px 0;
+li{
+padding: 5px 0;
+border-bottom: none;
+background-color: @c1;
+.right_info{
+    background-color: @c_pos;
+    margin-right: 5px;
+p{
+        color: @c1;
+        display: inline-block;
+        position: absolute;
+        top: 13px;
+        left: 15px;
+    }
 }
+}
+}
+}
+
+p.racer_checkpointlist_heading.manifest_detail_heading{
+margin-bottom: 10px;
+}
+
+p.task_restrictions{
+color: red;
+background-color: @main_bgcolor;
+margin: 20px 0 5px 0;
+}
+
+.task_wrapper_notpossible tr, .task_wrapper_notpossible th{
+    background-color: lighten(@c2, 4%);
+    color: @c4
+}
+
+.task_wrapper_possible tr, .task_wrapper_possible th{
+    color: @c4
+}
+    
 
 
 /* End of gianfett CSS */
