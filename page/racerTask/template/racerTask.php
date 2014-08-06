@@ -1,6 +1,6 @@
 <?php
    $racer = null;
-   $dbFunction = new RacerTaskDbFunction();
+   $dbFunction = new RacerDbFunction();
    if ( isset( $_GET['id'] ) ) {
       $racer = $dbFunction->findById( $_GET['id'] );
       $raceId = $racer->raceFk;
