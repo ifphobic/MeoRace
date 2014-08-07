@@ -36,7 +36,6 @@
       }
 
       public function update( $racer) {
-         $query = "update Racer set racerNumber = ?, name = ?, city = ?, country = ?, email = ?, status = ? where racerId = ?";
          $parameter = array( 
             new Parameter( PDO::PARAM_INT, $racer['racerNumber'] ), 
             new Parameter( PDO::PARAM_STR, $racer['name'] ), 
@@ -44,8 +43,14 @@
             new Parameter( PDO::PARAM_STR, $racer['country'] ), 
             new Parameter( PDO::PARAM_STR, $racer['email'] ), 
             new Parameter( PDO::PARAM_STR, $racer['status'] ), 
-            new Parameter( PDO::PARAM_STR, $racer['racerId'] ), 
          );
+         $image = "";
+         if ( isset( $racer['image'] ) ) {
+            $image = " , image = ? ";
+            $parameter[] = new Parameter( PDO::PARAM_STR, $racer['image'] );
+         }
+         $parameter[] = new Parameter( PDO::PARAM_STR, $racer['racerId'] );
+         $query = "update Racer set racerNumber = ?, name = ?, city = ?, country = ?, email = ?, status = ? $image where racerId = ?";
          $this->query($query, $parameter);
       }
 

@@ -22,10 +22,9 @@
       <div class="top_info_wrapper">
          <div class="left_info">
             <div>
-               <input type="file" name="photo" accept="image/*" capture="camera"></input> 
+               <input type="file" name="image" accept="image/*" capture="camera"></input> 
                <div class="photo_upload" />
-                  <img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/224772_10150301758538298_5948223_n.jpg?oh=16fa88602ac2da9dc2f927f091637d85&oe=541195B5&__gda__=1412144473_b10848b4a4b08509b69f92f603521d4d" 
-                     alt="dont mess with rolling ruedy"></div> 
+                  <img src="<?php Page::printImagePath( $racer ) ?>"></div> 
                </div>
             </div>
             <div class="middle_info">

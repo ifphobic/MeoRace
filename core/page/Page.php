@@ -57,6 +57,17 @@
          print( $result );
       }
 
+      public static function printImagePath( $object ) {
+
+         if ($object == null || empty( $object->image ) ) {
+            return;
+         }  
+
+         print( Configuration::IMAGE_UPLOAD_FOLDER. $object->image );
+
+      }
+
+
       public static function getOnClickFunction( $moduleName, $pageName = null, $id = null, $parameters = null, $tabOffset = 1 ) {
          
          $parameter = "module=" . $moduleName;
