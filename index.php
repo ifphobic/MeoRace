@@ -234,6 +234,13 @@
                 return xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
          }
+         
+         // -------- no browser back ---------
+         
+         history.pushState({ page: 1 }, "MeoRace", "#nbb");
+         window.onhashchange = function (event) {
+             window.location.hash = "nbb";
+         };
 
 
          // -------- util ---------
