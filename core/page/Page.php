@@ -60,6 +60,7 @@
       public static function printImagePath( $object ) {
 
          if ($object == null || empty( $object->image ) ) {
+            print( Configuration::IMAGE_UPLOAD_FOLDER. "none.jpg" ); 
             return;
          }  
 
