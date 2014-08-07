@@ -57,14 +57,13 @@
          print( $result );
       }
 
-      public static function printImagePath( $object ) {
+      public static function getImagePath( $object ) {
 
          if ($object == null || empty( $object->image ) ) {
-            print( Configuration::IMAGE_UPLOAD_FOLDER. "none.jpg" ); 
-            return;
+            return Configuration::IMAGE_UPLOAD_FOLDER. "none.jpg"; 
          }  
 
-         print( Configuration::IMAGE_UPLOAD_FOLDER. $object->image );
+         return Configuration::IMAGE_UPLOAD_FOLDER. $object->image;
 
       }
 

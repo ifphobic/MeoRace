@@ -24,7 +24,7 @@
             <div>
                <input type="file" name="image" accept="image/*" capture="camera"></input> 
                <div class="photo_upload" />
-                  <img src="<?php Page::printImagePath( $racer ) ?>"></div> 
+                  <img src="<?php print( Page::getImagePath( $racer )) ?>" height="99"></div> 
                </div>
             </div>
             <div class="middle_info">
