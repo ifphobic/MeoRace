@@ -1,4 +1,4 @@
-<div class="content_tab" id="racerlist_racer">
+<div class="content_tab" id="racerlist_ranking">
 
 <ul>
 <?php

@@ -1,5 +1,7 @@
 <div class="content_tab" id="racerlist_racer">
 
+<div class="new_button" onclick='<?php print(Page::getOnClickFunction( "racer", "racerEdit", null)); ?>'>+ Add Racer</div>
+
 <ul>
 <?php
    
@@ -10,7 +12,7 @@
    print("<div class='bottom_content_wrapper'><ul>");
    foreach ( $racers as $racer ) {
       print("
-         <li onclick='" . Page::getOnClickFunction( "racerTask", "racerTask", $racer->racerId ) . "'>
+         <li onclick='" . Page::getOnClickFunction( "racer", "racerEdit", $racer->racerId ) . "'>
             <div class='left_info'>
                <img src='" . Page::getImagePath( $racer ) . "' alt='strom praesi'>
             </div> 
