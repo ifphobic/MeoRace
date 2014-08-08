@@ -1,41 +1,34 @@
 <div class="content_tab" id="racerlist_racer">
-    <div class="bottom_content_wrapper">
-
-<div class="new_button" onclick='<?php print(Page::getOnClickFunction( "racer", "racerEdit", null)); ?>'>+ Add Racer</div>
 
 <ul>
-   <?php
+<?php
    
-      $dbFunction = new RacerDbFunction();
-      $racers = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
-      $dbFunction->close();
-      
-      foreach ( $racers as $racer ) {
-      print ("
-           <li onclick='" . Page::getOnClickFunction( "racerTask", "racerTask", $racer->racerId ) . "'>
+   $dbFunction = new RacerDbFunction();
+   $racers = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
+   $dbFunction->close();
+
+   print("<div class='bottom_content_wrapper'><ul>");
+   foreach ( $racers as $racer ) {
+      print("
+         <li onclick='" . Page::getOnClickFunction( "racerTask", "racerTask", $racer->racerId ) . "'>
             <div class='left_info'>
-               <img src='" . Page::getImagePath( $racer ) . "'>
+               <img src='" . Page::getImagePath( $racer ) . "' alt='strom praesi'>
             </div> 
             <div class='middle_info'>
-               <span class='title'>" . $racer->name . "</span><br />
-               <span class='description'>" . $racer->city . ", " . $racer->country . "</span>
-            </div> 
-
-            <div class='right_info'>
-               <span class='rider_number'>" . $racer->racerNumber . "</span> 
+               <p class='title'>" . $racer->name . "</p>
+               <p class='description'>"  . $racer->city . ", " . $racer->country . "</p>
             </div>
-            ") . "
+            <div class='right_info'>
+               <p class='rider_number'>" . $racer->racerNumber . "</p>
+            </div>
          </li>
       ");
-      }
-   ?>
-</ul>
+   }
+   print("</ul></div>");
 
-	
-	</div>
+?>
+
 </div>
-
-
 
 
 
