@@ -53,7 +53,6 @@
    $dbFunction->close();
 
    foreach ( $actions as $action ) {
-<<<<<<< HEAD
       print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ) . "'>
             <td class='task_manifest'>" . $action->task . "</td>
 				<td class='task_pickup'>" . (($action->isDropoff) ? '<div>' : '<div class="indicator_current">' ) . $action->pickup . "</div> ></td>
@@ -61,7 +60,6 @@
 				<td class='task_drop'>> " . (($action->isDropoff) ? '<div class="indicator_current">' : '<div>' ) . $action->dropoff . "</div></td>
             <td class=''>" . (($action->isDropoff) ? 'Dropoff' : 'Pickup' ) . "</td>
          </tr>");
-=======
       print('<tr onclick="' . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ) . '">
             <td class="task_number">' . $action->task . '</td>
 	    <td class="checkpoint_name_first">' . (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . '</div></td>
@@ -71,108 +69,10 @@
 	    <td class="checkpoint_name_second"> ' . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . '</div></td>
             <td class="drilldown">' . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . '</td>
          </tr>');
->>>>>>> FETCH_HEAD
    }
 ?>
     </table>
     </div> <!-- bottom_content_wrapper xxx -->
-<<<<<<< HEAD
    </div> <!-- bottom_info_wrapper xxx --> 
-=======
-    
-    
-        <!-- @philip: put a list with all open manifest (even from other checkpoints) in here -->
-    
-      <p class="racer_checkpointlist_heading">Open Manifests</p>
-       <ul>
-    <li>
-
-  <div class="left_info">
-      <p class="manifest_number">12</p>
-      </div> 
-       
-      <div class="middle_info">
-      <p class="title">Tolles Manifest</p>
-	  <p class="description">Rock'n'Roll</p>
-	 
-      </div>
-      
-      <div class="right_info">
-      <p class="manifest_points">100</p>
-      <p class="manifest_maxduration">00:02:10</p>
-      </div>
-      
-    </li>
-      </ul>
- 
- <ul>
-    <li>
-
-  <div class="left_info">
-      <p class="manifest_number">14</p>
-      </div> 
-       
-      <div class="middle_info">
-      <p class="title">Tolles Manifest</p>
-	  <p class="description">Rock'n'Roll</p>
-	 
-      </div>
-      
-      <div class="right_info">
-      <p class="manifest_points">100</p>
-      <p class="manifest_maxduration">00:02:10</p>
-      </div>
-    </li>
-      </ul>
- 
- 
- 
- <ul>
-    <li>
-
-  <div class="left_info">
-      <p class="manifest_number">19</p>
-      </div> 
-       
-      <div class="middle_info">
-      <p class="title">Tolles Manifest</p>
-	  <p class="description">Rock'n'Roll</p>
-	 
-      </div>
-      
-      <div class="right_info">
-      <p class="manifest_points">100</p>
-      <p class="manifest_maxduration">00:02:10</p>
-      </div>
-    </li>
-      </ul>
- 
- 
- 
- 
- <ul>
-    <li>
-
-  <div class="left_info">
-      <p class="manifest_number">01</p>
-      </div> 
-       
-      <div class="middle_info">
-      <p class="title">Tolles Manifest</p>
-	  <p class="description">Rock'n'Roll</p>
-	 
-      </div>
-      
-      <div class="right_info">
-      <p class="manifest_points">100</p>
-      <p class="manifest_maxduration">00:02:10</p>
-      </div>
-    </li>
-      </ul>
-      
-      
-     
-    </div> <!-- bottom_content_wrapper xxx -->
-    
 </div>
->>>>>>> FETCH_HEAD
+
