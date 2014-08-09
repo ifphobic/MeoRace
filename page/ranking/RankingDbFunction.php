@@ -1,6 +1,6 @@
 <?php
 
-   class RankingDbFunction extends AbstractDbFunction implements ListDbFunction {
+   class RankingDbFunction extends AbstractDbFunction {
 
       public function RankingDbFunction() {
          $this->AbstractDbFunction();
