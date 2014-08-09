@@ -1,3 +1,6 @@
+<div class="content_tab" id="actionconfirm_racertask">
+
+
 <div class="top_content_wrapper""> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
    <div class="top_info_wrapper"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
       <div class="left_info">
@@ -42,7 +45,7 @@
 ?>
       </div>
       <div class='right_info'>
-         <div class='new_button'>Confirm</div>
+         <p class="confirm"></p>
       </div>
    </div><!-- top info wrapper -->
     </div>
@@ -51,77 +54,94 @@
       <p class="racer_checkpointlist_heading">Full Manifest</p>
 
      <table>
-         <tr>
-           <th class="task_restrictions"></th>
-           <th class="task_number"></th>
-           <th class="task_pickup"></th>
-           <th class="task_parcel"></th>
-           <th class="task_drop"></th>
-           <th class="task_status"></th>
-         </tr>
-         <tr class="no_action">
-           <td class="task_restrictions"></td>
-           <td class="task_number">1</td>
-           <td class="task_pickup">
-            <p class="title">C1</p>
-            <p class="description">14:48</p>
-           </td>
-           <td class="task_parcel">P2</td>
-           <td class="task_drop">
-            <p class="title">C3</p>
-            <p class="description">14:52</p>
-           </td>
-           <td class="task_status task_completed"></td>
-         </tr>
-         
-         <tr class="no_action">
-           <td class="task_restrictions"></td>
-           <td class="task_number">3</td>
-           <td class="task_pickup">
-            <p class="title">C2</p>
-            <p class="description">14:54</p>
-           </td>
-           <td class="task_parcel">P1</td>
-           <td class="task_drop">
-            <p class="title">C3</p>
-            <p class="description">14:55</p>
-           </td>
-           <td class="task_status task_completed"></td>
-         </tr>
-         
-         <tr class="no_action">
-           <td class="task_restrictions">1,2</td>
-           <td class="task_number">3</td>
-           <td class="task_pickup">
-            <p class="title">C3</p>
-            <p class="description">14:57</p>
-           </td>
-           <td class="task_parcel"><div class="indicator_pos">P1</div></td>
-           <td class="task_drop">
-            <p class="title">C1</p>
-            <p class="description">--:--</p>
-           </td>
-           <td class="task_status task_pickedup"></td>
-         </tr>
-         
-         <tr class="no_action">
-           <td class="task_restrictions">1,2</td>
-           <td class="task_number">3</td>
-           <td class="task_pickup">
-            <p class="title">C3</p>
-            <p class="description">14:57</p>
-           </td>
-           <td class="task_parcel"><div class="indicator_pos">P1</div></td>
-           <td class="task_drop">
-            <p class="title"><div class="indicator_current">C1</div></p>
-            <p class="description">--:--</p>
-           </td>
-           <td class="task_status task_assigned"></td>
-         </tr>
-     </table>
-   </div> <!-- bottom_content_wrapper xxx --> 
-</div> <!-- bottom_info_wrapper xxx -->
+  
 
+  <tr>
+<th rowspan="3" class="task_status task_completed"></th>
+<th colspan="6" class="task_requirements no_requirements">Possible after: -</th>
+</tr>
+
+</tr>
+
+<tr>
+<td rowspan="2" class="task_number">01</td>
+<td class="checkpoint_name_first">Beda</td>
+<td class="goto_arrow">>></td>
+<td class="parcel_name">P1</td>
+<td class="goto_arrow">>></td>
+<td class="checkpoint_name_second">Amon</td>
+</tr>
+
+<tr>
+<td>14:30</td>
+<td></td>
+<td></td>
+<td></td>
+<td>14.45</td>
+</tr>
+
+</table>
+
+<table>
+  
+
+  <tr>
+<th rowspan="3" class="task_status task_possible"></th>
+<th colspan="6" class="task_requirements requirements">Possible after: 1</th>
+</tr>
+
+</tr>
+
+<tr>
+<td rowspan="2" class="task_number">02</td>
+<td class="checkpoint_name_first">Beda</td>
+<td class="goto_arrow">>></td>
+<td class="parcel_name">P1</td>
+<td class="goto_arrow">>></td>
+<td class="checkpoint_name_second">Amon</td>
+</tr>
+
+<tr>
+<td>14:30</td>
+<td></td>
+<td></td>
+<td></td>
+<td>14.45</td>
+</tr>
+
+</table>
+
+
+<table>
+  
+
+  <tr>
+<th rowspan="3" class="task_status task_unreachable"></th>
+<th colspan="6" class="task_requirements requirements">Possible after: 1, 2</th>
+</tr>
+
+</tr>
+
+<tr>
+<td rowspan="2" class="task_number">03</td>
+<td class="checkpoint_name_first">Beda</td>
+<td class="goto_arrow">>></td>
+<td class="parcel_name">P1</td>
+<td class="goto_arrow">>></td>
+<td class="checkpoint_name_second">Amon</td>
+</tr>
+
+<tr>
+<td>14:30</td>
+<td></td>
+<td></td>
+<td></td>
+<td>14.45</td>
+</tr>
+
+</table>
+   </div> <!-- bottom_content_wrapper xxx --> 
+</div>
 
 
 

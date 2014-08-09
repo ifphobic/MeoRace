@@ -1,3 +1,7 @@
+<div class="content_tab" id="racerdispatch_dispatch">
+
+<div class='bottom_content_wrapper'> 
+
 <?php
 
    $racerId = $_GET['id'];
@@ -15,3 +19,7 @@
    print( "<input type='hidden' name='taskId' value='$taskId' />" );
    print( "<input type='hidden' name='racerId' value='$racerId' />" );
 ?>
+
+	<input type="submit" name="submit" value="Assign">
+</div>
+</div>

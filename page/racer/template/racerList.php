@@ -1,15 +1,18 @@
 <div class="content_tab" id="racerlist_racer">
 
+<div class='bottom_content_wrapper'> 
+
 <div class="new_button" onclick='<?php print(Page::getOnClickFunction( "racer", "racerEdit", null)); ?>'>+ Add Racer</div>
 
 <ul>
+   
 <?php
    
    $dbFunction = new RacerDbFunction();
    $racers = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
    $dbFunction->close();
 
-   print("<div class='bottom_content_wrapper'><ul>");
+  
    foreach ( $racers as $racer ) {
       print("
          <li onclick='" . Page::getOnClickFunction( "racer", "racerEdit", $racer->racerId ) . "'>

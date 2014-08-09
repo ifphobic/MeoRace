@@ -15,21 +15,21 @@
 ?>
  
 
-<div class="content_tab">
+<div class="content_tab" id="raceredit_racer">
    <h1>Racer Edit</h1>
   
    <div class="top_content_wrapper registration">
       <div class="top_info_wrapper">
          <div class="left_info">
             <div>
-               <input type="file" name="image" accept="image/*" capture="camera"></input> 
+               <input type="file" name="image" accept="image/*" capture></input> 
                <div class="photo_upload" />
-                  <img src="<?php print( Page::getImagePath( $racer )) ?>" height="99"></div> 
+                  <img src="<?php print( Page::getImagePath( $racer )) ?>"></div> 
                </div>
             </div>
             <div class="middle_info">
-               <span class="rider_name"><?php Page::printValue( $racer, "name" ) ?></span><br />
-               <span class="rider_city_country"><?php Page::printValue($racer, array( "city", "country" ), ", ") ?></span>
+               <p class="title"><?php Page::printValue( $racer, "name" ) ?></span><br />
+               <p class="description"><?php Page::printValue($racer, array( "city", "country" ), ", ") ?></span>
             </div>
             <div class="right_info">
                <span class="rider_number"><?php Page::printValue( $racer, "racerNumber" ) ?></span>
@@ -44,6 +44,7 @@
             <label for="ridercountry" class="ridercountry"> <input type="text" name="country" placeholder="Country" value="<?php Page::printValue( $racer, "country" ) ?>"/> </label>
             <label for="rideremail" class="rideremail"> <input type="text" name="email" placeholder="Email" value="<?php Page::printValue( $racer, "email" ) ?>"/> </label>
             <?php print( CommonPageFunction::getCombobox("status", $racer, "Status", array( "registered", "active", "finished", "disqualified" )) ) ?>
+				<input type="submit" name="submit" value="Save Racer Details">
          </div>  
       </div>   
    </div>
