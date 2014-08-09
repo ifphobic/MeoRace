@@ -16,9 +16,8 @@
          <p class="manifest_maxduration">00:02:10</p>
       </div>
    </div> <!-- top info wrapper -->
-</div> <!-- top content wrapper -->   
          
-<div class="bottom_info_wrapper bottom_rider_tasks">
+   <div class="bottom_info_wrapper bottom_rider_tasks">
       <p class="racer_checkpointlist_heading">Full Manifest</p>
 
      <table>
@@ -109,3 +108,4 @@
 
 </table>
    </div> <!-- bottom_content_wrapper xxx -->
+</div> <!-- top content wrapper -->   

@@ -15,7 +15,7 @@
 <div class="top_content_wrapper""> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
    <div class="top_info_wrapper top_info_rider"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
       <div class='left_info'>
-         <img src='" . Page::getImagePath( $racer ) . "' alt='strom praesi'>
+         <img src='<?php print( Page::getImagePath( $racer ) ) ?>' alt='racer image'>
       </div> 
       <div class='middle_info'>
          <p class='title'><?php Page::printValue( $racer, "name" ) ?></p>
@@ -29,9 +29,9 @@
 
 <div class="bottom_content_wrapper">
     <div class="bottom_info_wrapper bottom_rider_tasks">
-      <p class="racer_checkpointlist_heading">Open Manifests</p>
+      <p class="racer_checkpointlist_heading">Racer Tasks</p>
        <ul>
-    <li>
+    <li onclick="showPage( 3, 'module=ranking&page=taskDetail' , true )">
 
   <div class="left_info">
       <p class="manifest_number">12</p>
