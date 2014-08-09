@@ -8,6 +8,7 @@
          $this->pages = array(
             new ModulePage("rankingOverview", "Ranking Overview", array(Role::DISPATCHER), null, false, true ), 
             new ModulePage("rankingDetail", "Ranking Detail", array(Role::DISPATCHER), null, false, false ), 
+            new ModulePage("taskDetail", "Manifest Detail", array(Role::DISPATCHER), null, false, false ),
          );
       }
 
