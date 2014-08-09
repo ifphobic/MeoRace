@@ -230,11 +230,10 @@ table {
 }
 
 th {
-    height: @line-height;
+    //height: @line-height;
 }
 
 tr {
-   line-height: @line-height;
    background-repeat: no-repeat;
    background-position: center center;
    background-color: @c1;
@@ -606,6 +605,19 @@ height: @line-height;
 text-align: center;
 padding-top: 6px;
 }
+.manifest_number.manifest_completed{
+background-color: @c_pos;
+}
+
+.manifest_number.manifest_possible{
+background-color: @c_neutral;
+}
+
+
+.manifest_number.manifest_unreachable{
+background-color: @c_neg;
+}
+
 .right_info{
 text-align: left;
 width: 100px;

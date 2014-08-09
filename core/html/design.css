@@ -247,11 +247,7 @@ table {
   border-collapse: collapse;
   margin-bottom: 10px;
 }
-th {
-  height: 49px;
-}
 tr {
-  line-height: 49px;
   background-repeat: no-repeat;
   background-position: center center;
   background-color: #ffffff;
@@ -564,6 +560,24 @@ p.racer_tasklist_heading {
   height: 49px;
   text-align: center;
   padding-top: 6px;
+}
+#tasklist_race .manifest_number.manifest_completed,
+#taskdispatch_dispatch .manifest_number.manifest_completed,
+#racertask_racertask .manifest_number.manifest_completed,
+#racerdispatch_dispatch .manifest_number.manifest_completed {
+  background-color: #71c671;
+}
+#tasklist_race .manifest_number.manifest_possible,
+#taskdispatch_dispatch .manifest_number.manifest_possible,
+#racertask_racertask .manifest_number.manifest_possible,
+#racerdispatch_dispatch .manifest_number.manifest_possible {
+  background-color: #ffff00;
+}
+#tasklist_race .manifest_number.manifest_unreachable,
+#taskdispatch_dispatch .manifest_number.manifest_unreachable,
+#racertask_racertask .manifest_number.manifest_unreachable,
+#racerdispatch_dispatch .manifest_number.manifest_unreachable {
+  background-color: #ff0000;
 }
 #tasklist_race .right_info,
 #taskdispatch_dispatch .right_info,
