@@ -7,7 +7,7 @@
       const DB_NAME = "meoRace"; 
       const DB_USER = "meoRace"; 
       const DB_PASSWORD = "meoRace"; 
-
+      const IMAGE_FOLDER ="/tmp";
    }
 
 

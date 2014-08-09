@@ -171,8 +171,8 @@
             elementId = 'content' + index;
             element(elementId).innerHTML = 'Seite wird geladen';
             xmlhttp.open("POST", "commit.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.setRequestHeader("Content-length", data.length);
+//            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//            xmlhttp.setRequestHeader("Content-length", data.length);
 
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState != 4) {
@@ -204,21 +204,25 @@
          }
 
          function createFormData() {
-            var data = '';
-            var elements = element('myForm').elements;
+
+//            var data = '';
+
             var index = -1;
+            var elements = element('myForm').elements;
             for(var i = 0; i < elements.length; i++) {
                if ( elements[i].name == "index" ) {
                   index = elements[i].value;
                }
-               data += elements[i].name + "=";
-              if ( elements[i].type != "checkbox" ) {
-                  data += elements[i].value;
-               } else {
-                  data += elements[i].checked ? 1 : 0;
-               }
-               data += "&";
-            } 
+            }
+//               data += elements[i].name + "=";
+//              if ( elements[i].type != "checkbox" ) {
+//                  data += elements[i].value;
+//               } else {
+//                  data += elements[i].checked ? 1 : 0;
+//               }
+//               data += "&";
+//            } 
+            var data = new FormData( element('myForm') );
             return new Array(index, data);
          }
 

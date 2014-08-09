@@ -21,6 +21,38 @@
 
       }
 
+      protected function saveImage( $subfolder, $id ) {
+
+         if ( ! isset($_FILES) || !file_exists( $_FILES['image']['tmp_name'] ) ) {
+            return null;
+         }
+
+         $base = "$subfolder/$id";
+         $position = strrpos( $_FILES['image']['name'], ".");
+         if ( $position !== false ) {
+            $extension = substr( $_FILES['image']['name'], $position );
+         }
+         $counter = 0;
+         while ( file_exists( $this->createFilename( $base, $counter, $extension, true ) ) ) {
+            $counter++;
+         }
+
+         $image = new SimpleImage();
+         $image->load( $_FILES['image']['tmp_name'] );
+         $image->resizeToWidth( 300 );
+         $image->save( $this->createFilename( $base, $counter, $extension, true ) );
+         return $this->createFilename( $base, $counter, $extension, false );
+
+      }
+
+      private function createFilename( $base, $counter, $extension, $absolut ) {
+         $filename = $base . "-" . $counter . $extension;
+         if ( !$absolut ) {
+            return $filename;
+         }
+         return Configuration::IMAGE_UPLOAD_FOLDER. $filename;
+      }
+      
 
    }
 
