@@ -44,7 +44,6 @@
             <label for="ridercountry" class="ridercountry"> <input type="text" name="country" placeholder="Country" value="<?php Page::printValue( $racer, "country" ) ?>"/> </label>
             <label for="rideremail" class="rideremail"> <input type="text" name="email" placeholder="Email" value="<?php Page::printValue( $racer, "email" ) ?>"/> </label>
             <?php print( CommonPageFunction::getCombobox("status", $racer, "Status", array( "registered", "active", "finished", "disqualified" )) ) ?>
-				<input type="submit" name="submit" value="Save Racer Details">
          </div>  
       </div>   
    </div>

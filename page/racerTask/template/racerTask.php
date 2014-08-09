@@ -15,14 +15,14 @@
 <div class="top_content_wrapper""> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
    <div class="top_info_wrapper top_info_rider"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
       <div class='left_info'>
-         <img src='" . Page::getImagePath( $racer ) . "' alt='strom praesi'>
+         <img src='<?php print( Page::getImagePath( $racer ) ) ?>' alt='strom praesi'>
       </div> 
       <div class='middle_info'>
-         <p class='title'><?php Page::printValue( $racer, "name" ) ?></p>
-         <p class='description'><?php Page::printValue($racer, array( "city", "country" ), ", ") ?></p>
+         <p class='title'><?php print( $racer->name ) ?></p>
+         <p class='description'><?php print( Page::printValue($racer, array( "city", "country" ), ", ") ) ?></p>
       </div>
       <div class='right_info'>
-         <p class='rider_number'><?php Page::printValue( $racer, "racerNumber" ) ?></p>
+         <p class='rider_number'><?php print( $racer->racerNumber ) ?></p>
       </div>
    </div><!-- top info wrapper -->
 </div> <!-- top content wrapper -->
@@ -53,7 +53,6 @@
    $dbFunction->close();
 
    foreach ( $actions as $action ) {
-<<<<<<< HEAD
       print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ) . "'>
             <td class='task_manifest'>" . $action->task . "</td>
 				<td class='task_pickup'>" . (($action->isDropoff) ? '<div>' : '<div class="indicator_current">' ) . $action->pickup . "</div> ></td>
@@ -61,24 +60,11 @@
 				<td class='task_drop'>> " . (($action->isDropoff) ? '<div class="indicator_current">' : '<div>' ) . $action->dropoff . "</div></td>
             <td class=''>" . (($action->isDropoff) ? 'Dropoff' : 'Pickup' ) . "</td>
          </tr>");
-=======
-      print('<tr onclick="' . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ) . '">
-            <td class="task_number">' . $action->task . '</td>
-	    <td class="checkpoint_name_first">' . (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . '</div></td>
-            <td class="goto_arrow">>></td>
-	    <td class="parcel_name"><div class="indicator_pos">' . $action->parcel . '</div></td>
-	    <td class="goto_arrow">>></td>
-	    <td class="checkpoint_name_second"> ' . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . '</div></td>
-            <td class="drilldown">' . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . '</td>
-         </tr>');
->>>>>>> FETCH_HEAD
    }
 ?>
     </table>
     </div> <!-- bottom_content_wrapper xxx -->
-<<<<<<< HEAD
    </div> <!-- bottom_info_wrapper xxx --> 
-=======
     
     
         <!-- @philip: put a list with all open manifest (even from other checkpoints) in here -->
