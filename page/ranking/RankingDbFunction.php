@@ -7,16 +7,26 @@
       }
 
 
-      public function findAll( $raceId ) {
+      public function findAll( $raceId, $racerId = null ) {
 
-         $query  = "select TIME_TO_SEC(TIMEDIFF( rt.endTime, rt. startTime ) ) as taskTime, rt.price, t.maxDuration, r.racerId, r.racerNumber, r.name, r.city, r.country, r.status, r.image ";
+         $query  = "select rt.racerTaskId, TIME_TO_SEC(TIMEDIFF( rt.endTime, rt. startTime ) ) as taskTime, TIME_TO_SEC(TIMEDIFF( now(), rt. startTime ) ) as currentTime, ";
+         $query .= "rt.price, t.maxDuration, r.racerId, r.racerNumber, r.name, r.city, r.country, r.status, r.image, ";
+         $query .= "t.name as taskName, t.description as taskDescription ";
          $query .= "from  Racer r ";
          $query .= "left outer join  RacerTask rt on rt.racerFk = r.racerId ";
          $query .= "left outer join Task t on rt.taskFk = t.taskId  ";
-         $query .= "where r.raceFk = ? and ( rt.racerTaskId is null or rt.endTime is not null ) ";
-         $query .= "order by r.racerId ";
+         $query .= "where ";
+         if ( $racerId == null ) {
+            $query .= "r.raceFk ";
+            $parameter = array( new Parameter( PDO::PARAM_INT, $raceId ) );
+         } else {
+            $query .= "r.racerId ";
+            $parameter = array( new Parameter( PDO::PARAM_INT, $racerId ) );
+         }
+         $query .= "= ? ";
+         $query .= "order by r.racerId, taskTime, currentTime";
 
-         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
+         $result = $this->queryArray($query, $parameter );
          return $result; 
       }
          
