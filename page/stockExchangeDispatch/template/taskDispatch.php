@@ -18,7 +18,7 @@
 //      print ( Page::getListItem( $task->name, Page::getOnClickFunction( "stockExchangeDispatch", "racerList", $task->taskFk ), round( $task->price ) . "/" . "max. " . Page::readableDuration( $task->maxDuration ), $task->description ) );
       ?>
 
-      <li onClick='<?php print( Page::getOnClickFunction( "stockExchangeDispatch", "racerList", $task->taskFk ) ) ?>'>
+      <li onClick='<?php print( Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=" . $_GET['id']  ) ) ?>'>
          <div class="left_info">
             <p class="manifest_number">12</p>
          </div> 

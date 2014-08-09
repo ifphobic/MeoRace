@@ -3,8 +3,8 @@
 
 <?php
 
-   $racerId = $_GET['id'];
-   $taskId = $_GET['taskId'];
+   $racerId = $_GET['racerId'];
+   $taskId = $_GET['id'];
 
    $dbFunction = new TaskDbFunction();
    $task = $dbFunction->findById( $taskId );

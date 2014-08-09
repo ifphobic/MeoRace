@@ -6,8 +6,8 @@
 
       public function StockExchangeDispatchModule() {
          $this->pages = array(
-            new ModulePage("taskDispatch", "Task Dispatch", array(Role::DISPATCHER), null, false, true ), 
-            new ModulePage("racerList", "Racer List", array(Role::DISPATCHER), null, false, false, array("racer/Racer") ), 
+            new ModulePage("racerList", "Racer List", array(Role::DISPATCHER), null, false, true, array("racer/Racer") ), 
+            new ModulePage("taskDispatch", "Task Dispatch", array(Role::DISPATCHER), null, false, false ), 
             new ModulePage("dispatchConfirm", "xxx", array(Role::DISPATCHER), array(Role::DISPATCHER), true, false, array("racer/Racer", "race/Task", "racerTask/RacerTask")  ), 
          );
       }

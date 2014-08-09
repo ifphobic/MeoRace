@@ -10,7 +10,7 @@
    
     foreach ( $racers as $racer ) {
       print("
-         <li onclick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $racer->racerId, "taskId=" . $_GET['id'] ) . "'>
+         <li onclick='" . Page::getOnClickFunction( "stockExchangeDispatch", "taskDispatch", $racer->racerId ) . "'>
             <div class='left_info'>
                <img src='" . Page::getImagePath( $racer ) . "'>
             </div> 
