@@ -7,11 +7,8 @@
 <?php
    $dbFunction = new StockExchangeDispatchDbFunction();
    $raceFk = CommonDbFunction::getUser()->raceFk;
+   $dbFunction->init( $raceFk );
    $tasks = $dbFunction->findAll( $raceFk );
-   if ( count( $tasks ) == 0 ) {
-      $dbFunction->init( $raceFk );
-      $tasks = $dbFunction->findAll( $raceFk );
-   }
    $dbFunction->close();
 
    foreach ( $tasks as $task ) {

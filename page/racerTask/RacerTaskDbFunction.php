@@ -74,7 +74,7 @@
          $query .= "          where dc.deliveryFk = d.deliveryId and previousRd.dropoffTime is null ) ";
          $query .= "    and ( ( rd.pickupTime is null and d.pickupFk = ? ) ";
          $query .= "      or ( (rd.pickupTime is not null or not pickupC.manned ) and rd.dropoffTime is null and d.dropoffFk = ? ) ) ";
-         $query .= "   order by isDropoff ";
+         $query .= "   order by isDropoff desc ";
 
          $parameter = array(
             new Parameter( PDO::PARAM_INT, $racerId ),

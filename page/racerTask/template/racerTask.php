@@ -1,12 +1,10 @@
 <?php
    $racer = null;
+  
    $dbFunction = new RacerDbFunction();
-   if ( isset( $_GET['id'] ) ) {
-      $racer = $dbFunction->findById( $_GET['id'] );
-      $raceId = $racer->raceFk;
-   } else {
-      $raceId = CommonDbFunction::getUser()->raceFk;
-   }
+   $racer = $dbFunction->findById( $_GET['id'] );
+   $raceId = $racer->raceFk;
+   
    $dbFunction->close();
 ?>
 
@@ -53,15 +51,15 @@
    $dbFunction->close();
 
    foreach ( $actions as $action ) {
-      print('<tr onclick="' . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned ) . '">
-            <td class="task_number">' . $action->task . '</td>
-	    <td class="checkpoint_name_first">' . (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . '</div></td>
-            <td class="goto_arrow">>></td>
-	    <td class="parcel_name"><div class="indicator_pos">' . $action->parcel . '</div></td>
-	    <td class="goto_arrow">>></td>
-	    <td class="checkpoint_name_second"> ' . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . '</div></td>
-            <td class="drilldown">' . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . '</td>
-         </tr>');
+      print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned . "&racerId=" . $racer->racerId ) . "'>
+            <td class='task_number'>'". $action->task . "</td>
+	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
+            <td class='goto_arrow'>>></td>
+	    <td class='parcel_name'><div class='indicator_pos'>" . $action->parcel . "</div></td>
+	    <td class='goto_arrow'>>></td>
+	    <td class='checkpoint_name_second'> " . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . "</div></td>
+            <td class='drilldown'>" . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . "</td>
+         </tr>");
    }
 ?>
     </table>
