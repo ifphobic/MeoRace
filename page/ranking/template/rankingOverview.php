@@ -1,5 +1,6 @@
 <div class="content_tab" id="rankingoverview_ranking">
 <div class="bottom_content_wrapper">
+
    <ul>
 
 <?php

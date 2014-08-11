@@ -1,5 +1,7 @@
-</div> <!-- bottom_content_wrapper xxx -->
-</div> <!-- bottom_info_wrapper xxx --> 
+<div class="content_tab" id="ranking_detail_tasks">
+
+<div class="bottom_content_wrapper">
+
    
    <ul>
 

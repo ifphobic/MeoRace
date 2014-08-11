@@ -85,7 +85,15 @@ table {
 @list_border: 1px solid @c2;
 
 @line-height: 49px;
-@line-height-ranking: 64px;
+@line-height-ranking: 66px;
+@line-height-top-content: 66px;
+
+@line-height-detail: 88px;
+@line-height-detail-inner: 66px;
+
+@line-height-edit: 132px;
+@line-height-edit-inner: 99px;
+
 @tile-height: 149px;
 @letter-spacing: 1px;
 
@@ -130,19 +138,9 @@ li {
 }
 
 .top_content_wrapper{
-    height: 66px;
+    height: @line-height-top-content;
     text-align: center;
     text-transform: uppercase;
-}
-
-.top_content_wrapper.registration{
-    height: 132px;
-}
-
-.top_content_wrapper.registration > div{
-    height: 99px;
-    position: relative;
-    top: 22px;
 }
 
 .top_info_wrapper {
@@ -250,6 +248,7 @@ th, td {
 
 th{
 background-color: @main_bgcolor;
+vertical-align: middle;
 &.task_manifest{
 background-image: url(../../icons/document127.png);
 background-size: 24px;
@@ -487,16 +486,24 @@ span.racer_points::before{
 // Racer Registration
 
 #raceredit_racer{
-    .left_info {
-    height: 99px;
-    width: 99px;
+    .top_content_wrapper.registration{
+    height: @line-height-edit;
+    .top_info_wrapper{
+    height: @line-height-edit-inner;
+    position: relative;
+    top: 22px;
+     .left_info {
+    height: @line-height-edit-inner;
+    width: @line-height-edit-inner;
     }
      .middle_info {
-    margin: 0 84px 0 94px;
+    margin: 0 84px 0 @line-height-edit-inner;
     }
 .right_info {
     float: left;
- }
+}
+}  
+}
 }
 
 input {
@@ -519,11 +526,17 @@ button:focus {
 
 input[type="submit"]{
    color: @c1;
-   margin: 15px 0 15px 0;
+   margin: 15px auto;
    border-radius: 5px;
    border: none;
    background-color: #71C671;
    text-transform: uppercase;
+   width: 93%;
+}
+
+input[name="login"]{
+   margin: 15px 0;
+   width: 100%;
 }
 
 input[type="search"] {
@@ -583,6 +596,39 @@ background-color: lighten(@c2, 6%);
 
 // Checkpoint Racer Task List
 
+#racertask_racertask{
+.top_content_wrapper{
+    height: @line-height-detail;
+}
+.top_info_wrapper, .right_info, img{
+    height: @line-height-detail-inner; 
+}
+.left_info{
+height: @line-height-detail-inner; 
+width: @line-height-detail-inner; 
+}
+.middle_info{
+height: @line-height-detail-inner; 
+margin-left: @line-height-detail-inner;
+}
+tr{
+    height: @line-height;
+    td{
+        padding-top: 13px;
+        &.drilldown{
+            text-align: right;
+    }
+}
+}
+}
+
+    p.parcel_number{
+        height: @line-height-detail-inner;
+        padding: 6px 20px;
+        font-size: 1.5em;
+}
+
+
 p.racer_checkpointlist_heading, p.racer_tasklist_heading{
 display: inline-block;
 width: 100%;
@@ -591,9 +637,35 @@ border-bottom: 2px solid #ccc;
 padding: 5px 0;
 }
 
+// Racer Dispatch
+
+#racerdispatch_dispatch{
+    li{
+        height: @line-height-detail-inner;
+         .left_info{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+            .manifest_number{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+            padding-top: 15px;
+            }
+         }
+           .right_info, img{
+            height: @line-height-detail-inner; 
+            }
+            .middle_info{
+            height: @line-height-detail-inner; 
+            margin-left: @line-height-detail-inner;
+            }
+}
+}
+
+
+
 // Manifest List
 
-#tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #racerdispatch_dispatch{
+#tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #ranking_detail_tasks, #racerdispatch_dispatch{
 .manifest_number{
 color: @c1;
 font-size: 24px;
@@ -621,7 +693,10 @@ background-color: @c_neg;
 .right_info{
 text-align: left;
 width: 100px;
-margin-right: 20px;
+margin-right: 0px;
+position: absolute;
+right: 0px;
+top: 8px;
 .manifest_points:before{
  content: "\e601";
     font-family: 'icomoon';
@@ -635,7 +710,9 @@ margin-right: 20px;
     color: @c5;
     margin-right: 6px;
     font-size: 1em;
-
+}
+.rider_number{
+    margin-top: -8px;
 }
 }
 }
@@ -730,6 +807,8 @@ width: 10%;
 
 th, td{
 text-align: left;
+vertical-align: middle;
+padding: 2px 0;
 }
 
 th.task_requirements{

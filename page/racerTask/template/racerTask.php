@@ -26,8 +26,6 @@
 </div> <!-- top content wrapper -->
 
 <div class="bottom_content_wrapper">
-   
-   <div class="bottom_info_wrapper bottom_rider_tasks">
 
 <p class="racer_checkpointlist_heading">Tasks Checkpoint C</p>
 
