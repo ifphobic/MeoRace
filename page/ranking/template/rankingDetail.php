@@ -15,7 +15,7 @@
       ?>
       <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
          <div class="left_info">
-            <p class="manifest_number">12</p>
+            <p class="manifest_number manifest_completed"><?php print( $racerTask->taskName ) ?></p>
          </div> 
        
          <div class="middle_info">
