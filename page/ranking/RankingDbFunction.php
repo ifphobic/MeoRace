@@ -9,7 +9,8 @@
 
       public function findAll( $raceId, $racerId = null ) {
 
-         $query  = "select rt.racerTaskId, TIME_TO_SEC(TIMEDIFF( rt.endTime, rt. startTime ) ) as taskTime, TIME_TO_SEC(TIMEDIFF( now(), rt. startTime ) ) as currentTime, ";
+         $query  = "select rt.racerTaskId, TIME_TO_SEC(TIMEDIFF( rt.endTime, rt.startTime ) ) as taskTime, ";
+         $query .= "TIME_TO_SEC(TIMEDIFF( now(), rt.startTime ) ) as currentTime, TIMEDIFF(now(), rt.endTime ) as restTime, ";
          $query .= "rt.price, t.maxDuration, r.racerId, r.racerNumber, r.name, r.city, r.country, r.status, r.image, ";
          $query .= "t.name as taskName, t.description as taskDescription ";
          $query .= "from  Racer r ";

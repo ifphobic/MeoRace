@@ -22,10 +22,6 @@
             </div> 
             <div class='middle_info'>
                <p class='title'>" . $ranking->name . "</p>
-               <p class='description'>"  . $ranking->city . ", " . $ranking->country . "</p>
-            </div>
-            
-            <div class='middle_info racer_ranking_points'>
                <p>
                   <span class='racer_ranking'>" . $ranking->ranking . "</span>
                   <span class='racer_points'>" . $ranking->score . "</span>

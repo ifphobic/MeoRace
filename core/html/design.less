@@ -85,7 +85,7 @@ table {
 @list_border: 1px solid @c2;
 
 @line-height: 49px;
-@line-height-ranking: 66px;
+@line-height-ranking: 49px;
 @line-height-top-content: 66px;
 
 @line-height-detail: 88px;
@@ -443,23 +443,30 @@ background-size: 15px;
 }
 
 span.racer_ranking{
-    margin-right: 8px;
+    margin-right: 12px;
+    color: @c5;
+    float: left;
+    width: 34px;
 }
 
-span.racer_ranking::before{
+span.racer_ranking::after{
     content: "\e608";
     font-family: 'icomoon';
-    color: @c5;
-    margin-right: 5px;
-    font-size: 0.9em;
+    margin-left: 5px;
+    font-size: 0.7em;
 }
 
-span.racer_points::before{
+span.racer_points {
+    color: @c5;
+    text-align: right;
+    float: left;
+    width: 60px;   
+}
+span.racer_points::after{
     content: "\e601";
     font-family: 'icomoon';
-    color: @c5;
-    margin-right: 3px;
-    font-size: 0.9em;
+    margin-left: 3px;
+    font-size: 0.7em;
 }
 
 #rankingoverview_ranking .right_info .rider_number::after {
@@ -679,53 +686,56 @@ padding: 5px 0;
 #tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #ranking_detail_tasks, #racerdispatch_dispatch{
 .manifest_number{
 color: @c1;
-font-size: 2em;
+font-size: 1em;
 font-weight: bold;
 background-color: @c3;
 display: block;
 width: @line-height;
 height: @line-height;
 text-align: center;
-padding-top: 6px;
+padding-top: 12px;
 }
+
 .manifest_number.manifest_completed{
-background-color: @c_pos;
+    background-color: @c_pos;
 }
 
 .manifest_number.manifest_possible{
-background-color: @c_neutral;
+    background-color: @c_neutral;
 }
 
-
 .manifest_number.manifest_unreachable{
-background-color: @c_neg;
+    background-color: @c_neg;
 }
 
 .right_info{
 text-align: left;
-width: 49px;
+width: 80px;
 margin-right: 0px;
+text-align: right;
 position: absolute;
 right: 0px;
 top: 8px;
-.manifest_points:before{
- content: "\e601";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
+
+.manifest_points:after{
+    .manifest_counts;
+    content: "\e601";
 }
-.manifest_maxduration:before{
- content: "\e606";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
+.manifest_maxduration:after{
+    .manifest_counts;
+    content: "\e606";
 }
 .rider_number{
     margin-top: -8px;
 }
 }
+}
+
+.manifest_counts{
+    font-family: 'icomoon';
+    color: @c5;
+    margin-left: 6px;
+    font-size: 0.8em;
 }
 
 //  Manifest Edit
@@ -749,19 +759,13 @@ padding-top: 6px;
 text-align: left;
 width: 72px;
 margin-right: 20px;
-.manifest_points:before{
- content: "\e601";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
+.manifest_points:after{
+    .manifest_counts;
+    content: "\e601";
 }
-.manifest_maxduration:before{
- content: "\e606";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
+.manifest_maxduration:after{
+    .manifest_counts;
+    content: "\e606";
 }
 }
 ul{

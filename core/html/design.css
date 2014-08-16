@@ -399,7 +399,7 @@ li {
   font-size: 0.6em;
 }
 #rankingoverview_ranking li {
-  height: 66px;
+  height: 49px;
 }
 #rankingoverview_ranking .middle_info {
   height: 48px;
@@ -416,21 +416,28 @@ li {
   font-size: 0.9em;
 }
 span.racer_ranking {
-  margin-right: 8px;
+  margin-right: 12px;
+  color: #999999;
+  float: left;
+  width: 34px;
 }
-span.racer_ranking::before {
+span.racer_ranking::after {
   content: "\e608";
   font-family: 'icomoon';
-  color: #999999;
-  margin-right: 5px;
-  font-size: 0.9em;
+  margin-left: 5px;
+  font-size: 0.7em;
 }
-span.racer_points::before {
+span.racer_points {
+  color: #999999;
+  text-align: right;
+  float: left;
+  width: 60px;
+}
+span.racer_points::after {
   content: "\e601";
   font-family: 'icomoon';
-  color: #999999;
-  margin-right: 3px;
-  font-size: 0.9em;
+  margin-left: 3px;
+  font-size: 0.7em;
 }
 #rankingoverview_ranking .right_info .rider_number::after {
   content: "\e60f";
@@ -621,14 +628,14 @@ p.racer_tasklist_heading {
 #ranking_detail_tasks .manifest_number,
 #racerdispatch_dispatch .manifest_number {
   color: #ffffff;
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
   background-color: #cccccc;
   display: block;
   width: 49px;
   height: 49px;
   text-align: center;
-  padding-top: 6px;
+  padding-top: 12px;
 }
 #tasklist_race .manifest_number.manifest_completed,
 #taskdispatch_dispatch .manifest_number.manifest_completed,
@@ -657,33 +664,34 @@ p.racer_tasklist_heading {
 #ranking_detail_tasks .right_info,
 #racerdispatch_dispatch .right_info {
   text-align: left;
-  width: 49px;
+  width: 80px;
   margin-right: 0px;
+  text-align: right;
   position: absolute;
   right: 0px;
   top: 8px;
 }
-#tasklist_race .right_info .manifest_points:before,
-#taskdispatch_dispatch .right_info .manifest_points:before,
-#racertask_racertask .right_info .manifest_points:before,
-#ranking_detail_tasks .right_info .manifest_points:before,
-#racerdispatch_dispatch .right_info .manifest_points:before {
+#tasklist_race .right_info .manifest_points:after,
+#taskdispatch_dispatch .right_info .manifest_points:after,
+#racertask_racertask .right_info .manifest_points:after,
+#ranking_detail_tasks .right_info .manifest_points:after,
+#racerdispatch_dispatch .right_info .manifest_points:after {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
   content: "\e601";
-  font-family: 'icomoon';
-  color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
 }
-#tasklist_race .right_info .manifest_maxduration:before,
-#taskdispatch_dispatch .right_info .manifest_maxduration:before,
-#racertask_racertask .right_info .manifest_maxduration:before,
-#ranking_detail_tasks .right_info .manifest_maxduration:before,
-#racerdispatch_dispatch .right_info .manifest_maxduration:before {
-  content: "\e606";
+#tasklist_race .right_info .manifest_maxduration:after,
+#taskdispatch_dispatch .right_info .manifest_maxduration:after,
+#racertask_racertask .right_info .manifest_maxduration:after,
+#ranking_detail_tasks .right_info .manifest_maxduration:after,
+#racerdispatch_dispatch .right_info .manifest_maxduration:after {
   font-family: 'icomoon';
   color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e606";
 }
 #tasklist_race .right_info .rider_number,
 #taskdispatch_dispatch .right_info .rider_number,
@@ -691,6 +699,12 @@ p.racer_tasklist_heading {
 #ranking_detail_tasks .right_info .rider_number,
 #racerdispatch_dispatch .right_info .rider_number {
   margin-top: -8px;
+}
+.manifest_counts {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
 }
 #actionconfirm_racertask .top_content_wrapper,
 #taskedit_race .top_content_wrapper {
@@ -714,21 +728,21 @@ p.racer_tasklist_heading {
   width: 72px;
   margin-right: 20px;
 }
-#actionconfirm_racertask .right_info .manifest_points:before,
-#taskedit_race .right_info .manifest_points:before {
+#actionconfirm_racertask .right_info .manifest_points:after,
+#taskedit_race .right_info .manifest_points:after {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
   content: "\e601";
-  font-family: 'icomoon';
-  color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
 }
-#actionconfirm_racertask .right_info .manifest_maxduration:before,
-#taskedit_race .right_info .manifest_maxduration:before {
-  content: "\e606";
+#actionconfirm_racertask .right_info .manifest_maxduration:after,
+#taskedit_race .right_info .manifest_maxduration:after {
   font-family: 'icomoon';
   color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e606";
 }
 #actionconfirm_racertask ul,
 #taskedit_race ul {
