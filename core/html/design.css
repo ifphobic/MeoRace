@@ -650,6 +650,7 @@ p.racer_tasklist_heading {
 #ranking_detail_tasks .manifest_number.manifest_possible,
 #racerdispatch_dispatch .manifest_number.manifest_possible {
   background-color: #ffff00;
+  color: #4d4d4d;
 }
 #tasklist_race .manifest_number.manifest_unreachable,
 #taskdispatch_dispatch .manifest_number.manifest_unreachable,
@@ -952,6 +953,17 @@ div.content3 {
   overflow-y: auto;
   transition: width 1200ms ease, left 1200ms ease;
   left: 75%;
+}
+div.content4 {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 1200ms ease, left 1200ms ease;
+  left: 100%;
 }
 div.content_menu_spacer {
   height: 49px;

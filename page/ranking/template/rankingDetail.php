@@ -41,22 +41,30 @@
    $dbFunction = new RankingDbFunction();
    $racerTasks = $dbFunction->findAll( null, $_GET['id'] );
    $dbFunction->close();
-
+   
    foreach( $racerTasks as $racerTask ) {
+      $taskComplete = true;
+      $time = $racerTask->taskTime;
+      if($racerTask->taskTime == null) {
+         $taskComplete = false;
+         $time = $racerTask->maxDuration - $racerTask->currentTime;
+      }
+      $time = gmdate("H:i:s", $time%86400);
       ?>
       <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
          <div class="left_info">
-            <p class="manifest_number manifest_completed"><?php print( $racerTask->taskName ) ?></p>
+            <p class="manifest_number <?php $taskComplete ? print("manifest_completed") : print("manifest_possible"); ?>">
+            <?php print( $racerTask->taskName ) ?></p>
          </div> 
        
          <div class="middle_info">
             <p class="title"><?php print( $racerTask->taskDescription ) ?></p>
-            <p class="description">Status: Completed</p>
+            <p class="description">Status: <?php $taskComplete ? print("Completed") : print("Open"); ?></p>
          </div>
       
          <div class="right_info">
             <p class="manifest_points"><?php print( $racerTask->price ) ?></p>
-            <p class="manifest_maxduration"><?php print( $racerTask->restTime ) ?></p>
+            <p class="manifest_maxduration"><?php print( $time ) ?></p>
          </div>
     </li>
 

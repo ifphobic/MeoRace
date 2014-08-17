@@ -31,12 +31,12 @@
 <table>
   
 
-  <tr>
+  <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
 <th rowspan="3" class="task_status task_completed"></th>
 <th colspan="6" class="task_requirements no_requirements">Possible after: -</th>
 </tr>
 
-<tr>
+<tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
 <td rowspan="2" class="task_number">01</td>
 <td class="checkpoint_name_first">Beda</td>
 <td class="goto_arrow">>></td>
@@ -45,7 +45,7 @@
 <td class="checkpoint_name_second">Amon</td>
 </tr>
 
-<tr>
+<tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
 <td>14:30</td>
 <td></td>
 <td></td>

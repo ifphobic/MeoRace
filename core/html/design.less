@@ -411,7 +411,7 @@ background-size: 15px;
  }
  
 #racerlist_racer .right_info .rider_number::after, 
-#racerlist_racertask .right_info .rider_number::after {
+#racerlist_racertask .right_info .rider_number::after{
  content: "\e60f";
     font-family: 'icomoon';
     color: @c5;
@@ -684,16 +684,17 @@ padding: 5px 0;
 // Manifest List
 
 #tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #ranking_detail_tasks, #racerdispatch_dispatch{
+
 .manifest_number{
-color: @c1;
-font-size: 1em;
-font-weight: bold;
-background-color: @c3;
-display: block;
-width: @line-height;
-height: @line-height;
-text-align: center;
-padding-top: 12px;
+    color: @c1;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: @c3;
+    display: block;
+    width: @line-height;
+    height: @line-height;
+    text-align: center;
+    padding-top: 12px;
 }
 
 .manifest_number.manifest_completed{
@@ -702,6 +703,7 @@ padding-top: 12px;
 
 .manifest_number.manifest_possible{
     background-color: @c_neutral;
+    color: @c8;
 }
 
 .manifest_number.manifest_unreachable{
@@ -896,6 +898,7 @@ div.content0 {.content; left: 0%;}
 div.content1 {.content; left: 25%;}
 div.content2 {.content; left: 50%;}
 div.content3 {.content; left: 75%;}
+div.content4 {.content; left: 100%;}
 div.content_menu_spacer {height: @line-height;}
 
 
