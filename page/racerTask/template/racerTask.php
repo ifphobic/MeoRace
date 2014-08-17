@@ -19,6 +19,12 @@
          <p class='title'><?php print( $racer->name ) ?></p>
          <p class='description'><?php print( Page::printValue($racer, array( "city", "country" ), ", ") ) ?></p>
       </div>
+      <div class='middle_info racer_ranking_points'>
+         <p>
+            <span class='racer_ranking'>1</span>
+            <span class='racer_points'>120</span>
+         </p>
+      </div>
       <div class='right_info'>
          <p class='rider_number'><?php print( $racer->racerNumber ) ?></p>
       </div>
@@ -26,13 +32,11 @@
 </div> <!-- top content wrapper -->
 
 <div class="bottom_content_wrapper">
-   
-   <div class="bottom_info_wrapper bottom_rider_tasks">
 
-<p class="racer_checkpointlist_heading">Tasks Checkpoint C</p>
+<p class="racer_checkpointlist_heading">Possible Actions</p>
 
-       <table>
-         <tr class="tableheader">
+   <table>
+   <tr class="tableheader">
 	  <th class="task_number"></th>
 	  <th class="checkpoint_name_first"></th>
 	  <th class="goto_arrow"></th>
@@ -52,11 +56,12 @@
 
    foreach ( $actions as $action ) {
       print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned . "&racerId=" . $racer->racerId ) . "'>
-            <td class='task_number'>'". $action->task . "</td>
+            <td class='task_number'>". $action->task . "</td>
 	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
-            <td class='goto_arrow'>>></td>
-	    <td class='parcel_name'><div class='indicator_pos'>" . $action->parcel . "</div></td>
-	    <td class='goto_arrow'>>></td>
+            <td class='goto_arrow'></td>
+	    <td class='parcel_name'><img src='http://www.worldwide-parcelservices.co.uk/custom/upload/images/parcel.jpg' height=25px width=25px;>
+        <div class='indicator_pos'>" . $action->parcel . "</div></td>
+	    <td class='goto_arrow'></td>
 	    <td class='checkpoint_name_second'> " . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . "</div></td>
             <td class='drilldown'>" . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . "</td>
          </tr>");

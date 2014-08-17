@@ -85,7 +85,15 @@ table {
 @list_border: 1px solid @c2;
 
 @line-height: 49px;
-@line-height-ranking: 64px;
+@line-height-ranking: 49px;
+@line-height-top-content: 66px;
+
+@line-height-detail: 88px;
+@line-height-detail-inner: 66px;
+
+@line-height-edit: 132px;
+@line-height-edit-inner: 99px;
+
 @tile-height: 149px;
 @letter-spacing: 1px;
 
@@ -130,19 +138,9 @@ li {
 }
 
 .top_content_wrapper{
-    height: 66px;
+    height: @line-height-top-content;
     text-align: center;
     text-transform: uppercase;
-}
-
-.top_content_wrapper.registration{
-    height: 132px;
-}
-
-.top_content_wrapper.registration > div{
-    height: 99px;
-    position: relative;
-    top: 22px;
 }
 
 .top_info_wrapper {
@@ -171,14 +169,15 @@ li {
 }
     
 .left_info > img {
-    height: @line-height;
+    width: 100%;
+    margin-top: -6px;
     }   
     
 
 .middle_info {
     height: @line-height;
-    margin: 0px 84px 0 @line-height;
-    padding: 0 15px;
+    margin: 0px 72px 0 @line-height;
+    padding: 0 10px;
     text-align: left;
 }
 
@@ -249,34 +248,24 @@ th, td {
 }
 
 th{
-background-color: @main_bgcolor;
+    background-color: @main_bgcolor;
+    vertical-align: middle;
+    color: @c6;
+    font-family: 'icomoon'; 
+    font-size: 1em;
+    vertical-align: middle;
 &.task_manifest{
 background-image: url(../../icons/document127.png);
 background-size: 24px;
 }
 &.checkpoint_name_first:before{
- content: "\e604";
-    font-family: 'icomoon';
-    color: @c6;
-    margin-right: 3px;
-    font-size: 1.6em;
-    vertical-align: middle;
+    content: "\e604";
 }
 &.parcel_name:before{
- content: "\e602";
-    font-family: 'icomoon';
-    color: @c6;
-    margin-right: 3px;
-    font-size: 1.6em;
-    vertical-align: middle;
+    content: "\e602";
 }
 &.checkpoint_name_second:before{
-content: "\e603";
-    font-family: 'icomoon';
-    color: @c6;
-    margin-right: 3px;
-    font-size: 1.6em;
-    vertical-align: middle;
+    content: "\e603";
 }
 &.task_status.task_completed{
 background-color: @c_pos;
@@ -291,12 +280,8 @@ background-color: @c_neg;
 }
 
 &.task_number:before{
- content: "\e600";
+    content: "\e600";
     font-family: 'icomoon';
-    color: @c6;
-    margin-right: 3px;
-    font-size: 1.6em;
-    vertical-align: middle;
 }
 &.manifest_points{
    background-image: url(../../icons/coins16.png); 
@@ -321,9 +306,9 @@ td{
 &.drilldown:after{
     content: "\e60f";
     font-family: 'icomoon';
-    color: @c6;
-    font-size: 1.5em;
+    color: @c5;
     vertical-align: middle;
+    font-size: 1.8em;
 }
     
 &.manifest_edit {
@@ -458,23 +443,30 @@ background-size: 15px;
 }
 
 span.racer_ranking{
-    margin-right: 8px;
+    margin-right: 12px;
+    color: @c5;
+    float: left;
+    width: 34px;
 }
 
-span.racer_ranking::before{
+span.racer_ranking::after{
     content: "\e608";
     font-family: 'icomoon';
-    color: @c5;
-    margin-right: 5px;
-    font-size: 0.9em;
+    margin-left: 5px;
+    font-size: 0.7em;
 }
 
-span.racer_points::before{
+span.racer_points {
+    color: @c5;
+    text-align: right;
+    float: left;
+    width: 60px;   
+}
+span.racer_points::after{
     content: "\e601";
     font-family: 'icomoon';
-    color: @c5;
-    margin-right: 3px;
-    font-size: 0.9em;
+    margin-left: 3px;
+    font-size: 0.7em;
 }
 
 #rankingoverview_ranking .right_info .rider_number::after {
@@ -487,16 +479,24 @@ span.racer_points::before{
 // Racer Registration
 
 #raceredit_racer{
-    .left_info {
-    height: 99px;
-    width: 99px;
+    .top_content_wrapper.registration{
+    height: @line-height-edit;
+    .top_info_wrapper{
+    height: @line-height-edit-inner;
+    position: relative;
+    top: 22px;
+     .left_info {
+    height: @line-height-edit-inner;
+    width: @line-height-edit-inner;
     }
      .middle_info {
-    margin: 0 84px 0 94px;
+    margin: 0 84px 0 @line-height-edit-inner;
     }
 .right_info {
     float: left;
- }
+}
+}  
+}
 }
 
 input {
@@ -519,11 +519,17 @@ button:focus {
 
 input[type="submit"]{
    color: @c1;
-   margin: 15px 0 15px 0;
+   margin: 15px auto;
    border-radius: 5px;
    border: none;
    background-color: #71C671;
    text-transform: uppercase;
+   width: 93%;
+}
+
+input[name="login"]{
+   margin: 15px 0;
+   width: 100%;
 }
 
 input[type="search"] {
@@ -583,6 +589,64 @@ background-color: lighten(@c2, 6%);
 
 // Checkpoint Racer Task List
 
+#racertask_racertask{
+.top_content_wrapper{
+    height: @line-height-detail;
+}
+.top_info_wrapper, .right_info{
+    height: @line-height-detail-inner; 
+}
+img{margin-top: -9px;}
+.left_info{
+height: @line-height-detail-inner; 
+width: @line-height-detail-inner; 
+}
+.middle_info{
+height: @line-height; 
+margin-left: @line-height-detail-inner;
+}
+.middle_info.racer_ranking_points{
+    height: 22px;
+    line-height: 0.9em;  
+    color: @c5;  
+}
+tr{
+    height: @line-height;
+    &.tableheader {
+        height: 29px;
+        font-size: 1.2em;
+    }
+    td{
+        vertical-align: middle;
+        &.drilldown{
+            font-family: 'icomoon';
+            text-align: right;
+        }
+        &.goto_arrow:after{
+            content: "\e60f";
+            font-family: 'icomoon';
+            vertical-align: middle;
+        }
+        &.task_number {
+            border-radius: 50px;
+            overflow: hidden;
+            color: @c1;
+            font-weight: bold;
+            background-color: @c3;
+            width: @line-height;
+            height: @line-height;
+        }
+    }
+}
+}
+
+p.parcel_number{
+        height: @line-height-detail-inner;
+        padding: 6px 20px;
+        font-size: 1.5em;
+}
+
+
 p.racer_checkpointlist_heading, p.racer_tasklist_heading{
 display: inline-block;
 width: 100%;
@@ -591,53 +655,87 @@ border-bottom: 2px solid #ccc;
 padding: 5px 0;
 }
 
+// Racer Dispatch
+
+#racerdispatch_dispatch{
+    li{
+        height: @line-height-detail-inner;
+         .left_info{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+            .manifest_number{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+            padding-top: 15px;
+            }
+         }
+           .right_info, img{
+            height: @line-height-detail-inner; 
+            }
+            .middle_info{
+            height: @line-height-detail-inner; 
+            margin-left: @line-height-detail-inner;
+            }
+}
+}
+
+
+
 // Manifest List
 
-#tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #racerdispatch_dispatch{
+#tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #ranking_detail_tasks, #racerdispatch_dispatch{
 .manifest_number{
 color: @c1;
-font-size: 24px;
+font-size: 1em;
 font-weight: bold;
 background-color: @c3;
 display: block;
 width: @line-height;
 height: @line-height;
 text-align: center;
-padding-top: 6px;
+padding-top: 12px;
 }
+
 .manifest_number.manifest_completed{
-background-color: @c_pos;
+    background-color: @c_pos;
 }
 
 .manifest_number.manifest_possible{
-background-color: @c_neutral;
+    background-color: @c_neutral;
 }
 
-
 .manifest_number.manifest_unreachable{
-background-color: @c_neg;
+    background-color: @c_neg;
 }
 
 .right_info{
 text-align: left;
-width: 100px;
-margin-right: 20px;
-.manifest_points:before{
- content: "\e601";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
-}
-.manifest_maxduration:before{
- content: "\e606";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
+width: 80px;
+margin-right: 0px;
+text-align: right;
+position: absolute;
+right: 0px;
+top: 8px;
 
+.manifest_points:after{
+    .manifest_counts;
+    content: "\e601";
+}
+.manifest_maxduration:after{
+    .manifest_counts;
+    content: "\e606";
+}
+.rider_number{
+    margin-top: -8px;
 }
 }
+}
+
+.manifest_counts{
+    font-family: 'icomoon';
+    color: @c5;
+    margin-left: 6px;
+    font-size: 0.8em;
 }
 
 //  Manifest Edit
@@ -661,19 +759,13 @@ padding-top: 6px;
 text-align: left;
 width: 72px;
 margin-right: 20px;
-.manifest_points:before{
- content: "\e601";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
+.manifest_points:after{
+    .manifest_counts;
+    content: "\e601";
 }
-.manifest_maxduration:before{
- content: "\e606";
-    font-family: 'icomoon';
-    color: @c5;
-    margin-right: 6px;
-    font-size: 1em;
+.manifest_maxduration:after{
+    .manifest_counts;
+    content: "\e606";
 }
 }
 ul{
@@ -730,6 +822,8 @@ width: 10%;
 
 th, td{
 text-align: left;
+vertical-align: middle;
+padding: 2px 0;
 }
 
 th.task_requirements{

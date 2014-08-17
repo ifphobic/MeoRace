@@ -171,14 +171,6 @@ li {
   text-align: center;
   text-transform: uppercase;
 }
-.top_content_wrapper.registration {
-  height: 132px;
-}
-.top_content_wrapper.registration > div {
-  height: 99px;
-  position: relative;
-  top: 22px;
-}
 .top_info_wrapper {
   height: 49px;
   margin: 0 15px;
@@ -200,12 +192,13 @@ li {
   border-radius: 50px;
 }
 .left_info > img {
-  height: 49px;
+  width: 100%;
+  margin-top: -6px;
 }
 .middle_info {
   height: 49px;
-  margin: 0px 84px 0 49px;
-  padding: 0 15px;
+  margin: 0px 72px 0 49px;
+  padding: 0 10px;
   text-align: left;
 }
 .middle_info p.title {
@@ -263,6 +256,11 @@ td {
 }
 th {
   background-color: #f7f7f7;
+  vertical-align: middle;
+  color: #808080;
+  font-family: 'icomoon';
+  font-size: 1em;
+  vertical-align: middle;
 }
 th.task_manifest {
   background-image: url(../../icons/document127.png);
@@ -270,27 +268,12 @@ th.task_manifest {
 }
 th.checkpoint_name_first:before {
   content: "\e604";
-  font-family: 'icomoon';
-  color: #808080;
-  margin-right: 3px;
-  font-size: 1.6em;
-  vertical-align: middle;
 }
 th.parcel_name:before {
   content: "\e602";
-  font-family: 'icomoon';
-  color: #808080;
-  margin-right: 3px;
-  font-size: 1.6em;
-  vertical-align: middle;
 }
 th.checkpoint_name_second:before {
   content: "\e603";
-  font-family: 'icomoon';
-  color: #808080;
-  margin-right: 3px;
-  font-size: 1.6em;
-  vertical-align: middle;
 }
 th.task_status.task_completed {
   background-color: #71c671;
@@ -304,10 +287,6 @@ th.task_status.task_notpossible {
 th.task_number:before {
   content: "\e600";
   font-family: 'icomoon';
-  color: #808080;
-  margin-right: 3px;
-  font-size: 1.6em;
-  vertical-align: middle;
 }
 th.manifest_points {
   background-image: url(../../icons/coins16.png);
@@ -329,9 +308,9 @@ th.manifest_delete {
 td.drilldown:after {
   content: "\e60f";
   font-family: 'icomoon';
-  color: #808080;
-  font-size: 1.5em;
+  color: #999999;
   vertical-align: middle;
+  font-size: 1.8em;
 }
 td.manifest_edit {
   background-image: url(../../icons/pencil44.png);
@@ -420,7 +399,7 @@ li {
   font-size: 0.6em;
 }
 #rankingoverview_ranking li {
-  height: 64px;
+  height: 49px;
 }
 #rankingoverview_ranking .middle_info {
   height: 48px;
@@ -437,21 +416,28 @@ li {
   font-size: 0.9em;
 }
 span.racer_ranking {
-  margin-right: 8px;
+  margin-right: 12px;
+  color: #999999;
+  float: left;
+  width: 34px;
 }
-span.racer_ranking::before {
+span.racer_ranking::after {
   content: "\e608";
   font-family: 'icomoon';
-  color: #999999;
-  margin-right: 5px;
-  font-size: 0.9em;
+  margin-left: 5px;
+  font-size: 0.7em;
 }
-span.racer_points::before {
+span.racer_points {
+  color: #999999;
+  text-align: right;
+  float: left;
+  width: 60px;
+}
+span.racer_points::after {
   content: "\e601";
   font-family: 'icomoon';
-  color: #999999;
-  margin-right: 3px;
-  font-size: 0.9em;
+  margin-left: 3px;
+  font-size: 0.7em;
 }
 #rankingoverview_ranking .right_info .rider_number::after {
   content: "\e60f";
@@ -459,14 +445,22 @@ span.racer_points::before {
   color: #999999;
   font-size: 0.6em;
 }
-#raceredit_racer .left_info {
+#raceredit_racer .top_content_wrapper.registration {
+  height: 132px;
+}
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper {
+  height: 99px;
+  position: relative;
+  top: 22px;
+}
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .left_info {
   height: 99px;
   width: 99px;
 }
-#raceredit_racer .middle_info {
-  margin: 0 84px 0 94px;
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .middle_info {
+  margin: 0 84px 0 99px;
 }
-#raceredit_racer .right_info {
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .right_info {
   float: left;
 }
 input {
@@ -487,11 +481,16 @@ button:focus {
 }
 input[type="submit"] {
   color: #ffffff;
-  margin: 15px 0 15px 0;
+  margin: 15px auto;
   border-radius: 5px;
   border: none;
   background-color: #71C671;
   text-transform: uppercase;
+  width: 93%;
+}
+input[name="login"] {
+  margin: 15px 0;
+  width: 100%;
 }
 input[type="search"] {
   -webkit-appearance: none;
@@ -539,6 +538,62 @@ input[type="file"] {
   background-size: 20px;
   background-position: 70px;
 }
+#racertask_racertask .top_content_wrapper {
+  height: 88px;
+}
+#racertask_racertask .top_info_wrapper,
+#racertask_racertask .right_info {
+  height: 66px;
+}
+#racertask_racertask img {
+  margin-top: -9px;
+}
+#racertask_racertask .left_info {
+  height: 66px;
+  width: 66px;
+}
+#racertask_racertask .middle_info {
+  height: 49px;
+  margin-left: 66px;
+}
+#racertask_racertask .middle_info.racer_ranking_points {
+  height: 22px;
+  line-height: 0.9em;
+  color: #999999;
+}
+#racertask_racertask tr {
+  height: 49px;
+}
+#racertask_racertask tr.tableheader {
+  height: 29px;
+  font-size: 1.2em;
+}
+#racertask_racertask tr td {
+  vertical-align: middle;
+}
+#racertask_racertask tr td.drilldown {
+  font-family: 'icomoon';
+  text-align: right;
+}
+#racertask_racertask tr td.goto_arrow:after {
+  content: "\e60f";
+  font-family: 'icomoon';
+  vertical-align: middle;
+}
+#racertask_racertask tr td.task_number {
+  border-radius: 50px;
+  overflow: hidden;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #cccccc;
+  width: 49px;
+  height: 49px;
+}
+p.parcel_number {
+  height: 66px;
+  padding: 6px 20px;
+  font-size: 1.5em;
+}
 p.racer_checkpointlist_heading,
 p.racer_tasklist_heading {
   display: inline-block;
@@ -547,65 +602,109 @@ p.racer_tasklist_heading {
   border-bottom: 2px solid #ccc;
   padding: 5px 0;
 }
+#racerdispatch_dispatch li {
+  height: 66px;
+}
+#racerdispatch_dispatch li .left_info {
+  height: 66px;
+  width: 66px;
+}
+#racerdispatch_dispatch li .left_info .manifest_number {
+  height: 66px;
+  width: 66px;
+  padding-top: 15px;
+}
+#racerdispatch_dispatch li .right_info,
+#racerdispatch_dispatch li img {
+  height: 66px;
+}
+#racerdispatch_dispatch li .middle_info {
+  height: 66px;
+  margin-left: 66px;
+}
 #tasklist_race .manifest_number,
 #taskdispatch_dispatch .manifest_number,
 #racertask_racertask .manifest_number,
+#ranking_detail_tasks .manifest_number,
 #racerdispatch_dispatch .manifest_number {
   color: #ffffff;
-  font-size: 24px;
+  font-size: 1em;
   font-weight: bold;
   background-color: #cccccc;
   display: block;
   width: 49px;
   height: 49px;
   text-align: center;
-  padding-top: 6px;
+  padding-top: 12px;
 }
 #tasklist_race .manifest_number.manifest_completed,
 #taskdispatch_dispatch .manifest_number.manifest_completed,
 #racertask_racertask .manifest_number.manifest_completed,
+#ranking_detail_tasks .manifest_number.manifest_completed,
 #racerdispatch_dispatch .manifest_number.manifest_completed {
   background-color: #71c671;
 }
 #tasklist_race .manifest_number.manifest_possible,
 #taskdispatch_dispatch .manifest_number.manifest_possible,
 #racertask_racertask .manifest_number.manifest_possible,
+#ranking_detail_tasks .manifest_number.manifest_possible,
 #racerdispatch_dispatch .manifest_number.manifest_possible {
   background-color: #ffff00;
 }
 #tasklist_race .manifest_number.manifest_unreachable,
 #taskdispatch_dispatch .manifest_number.manifest_unreachable,
 #racertask_racertask .manifest_number.manifest_unreachable,
+#ranking_detail_tasks .manifest_number.manifest_unreachable,
 #racerdispatch_dispatch .manifest_number.manifest_unreachable {
   background-color: #ff0000;
 }
 #tasklist_race .right_info,
 #taskdispatch_dispatch .right_info,
 #racertask_racertask .right_info,
+#ranking_detail_tasks .right_info,
 #racerdispatch_dispatch .right_info {
   text-align: left;
-  width: 100px;
-  margin-right: 20px;
+  width: 80px;
+  margin-right: 0px;
+  text-align: right;
+  position: absolute;
+  right: 0px;
+  top: 8px;
 }
-#tasklist_race .right_info .manifest_points:before,
-#taskdispatch_dispatch .right_info .manifest_points:before,
-#racertask_racertask .right_info .manifest_points:before,
-#racerdispatch_dispatch .right_info .manifest_points:before {
+#tasklist_race .right_info .manifest_points:after,
+#taskdispatch_dispatch .right_info .manifest_points:after,
+#racertask_racertask .right_info .manifest_points:after,
+#ranking_detail_tasks .right_info .manifest_points:after,
+#racerdispatch_dispatch .right_info .manifest_points:after {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
   content: "\e601";
-  font-family: 'icomoon';
-  color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
 }
-#tasklist_race .right_info .manifest_maxduration:before,
-#taskdispatch_dispatch .right_info .manifest_maxduration:before,
-#racertask_racertask .right_info .manifest_maxduration:before,
-#racerdispatch_dispatch .right_info .manifest_maxduration:before {
-  content: "\e606";
+#tasklist_race .right_info .manifest_maxduration:after,
+#taskdispatch_dispatch .right_info .manifest_maxduration:after,
+#racertask_racertask .right_info .manifest_maxduration:after,
+#ranking_detail_tasks .right_info .manifest_maxduration:after,
+#racerdispatch_dispatch .right_info .manifest_maxduration:after {
   font-family: 'icomoon';
   color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e606";
+}
+#tasklist_race .right_info .rider_number,
+#taskdispatch_dispatch .right_info .rider_number,
+#racertask_racertask .right_info .rider_number,
+#ranking_detail_tasks .right_info .rider_number,
+#racerdispatch_dispatch .right_info .rider_number {
+  margin-top: -8px;
+}
+.manifest_counts {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
 }
 #actionconfirm_racertask .top_content_wrapper,
 #taskedit_race .top_content_wrapper {
@@ -629,21 +728,21 @@ p.racer_tasklist_heading {
   width: 72px;
   margin-right: 20px;
 }
-#actionconfirm_racertask .right_info .manifest_points:before,
-#taskedit_race .right_info .manifest_points:before {
+#actionconfirm_racertask .right_info .manifest_points:after,
+#taskedit_race .right_info .manifest_points:after {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
   content: "\e601";
-  font-family: 'icomoon';
-  color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
 }
-#actionconfirm_racertask .right_info .manifest_maxduration:before,
-#taskedit_race .right_info .manifest_maxduration:before {
-  content: "\e606";
+#actionconfirm_racertask .right_info .manifest_maxduration:after,
+#taskedit_race .right_info .manifest_maxduration:after {
   font-family: 'icomoon';
   color: #999999;
-  margin-right: 6px;
-  font-size: 1em;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e606";
 }
 #actionconfirm_racertask ul,
 #taskedit_race ul {
@@ -698,6 +797,8 @@ p.racer_checkpointlist_heading.manifest_detail_heading {
 #actionconfirm_racertask table th,
 #actionconfirm_racertask table td {
   text-align: left;
+  vertical-align: middle;
+  padding: 2px 0;
 }
 #actionconfirm_racertask table th.task_requirements {
   color: red;
