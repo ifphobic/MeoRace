@@ -2,7 +2,7 @@
     <div class="bottom_content_wrapper">
       <div class="bottom_info_wrapper">
 
-<div class="new_button" onclick=" <?php Page::getOnClickFunction( "racer", "racerEdit", null); ?>">+ Add Racer</div>
+<div class="new_button" onclick='<?php print(Page::getOnClickFunction( "racer", "racerEdit", null ) ) ?>'>+ Add Racer</div>
 
 <ul>
    <?php
@@ -13,7 +13,7 @@
       
       foreach ( $racers as $racer ) {
       print ("
-         <li class='riderlist'>
+         <li class='riderlist' >
             " . CommonPageFunction::getLink( "racer", "racerEdit", $racer->racerId, "
             <div class='left_info'>
                <img src='http://static.wixstatic.com/media/87f473_013e75dfc64446ea98841a8f4c96056a.jpg_srz_321_273_75_22_0.50_1.20_0.00_jpg_srz' alt='strom praesi'>

@@ -11,7 +11,16 @@
    $racerTasks = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
    $dbFunction->close();
 
-   $rankings = RankingCalculator::evaluate( $racerTasks );
+   $raceFinished = false;
+   if ( count( $racerTasks ) > 0 ) {
+      $dbFunction = new RaceDbFunction();
+      $race = $dbFunction->findById( $racerTasks[0]->raceFk );
+      $raceFinished = $dbFunction->isFinished( $race );
+      $dbFunction->close();
+   }                  
+
+
+   $rankings = RankingCalculator::evaluate( $racerTasks, $raceFinished );
    
 
    foreach ( $rankings as $ranking ) {

@@ -2,9 +2,10 @@
 
    class RankingCalculator {
 
+      const DELAY_PENALTY = 0.5;
+      const MAX_RELATIVE_DELAY = 0.3;
 
-
-      public static function evaluate( $racerTasks ) {
+      public static function evaluate( $racerTasks, $raceFinished ) {
 
          $rankings = array();
 
@@ -13,14 +14,9 @@
             if ( !isset( $rankings[ $racerTask->racerId ] ) ) {
                $rankings[ $racerTask->racerId ] = RankingCalculator::createRanking( $racerTask );
             }
-            $ranking = $rankings[ $racerTask->racerId ];
 
-            if ( $racerTask->taskTime != null ) {
-               if ( $racerTask->taskTime > $racerTask->maxDuration ) {
-                  $racerTask->price = round( $racerTask->price / 2 );
-               }
-               $ranking->score += $racerTask->price;
-            }
+            $ranking = $rankings[ $racerTask->racerId ];
+            $ranking->score += RankingCalculator::calculateScore( $racerTask, $raceFinished );
 
          }
 
@@ -43,6 +39,33 @@
          }
 
          return $rankings;
+      }
+
+
+      public static function calculateScore( $racerTask, $raceFinished ) {
+         $score = $racerTask->price;
+         if ( $racerTask->taskTime != null ) {
+            if ( $racerTask->taskTime <= $racerTask->maxDuration ) {
+               $score =  $racerTask->price;
+            } else {
+               $score = RankingCalculator::calculateDelyedScore( $racerTask );
+            }
+         } else if ( $raceFinished ) {
+            $score = $racerTask->price * -1;
+         }
+         error_log( "RankingCalculator::calculatee: time: " . $racerTask->taskTime . ", maxDuration: " . $racerTask->maxDuration . ", price " . $racerTask->price . " = score: $score" );
+         return $score;
+      }
+
+      private static function calculateDelyedScore( $racerTask ) {
+
+         $delay = $racerTask->taskTime / $racerTask->maxDuration - 1;
+         $timePenalty = $delay / RankingCalculator::MAX_RELATIVE_DELAY;
+         $timePenalty = min($timePenalty, 1);
+         
+         $score = $racerTask->price * RankingCalculator::DELAY_PENALTY;
+         $score = $score - ($score * $timePenalty);
+         return round( $score );
       }
 
       private static function createRanking( $racerTask ) {

@@ -40,6 +40,10 @@
          $this->query($query, $parameter);
       }
 
+      public function isFinished( $race ) {
+         return $race->status == "finished";
+      }
    }
+   
 
 ?>

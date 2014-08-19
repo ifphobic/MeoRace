@@ -11,6 +11,6 @@
   
    <table>
       <?php print( CommonPageFunction::getInputField( "name", $race, "Name") ) ?>
-      <?php print( CommonPageFunction::getCombobox( "status", $race, "Status", array("prepare", "running", "closed")) ) ?>
+      <?php print( CommonPageFunction::getCombobox( "status", $race, "Status", array("prepare", "running", "finished")) ) ?>
    </table>
    

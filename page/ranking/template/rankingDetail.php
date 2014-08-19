@@ -1,4 +1,6 @@
 <?php
+   include 'page/ranking/RankingCalculator.php';
+   
    $racer = null;
   
    $dbFunction = new RacerDbFunction();
@@ -42,6 +44,14 @@
    $racerTasks = $dbFunction->findAll( null, $_GET['id'] );
    $dbFunction->close();
    
+   $raceFinished = false;
+   if ( count( $racerTasks ) > 0 ) {
+      $dbFunction = new RaceDbFunction();
+      $race = $dbFunction->findById( $racerTasks[0]->raceFk );
+      $raceFinished = $dbFunction->isFinished( $race );
+      $dbFunction->close();
+   }
+
    foreach( $racerTasks as $racerTask ) {
       $taskComplete = true;
       $time = $racerTask->taskTime;
@@ -51,6 +61,7 @@
       }
       $time = gmdate("H:i:s", $time%86400);
       ?>
+
       <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
          <div class="left_info">
             <p class="manifest_number <?php $taskComplete ? print("manifest_completed") : print("manifest_possible"); ?>">
@@ -63,7 +74,7 @@
          </div>
       
          <div class="right_info">
-            <p class="manifest_points"><?php print( $racerTask->price ) ?></p>
+            <p class="manifest_points"><?php print( RankingCalculator::calculateScore( $racerTask, $raceFinished ) . "/" . $racerTask->price ) ?></p>
             <p class="manifest_maxduration"><?php print( $time ) ?></p>
          </div>
     </li>
