@@ -45,21 +45,21 @@
       public static function calculateScore( $racerTask, $raceFinished ) {
          $score = $racerTask->price;
          if ( $racerTask->taskTime != null ) {
-            if ( $racerTask->taskTime <= $racerTask->maxDuration ) {
-               $score =  $racerTask->price;
-            } else {
-               $score = RankingCalculator::calculateDelyedScore( $racerTask );
-            }
+            $score = RankingCalculator::calculateDelyedScore( $racerTask->taskTime, $racerTask );
          } else if ( $raceFinished ) {
             $score = $racerTask->price * -1;
+         } else {
+            $score = RankingCalculator::calculateDelyedScore( $racerTask->currentTime, $racerTask );
          }
-         error_log( "RankingCalculator::calculatee: time: " . $racerTask->taskTime . ", maxDuration: " . $racerTask->maxDuration . ", price " . $racerTask->price . " = score: $score" );
          return $score;
       }
 
-      private static function calculateDelyedScore( $racerTask ) {
+      private static function calculateDelyedScore( $time, $racerTask ) {
+         if ( $time <= $racerTask->maxDuration ) {
+            return $racerTask->price;
+         }
 
-         $delay = $racerTask->taskTime / $racerTask->maxDuration - 1;
+         $delay = $time / $racerTask->maxDuration - 1;
          $timePenalty = $delay / RankingCalculator::MAX_RELATIVE_DELAY;
          $timePenalty = min($timePenalty, 1);
          
