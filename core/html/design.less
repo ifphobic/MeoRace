@@ -125,17 +125,28 @@ html, body{
     font-style: @font;
 }
 
-ul{
-    border-top: @list_border;
-}
-
 li {
-    height: @line-height;
     width: 100%;
-    border-bottom: @list_border;
     clear: both;
     position: relative;
 }
+
+div.listwrapper{
+    margin: 0 15px;
+    border-bottom: 1px solid black;
+    border-bottom: @list_border;
+    padding: 5px 0;
+    height: @line-height;
+}
+
+div.listwrapper:first-child{
+    border-top: @list_border;
+}
+
+div.listwrapper:last-child{
+    border-bottom: @list_border;
+}
+    
 
 .top_content_wrapper{
     height: @line-height-top-content;
@@ -374,10 +385,6 @@ background-image: url(../../icons/call37.png);
 background-size: 35px;
 }
 
-li{
-padding: 5px 0;
-}
-
 #main_navigation .right_info{
 background-image: url(../../icons/play45.png);
 background-repeat: no-repeat;
@@ -401,7 +408,7 @@ background-size: 15px;
 
 .new_button {
    color: @c1;
-   margin: 15px 0;
+   margin: 15px;
    border-radius: 5px;
    border: none;
    background-color: #71C671;
@@ -411,7 +418,8 @@ background-size: 15px;
  }
  
 #racerlist_racer .right_info .rider_number::after, 
-#racerlist_racertask .right_info .rider_number::after{
+#racerlist_racertask .right_info .rider_number::after,
+#racerlist_dispatch .right_info .rider_number::after{
  content: "\e60f";
     font-family: 'icomoon';
     color: @c5;
@@ -586,7 +594,6 @@ background-color: lighten(@c2, 6%);
     }
 }
         
-
 // Checkpoint Racer Task List
 
 #racertask_racertask{
@@ -679,6 +686,35 @@ padding: 5px 0;
 }
 }
 
+#taskdispatch_dispatch{
+    .manifest_points{
+        margin-right: 10px;
+    &:after{
+    .manifest_counts;
+    content: "\e601";
+    font-size: 1.1em;
+}
+}
+.manifest_maxduration:after{
+    .manifest_counts;
+    content: "\e606";
+    font-size: 1em;
+}
+.right_info::after{
+    content: "\e60f";
+    font-family: 'icomoon';
+    color: @c5;
+    font-size: 2em;
+    position: relative;
+    top: 8px;
+}
+}
+
+
+
+
+
+
 
 
 // Manifest List
@@ -716,7 +752,7 @@ width: 80px;
 margin-right: 0px;
 text-align: right;
 position: absolute;
-right: 0px;
+right: 15px;
 top: 8px;
 
 .manifest_points:after{

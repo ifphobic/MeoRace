@@ -15,20 +15,22 @@
       print ("
          <li class='riderlist' >
             " . CommonPageFunction::getLink( "racer", "racerEdit", $racer->racerId, "
-            <div class='left_info'>
-               <img src='http://static.wixstatic.com/media/87f473_013e75dfc64446ea98841a8f4c96056a.jpg_srz_321_273_75_22_0.50_1.20_0.00_jpg_srz' alt='strom praesi'>
-            </div> 
-            <div class='middle_info'>
-               <span class='title'>" . $racer->name . "</span><br />
-               <span class='description'>" . $racer->city . ", " . $racer->country . "</span>
-            </div> 
-            <div class='middle_info'>
-               <span class='title'>" . $racer->email . "</span><br />
-               <span class='description'>" . $racer->status . "</span>
-            </div>
-            <div class='right_info'>
-               <span class='rider_number'>" . $racer->racerNumber . "</span> 
-            </div>
+            <div class='listwrapper'>
+               <div class='left_info'>
+                  <img src='http://static.wixstatic.com/media/87f473_013e75dfc64446ea98841a8f4c96056a.jpg_srz_321_273_75_22_0.50_1.20_0.00_jpg_srz' alt='strom praesi'>
+               </div> 
+                  <div class='middle_info'>
+                     <span class='title'>" . $racer->name . "</span><br />
+                     <span class='description'>" . $racer->city . ", " . $racer->country . "</span>
+                  </div> 
+                  <div class='middle_info'>
+                     <span class='title'>" . $racer->email . "</span><br />
+                     <span class='description'>" . $racer->status . "</span>
+                  </div>
+                  <div class='right_info'>
+                     <span class='rider_number'>" . $racer->racerNumber . "</span> 
+                  </div>
+               </div> <!-- listwrapper -->
             ") . "
          </li>
       ");
