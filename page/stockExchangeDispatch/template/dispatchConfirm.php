@@ -1,5 +1,4 @@
 <div class="content_tab" id="racerdispatch_dispatch">
-<div class='bottom_content_wrapper'> 
 
 <?php
 
@@ -17,45 +16,35 @@
    <input type='hidden' name='taskId' value='<?php print( $taskId) ?>' />
    <input type='hidden' name='racerId' value='<?php print( $racerId) ?>' />
 
-   <ul>
+            
+
+<p class="racer_racerdispatch_heading"><?php print( "Assign Task " ) ?></p>
+
+ <ul>
       <li>
-         <div class="left_info">
-         </div>
+        <div class="listwrapper">
+			<div class="left_info">
+            <p class="manifest_number"><?php print( $task->name ) ?></p>
+         </div> 
 
-         <div class="middle_info">
-            <p class="title"><?php print( "Assign Task " ) ?></p>
+        <div class="middle_info">
+            <p class="title"><?php print( $task->description ) ?></p>
+	         <p>
+                  <span class='manifest_points'><?php print( round( $task->price ) ) ?></span>
+                  <span class='manifest_maxduration'><?php print( Page::readableDuration( $task->maxDuration ) ) ?></span>
+            </p>
          </div>
-
+    
          <div class="right_info">
-         </div>
-      </li>
+        </div>
+ </ul>
+
+
+            <p class="racer_racerdispatch_heading"><?php print( "To Racer " ) ?></p>
+
+      <ul>
       <li>
-         <div class="left_info">
-            <p class="manifest_number">12</p>
-         </div>
-
-         <div class="middle_info">
-            <p class="title"><?php print( $task->name ) ?></p>
-            <p class="description"><?php print( $task->description ) ?>
-         </div>
-
-         <div class="right_info">
-            <p class="manifest_points"><?php print( round( $task->price ) ) ?></p>
-            <p class="manifest_maxduration"><?php print( Page::readableDuration( $task->maxDuration ) ) ?></p>
-         </div>
-      </li>
-      <li>
-         <div class="left_info">
-         </div>
-
-         <div class="middle_info">
-            <p class="title"><?php print( "To Racer " ) ?></p>
-         </div>
-
-         <div class="right_info">
-         </div>
-      </li>
-      <li>
+	 	<div class="listwrapper">
          <div class='left_info'>
             <img src='<?php print( Page::getImagePath( $racer ) ) ?>'>
          </div> 
@@ -66,8 +55,8 @@
          <div class='right_info'>
             <p class='rider_number'><?php print( $racer->racerNumber ) ?></p>
          </div>
+		</div>
       </li>
    </ul>
 
-</div>
 </div>

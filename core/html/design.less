@@ -77,7 +77,8 @@ table {
 @c_neg: red;
 @c_neutral: yellow;
 
-@g1: #f7f7f7;
+@g1: #71C671; //for Save Buttons
+@g2: lighten(@g1, 7%); // for active Save Buttons
 
 @font: 12pt 'Open Sans', Helvetica, sans-serif, ;
 
@@ -137,10 +138,6 @@ div.listwrapper{
     border-bottom: @list_border;
     padding: 5px 0;
     height: @line-height;
-}
-
-div.listwrapper:first-child{
-    border-top: @list_border;
 }
 
 div.listwrapper:last-child{
@@ -222,7 +219,7 @@ div.listwrapper:last-child{
   float: right;
   display: block;
   letter-spacing: @letter-spacing;
-  margin-top: -6px;
+  margin-top: -8px;
 }
 
 //Tables
@@ -423,14 +420,10 @@ background-size: 15px;
  content: "\e60f";
     font-family: 'icomoon';
     color: @c5;
-    font-size: 0.6em;
+    font-size: 0.65em;
 }
 
 //Racer Ranking
-
-#rankingoverview_ranking li{
-    height: @line-height-ranking;
-}
 
 #rankingoverview_ranking .middle_info {
     height: 48px;
@@ -484,6 +477,45 @@ span.racer_points::after{
     font-size: 0.6em;
 }
 
+#ranking_rankingdetail{
+    .top_content_wrapper{
+    height: @line-height-detail;
+}
+.top_info_wrapper, .right_info{
+    height: @line-height-detail-inner; 
+}
+img{
+    margin-top: -6px;
+    }
+.left_info{
+height: @line-height-detail-inner; 
+width: @line-height-detail-inner; 
+}
+.middle_info{
+height: @line-height; 
+margin-left: @line-height-detail-inner;
+}
+.middle_info.racer_ranking_points{
+    height: 22px;
+    line-height: 0.9em;  
+    color: @c5;  
+}
+}
+
+#ranking_detail_tasks .right_info{
+    right: 30px !important;
+&:after{
+    content: "\e60f" !important;
+    font-family: 'icomoon';
+    color: #999;
+    font-size: 1.8em;
+    position: absolute;
+    top: 10px;
+}
+}
+
+
+
 // Racer Registration
 
 #raceredit_racer{
@@ -530,11 +562,15 @@ input[type="submit"]{
    margin: 15px auto;
    border-radius: 5px;
    border: none;
-   background-color: #71C671;
+   background-color: @g1;
    text-transform: uppercase;
    width: 93%;
+   &:active, &:hover{
+      background-color: @g2;
+      box-shadow: 0 0 1px 1px @c3;
+   }
 }
-
+    
 input[name="login"]{
    margin: 15px 0;
    width: 100%;
@@ -593,6 +629,11 @@ background-color: lighten(@c2, 6%);
         }
     }
 }
+
+
+
+
+
         
 // Checkpoint Racer Task List
 
@@ -603,7 +644,7 @@ background-color: lighten(@c2, 6%);
 .top_info_wrapper, .right_info{
     height: @line-height-detail-inner; 
 }
-img{margin-top: -9px;}
+img{margin-top: -6px;}
 .left_info{
 height: @line-height-detail-inner; 
 width: @line-height-detail-inner; 
@@ -662,33 +703,12 @@ border-bottom: 2px solid #ccc;
 padding: 5px 0;
 }
 
-// Racer Dispatch
-
-#racerdispatch_dispatch{
-    li{
-        height: @line-height-detail-inner;
-         .left_info{
-            height: @line-height-detail-inner; 
-            width: @line-height-detail-inner; 
-            .manifest_number{
-            height: @line-height-detail-inner; 
-            width: @line-height-detail-inner; 
-            padding-top: 15px;
-            }
-         }
-           .right_info, img{
-            height: @line-height-detail-inner; 
-            }
-            .middle_info{
-            height: @line-height-detail-inner; 
-            margin-left: @line-height-detail-inner;
-            }
-}
-}
-
+// Taskdispatch
 #taskdispatch_dispatch{
+    .middle_info{
+    margin-right: 15px;
     .manifest_points{
-        margin-right: 10px;
+        margin-right: 15px;
     &:after{
     .manifest_counts;
     content: "\e601";
@@ -699,6 +719,7 @@ padding: 5px 0;
     .manifest_counts;
     content: "\e606";
     font-size: 1em;
+}
 }
 .right_info::after{
     content: "\e60f";
@@ -711,9 +732,51 @@ padding: 5px 0;
 }
 
 
+// Racerdispatch Dispatch
 
-
-
+#racerdispatch_dispatch{
+    p.racer_racerdispatch_heading{
+display: inline-block;
+width: 100%;
+font-weight: bold;
+border-bottom: 2px solid #ccc;
+padding: 5px 15px;
+}
+    li{
+        div.listwrapper{
+            height: @line-height-detail-inner; 
+         .left_info{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+            .manifest_number{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+            padding-top: 20px;
+            }
+         }
+         .manifest_points{
+        margin-right: 15px;
+    &:after{
+    .manifest_counts;
+    content: "\e601";
+    font-size: 1.1em;
+}
+}
+.manifest_maxduration:after{
+    .manifest_counts;
+    content: "\e606";
+    font-size: 1em;
+}
+           .right_info{
+            height: @line-height-detail-inner; 
+            }
+            .middle_info{
+            height: @line-height-detail-inner; 
+            margin-left: @line-height-detail-inner;
+            }
+        }
+}
+}
 
 
 

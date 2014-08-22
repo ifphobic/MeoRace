@@ -1,5 +1,4 @@
 <div class="content_tab" id="rankingoverview_ranking">
-<div class="bottom_content_wrapper">
 
    <ul>
 
@@ -26,7 +25,8 @@
    foreach ( $rankings as $ranking ) {
       print("
          <li onclick='" . Page::getOnClickFunction( "ranking", "rankingDetail", $ranking->racerId ) . "'>
-            <div class='left_info'>
+         <div class='listwrapper'>
+				<div class='left_info'>
                <img src='" . Page::getImagePath( $ranking ) . "'>
             </div> 
             <div class='middle_info'>
@@ -40,11 +40,11 @@
                <p class='rider_number'>" . $ranking->racerNumber . "</p>
             </div>
          </li>
+		</div>
       ");
    }
 
 ?>
 
    </ul>
-</div>
 </div>

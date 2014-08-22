@@ -11,9 +11,9 @@
 ?>
 
 <div class="content_tab">
-<div id="racertask_racertask">
-<div class="top_content_wrapper" > <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
-   <div class="top_info_wrapper top_info_rider"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
+<div id="ranking_rankingdetail">
+<div class="top_content_wrapper" > 
+   <div class="top_info_wrapper top_info_rider"> 
       <div class='left_info'>
          <img src='<?php print( Page::getImagePath( $racer ) ) ?>' alt='strom praesi'>
       </div> 
@@ -63,6 +63,7 @@
       ?>
 
       <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
+        <div class="listwrapper">
          <div class="left_info">
             <p class="manifest_number <?php $taskComplete ? print("manifest_completed") : print("manifest_possible"); ?>">
             <?php print( $racerTask->taskName ) ?></p>
@@ -77,6 +78,7 @@
             <p class="manifest_points"><?php print( RankingCalculator::calculateScore( $racerTask, $raceFinished ) . "/" . $racerTask->price ) ?></p>
             <p class="manifest_maxduration"><?php print( $time ) ?></p>
          </div>
+        </div>
     </li>
 
 
