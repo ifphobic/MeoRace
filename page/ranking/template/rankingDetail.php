@@ -5,7 +5,6 @@
   
    $dbFunction = new RacerDbFunction();
    $racer = $dbFunction->findById( $_GET['id'] );
-   $raceId = $racer->raceFk;
    
    $dbFunction->close();
 ?>
@@ -15,7 +14,7 @@
 <div class="top_content_wrapper" > 
    <div class="top_info_wrapper top_info_rider"> 
       <div class='left_info'>
-         <img src='<?php print( Page::getImagePath( $racer ) ) ?>' alt='strom praesi'>
+         <img src='<?php print( Page::getImagePath( $racer ) ) ?>' alt='racer image'>
       </div> 
       <div class='middle_info'>
          <p class='title'><?php print( $racer->name ) ?></p>
@@ -58,7 +57,6 @@
          $taskComplete = false;
          $time = $racerTask->maxDuration - $racerTask->currentTime;
       }
-      $time = gmdate("H:i:s", $time%86400);
       ?>
 
       <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
@@ -70,12 +68,12 @@
        
          <div class="middle_info">
             <p class="title"><?php print( $racerTask->taskDescription ) ?></p>
-            <p class="description">Status: <?php $taskComplete ? print("Completed") : print("Open"); ?></p>
+            <p class="description"><?php $taskComplete ? print("Completed") : print("Open"); ?></p>
          </div>
       
          <div class="right_info">
             <p class="manifest_points"><?php print( RankingCalculator::calculateScore( $racerTask, $raceFinished ) . "/" . $racerTask->price ) ?></p>
-            <p class="manifest_maxduration"><?php print( $time ) ?></p>
+            <p class="manifest_maxduration"><?php print(Page::readableDuration( $time )) ?></p>
          </div>
     </li>
 

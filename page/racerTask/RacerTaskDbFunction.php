@@ -13,7 +13,18 @@
 //         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
 //         return $result; 
       }
-         
+      
+      public function findRacerTaskById($racerTaskId) {
+         $query  = "select rt.racerTaskId, TIME_TO_SEC(TIMEDIFF( rt.endTime, rt.startTime ) ) as taskTime, ";
+         $query .= "TIME_TO_SEC(TIMEDIFF( now(), rt.startTime ) ) as currentTime, ";
+         $query .= "rt.price, t.maxDuration, t.raceFk, ";
+         $query .= "t.name as taskName, t.description as taskDescription ";
+         $query .= "from RacerTask rt ";
+         $query .= "left outer join Task t on rt.taskFk = t.taskId  ";
+         $query .= "where racerTaskId = ? ";
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
+         return $result[0]; 
+      }
       public function findRacerDeliveryById( $racerDeliveryId ) {
          
          $query  = "select rd.racerDeliveryId, rd.racerTaskFk, p.name as parcel, p.description as description from RacerDelivery rd ";

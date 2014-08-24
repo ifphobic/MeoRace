@@ -2,7 +2,7 @@
     <div class="bottom_content_wrapper">
       <div class="bottom_info_wrapper">
 
-<div class="new_button" onclick='<?php print(Page::getOnClickFunction( "racer", "racerEdit", null ) ) ?>'>+ Add Racer</div>
+<div class='new_button' onclick='<?php print(Page::getOnClickFunction( "racer", "racerEdit", null ) ) ?> '>+ Add Racer</div>
 
 <ul>
    <?php
