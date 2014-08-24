@@ -2,10 +2,6 @@
    include "core/include.php";
    $dbFunction = new CommonDbFunction();
    $user = $dbFunction->determineCurrentUSer();
-   if ( $user == null) {
-      print("<head><meta http-equiv='refresh' content='0; URL=login.php' /></head> ");
-      exit;
-   }
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +13,7 @@
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
       <script language = 'JavaScript'>
 
-         var numberOfTabs = 4;
+         var numberOfTabs = 5;
          var screenSizes = new Array( 1120, 840, 560 ); 
          var currentTab = 0;
          var viewportLeftIndex = 0;
@@ -275,7 +271,16 @@
    <body onload="onload()">
       <div class="header">
          <div class="but_back" onclick="back()"><</div>
-         <div class="but_menu"><p><a class="ohne" style="color: #ccc;" href="login.php">log<br />out</a></p></div>
+         <div class="but_menu"><p><a class="ohne" style="color: #ccc;" href="login.php">
+<?php   
+   if ( $user == null) {
+      //print("<head><meta http-equiv='refresh' content='0; URL=login.php' /></head> ");
+      //exit;
+      print("log<br />in");
+   } else {print("log<br />out");}
+?>
+         
+         </a></p></div>
          <div class="title">
             <h1>Current Module Title</h1>
             <h1 class=sub>
