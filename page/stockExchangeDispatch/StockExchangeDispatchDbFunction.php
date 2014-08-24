@@ -9,7 +9,8 @@
 
       public function findAll( $raceId ) {
          
-         $query = "select sed.*, t.name, t.description, t.maxDuration from StockExchangeDispatch sed join Task t on sed.taskFk = t.taskId where sed.raceFk = ? ";
+         $query = "select sed.*, t.name, t.description, t.maxDuration from StockExchangeDispatch sed ";
+         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by sed.price desc";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
          return $result; 
       }

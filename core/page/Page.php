@@ -107,6 +107,7 @@
          $seconds -= $minutes * 60;
 
          $result = sprintf( "%02d:%02d:%02d", $hours, $minutes, $seconds);
+         //$result = gmdate("H:i:s", $seconds%86400);
          return $result; 
       }
    }
