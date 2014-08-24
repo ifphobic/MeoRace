@@ -56,11 +56,11 @@
 
    foreach ( $actions as $action ) {
       print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned . "&racerId=" . $racer->racerId ) . "'>
-            <td class='task_number'>". $action->task . "</td>
+            <td class='task_number'><div class='task_number_bubble'><span class='task_number_number'>". $action->task . "</span></div></td>
 	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
             <td class='goto_arrow'></td>
 	    <td class='parcel_name'><img src='http://www.worldwide-parcelservices.co.uk/custom/upload/images/parcel.jpg' height=25px width=25px;>
-        <div class='indicator_pos'>" . $action->parcel . "</div></td>
+        <div class='indicator_pos'><span class='parcel_number_number'>" . $action->parcel . "</span></div></td>
 	    <td class='goto_arrow'></td>
 	    <td class='checkpoint_name_second'> " . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . "</div></td>
             <td class='drilldown'>" . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . "</td>

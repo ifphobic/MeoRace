@@ -35,7 +35,6 @@
 </div>
 
 <div id="ranking_detail_tasks">
-<div class="bottom_content_wrapper" >
    <ul>
 
 <?php
@@ -78,7 +77,6 @@
             <p class="manifest_points"><?php print( RankingCalculator::calculateScore( $racerTask, $raceFinished ) . "/" . $racerTask->price ) ?></p>
             <p class="manifest_maxduration"><?php print( $time ) ?></p>
          </div>
-        </div>
     </li>
 
 

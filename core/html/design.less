@@ -337,7 +337,6 @@ td{
 
 .indicator {
     color: @c1;
-    border-radius: 20px;
 }
 
 tr.no_action {
@@ -347,11 +346,15 @@ tr.no_action {
 div.indicator_pos{
     .indicator;
     background-color: @c_pos;   
+    height: 49px;
 }
 
 div.indicator_current{
     .indicator;
-    background-color: @c8;
+    color: @c9;
+    border: 1px solid @c9;    
+    border-radius: 5px;   
+    padding: 0 2px;
 }
 
 // Main Navigation
@@ -676,13 +679,30 @@ tr{
             vertical-align: middle;
         }
         &.task_number {
-            border-radius: 50px;
             overflow: hidden;
             color: @c1;
             font-weight: bold;
-            background-color: @c3;
             width: @line-height;
             height: @line-height;
+            .task_number_bubble {
+                background-color: @c3;
+                border-radius: 50px;
+                height: @line-height;
+                width: @line-height;
+                margin: 5px;
+                .task_number_number{
+                    position: relative;
+                    top: 12px;
+                }
+                }
+        }
+        &.parcel_name{
+            width: @line-height;
+            height: @line-height;
+            .parcel_number_number{
+                position: relative;
+                top: 12px;
+            }
         }
     }
 }
@@ -914,7 +934,7 @@ width: 25%;
 }
 
 th.parcel_name{
-width: 10%;
+width: 49px;
 }
 
 th.goto_arrow{
