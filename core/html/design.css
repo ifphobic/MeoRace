@@ -996,7 +996,7 @@ div.but_back {
   border-left: 1px solid #999999;
   cursor: default;
   float: left;
-  font-size: 1.5em;
+  font-size: 1.8em;
   line-height: 1.5em;
 }
 div.but_menu {
@@ -1008,6 +1008,7 @@ div.but_menu {
   cursor: default;
   float: right;
   font-size: 1em;
+  line-height: 1.2em;
 }
 .headertitle {
   display: inline;
@@ -1020,7 +1021,7 @@ div.but_menu {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 1200ms ease, left 1200ms ease;
+  transition: width 200ms ease, left 200ms ease;
 }
 div.content0 {
   position: absolute;
@@ -1030,7 +1031,7 @@ div.content0 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 1200ms ease, left 1200ms ease;
+  transition: width 200ms ease, left 200ms ease;
   left: 0%;
 }
 div.content1 {
@@ -1041,7 +1042,7 @@ div.content1 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 1200ms ease, left 1200ms ease;
+  transition: width 200ms ease, left 200ms ease;
   left: 25%;
 }
 div.content2 {
@@ -1052,7 +1053,7 @@ div.content2 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 1200ms ease, left 1200ms ease;
+  transition: width 200ms ease, left 200ms ease;
   left: 50%;
 }
 div.content3 {
@@ -1063,7 +1064,7 @@ div.content3 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 1200ms ease, left 1200ms ease;
+  transition: width 200ms ease, left 200ms ease;
   left: 75%;
 }
 div.content4 {
@@ -1074,7 +1075,7 @@ div.content4 {
   border-left: 1px solid #999999;
   border-right: 1px solid #999999;
   overflow-y: auto;
-  transition: width 1200ms ease, left 1200ms ease;
+  transition: width 200ms ease, left 200ms ease;
   left: 100%;
 }
 div.content_menu_spacer {
@@ -1122,6 +1123,20 @@ div.content_menu_spacer {
 }
 li:hover {
   background: #ffffff;
+}
+.menu_list {
+  margin: 5px;
+  font-size: 2em;
+  line-height: 1.2em;
+  color: #999999;
+  text-align: left;
+}
+.menu_list.ranking:before {
+  font-family: 'icomoon';
+  color: #0FA;
+  content: "\e601";
+  font-size: 0.8em;
+  margin-right: 5px;
 }
 .racerdetail {
   height: 149px;

@@ -21,14 +21,14 @@
          var tabParameter = new Array();
          
          // ---------- screen resize ---------
-         
-         
          function resizeScreen() {
             var newNumber = determineNumberOfColumns();
             if ( newNumber != numberOfColums ) {
                numberOfColums = newNumber;
                setColumnWidth();
-               moveToCurrentTab();
+               setVisibility();
+               setLeft();
+               //moveToCurrentTab();
             }
             showTab(currentTab);
          }
@@ -51,23 +51,23 @@
             }
          }
 
-
          // ---------- show tab ----------
-
          function showTab( tabIndex ) {
-
             currentTab = tabIndex;
             viewportMove = determineViewportMove( tabIndex );
             if ( viewportMove == 0 ) {
                return;
             } 
-
+            numberOfColums += Math.abs(viewportMove);
+            setVisibility();
+            numberOfColums -= Math.abs(viewportMove);
             viewportLeftIndex += viewportMove;
-            moveToCurrentTab();
+            setTimeout("setLeft()", 1);
+            setTimeout("setVisibility()", 200);
+            //moveToCurrentTab();
          }
 
          function determineViewportMove( tabIndex ) {
-
             if ( tabIndex < viewportLeftIndex ) {
                return tabIndex - viewportLeftIndex;
             } else if ( tabIndex < ( viewportLeftIndex + numberOfColums ) ) {
@@ -77,23 +77,27 @@
             }
          }
 
-         function moveToCurrentTab() {
+         //function moveToCurrentTab() {
+         //   for (var i = 0; i < numberOfTabs; i++) {
+         //      setVisibility(i);
+         //      setLeft(i);
+         //   }
+         //}
+
+         function setVisibility() {
             for (var i = 0; i < numberOfTabs; i++) {
-               setVisibility(i);
-               setLeft(i);
+               var visible = ( i >= viewportLeftIndex && i < (viewportLeftIndex + numberOfColums) );
+               element('content' + i).style.display = ( visible) ? 'block' : 'none';
+//            alert ( "visible: " + visible + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
             }
          }
-
-         function setVisibility( index ) {
-            var visible = ( index >= viewportLeftIndex && index < (viewportLeftIndex + numberOfColums) );
-            element('content' + index).style.display = ( visible) ? 'block' : 'none';
-//            alert ( "visible: " + visible + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
-         }
          
-         function setLeft( index ) {
-            var left = ( index - viewportLeftIndex ) * 100 / numberOfColums;
+         function setLeft() {
+            for (var i = 0; i < numberOfTabs; i++) {
+               var left = ( i - viewportLeftIndex ) * 100 / numberOfColums;
 //            alert ( "left: " + left + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
-            element('content' + index).style.left = left + "%";
+               element('content' + i).style.left = left + "%";
+            }
          }
 
 
@@ -249,7 +253,8 @@
            
            numberOfColums = determineNumberOfColumns();
            setColumnWidth();
-           moveToCurrentTab();
+           setVisibility();
+           setLeft();
            showPage(0, "module=menu&page=menuList" , true);
            window.addEventListener('resize', resizeScreen, true);
          }
@@ -258,12 +263,16 @@
             if ( currentTab < 1 ) {
                return;
             }
-
             currentTab--;
             if ( viewportLeftIndex > 0 ) {
                viewportLeftIndex--;
+               numberOfColums++;
+               setVisibility();
+               numberOfColums--;
+               setTimeout("setLeft()", 1);
+               setTimeout("setVisibility()", 200);
             }
-            moveToCurrentTab();
+            //moveToCurrentTab();
          }
 
       </script>
@@ -271,15 +280,12 @@
    <body onload="onload()">
       <div class="header">
          <div class="but_back" onclick="back()"><</div>
-         <div class="but_menu"><p><a class="ohne" style="color: #ccc;" href="login.php">
+         <div class="but_menu"><p style=" margin-top: 5px;"><a class="ohne" style="color: #ccc;" href="login.php">
 <?php   
    if ( $user == null) {
-      //print("<head><meta http-equiv='refresh' content='0; URL=login.php' /></head> ");
-      //exit;
       print("log<br />in");
    } else {print("log<br />out");}
 ?>
-         
          </a></p></div>
          <div class="title">
             <h1>Current Module Title</h1>
@@ -288,7 +294,7 @@
                   $user = CommonDbFunction::getUser();         
                   if ( $user != null ) {
                      print(" Logged in as: " . $user->user . " (" . $user->role . "/" . $user->raceName . ") " );
-                  }
+                  } else {print("Public view without login");}
                ?>
             </h1>
          </div>

@@ -7,6 +7,8 @@
       $dbFunction = new CommonDbFunction();
       $dbFunction->logout( $_COOKIE['sessionId'] );
       $dbFunction->close();
+      print("<head><meta http-equiv='refresh' content='0; URL=index.php' /></head> ");
+      exit;
    }
 
    if ( isset( $_POST["user"] ) && isset( $_POST["password"] ) ) {

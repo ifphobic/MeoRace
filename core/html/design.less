@@ -1004,14 +1004,14 @@ height:@line-height; background: @c9;
 border-bottom: @border; text-align:center;}
 
 div.title {padding: 5px 25px;}
-div.but_back {.menubuttons; float:left; font-size: 1.5em; line-height: 1.5em;}
-div.but_menu {.menubuttons; float:right; font-size: 1em;}
+div.but_back {.menubuttons; float:left; font-size: 1.8em; line-height: 1.5em;}
+div.but_menu {.menubuttons; float:right; font-size: 1em; line-height: 1.2em;}
 .headertitle {display:inline;}
 
 @colw: 100%;
 .content {position:absolute; min-width: 260px; width: @colw; height: 100%;
     border-left: @border; border-right: @border; overflow-y: auto;
-    transition: width 1200ms ease, left 1200ms ease;} 
+    transition: width 200ms ease, left 200ms ease;} 
 
 div.content0 {.content; left: 0%;}
 div.content1 {.content; left: 25%;}
@@ -1041,6 +1041,16 @@ border-bottom: @border; text-align:center;}
 .li_secondline {color: @c5;}
 .listitem:hover {background: @c1;}
 li:hover {background: @c1;}
+
+.menu_list {margin: 5px; font-size: 2em; line-height: 1.2em; color: @c5; text-align: left;}
+.menu_list.ranking:before{
+    font-family: 'icomoon';
+    color: #0FA;
+    content: "\e601";
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
 
 .racerdetail {height: @tile-height; border-bottom: @border; }
 .racerpic {height: 120px; width: 120px; margin: 15px; float: left; overflow: hidden; border-radius: 60px;}
