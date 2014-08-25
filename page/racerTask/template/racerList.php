@@ -7,7 +7,7 @@
    $racers = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
    $dbFunction->close();
 
-   print("<div class='bottom_content_wrapper'><ul>");
+   print("<ul>");
    foreach ( $racers as $racer ) {
       print("
          <li onclick='" . Page::getOnClickFunction( "racerTask", "racerTask", $racer->racerId ) . "'>
@@ -20,13 +20,13 @@
                   <p class='description'>"  . $racer->city . ", " . $racer->country . "</p>
                </div>
                <div class='right_info'>
-                  <p class='rider_number'>" . $racer->racerNumber . "</p>
+                  <span class='rider_number'>" . $racer->racerNumber . "</span>
                </div>
             </div>
          </li>
       ");
    }
-   print("</ul></div>");
+   print("</ul>");
 
 ?>
 

@@ -16,7 +16,6 @@
  
 
 <div class="content_tab" id="raceredit_racer">
-   <h1>Racer Edit</h1>
   
    <div class="top_content_wrapper registration">
       <div class="top_info_wrapper">

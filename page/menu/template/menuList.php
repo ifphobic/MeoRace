@@ -1,4 +1,4 @@
-<div class=list>
+<div id="main-menu"class=menu-list>
 <?php
    $user = CommonDbFunction::getUser();         
    $role = Role::NO_ROLE;
@@ -13,9 +13,11 @@
       foreach ( $module as $page ) {
          if ( $page->isNavigation() ) {
 ?>
-<div class=listitem onclick='<?php print(Page::getOnClickFunction( $moduleName, $page->page)) ?>'>
-   <div class='menu_list <?php print($moduleName) ?>'><?php print($page->title) ?></div>   
-</div>
+<ul>
+   <li class=listitem onclick='<?php print(Page::getOnClickFunction( $moduleName, $page->page)) ?>'>
+      <div class='listwrapper menu_list <?php print($moduleName) ?>'><?php print($page->title) ?></div>   
+   </li>
+</ul>
 <?php
             //print (  Page::getListItem( $page->title, Page::getOnClickFunction( $moduleName, $page->page) ) );
          }

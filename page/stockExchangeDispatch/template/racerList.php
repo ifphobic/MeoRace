@@ -1,5 +1,4 @@
 <div class="content_tab" id="racerlist_dispatch">
-<div class='bottom_content_wrapper'> 
    <ul>
 
 <?php
@@ -27,7 +26,6 @@
 ?>
 
    </ul>
-</div>
 </div>
 
 

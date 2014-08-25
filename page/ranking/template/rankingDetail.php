@@ -27,7 +27,7 @@
          </p>
       </div>
       <div class='right_info'>
-         <p class='rider_number'><?php print( $racer->racerNumber ) ?></p>
+         <span class='rider_number'><?php print( $racer->racerNumber ) ?></span>
       </div>
    </div><!-- top info wrapper -->
 </div> <!-- top content wrapper -->

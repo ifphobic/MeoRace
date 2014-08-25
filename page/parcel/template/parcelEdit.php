@@ -23,6 +23,10 @@
                   <img src="<?php print( Page::getImagePath( $parcel )) ?>"></div>
                </div>
             </div>
+				<div class='middle_info'>
+               <?php print( "<p class='title'>" . $parcel->name . "</p>"); ?>
+               <?php print( "<p class='description'>" . $parcel->description . "</p>");?>
+            </div>
          </div>
       </div>
       <div class="bottom_content_wrapper">

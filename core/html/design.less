@@ -59,6 +59,7 @@ table {
 
 // Less variables
 
+// White to black colors
 @c1: #FFFFFF;
 @degrade: @c1 / 10;
 @c2: @c1 - @degrade;
@@ -71,12 +72,15 @@ table {
 @c9: @c8 - @degrade;
 @c10: #000000;
 
+//main background color
 @main_bgcolor:  lighten(@c2, 7%);
 
-@c_pos: #71C671;
-@c_neg: red;
-@c_neutral: yellow;
+// status indicator colors
+@c_pos: #71C671; // ok
+@c_neg: red; // impossible or not ok
+@c_neutral: yellow; // to do
 
+// save button colors
 @g1: #71C671; //for Save Buttons
 @g2: lighten(@g1, 7%); // for active Save Buttons
 
@@ -163,7 +167,7 @@ div.listwrapper:last-child{
     margin: 0 15px 0 15px ;
 }
 
-//top_info structure
+//information structure
 
 .left_info, .right_info, {
     height: @line-height;
@@ -184,7 +188,7 @@ div.listwrapper:last-child{
 
 .middle_info {
     height: @line-height;
-    margin: 0px 72px 0 @line-height;
+    margin: 0px 45px 0 @line-height;
     padding: 0 10px;
     text-align: left;
 }
@@ -200,7 +204,7 @@ div.listwrapper:last-child{
     color: @c4;
 }
 
-.middle_info .title, .middle_info .description{
+.middle_info p.title, .middle_info p.description{
  overflow: hidden;
  white-space:nowrap;
  text-overflow: ellipsis;
@@ -208,8 +212,21 @@ div.listwrapper:last-child{
 
 .right_info {
     position: absolute;
-    right: 0px;
+    right: 30px;
     top: 5px;
+    &:after{
+    content: "\e60f";
+    font-family: 'icomoon';
+    color: @c5;
+    font-size: 26px;
+    position: absolute;
+    top: 15px;
+    right: -22px;
+}
+}
+
+.top_info_wrapper .right_info:after{
+    display: none;
 }
 
 .right_info .rider_number {
@@ -236,10 +253,6 @@ table {
     margin-bottom: 10px;
 }
 
-th {
-    //height: @line-height;
-}
-
 tr {
    background-repeat: no-repeat;
    background-position: center center;
@@ -253,6 +266,7 @@ th, td {
     text-align: center;
     background-position: center center;
     background-repeat: no-repeat;
+     height: @line-height;
 }
 
 th{
@@ -416,17 +430,8 @@ background-size: 15px;
    padding: 15px 0;
    text-align: center;
  }
- 
-#racerlist_racer .right_info .rider_number::after, 
-#racerlist_racertask .right_info .rider_number::after,
-#racerlist_dispatch .right_info .rider_number::after{
- content: "\e60f";
-    font-family: 'icomoon';
-    color: @c5;
-    font-size: 0.65em;
-}
 
-//Racer Ranking
+//Racer Ranking Overview
 
 #rankingoverview_ranking .middle_info {
     height: 48px;
@@ -473,12 +478,7 @@ span.racer_points::after{
     font-size: 0.7em;
 }
 
-#rankingoverview_ranking .right_info .rider_number::after {
- content: "\e60f";
-    font-family: 'icomoon';
-    color: @c5;
-    font-size: 0.6em;
-}
+//Racer Ranking Detail
 
 #ranking_rankingdetail{
     .top_content_wrapper{
@@ -507,14 +507,6 @@ margin-left: @line-height-detail-inner;
 
 #ranking_detail_tasks .right_info{
     right: 30px !important;
-&:after{
-    content: "\e60f" !important;
-    font-family: 'icomoon';
-    color: #999;
-    font-size: 1.8em;
-    position: absolute;
-    top: 10px;
-}
 }
 
 
@@ -831,7 +823,7 @@ padding: 5px 15px;
 
 .right_info{
 text-align: left;
-width: 80px;
+width: 90px;
 margin-right: 0px;
 text-align: right;
 position: absolute;
@@ -1033,7 +1025,7 @@ div.content_menu_spacer {height: 55px;}
 .search { height:@line-height; border-bottom: @border; text-align:center;}
 
 .list {}
-.listitem {height:@line-height; padding: 0 5px; background: linear-gradient(@c1, @c1 - @degrade/2); 
+.listitem {background: linear-gradient(@c1, @c1 - @degrade/2); 
 border-bottom: @border; text-align:center;}
 .li_head {margin: 5px; font-size: 2em; float:left; color: @c5}
 .li_content {margin: 5px; float:left; text-align: left;}
@@ -1042,7 +1034,7 @@ border-bottom: @border; text-align:center;}
 .listitem:hover {background: @c1;}
 li:hover {background: @c1;}
 
-.menu_list {margin: 5px; font-size: 2em; line-height: 1.2em; color: @c5; text-align: left;}
+.menu_list {font-size: 2.1em; color: @c5; text-align: left;}
 .menu_list.ranking:before{
     font-family: 'icomoon';
     color: #0FA;
