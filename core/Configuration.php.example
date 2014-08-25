@@ -8,6 +8,7 @@
       const DB_USER = "meoRace"; 
       const DB_PASSWORD = "meoRace"; 
       const IMAGE_FOLDER ="/tmp";
+      const CURRENT_RACE = -1;
    }
 
 
