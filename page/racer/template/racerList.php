@@ -17,7 +17,7 @@
             " . CommonPageFunction::getLink( "racer", "racerEdit", $racer->racerId, "
             <div class='listwrapper'>
                <div class='left_info'>
-                  <img src='http://static.wixstatic.com/media/87f473_013e75dfc64446ea98841a8f4c96056a.jpg_srz_321_273_75_22_0.50_1.20_0.00_jpg_srz' alt='strom praesi'>
+                  <img  src='" . Page::getImagePath( $racer ) . "'>
                </div> 
                   <div class='middle_info'>
                      <span class='title'>" . $racer->name . "</span><br />

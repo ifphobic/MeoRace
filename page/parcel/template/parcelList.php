@@ -11,6 +11,7 @@
       foreach ( $parcels as $parcel ) {
       print ("
          <tr>
+            <td> <img src='" . Page::getImagePath( $parcel ) . "'> </td>
             <td>" . $parcel->name . "</td>
             <td>" . $parcel->description. "</td>
             <td>" . CommonPageFunction::getLink( "parcel", "parcelEdit", $parcel->parcelId, "edit") . "</td>

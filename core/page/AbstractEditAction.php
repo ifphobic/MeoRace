@@ -1,5 +1,7 @@
 <?php
 
+   include 'core/SimpleImage.php';
+
    class AbstractEditAction {
 
       protected function genericCommit( $moduleName, $key, $pageName, $content, $subModule = null, $parameter = array() ) {
@@ -11,10 +13,24 @@
          $dbFunction = new $classname;
 
          if ( isSet( $content[$key. 'Id'] ) ) {
+            $newFile = $this->saveImage( $key, $content[$key. 'Id'] );
+            if ( $newFile != null ) {
+               $content['image'] = $newFile;
+            }
+
             $dbFunction->update( $content );
             $parameter = array_merge(array("id" => $content[$key. 'Id'] ),  $parameter);
          } else {
             $dbFunction->insert( $content );
+            $id = $dbFunction->getLastId();
+            
+            $newFile = $this->saveImage( $key, $id );
+            if ( $newFile != null ) {
+               $content[ $key.'Id'] = $id;
+               $content['image'] = $newFile;
+               $dbFunction->update( $content );
+            }
+
          }
          $dbFunction->close();
          return new NextPage( $moduleName, $pageName, $parameter );
@@ -23,7 +39,7 @@
 
       protected function saveImage( $subfolder, $id ) {
 
-         if ( ! isset($_FILES) || !file_exists( $_FILES['image']['tmp_name'] ) ) {
+         if ( !isset($_FILES) || !isset($_FILES['image']) || !file_exists( $_FILES['image']['tmp_name'] ) ) {
             return null;
          }
 
@@ -32,7 +48,6 @@
          if ( $position !== false ) {
             $extension = substr( $_FILES['image']['name'], $position );
          }
-         $counter = 0;
          while ( file_exists( $this->createFilename( $base, $counter, $extension, true ) ) ) {
             $counter++;
          }

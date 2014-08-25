@@ -45,7 +45,7 @@
    }
    print("</p>
    <div class='top_info_wrapper top_info_rider'> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
-      <div class='left_info'><img src='http://www.worldwide-parcelservices.co.uk/custom/upload/images/parcel.jpg' height=65px width=65px;>
+      <div class='left_info'><img src='" . Page::getImagePath( $racerDelivery ) . "' height=65px width=65px;>
          </div> 
       <div class='middle_info'>
          <p class='title'>");

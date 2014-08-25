@@ -32,12 +32,18 @@
       }
 
       public function update( $parcel ) {
-         $query = "update Parcel set name = ?, description = ? where parcelId = ?";
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $parcel['name'] ), 
             new Parameter( PDO::PARAM_STR, $parcel['description'] ),
-            new Parameter( PDO::PARAM_INT, $parcel['parcelId'] )
          );
+         
+         $image = "";
+         if ( isset( $parcel['image'] ) ) {
+            $image = " , image = ? ";
+            $parameter[] = new Parameter( PDO::PARAM_STR, $parcel['image'] );
+         }
+         $query = "update Parcel set name = ?, description = ? $image where parcelId = ?";
+         $parameter[] = new Parameter( PDO::PARAM_INT, $parcel['parcelId'] );
          $this->query($query, $parameter);
       }
 
