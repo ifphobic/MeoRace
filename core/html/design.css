@@ -480,22 +480,27 @@ span.racer_points::after {
   position: absolute;
   top: 10px;
 }
-#raceredit_racer .top_content_wrapper.registration {
+#raceredit_racer .top_content_wrapper.registration,
+#parceledit_parcel .top_content_wrapper.registration {
   height: 132px;
 }
-#raceredit_racer .top_content_wrapper.registration .top_info_wrapper {
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper {
   height: 99px;
   position: relative;
   top: 22px;
 }
-#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .left_info {
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .left_info,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .left_info {
   height: 99px;
   width: 99px;
 }
-#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .middle_info {
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .middle_info,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .middle_info {
   margin: 0 84px 0 99px;
 }
-#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .right_info {
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .right_info,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .right_info {
   float: left;
 }
 input {

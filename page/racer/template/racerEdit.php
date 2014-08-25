@@ -22,9 +22,9 @@
       <div class="top_info_wrapper">
          <div class="left_info">
             <div>
-               <input type="file" name="image" accept="image/*" capture></input> 
+               <input type="file" id="uploadImage" name="image" accept="image/*" onchange="PreviewImage();" capture></input> 
                <div class="photo_upload" />
-                  <img src="<?php print( Page::getImagePath( $racer )) ?>"></div> 
+                  <img id="uploadPreview" src="<?php print( Page::getImagePath( $racer )) ?>"></div> 
                </div>
             </div>
             <div class="middle_info">

@@ -1,14 +1,33 @@
 <?php
 
+   $user = CommonDbFunction::getUser();
+   $dbFunction = new RaceDbFunction();
+   $race = $dbFunction->findById( $user->raceFk );
+   $dbFunction->close();
+   
    $content = Page::getContent();
    $taskId = $content["id"] ;
    $dbFunction = new TaskDbFunction();
    $task = $dbFunction->findById( $taskId );
    $dbFunction->close();
-   print( "<b>Task: " . $task->name . "</b> (" 
-      . CommonPageFunction::getLink("race", "taskEdit", $taskId, "edit" ) . ", " 
-      . CommonPageFunction::getLink("race", "taskList", CommonDbFunction::getUser()->raceFk, "configure race" ) . ")<br><br><br>" );
-   
+?>
+<b>Task: <?php print($task->name) ?></b><br>
+<b>Description: <?php print($task->description) ?></b><br>
+<b>maxDuration: <?php print(Page::readableDuration($task->maxDuration)) ?></b>
+<b> Price: <?php print($task->price) ?></b>
+
+<div class='new_button' onclick='<?php print(Page::getOnClickFunction( "race", "taskEdit", $taskId, "edit" ) ) ?> '>Edit Task</div>
+
+<?php if ( array_key_exists( "deleteTask", $_GET ) && $_GET['deleteTask'] == $task->taskId ) {
+         Page::printFormStart("race", "taskDelete");
+         print("<input type='hidden' name='raceId' value='" . $race->raceId . "' />");
+         print("<input type='hidden' name='taskId' value='" . $task->taskId . "' />");
+         Page::printFormEnd( "confirm delete" );
+      } else {
+         print( CommonPageFunction::getLink("race", "deliveryList", $race->raceId, "delete", "deleteTask=" . $task->taskId, 0 ) );
+      } ?>
+
+<?php   
    $dbFunction = new DeliveryDbFunction();
    $deliveries = $dbFunction->findAll( $taskId );
    $dbFunction->close();

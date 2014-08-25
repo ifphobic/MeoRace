@@ -13,8 +13,7 @@
       
       foreach ( $racers as $racer ) {
       print ("
-         <li class='riderlist' >
-            " . CommonPageFunction::getLink( "racer", "racerEdit", $racer->racerId, "
+         <li class='riderlist' onclick='" . Page::getOnClickFunction( "racer", "racerEdit", $racer->racerId) . "' >
             <div class='listwrapper'>
                <div class='left_info'>
                   <img  src='" . Page::getImagePath( $racer ) . "'>
@@ -31,7 +30,6 @@
                      <span class='rider_number'>" . $racer->racerNumber . "</span> 
                   </div>
                </div> <!-- listwrapper -->
-            ") . "
          </li>
       ");
       }

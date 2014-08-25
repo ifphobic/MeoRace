@@ -51,24 +51,31 @@
    }
 
    foreach( $racerTasks as $racerTask ) {
-      $taskComplete = true;
+      $taskComplete = "manifest_completed";
+      $taskCompleteText = "Completed";
       $time = $racerTask->taskTime;
       if($racerTask->taskTime == null) {
-         $taskComplete = false;
+         $taskComplete = "manifest_possible";
+         $taskCompleteText = "Open";
          $time = $racerTask->maxDuration - $racerTask->currentTime;
+         if ($time < -$racerTask->maxDuration*.5) {
+            $taskComplete = "manifest_unreachable";
+            $taskCompleteText = "Overtime";
+            $time = -$racerTask->maxDuration*.5;
+         }
       }
       ?>
 
       <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
         <div class="listwrapper">
          <div class="left_info">
-            <p class="manifest_number <?php $taskComplete ? print("manifest_completed") : print("manifest_possible"); ?>">
+            <p class="manifest_number <?php print($taskComplete) ?>">
             <?php print( $racerTask->taskName ) ?></p>
          </div> 
        
          <div class="middle_info">
             <p class="title"><?php print( $racerTask->taskDescription ) ?></p>
-            <p class="description"><?php $taskComplete ? print("Completed") : print("Open"); ?></p>
+            <p class="description"><?php print($taskCompleteText) ?></p>
          </div>
       
          <div class="right_info">

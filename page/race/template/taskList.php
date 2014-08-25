@@ -26,7 +26,6 @@
             <td>" . Page::readableDuration( $task->maxDuration ) . "</td>
             <td>" . $task->price . "</td>
             <td>" . $task->description. "</td>
-            <td>" . CommonPageFunction::getLink("race", "taskEdit", $task->taskId, "edit") . "</td>
             <td>" . CommonPageFunction::getLink("race", "deliveryList", $task->taskId, "configure") . "</td>
             <td>
       ");
