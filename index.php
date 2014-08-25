@@ -244,6 +244,15 @@
 
 
          // -------- util ---------
+         
+         function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(element("uploadImage").files[0]);
+    
+            oFReader.onload = function (oFREvent) {
+               element("uploadPreview").src = oFREvent.target.result;
+            };
+         };
         
          function element(id) {
             return document.getElementById(id);

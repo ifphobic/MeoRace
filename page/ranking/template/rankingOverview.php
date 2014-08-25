@@ -46,7 +46,6 @@
                <p class='rider_number'>" . $ranking->racerNumber . "</p>
             </div>
          </li>
-		</div>
       ");
    }
 
