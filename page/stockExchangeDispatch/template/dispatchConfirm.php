@@ -1,4 +1,4 @@
-<div class="content_tab" id="racerdispatch_dispatch">
+<div class="content_tab confirm" id="racerdispatch_dispatch">
 
 <?php
 
@@ -18,7 +18,7 @@
 
             
 
-<p class="racer_racerdispatch_heading"><?php print( "Assign Task " ) ?></p>
+<p class="confirm_heading"><?php print( "Assign Task " ) ?></p>
 
  <ul>
       <li>
@@ -40,7 +40,7 @@
  </ul>
 
 
-            <p class="racer_racerdispatch_heading"><?php print( "To Racer " ) ?></p>
+<p class="confirm_heading"><?php print( "To Racer " ) ?></p>
 
       <ul>
       <li>

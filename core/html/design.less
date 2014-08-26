@@ -136,7 +136,7 @@ li {
     position: relative;
 }
 
-div.listwrapper{
+.listwrapper{
     margin: 0 15px;
     border-bottom: 1px solid black;
     border-bottom: @list_border;
@@ -144,11 +144,14 @@ div.listwrapper{
     height: @line-height;
 }
 
-div.listwrapper:last-child{
+.listwrapper:last-child{
     border-bottom: @list_border;
 }
-    
 
+.confirm .listwrapper{
+    height: @line-height-top-content;
+}
+    
 .top_content_wrapper{
     height: @line-height-top-content;
     text-align: center;
@@ -168,6 +171,70 @@ div.listwrapper:last-child{
 }
 
 //information structure
+
+
+.confirm_heading{
+display: inline-block;
+width: 100%;
+font-weight: bold;
+border-bottom: 2px solid #ccc;
+padding: 5px 15px;
+}
+
+.confirm {
+    .listwrapper{
+        border:none;
+    .left_info{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+.manifest_number{
+            height: @line-height-detail-inner; 
+            width: @line-height-detail-inner; 
+            padding-top: 20px !important;
+            color: @c1;
+            font-size: 1em;
+            font-weight: bold;
+            background-color: @c3;
+            display: block;
+            text-align: center;
+            padding-top: 12px;
+            }
+}
+.middle_info{
+    margin-left: @line-height-detail-inner;
+    .manifest_points{
+        display: inline-block;
+        margin-right: 15px;
+        width: 50px;
+            &:after{
+                    content: "\e601";
+                    font-size: 14px;
+                    font-family: 'icomoon';
+                    color: @c5;
+                    margin-left: 5px;
+                    }
+    }
+    .manifest_maxduration{
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+        &:after{
+            content: "\e606";
+            font-size: 13px;
+            font-family: 'icomoon';
+            color: @c5;
+            margin-left: 5px;
+                    }
+        }
+}
+}
+
+
+.right_info:after{
+      display: none;
+  }
+}
+
 
 .left_info, .right_info, {
     height: @line-height;
@@ -433,36 +500,17 @@ background-size: 15px;
 
 //Racer Ranking Overview
 
-#rankingoverview_ranking .middle_info {
-    height: 48px;
-}
-
-#rankingoverview_ranking .middle_info.racer_ranking_points{
-    height: 22px;
-    line-height: 0.9em;  
-    color: @c5;
-}
-
-#rankingoverview_ranking .title {
-    font-size: 1.1em; 
-}
-
-#rankingoverview_ranking p.description {
-    font-size: 0.9em; 
-}
-
 span.racer_ranking{
     margin-right: 12px;
     color: @c5;
     float: left;
     width: 34px;
-}
-
-span.racer_ranking::after{
+    &:after{
     content: "\e608";
     font-family: 'icomoon';
     margin-left: 5px;
-    font-size: 0.7em;
+    font-size: 13px;
+}
 }
 
 span.racer_points {
@@ -470,12 +518,12 @@ span.racer_points {
     text-align: right;
     float: left;
     width: 60px;   
-}
-span.racer_points::after{
+    &:after{
     content: "\e601";
     font-family: 'icomoon';
-    margin-left: 3px;
-    font-size: 0.7em;
+    margin-left: 5px;
+    font-size: 13px;
+}
 }
 
 //Racer Ranking Detail
@@ -625,10 +673,6 @@ background-color: lighten(@c2, 6%);
     }
 }
 
-
-
-
-
         
 // Checkpoint Racer Task List
 
@@ -746,55 +790,10 @@ padding: 5px 0;
 
 // Racerdispatch Dispatch
 
-#racerdispatch_dispatch{
-    p.racer_racerdispatch_heading{
-display: inline-block;
-width: 100%;
-font-weight: bold;
-border-bottom: 2px solid #ccc;
-padding: 5px 15px;
-}
-    li{
-        div.listwrapper{
-            height: @line-height-detail-inner; 
-         .left_info{
-            height: @line-height-detail-inner; 
-            width: @line-height-detail-inner; 
-            .manifest_number{
-            height: @line-height-detail-inner; 
-            width: @line-height-detail-inner; 
-            padding-top: 20px;
-            }
-         }
-         .manifest_points{
-        margin-right: 15px;
-    &:after{
-    .manifest_counts;
-    content: "\e601";
-    font-size: 1.1em;
-}
-}
-.manifest_maxduration:after{
-    .manifest_counts;
-    content: "\e606";
-    font-size: 1em;
-}
-           .right_info{
-            height: @line-height-detail-inner; 
-            }
-            .middle_info{
-            height: @line-height-detail-inner; 
-            margin-left: @line-height-detail-inner;
-            }
-        }
-}
-}
-
-
 
 // Manifest List
 
-#tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #ranking_detail_tasks, #racerdispatch_dispatch{
+#tasklist_race, #taskdispatch_dispatch, #racertask_racertask, #ranking_detail_tasks{
 
 .manifest_number{
     color: @c1;
