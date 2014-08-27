@@ -1,3 +1,5 @@
+<div class="content_tab" id="taskdispatch_dispatch">
+
 <?php
 
    $user = CommonDbFunction::getUser();
@@ -11,23 +13,35 @@
    $tasks = $dbFunction->findAll( $user->raceFk );
    $dbFunction->close();
 ?>                     
-<h1>Tasks</h1>
-<table>
-   <th>Name</th>
-   <th>MaxDuration</th>
-   <th>Price</th>
-   <th>Description</th>
+
+<div class='new_button' onclick='<?php print(Page::getOnClickFunction( "race", "taskEdit", null, "New Task" ) ) ?> '>+ New Task</div>
+
+        
+<p class="heading">Tasks</p>
 
 <?php
    foreach ( $tasks as $task ) {
       print("
-         <tr>
-            <td>" . $task->name . "</td>
-            <td>" . Page::readableDuration( $task->maxDuration ) . "</td>
-            <td>" . $task->price . "</td>
-            <td>" . $task->description. "</td>
-            <td>" . CommonPageFunction::getLink("race", "deliveryList", $task->taskId, "configure") . "</td>
-            <td>
+			<ul>
+				<li onclick='" . Page::getOnClickFunction( "race", "deliveryList", $task->taskId, "Edit") . "'>
+					<div class='listwrapper'>
+         			<div class='left_info'>
+            			<p class='manifest_number'>" . $task->name . "</p>
+						</div>
+						<div class='middle_info'>
+   						<p class='title'>" . $task->description. "</td>
+						
+							<p> 
+								<span class='manifest_points'>" . $task->price . "</span>
+            				<span class='manifest_maxduration'>" . Page::readableDuration( $task->maxDuration ) . "</span>
+							</p>
+           			</div>
+         			<div class='right_info'>
+						</div>	
+					</div>			
+			</li>
+		</ul>
+
       ");
 
       if ( array_key_exists( "deleteTask", $_GET ) && $_GET['deleteTask'] == $task->taskId ) {
@@ -39,12 +53,6 @@
          print( CommonPageFunction::getLink("race", "taskList", $race->raceId, "delete", "deleteTask=" . $task->taskId, 0 ) );
       }      
 
-      print("</td></tr> ");
    }
 ?>   
-
-
-</table>
-
-<?php print( CommonPageFunction::getLink("race", "taskEdit", null, "New Task" ) );
  

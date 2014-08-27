@@ -9,10 +9,9 @@
    $dbFunction->close();
 ?>
 
-<div class="content_tab">
-<div id="ranking_rankingdetail">
-<div class="top_content_wrapper" > 
-   <div class="top_info_wrapper top_info_rider"> 
+<div class="content_tab" id="ranking_rankingdetail">
+<div class="top_content_wrapper detail" > 
+   <div class="top_info_wrapper"> 
       <div class='left_info'>
          <img src='<?php print( Page::getImagePath( $racer ) ) ?>' alt='racer image'>
       </div> 
@@ -31,10 +30,8 @@
       </div>
    </div><!-- top info wrapper -->
 </div> <!-- top content wrapper -->
-</div>
 
-<div id="ranking_detail_tasks">
-   <ul>
+	<ul>
 
 <?php
 
@@ -89,6 +86,5 @@
    }
 ?>
    </ul>
-</div>
 </div>
 </div>

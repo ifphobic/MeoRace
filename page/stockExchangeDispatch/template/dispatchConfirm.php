@@ -1,5 +1,7 @@
 <div class="content_tab confirm" id="racerdispatch_dispatch">
 
+<div class="bottom_content_wrapper">
+
 <?php
 
    $racerId = $_GET['racerId'];
@@ -59,4 +61,5 @@
       </li>
    </ul>
 
+</div>
 </div>

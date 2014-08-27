@@ -14,9 +14,9 @@
    }
 ?>
 
-<div class="content_tab" id="actionconfirm_racertask">
+<div class="content_tab" id="ranking_taskdetail">
 
-<div class="top_content_wrapper">
+<div class="top_content_wrapper detail">
    <div class="top_info_wrapper"> 
       <div class="left_info">
          <p class="manifest_number <?php $taskComplete ? print("manifest_completed") : print("manifest_possible"); ?>">
