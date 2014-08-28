@@ -100,6 +100,9 @@
 
 
       public static function readableDuration( $seconds ) {
+         if ( $seconds == null) {
+            return "";
+         }
          $prefix = ($seconds < 0) ? "-" : "";
          $seconds = abs($seconds);
          $hours = intval( $seconds / 3600 );

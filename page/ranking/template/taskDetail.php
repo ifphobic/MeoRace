@@ -1,17 +1,23 @@
 <?php
    include 'page/ranking/RankingCalculator.php';
    
-   $dbFunction = new RacerTaskDbFunction();
-   $racerTask = $dbFunction->findRacerTaskById( $_GET['id'] );
-   
+   $dbFunction = new RankingDbFunction();
+   $racerDeliveries = $dbFunction->findById( $_GET['id'] );
    $dbFunction->close();
    
+   $racerTask = $racerDeliveries[0];
    $taskComplete = true;
    $time = $racerTask->taskTime;
    if($racerTask->taskTime == null) {
       $taskComplete = false;
       $time = $racerTask->maxDuration - $racerTask->currentTime;
    }
+
+   $dbFunction = new RaceDbFunction();
+   $race = $dbFunction->findById( $racerTask->raceFk );
+   $raceFinished = $dbFunction->isFinished( $race );
+   $dbFunction->close();
+
 ?>
 
 <div class="content_tab" id="actionconfirm_racertask">
@@ -40,44 +46,36 @@
 <p class="racer_checkpointlist_heading manifest_detail_heading">Full Manifest</p>
 
 <?php
-   $dbFunction = new DeliveryDbFunction();
-   $deliveries = $dbFunction->findAll( $_GET['id']  );
-   $dbFunction->close();
-   
-   for ( $i = 0; $i < count( $deliveries ) - 1; $i++ ) {
-      foreach ( $deliveries[$i] as $delivery ) {
+   foreach ( $racerDeliveries as $delivery ) {
 ?>
 
 <table>
-  
+   <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
+      <th rowspan="3" class="task_status task_completed"></th>
+      <th colspan="6" class="task_requirements no_requirements">Possible after: -</th>
+   </tr>
 
-  <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
-<th rowspan="3" class="task_status task_completed"></th>
-<th colspan="6" class="task_requirements no_requirements">Possible after: -</th>
-</tr>
+   <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
+      <td rowspan="2" class="task_number">01</td>
+      <td class="checkpoint_name_first"><?php print( $delivery->pickupName ) ?></td>
+      <td class="goto_arrow">>></td>
+      <td class="parcel_name"><?php print( $delivery->parcelName ) ?></td>
+      <td class="goto_arrow">>></td>
+      <td class="checkpoint_name_second"><?php print( $delivery->dropoffName ) ?></td>
+   </tr>
 
-<tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
-<td rowspan="2" class="task_number">01</td>
-<td class="checkpoint_name_first"><?php print( $delivery->pickupName ) ?></td>
-<td class="goto_arrow">>></td>
-<td class="parcel_name">P1</td>
-<td class="goto_arrow">>></td>
-<td class="checkpoint_name_second"><?php print( $delivery->dropoffName ) ?></td>
-</tr>
-
-<tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
-<td>14:30</td>
-<td></td>
-<td></td>
-<td></td>
-<td>14.45</td>
-</tr>
+   <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
+      <td><?php print( $delivery->pickupTime ) ?></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><?php print( $delivery->dropoffTime ) ?></td>
+   </tr>
 
 </table>
 
 
-      <?php
-      }
+<?php
    }
 ?>
 
@@ -101,7 +99,7 @@
 <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
 <td>14:30</td>
 <td></td>
-<td></td>
+<td>XXX</td>
 <td></td>
 <td>14.45</td>
 </tr>
@@ -128,7 +126,7 @@
 <tr>
 <td>14:30</td>
 <td></td>
-<td></td>
+<td>XXX</td>
 <td></td>
 <td>14.45</td>
 </tr>
@@ -157,7 +155,7 @@
 <tr>
 <td>14:30</td>
 <td></td>
-<td></td>
+<td>XXX</td>
 <td></td>
 <td>14.45</td>
 </tr>

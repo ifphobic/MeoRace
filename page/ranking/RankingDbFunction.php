@@ -31,11 +31,23 @@
          return $result; 
       }
          
-      public function findById( $rankingId ) {
-         
-//         $query = "select * from Ranking where rankingId = ?";
-//         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $rankingId ) ) );
-//         return $result[0]; 
+      public function findById( $racerTaskId ) {
+         $query  = "select rd.pickupTime, rd.dropoffTime, ";
+         $query .= "rt.endTime - rt.endTime as taskTime, now() - rt.startTime as currentTime, rt.price, ";
+         $query .= "t.maxDuration, t.raceFk, t.name as taskName, t.description as taskDescription, ";
+         $query .= "pickupC.name as pickupName, dropoffC.name as dropoffName, ";
+         $query .= "p.name as parcelName ";
+         $query .= "from RacerDelivery rd ";
+         $query .= "join RacerTask rt on rd.racerTaskFk = rt.racerTaskId ";
+         $query .= "join Task t on rt.taskFk = t.taskId ";
+         $query .= "join Delivery d on rd.DeliveryFk = d.deliveryId ";
+         $query .= "join Checkpoint pickupC on d.pickupFk = pickupC.checkpointId ";
+         $query .= "join Checkpoint dropoffC on d.dropoffFk = dropoffC.checkpointId ";
+         $query .= "join Parcel p on d.parcelFk = p.parcelId ";
+         $query .= "where rd.racerTaskFk = ? ";
+         $query .= "order by isnull(pickupTime), pickupTime, isnull(dropOffTime), dropOffTime ";
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
+         return $result;
       }
 
    }

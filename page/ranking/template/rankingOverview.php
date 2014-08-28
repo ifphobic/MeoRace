@@ -17,7 +17,7 @@
    $dbFunction->close();
 
    $raceFinished = false;
-   if ( count( $racerTasks ) > 0 ) {
+   if ( count( $racerTasks ) > 0 && $racerTasks[0]->racerTaskId != null ) {
       $dbFunction = new RaceDbFunction();
       $race = $dbFunction->findById( $racerTasks[0]->raceFk );
       $raceFinished = $dbFunction->isFinished( $race );
