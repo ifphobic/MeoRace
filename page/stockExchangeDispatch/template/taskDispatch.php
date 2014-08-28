@@ -11,13 +11,17 @@
    $dbFunction = new StockExchangeDispatchDbFunction();
    $raceFk = CommonDbFunction::getUser()->raceFk;
    $dbFunction->init( $raceFk );
-   $tasks = $dbFunction->findAll( $raceFk );
+   $tasks = $dbFunction->findAll( $raceFk, $_GET['id'] );
    $dbFunction->close();
 
    foreach ( $tasks as $task ) {
+      if ( $task->notAssigned ) {
+         print( "<li onClick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=" . $_GET['id']  ) . "'>");
+      } else {
+         print( "<li style='background: #ff0000;'>");
+      }
 ?>
 		
-      <li onClick='<?php print( Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=" . $_GET['id']  ) ) ?>'>
          <div class="listwrapper">
 			<div class="left_info">
             <p class="manifest_number"><?php print( $task->name ) ?></p>

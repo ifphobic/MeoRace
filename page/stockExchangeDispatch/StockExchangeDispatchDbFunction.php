@@ -7,10 +7,12 @@
       }
 
 
-      public function findAll( $raceId ) {
+      public function findAll( $raceId, $racerId = null ) {
          
-         $query = "select sed.*, t.name, t.description, t.maxDuration from StockExchangeDispatch sed ";
-         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by sed.price desc";
+         $query  = "select sed.*, t.name, t.description, t.maxDuration, ";
+         $query .= "(select count(1) = 0 from RacerTask rt where rt.endTime is null and rt.taskFk = t.taskId) as notAssigned ";
+         $query .= "from StockExchangeDispatch sed ";
+         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by t.name";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
          return $result; 
       }
