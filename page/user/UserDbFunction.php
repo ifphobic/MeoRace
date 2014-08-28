@@ -68,7 +68,7 @@
          $sessionId = $this->generateSessionId();
          $query = "insert into Session ( sessionId, userFk, loginTime, lastActive) values ( ?, ?, now(), now() )";
          $this->query($query, array( new Parameter( PDO::PARAM_STR, $sessionId ), new Parameter( PDO::PARAM_INT, $user->userId ) ) );
-         setcookie("sessionId", $sessionId, time()+3600); 
+         setcookie("sessionId", $sessionId, time() + 36000); 
          return $sessionId;
       }
       
