@@ -1,4 +1,8 @@
 <?php
+   if ( RaceDbFunction::printFinished( CommonDbFunction::getUser()->raceFk) ) {
+      exit;
+   }
+
    $racer = null;
   
    $dbFunction = new RacerDbFunction();

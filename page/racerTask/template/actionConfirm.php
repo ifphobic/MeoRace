@@ -1,4 +1,9 @@
 <?php
+
+   if ( RaceDbFunction::printFinished( CommonDbFunction::getUser()->raceFk) ) {
+      exit;
+   }
+
    $racer = null;
    $dbFunction = new RacerDbFunction();
    $racer = $dbFunction->findById( $_GET['racerId'] );

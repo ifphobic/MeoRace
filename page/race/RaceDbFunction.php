@@ -43,6 +43,17 @@
       public function isFinished( $race ) {
          return $race->status == "finished";
       }
+
+      public static function printFinished( $raceId )  {
+         $dbFunction = new RaceDbFunction();
+         $race = $dbFunction->findById( $raceId );
+         $dbFunction->close();
+         if ( $dbFunction->isFinished( $race ) ) {
+            print("<h2 style='color: #ff0000;'>Race finished, no more actions possible!</h2>");
+            return true;
+         }
+         return false;
+      }
    }
    
 
