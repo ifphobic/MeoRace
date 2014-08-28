@@ -7,13 +7,18 @@
       }
 
 
-      public function findAll( $raceId, $racerId ) {
+      public function findAll( $raceId, $racerId = null ) {
          
-         $query  = "select sed.*, t.name, t.description, t.maxDuration, ";
-         $query .= "(select count(1) = 0 from RacerTask rt where rt.endTime is null and rt.taskFk = t.taskId and rt.racerFk = ?) as notAssigned ";
+         $query  = "select sed.*, t.name, t.description, t.maxDuration ";
+         $parameter = array();
+         if ( $racerId != null ) {
+            $query .= ", (select count(1) = 0 from RacerTask rt where rt.endTime is null and rt.taskFk = t.taskId and rt.racerFk = ?) as notAssigned ";
+            $parameter[] = new Parameter( PDO::PARAM_INT, $racerId );
+         }
          $query .= "from StockExchangeDispatch sed ";
          $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by t.name";
-         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerId ), new Parameter( PDO::PARAM_INT, $raceId ) ) );
+         $parameter[] = new Parameter( PDO::PARAM_INT, $raceId );
+         $result = $this->queryArray($query, $parameter );
          return $result; 
       }
          

@@ -13,10 +13,7 @@
       $time = $racerTask->maxDuration - $racerTask->currentTime;
    }
 
-   $dbFunction = new RaceDbFunction();
-   $race = $dbFunction->findById( $racerTask->raceFk );
-   $raceFinished = $dbFunction->isFinished( $race );
-   $dbFunction->close();
+   $raceFinished = RaceDbFunction::isFinished( $racerTask->raceFk );
 
 ?>
 
