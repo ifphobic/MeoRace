@@ -11,14 +11,12 @@
          $priceDelta = 0;
          $min = 9999999;
          $max = 0;
-         $currentTask = null;
 
          foreach ( $racerTasks as $racerTask ) {
             if ( $racerTask->taskFk == $taskId ) {
                $racerTask->counter++;
                $priceDelta = $racerTask->price / 3; 
                $racerTask->price -= $priceDelta;
-               $currentTask = $racerTask;
             }
             if ( $min > $racerTask->counter ) {
                $min = $racerTask->counter;
@@ -38,8 +36,6 @@
             $racerTask->price += $priceDelta * ( $max - $racerTask->counter) / $totalDifference ;
             $dbFunction->update( $racerTask );
          }
-
-         return round( $currentTask->price );
       }
 
    }

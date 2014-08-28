@@ -5,9 +5,9 @@
    class DispatchConfirmAction extends AbstractEditAction implements Action {
 
       public function commit( $content ) {
-         $price = PriceCalculator::dispatchTask( CommonDbFunction::getUser()->raceFk, $content['taskId'] );
+         PriceCalculator::dispatchTask( CommonDbFunction::getUser()->raceFk, $content['taskId'] );
          $dbFunction = new RacerTaskDbFunction();
-         $racerTaskId = $dbFunction->dispatch( $content['racerId'],$content['taskId'], $price );
+         $racerTaskId = $dbFunction->dispatch( $content['racerId'],$content['taskId'], $content['price'] );
          $dbFunction->startRacerTask( $racerTaskId );
          $dbFunction->close();
          return null;

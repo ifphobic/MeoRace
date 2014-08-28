@@ -15,8 +15,9 @@
    $dbFunction->close();
 
    foreach ( $tasks as $task ) {
+   $price = round( $task->price );
       if ( $task->notAssigned ) {
-         print( "<li onClick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=" . $_GET['id']  ) . "'>");
+         print( "<li onClick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=" . $_GET['id'] . "&price=$price"  ) . "'>");
       } else {
          print( "<li style='background: #ff0000;'>");
       }
@@ -30,7 +31,7 @@
          <div class="middle_info">
             <p class="title"><?php print( $task->description ) ?></p>
 	         <p>
-                  <span class='manifest_points'><?php print( round( $task->price ) ) ?></span>
+                  <span class='manifest_points'><?php print( $price ) ?></span>
                   <span class='manifest_maxduration'><?php print( Page::readableDuration( $task->maxDuration ) ) ?></span>
             </p>
          </div>
