@@ -1,4 +1,8 @@
-<reload interval="10" />
+<?php
+   if ( RaceDbFunction::printFinished( CommonDbFunction::getUser()->raceFk) ) {
+      exit;
+   }
+?>
 
 <div class="content_tab" id="taskdispatch_dispatch">
 <ul>   

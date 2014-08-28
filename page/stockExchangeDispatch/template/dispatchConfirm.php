@@ -1,3 +1,8 @@
+<?php
+   if ( RaceDbFunction::printFinished( CommonDbFunction::getUser()->raceFk) ) {
+      exit;
+   }
+?>
 <div class="content_tab confirm" id="racerdispatch_dispatch">
 
 <?php
