@@ -191,7 +191,7 @@ padding: 5px 0;
             height: @line-height-detail-inner; 
             width: @line-height-detail-inner; 
             &.parcel_name{
-            border-radius: 0;
+            border-radius: 5px;
             }
 .manifest_number{
             height: @line-height-detail-inner; 
@@ -331,6 +331,8 @@ input {
     padding: 15px 0px;
     color: black;
     background-color: transparent;
+    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 input:focus,
@@ -525,18 +527,16 @@ div.indicator_pos{
 
 div.indicator_current{
     .indicator;
-    color: @c9;
-    border: 1px solid @c9;    
-    border-radius: 5px;   
-    padding: 0 2px;
+    color: @g1;
 }
 
 // Main Navigation
 
 .menu_list{
-    font-size: 2.1em; 
+    font-size: 1.7em; 
     color: @c5; 
     text-align: left;
+    line-height: @line-height;
     &:after{
         content: "\e60f";
         font-family: 'icomoon';
@@ -545,7 +545,7 @@ div.indicator_current{
         font-size: 1em;
         position: absolute;
         right: 0;
-        top: 15px;
+        top: 8px;
 }
     &.racer:before{
         font-family: 'icomoon';
@@ -565,7 +565,7 @@ div.indicator_current{
     &.ranking:before{
         font-family: 'icomoon';
         color: @c6;
-        content: "\e606";
+        content: "\e608";
         font-size: 0.8em;
         margin-right: 15px;
     }
@@ -590,7 +590,23 @@ div.indicator_current{
         font-size: 0.8em;
         margin-right: 15px;
     }
+     &.stockExchangeDispatch:before{
+        font-family: 'icomoon';
+        color: @c6;
+        content: "\e600";
+        font-size: 0.8em;
+        margin-right: 15px;
+    }
+        &.racerTask:before{
+        font-family: 'icomoon';
+        color: @c6;
+        content: "\e60a";
+        font-size: 0.8em;
+        margin-right: 15px;
+    }
 }
+
+
 
 //Racer Ranking Overview
 
@@ -696,11 +712,22 @@ margin-left: @line-height-detail-inner;
 }  
 }
 }
+#parceledit_parcel{
+    .left_info{
+        border-radius: 5px;
+.photo_upload{
+    border-radius: 5px;
+}
+}
+}
 
         
 // Racer Task List on Checkpoints
 
 #racertask_racertask{
+    th{
+        height: @line-height/2;
+    }
 tr{
     height: @line-height;
     &.tableheader {
@@ -710,16 +737,28 @@ tr{
     td{
         vertical-align: middle;
         &.drilldown{
-            font-family: 'icomoon';
+            background-color: @g1;
+            color: @c1;
+            text-align: left;
+        &:after{
+            color: @c1;
+            margin: -5px;
+        }
         }
         &.action{
+            font-size: 1em;
+            color: @c1;
+            background-color: @g1;
             text-align: right;
-            font-size: 1.2em;
+            padding-left: 5px;
         }
         &.goto_arrow:after{
             content: "\e60f";
             font-family: 'icomoon';
             vertical-align: middle;
+        }
+        &.spacer{
+           width: 10px;
         }
         &.task_number {
             overflow: hidden;
@@ -744,6 +783,7 @@ tr{
             width: @line-height;
             height: @line-height;
             vertical-align: middle;
+            border-radius: 5px;
             }
         }
     }
@@ -778,6 +818,9 @@ tr{
 #ranking_rankingdetail{
     .middle_info{
         margin-right: @line-height-edit-inner;
+        &.racer_ranking_points > p{
+            width: 120px;
+        }
     }
     .right_info{
         text-align: right; 
@@ -799,6 +842,14 @@ tr{
     margin-left: 6px;
     font-size: 0.8em;
 }
+
+// Parcel List
+#parcelList{
+    .left_info{
+        border-radius: 5px;
+    }
+}    
+    
 
 //  Task Detail
 

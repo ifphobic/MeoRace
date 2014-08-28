@@ -63,8 +63,10 @@
         	<img src='" . Page::getImagePath( $action ) . "'></td> 
 	    <td class='goto_arrow'></td>
 	    <td class='checkpoint_name_second'> " . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . "</div></td>
-            <td class='drilldown'>" . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . "</td>
-         </tr>");
+		<td class='spacer'></td>
+            <td class='drilldown'>" . (($action->isDropoff) ? "DP" : "PU" ) . "</td>
+				<td class='drilldown'></td>
+   </tr>");
    }
 ?>
     </table>
