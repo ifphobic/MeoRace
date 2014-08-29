@@ -38,7 +38,7 @@
          $query .= "d.deliveryId, ";
          $query .= "(select group_concat(previousDeliveryFk) from DeliveryCondition dc where dc.deliveryFk = d.deliveryId ) as conditions, ";
          $query .= "pickupC.name as pickupName, dropoffC.name as dropoffName, ";
-         $query .= "p.name as parcelName ";
+         $query .= "p.name as parcelName, p.image ";
          $query .= "from RacerDelivery rd ";
          $query .= "join RacerTask rt on rd.racerTaskFk = rt.racerTaskId ";
          $query .= "join Task t on rt.taskFk = t.taskId ";
