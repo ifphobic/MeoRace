@@ -1,3 +1,4 @@
+<reload />
 <div class="content_tab" id="rankingoverview_ranking">
 
    <ul>

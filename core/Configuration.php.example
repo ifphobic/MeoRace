@@ -9,6 +9,7 @@
       const DB_PASSWORD = "meoRace"; 
       const IMAGE_FOLDER ="/tmp";
       const CURRENT_RACE = -1;
+      const TV_SIZE = 10;
    }
 
 

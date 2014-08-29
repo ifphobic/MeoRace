@@ -109,7 +109,7 @@
          
          function initReload( input, tabId ) {
         
-            var result = input.match( /<reload interval=\"([0-9]+)\" *\/ *>/ );
+            var result = input.match( /<reload *\/ *>/ );
             if ( result != null && result.length > 0 ) {
                   var found = false;
                   for (var i = 0; i < reloadTabs.length && !found; ++i) {
@@ -118,10 +118,11 @@
                   if ( found ) {
                      return;
                   }
+                  reloadTabs.push( tabId );
                   if ( reloadTask != null ) {
                      clearInterval( reloadTask );
                   }
-                  reloadTask = window.setInterval("reloadTasks()", RegExp.$1 * 1000 );
+                  reloadTask = window.setInterval("reloadTasks()", 5000 );
             }
          }
 
@@ -131,12 +132,22 @@
             }
          }
 
+         function clearReload( index ) {
+            for ( i = reloadTabs.length - 1; i >= 0; i-- ) {
+               if (reloadTabs[i] >= index ) {
+                  reloadTabs.pop();
+               }
+            }
+         }
 
          // --------- tab content ----------
 
          function showPage( index, parameter, clicked ) {
             
             tabParameter[index] = parameter;
+            if (clicked ) {
+               clearReload( index );
+            }
             for ( i = index + 1; clicked && i < tabParameter.length; i++ ) {
                tabParameter[i] = null;
                element("content" + i).innerHTML = "";
@@ -258,13 +269,24 @@
             return document.getElementById(id);
          }
 
-         function onload() {
+         function onload( mode ) {
            
            numberOfColums = determineNumberOfColumns();
            setColumnWidth();
            setVisibility();
            setLeft();
-           showPage(0, "module=menu&page=menuList" , true);
+           if ( mode == "tv" ) {
+               showPage(0, "module=stockExchangeDispatch&page=taskDispatch" , false);
+               showPage(1, "module=stockExchangeDispatch&page=taskDispatch" , false);
+               showPage(2, "module=stockExchangeDispatch&page=taskDispatch" , false);
+               showPage(3, "module=stockExchangeDispatch&page=taskDispatch" , false);
+               for ( i = 0; i < 4; i++ ) {
+                  reloadTabs.push(i);
+               }
+               reloadTask = window.setInterval("reloadTasks()", 5000 );
+           } else {
+              showPage(0, "module=menu&page=menuList" , true);
+           }
            window.addEventListener('resize', resizeScreen, true);
          }
 
@@ -286,7 +308,13 @@
 
       </script>
    </head>
-   <body onload="onload()">
+<?php
+   $mode = "standard";
+   if ( isset( $_GET['tv'] ) ) {
+      $mode = "tv";
+   }
+?>
+   <body onload="onload( '<?php print( $mode ) ?>')">
       <div class="header">
          <div class="but_back" onclick="back()"><</div>
          <div class="but_menu"><p style=" margin-top: 5px;"><a class="ohne" style="color: #ccc;" href="login.php">
@@ -303,7 +331,9 @@
                   $user = CommonDbFunction::getUser();         
                   if ( $user != null ) {
                      print(" Logged in as: " . $user->user . " (" . $user->role . "/" . $user->raceName . ") " );
-                  } else {print("Public view without login");}
+                  } else {
+                     print("Public view without login");
+                  }
                ?>
             </h1>
          </div>

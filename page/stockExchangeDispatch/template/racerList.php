@@ -12,6 +12,10 @@
    $racers = $dbFunction->findAll( CommonDbFunction::getUser()->raceFk );
    $dbFunction->close();
    
+   $dbFunction = new StockExchangeDispatchDbFunction();
+   $dbFunction->init( CommonDbFunction::getUser()->raceFk );
+   $dbFunction->close();
+   
     foreach ( $racers as $racer ) {
       print("
          <li onclick='" . Page::getOnClickFunction( "stockExchangeDispatch", "taskDispatch", $racer->racerId ) . "'>

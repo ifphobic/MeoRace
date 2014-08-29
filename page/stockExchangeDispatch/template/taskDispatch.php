@@ -1,5 +1,17 @@
 <?php
-   if ( RaceDbFunction::printFinished( CommonDbFunction::getUser()->raceFk) ) {
+
+   $user = CommonDbFunction::getUser();
+
+   if ( $user != null ) {
+      $raceFk = $user->raceFk;
+      $racerId = $_GET['id'];
+   } else {
+      $raceFk = Configuration::CURRENT_RACE;
+      $racerId = null;
+   }
+
+
+   if ( $user != null && RaceDbFunction::printFinished( $raceFk ) ) {
       exit;
    }
 ?>
@@ -9,15 +21,23 @@
 
 <?php
    $dbFunction = new StockExchangeDispatchDbFunction();
-   $raceFk = CommonDbFunction::getUser()->raceFk;
-   $dbFunction->init( $raceFk );
-   $tasks = $dbFunction->findAll( $raceFk, $_GET['id'] );
+   $tasks = $dbFunction->findAll( $raceFk, $racerId );
    $dbFunction->close();
 
-   foreach ( $tasks as $task ) {
-   $price = round( $task->price );
-      if ( $task->notAssigned ) {
-         print( "<li onClick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=" . $_GET['id'] . "&price=$price"  ) . "'>");
+   if ( $user != null ) {
+      $i = 0;
+      $end = count( $tasks );
+   } else {
+      $i = Page::getTabIndex() * Configuration::TV_SIZE;
+      $end =  min( $i + Configuration::TV_SIZE, count( $tasks ));
+   }
+
+
+   for ( ; $i < $end; $i ++  ) {
+      $task = $tasks[$i];
+      $price = round( $task->price );
+      if ( $task->notAssigned && $user != null ) {
+         print( "<li onClick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=$racerId&price=$price"  ) . "'>");
       } else {
          print( "<li>");
       }
@@ -30,8 +50,8 @@
        
          <div class="middle_info">
             <p class="title"><?php print( $task->description ) ?></p>
-	         <p><?php if(!$task->notAssigned){
-			   print("Already assigned");
+	         <p><?php if( !$task->notAssigned ){
+			         print("Already assigned");
 			   } else {
 			   ?>
                   <span class='manifest_points'><?php print( $price ) ?></span>
