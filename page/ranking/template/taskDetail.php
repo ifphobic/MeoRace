@@ -44,15 +44,22 @@
 
 <?php
    foreach ( $racerDeliveries as $delivery ) {
+      if ( $delivery->pickupTime == null ) {
+         $status = "task_unreachable";
+      } else if ( $delivery->dropoffTime == null ) {
+         $status = "task_possible";
+      } else {
+         $status = "task_completed";
+      }
 ?>
 
 <table>
-   <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
-      <th rowspan="3" class="task_status task_completed"></th>
+   <tr>
+      <th rowspan="3" class="task_status <?php print( $status ) ?>"></th>
       <th colspan="6" class="task_requirements no_requirements">Possible after: -</th>
    </tr>
 
-   <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
+   <tr>
       <td rowspan="2" class="task_number">01</td>
       <td class="checkpoint_name_first"><?php print( $delivery->pickupName ) ?></td>
       <td class="goto_arrow">>></td>
@@ -61,7 +68,7 @@
       <td class="checkpoint_name_second"><?php print( $delivery->dropoffName ) ?></td>
    </tr>
 
-   <tr onclick='<?php print( Page::getOnClickFunction( "ranking", "parcelDetail" ) ) ?>'>
+   <tr>
       <td><?php print( $delivery->pickupTime ) ?></td>
       <td></td>
       <td></td>
