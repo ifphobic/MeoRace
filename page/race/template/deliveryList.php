@@ -143,5 +143,5 @@
 
 </table>
 
-<?php print( CommonPageFunction::getLink("race", "deliveryEdit", null, "New Delivery", "taskId=$taskId" ) );
+<div class='new_button' onclick='<?php print(Page::getOnClickFunction( "race", "deliveryEdit", null, "New Delivery", "taskId=$taskId" ) ) ?> '>+ New Delivery</div>
  

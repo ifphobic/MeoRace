@@ -14,7 +14,7 @@
 
 <div class="content_tab" id="racertask_racertask">
 
-<div class="top_content_wrapper""> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
+<div class="top_content_wrapper detail"> <!-- Wrapper for the top content like search, selected rider, selected parcel and so on-->
    <div class="top_info_wrapper top_info_rider"> <!-- Second top wrapper: Put in here the search input form, selected rider, selected parcel and so on.  -->
       <div class='left_info'>
          <img src='<?php print( Page::getImagePath( $racer ) ) ?>' alt='strom praesi'>
@@ -63,12 +63,14 @@
             <td class='task_number'><div class='task_number_bubble'><span class='task_number_number'>". $action->task . "</span></div></td>
 	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
             <td class='goto_arrow'></td>
-	    <td class='parcel_name'><img src='" . Page::getImagePath( $action ) . "' height=25px width=25px;>
-        <div class='indicator_pos'><span class='parcel_number_number'>" . $action->parcel . "</span></div></td>
+	     <td class='parcel_name'>
+        	<img src='" . Page::getImagePath( $action ) . "'></td> 
 	    <td class='goto_arrow'></td>
 	    <td class='checkpoint_name_second'> " . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . "</div></td>
-            <td class='drilldown'>" . (($action->isDropoff) ? "Dropoff" : "Pickup" ) . "</td>
-         </tr>");
+		<td class='spacer'></td>
+            <td class='drilldown'>" . (($action->isDropoff) ? "DP" : "PU" ) . "</td>
+				<td class='drilldown'></td>
+   </tr>");
    }
 ?>
     </table>
