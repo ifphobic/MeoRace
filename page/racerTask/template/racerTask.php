@@ -34,7 +34,7 @@
 
 <div class="bottom_content_wrapper">
 
-<p class="racer_checkpointlist_heading">Possible Pick-Up Actions</p>
+<p class="racer_checkpointlist_heading">Possible Drop-Off Actions</p>
 
    <table>
    <tr class="tableheader">
@@ -56,7 +56,7 @@
    $dbFunction->close();
 
    foreach ( $actions as $action ) {
-      if(!$action->isDropoff){
+      if($action->isDropoff){
       print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned . "&racerId=" . $racer->racerId ) . "'>
             <td class='task_number'><div class='task_number_bubble'><span class='task_number_number'>". $action->task . "</span></div></td>
 	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
@@ -73,7 +73,8 @@
    }
 ?>
     </table>
-   <p class="racer_checkpointlist_heading">Possible Drop-Off Actions</p>
+    <br/>
+   <p class="racer_checkpointlist_heading">Possible Pick-Up Actions</p>
 
    <table>
    <tr class="tableheader">
@@ -89,7 +90,7 @@
    <?php
    
    foreach ( $actions as $action ) {
-      if($action->isDropoff){
+      if(!$action->isDropoff){
       print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned . "&racerId=" . $racer->racerId ) . "'>
             <td class='task_number'><div class='task_number_bubble'><span class='task_number_number'>". $action->task . "</span></div></td>
 	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
