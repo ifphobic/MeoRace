@@ -297,7 +297,7 @@
 ?>
          </a></p></div>
          <div class="title">
-            <h1>Current Module Title</h1>
+            <h1>Messenger Race Software</h1>
             <h1 class=sub>
                <?php
                   $user = CommonDbFunction::getUser();         

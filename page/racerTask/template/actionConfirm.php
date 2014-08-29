@@ -20,13 +20,10 @@
       </div> 
       <div class='middle_info'>
          <p class='title'><?php Page::printValue( $racer, "name" ) ?></p>
-         <p class='description'><?php Page::printValue($racer, array( "city", "country" ), ", ") ?></p>
+         <p class='description'><?php print($racer->city) ?></p>
       </div>
       <div class='middle_info racer_ranking_points'>
-         <p>
-            <span class='racer_ranking'>1</span>
-            <span class='racer_points'>120</span>
-         </p>
+         <p><?php print($racer->country); ?></p>
       </div>
       <div class='right_info'>
          <p class='rider_number'><?php Page::printValue( $racer, "racerNumber" ) ?></p>

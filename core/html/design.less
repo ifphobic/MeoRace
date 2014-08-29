@@ -153,7 +153,8 @@ li {
 }
 
 .confirm .listwrapper{
-    height: @line-height-top-content;
+    height: auto;
+    min-height: @line-height-top-content;
     border:none;
     margin: 7px 0 0 0;
 }
@@ -188,30 +189,31 @@ padding: 5px 0;
 
 .confirm {
     .left_info{
-            height: @line-height-detail-inner; 
-            width: @line-height-detail-inner; 
-            &.parcel_name{
+        height: @line-height-detail-inner; 
+        width: @line-height-detail-inner; 
+        &.parcel_name{
             border-radius: 5px;
-            }
-.manifest_number{
-            height: @line-height-detail-inner; 
-            width: @line-height-detail-inner; 
-            padding-top: 20px !important;
-            color: @c1;
-            font-size: 1em;
-            font-weight: bold;
-            background-color: @c3;
-            display: block;
-            text-align: center;
-            padding-top: 12px;
-}        
-}
-.middle_info{
-    margin-left: @line-height-detail-inner; 
-}
-.right_info:after{
-      display: none;
-  }
+        }
+        .manifest_number{
+                    height: @line-height-detail-inner; 
+                    width: @line-height-detail-inner; 
+                    padding-top: 20px !important;
+                    color: @c1;
+                    font-size: 1em;
+                    font-weight: bold;
+                    background-color: @c3;
+                    display: block;
+                    text-align: center;
+                    padding-top: 12px;
+        }        
+    }
+    .middle_info{
+        margin-left: @line-height-detail-inner;
+        height: auto;
+    }
+    .right_info:after{
+        display: none;
+    }
 }
 
 
@@ -270,6 +272,9 @@ padding: 5px 0;
 .middle_info p.description{
     font-size: 1em;
     color: @c4;
+}
+.confirm .middle_info p.description{
+    white-space: normal;
 }
 
 .middle_info p.title, .middle_info p.description{
@@ -532,6 +537,13 @@ div.indicator_current{
 
 // Main Navigation
 
+.navigation_icon{
+    font-family: 'icomoon';
+    color: @c6;
+    font-size: 0.8em;
+    margin-right: 15px;
+}
+
 .menu_list{
     font-size: 1.7em; 
     color: @c5; 
@@ -548,62 +560,46 @@ div.indicator_current{
         top: 8px;
 }
     &.racer:before{
-        font-family: 'icomoon';
-        color: @c6;
+        .navigation_icon;
         content: "\e609";
-        font-size: 0.8em;
-        margin-right: 15px;
+        color: #E78927;
         }
     &.race:before{
-        font-family: 'icomoon';
-        color: @c6;
+        .navigation_icon;
         content: "\e600";
-        font-size: 0.8em;
-        margin-right: 15px;
+        color: #8555DC;
         }
 
     &.ranking:before{
-        font-family: 'icomoon';
-        color: @c6;
+        .navigation_icon;
         content: "\e608";
-        font-size: 0.8em;
-        margin-right: 15px;
-    }
+        color: #166D3A;
+        }
     &.parcel:before{
-        font-family: 'icomoon';
-        color: @c6;
+        .navigation_icon;
         content: "\e602";
-        font-size: 0.8em;
-        margin-right: 15px;
-    }
+        color: #ECC816; 
+        }
     &.checkpoint:before{
-        font-family: 'icomoon';
-        color: @c6;
+        .navigation_icon;
         content: "\e60b";
-        font-size: 0.8em;
-        margin-right: 15px;
-    }
+        color: #5B99BB;
+        }
     &.user:before{
-        font-family: 'icomoon';
-        color: @c6;
+        .navigation_icon;
         content: "\e605";
-        font-size: 0.8em;
-        margin-right: 15px;
-    }
+        color: #ECC816;
+        }
      &.stockExchangeDispatch:before{
-        font-family: 'icomoon';
-        color: @c6;
+        .navigation_icon;
         content: "\e600";
-        font-size: 0.8em;
-        margin-right: 15px;
-    }
-        &.racerTask:before{
-        font-family: 'icomoon';
-        color: @c6;
+        color: #4CA6D0;
+        }
+    &.racerTask:before{
+        .navigation_icon;
         content: "\e60a";
-        font-size: 0.8em;
-        margin-right: 15px;
-    }
+        color: #ECC816;
+        }
 }
 
 
@@ -624,7 +620,7 @@ span.racer_ranking{
 }
 
 span.racer_points {
-    color: @c5;
+    color: @c4;
     text-align: right;
     float: left;
     width: 60px;   
@@ -740,9 +736,11 @@ tr{
             background-color: @g1;
             color: @c1;
             text-align: left;
+            padding: 5px;
         &:after{
             color: @c1;
-            margin: -5px;
+            margin-right: -20px;
+            line-height: 1.8em;
         }
         }
         &.action{
@@ -779,16 +777,22 @@ tr{
                 }
         }
         &.parcel_name{
-            img{
+            div{
             width: @line-height;
             height: @line-height;
+            overflow: hidden;
             vertical-align: middle;
             border-radius: 5px;
+            }
+            img{
+                width: 100%;
+                margin-top: -4px;
             }
         }
     }
 }
 }
+
 
 // Manifest List
 

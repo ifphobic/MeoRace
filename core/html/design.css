@@ -1,2 +1,1127 @@
-/* CSS crunched with Crunch - http://crunchapp.net/ */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video,input{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}@font-face{font-family:'icomoon';src:url('../../icons/icomoon/fonts/icomoon.eot?77g9ef');src:url('../../icons/icomoon/fonts/icomoon.eot?#iefix77g9ef') format('embedded-opentype'),url('../../icons/icomoon/fonts/icomoon.woff?77g9ef') format('woff'),url('../../icons/icomoon/fonts/icomoon.ttf?77g9ef') format('truetype'),url('../../icons/icomoon/fonts/icomoon.svg?77g9ef#icomoon') format('svg');font-weight:normal;font-style:normal}img{width:100%}h1{color:#fff;text-align:center;padding:0px 15px;background-color:#333;text-transform:uppercase;font-style:12pt 'Open Sans',Helvetica,sans-serif}h1.sub{color:#ccc;text-transform:none;font-size:0.6em}html,body{height:100%;background:#f7f7f7;font-style:12pt 'Open Sans',Helvetica,sans-serif}li{width:100%;clear:both;position:relative}.listwrapper{margin:0 15px;border-bottom:1px solid black;border-bottom:1px solid #e6e6e6;padding:5px 0;height:49px}.listwrapper:last-child{border-bottom:1px solid #e6e6e6}.confirm li:hover{background-color:#f7f7f7}.confirm .listwrapper{height:66px;border:none;margin:7px 0 0 0}.top_content_wrapper{height:66px;text-align:center;text-transform:uppercase}.top_info_wrapper{height:49px;margin:0 15px;position:relative;top:9.5px;text-transform:none}.bottom_content_wrapper{margin:0 15px 0 15px }p.racer_checkpointlist_heading,p.racer_tasklist_heading,.confirm_heading,.heading{display:inline-block;width:100%;font-weight:bold;border-bottom:2px solid #ccc;padding:5px 0}.confirm .left_info{height:66px;width:66px}.confirm .left_info.parcel_name{border-radius:5px}.confirm .left_info .manifest_number{height:66px;width:66px;padding-top:20px !important;color:#fff;font-size:1em;font-weight:bold;background-color:#ccc;display:block;text-align:center;padding-top:12px}.confirm .middle_info{margin-left:66px}.confirm .right_info:after{display:none}.left_info,.right_info{height:49px;width:49px}.left_info{position:absolute;overflow:hidden;border-radius:50px}.left_info>img{width:100%;margin-top:-6px}.middle_info{height:49px;margin:0 45px 0 49px;padding:0 10px;text-align:left}.middle_info .manifest_points{display:inline-block;margin-right:15px;width:50px}.middle_info .manifest_points:after{content:"\e601";font-size:14px;font-family:'icomoon';color:#999;margin-left:5px}.middle_info .manifest_maxduration{display:inline-block;width:80px;text-align:right}.middle_info .manifest_maxduration:after{content:"\e606";font-size:13px;font-family:'icomoon';color:#999;margin-left:5px}.middle_info p.title{font-size:1.2em;color:#333;letter-spacing:1px}.middle_info p.description{font-size:1em;color:#b3b3b3}.middle_info p.title,.middle_info p.description{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.right_info{position:absolute;right:30px;top:5px}.right_info:after{content:"\e60f";font-family:'icomoon';color:#999;font-size:26px;position:absolute;top:15px;right:-22px}.top_info_wrapper .right_info:after{display:none}.right_info .rider_number{font-size:3em;font-weight:lighter;color:#b3b3b3;float:right;display:block;letter-spacing:1px;margin-top:-8px}.new_button{color:#fff;margin:15px;border-radius:5px;border:none;background-color:#71C671;text-transform:uppercase;padding:15px 0;text-align:center}input{display:block;font-size:16px;line-height:normal;border-bottom:1px solid #000;width:100%;padding:15px 0px;color:black;background-color:transparent;-webkit-appearance:none;border-radius:0}input:focus,select:focus,textarea:focus,button:focus{outline:none}input[type="submit"]{color:#fff;margin:15px auto;border-radius:5px;border:none;background-color:#71c671;text-transform:uppercase;width:93%}input[type="submit"]:active,input[type="submit"]:hover{background-color:#8ad08a;box-shadow:0 0 1px 1px #ccc}input[name="login"]{margin:15px 0;width:100%}input[type="search"]{-webkit-appearance:none;border:1px solid #e6e6e6;border-radius:5px;padding:15px 3px;line-height:normal;height:49px}.select_status,.select_racernumber,.select_manifestnumber{width:100%;margin-top:15px;font-size:16px;color:#ccc}input[type="file"]{display:block;width:88px;height:99px;margin:0;position:relative;top:10px;padding-left:5px}.photo_upload{z-index:1;width:99px;height:99px;pointer-events:none;position:absolute;top:0;overflow:hidden;border:1px dashed #999;border-radius:50px;background-color:#f5f5f5}table{width:100%;border-collapse:separate;border-spacing:0px 5px}#manifest_detail table{width:100%;border-collapse:collapse;margin-bottom:10px}tr{background-repeat:no-repeat;background-position:center center;background-color:#fff}tr.tableheader{background-color:#f7f7f7}th,td{text-align:center;background-position:center center;background-repeat:no-repeat;height:49px}th{background-color:#f7f7f7;color:#808080;font-family:'icomoon';font-size:1em;vertical-align:middle}th.task_manifest{background-image:url(../../icons/document127.png);background-size:24px}th.checkpoint_name_first:before{content:"\e604"}th.parcel_name:before{content:"\e602"}th.checkpoint_name_second:before{content:"\e603"}th.task_status.task_completed{background-color:#71c671}th.task_status.task_possible{background-color:#ff0}th.task_status.task_notpossible{background-color:#f00}th.task_number:before{content:"\e600";font-family:'icomoon'}th.manifest_points{background-image:url(../../icons/coins16.png);background-size:30px}th.manifest_description{background-image:url(../../icons/information33.png);background-size:20px}th.manifest_edit{width:49px}th.manifest_configure{width:49px}th.manifest_delete{width:49px}td.drilldown:after{content:"\e60f";font-family:'icomoon';color:#999;vertical-align:middle;font-size:1.8em}td.manifest_edit{background-image:url(../../icons/pencil44.png);background-size:20px}td.manifest_configure{background-image:url(../../icons/settings39.png);background-size:20px}td.manifest_delete{background-image:url(../../icons/delete30.png);background-size:32px}.indicator{color:#fff}tr.no_action{color:#999}div.indicator_pos{color:#fff;background-color:#71c671;height:49px}div.indicator_current{color:#fff;color:#71c671}.menu_list{font-size:1.7em;color:#999;text-align:left;line-height:49px}.menu_list:after{content:"\e60f";font-family:'icomoon';color:#999;vertical-align:middle;font-size:1em;position:absolute;right:0;top:8px}.menu_list.racer:before{font-family:'icomoon';color:#808080;content:"\e609";font-size:0.8em;margin-right:15px}.menu_list.race:before{font-family:'icomoon';color:#808080;content:"\e600";font-size:0.8em;margin-right:15px}.menu_list.ranking:before{font-family:'icomoon';color:#808080;content:"\e608";font-size:0.8em;margin-right:15px}.menu_list.parcel:before{font-family:'icomoon';color:#808080;content:"\e602";font-size:0.8em;margin-right:15px}.menu_list.checkpoint:before{font-family:'icomoon';color:#808080;content:"\e60b";font-size:0.8em;margin-right:15px}.menu_list.user:before{font-family:'icomoon';color:#808080;content:"\e605";font-size:0.8em;margin-right:15px}.menu_list.stockExchangeDispatch:before{font-family:'icomoon';color:#808080;content:"\e600";font-size:0.8em;margin-right:15px}.menu_list.racerTask:before{font-family:'icomoon';color:#808080;content:"\e60a";font-size:0.8em;margin-right:15px}span.racer_ranking{margin-right:12px;color:#999;float:left;width:34px}span.racer_ranking:after{content:"\e608";font-family:'icomoon';margin-left:5px;font-size:13px}span.racer_points{color:#999;text-align:right;float:left;width:60px}span.racer_points:after{content:"\e601";font-family:'icomoon';margin-left:5px;font-size:13px}.top_content_wrapper.detail{height:88px}.top_content_wrapper.detail .top_info_wrapper,.top_content_wrapper.detail .right_info{height:66px;right:0}.top_content_wrapper.detail .top_info_wrapper .rider_number,.top_content_wrapper.detail .right_info .rider_number{font-size:4em;margin-top:-12px}.top_content_wrapper.detail img{margin-top:-6px}.top_content_wrapper.detail .left_info{height:66px;width:66px}.top_content_wrapper.detail .left_info .manifest_number{font-size:1em;width:66px;height:66px;text-align:center;padding-top:20px}.top_content_wrapper.detail .middle_info{height:49px;margin-left:66px}.top_content_wrapper.detail .middle_info.racer_ranking_points{height:24.5px;color:#999}#tasklist .middle_info{padding-left:0}#tasklist .middle_info .title{background-image:url(../../icons/pencil44.png);background-repeat:no-repeat;background-size:20px;background-position:70px}#raceredit_racer .top_content_wrapper.registration,#parceledit_parcel .top_content_wrapper.registration{height:132px}#raceredit_racer .top_content_wrapper.registration .top_info_wrapper,#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper{height:99px;position:relative;top:22px}#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .left_info,#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .left_info{height:99px;width:99px}#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .middle_info,#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .middle_info{margin:0 84px 0 99px}#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .right_info,#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .right_info{float:left}#parceledit_parcel .left_info{border-radius:5px}#parceledit_parcel .left_info .photo_upload{border-radius:5px}#racertask_racertask th{height:24.5px}#racertask_racertask tr{height:49px}#racertask_racertask tr.tableheader{height:29px;font-size:1.2em}#racertask_racertask tr td{vertical-align:middle}#racertask_racertask tr td.drilldown{background-color:#71c671;color:#fff;text-align:left}#racertask_racertask tr td.drilldown:after{color:#fff;margin:-5px}#racertask_racertask tr td.action{font-size:1em;color:#fff;background-color:#71c671;text-align:right;padding-left:5px}#racertask_racertask tr td.goto_arrow:after{content:"\e60f";font-family:'icomoon';vertical-align:middle}#racertask_racertask tr td.spacer{width:10px}#racertask_racertask tr td.task_number{overflow:hidden;color:#fff;font-weight:bold;width:49px;height:49px}#racertask_racertask tr td.task_number .task_number_bubble{background-color:#ccc;border-radius:50px;height:49px;width:49px;margin:5px}#racertask_racertask tr td.task_number .task_number_bubble .task_number_number{position:relative;top:12px}#racertask_racertask tr td.parcel_name img{width:49px;height:49px;vertical-align:middle;border-radius:5px}.manifest_number{color:#fff;font-size:1em;font-weight:bold;background-color:#ccc;display:block;width:49px;height:49px;text-align:center;padding-top:12px}.manifest_number.manifest_completed{background-color:#71c671}.manifest_number.manifest_possible{background-color:#ff0;color:#4d4d4d}.manifest_number.manifest_unreachable{background-color:#f00}#ranking_rankingdetail .middle_info{margin-right:99px}#ranking_rankingdetail .middle_info.racer_ranking_points>p{width:120px}#ranking_rankingdetail .right_info{text-align:right;width:90px}#ranking_rankingdetail .right_info .manifest_points:after{font-family:'icomoon';color:#999;margin-left:6px;font-size:0.8em;content:"\e601"}#ranking_rankingdetail .right_info .manifest_maxduration:after{font-family:'icomoon';color:#999;margin-left:6px;font-size:0.8em;content:"\e606"}.manifest_counts{font-family:'icomoon';color:#999;margin-left:6px;font-size:0.8em}#parcelList .left_info{border-radius:5px}#ranking_taskdetail .right_info,#taskedit_race .right_info{width:99px;text-align:right}#ranking_taskdetail .right_info .manifest_points:after,#taskedit_race .right_info .manifest_points:after{font-family:'icomoon';color:#999;margin-left:6px;font-size:0.8em;content:"\e601"}#ranking_taskdetail .right_info .manifest_maxduration:after,#taskedit_race .right_info .manifest_maxduration:after{font-family:'icomoon';color:#999;margin-left:6px;font-size:0.8em;content:"\e606"}#ranking_taskdetail ul,#taskedit_race ul{margin:10px 0 40px 0}#ranking_taskdetail ul li,#taskedit_race ul li{padding:5px 0;border-bottom:none;background-color:#fff}#ranking_taskdetail ul li .right_info,#taskedit_race ul li .right_info{background-color:#71c671;margin-right:5px}#ranking_taskdetail ul li .right_info p:before,#taskedit_race ul li .right_info p:before{content:"\e60a";font-family:'icomoon';color:#fff;font-size:2em;position:absolute;top:8px;left:20px}p.racer_checkpointlist_heading.manifest_detail_heading{margin-bottom:10px}#ranking_taskdetail table{width:100%;margin-bottom:10px;border:1px solid #ccc;border-spacing:0}#ranking_taskdetail table th.task_status{width:5%}#ranking_taskdetail table th.task_number{width:15%}#ranking_taskdetail table th.checkpoint_name_first,#ranking_taskdetail table th.checkpoint_name_second{width:25%}#ranking_taskdetail table th.parcel_name{width:49px}#ranking_taskdetail table th.goto_arrow{width:10%}#ranking_taskdetail table th,#ranking_taskdetail table td{text-align:left;vertical-align:middle;padding:2px 0}#ranking_taskdetail table th.task_requirements{color:red;padding-left:15px;background-color:#f7f7f7;opacity:0.5}#ranking_taskdetail table th.task_requirements.no_requirements{color:#000}#ranking_taskdetail table th.task_status.task_completed{background-color:#71c671}#ranking_taskdetail table th.task_status.task_possible{background-color:#ff0}#ranking_taskdetail table th.task_status.task_unreachable{background-color:#f00}#ranking_taskdetail table td.task_number{font-size:2em;color:#CCC;padding-left:15px}#ranking_taskdetail table td.checkpoint_name_first,#ranking_taskdetail table td.checkpoint_name_second{text-align:left}.menubuttons{color:#ccc;min-width:49px;height:49px;border-right:1px solid #999;border-left:1px solid #999;cursor:default}p{margin:0em}body html{width:100%;height:100%}body{margin:0px;font:12pt 'Open Sans',Helvetica,sans-serif;color:#333}a.ohne{color:#4d4d4d;text-decoration:none}.menu{position:fixed;width:100%;top:0px;transition:top 300ms ease-out;z-index:100}.menu.menu_unfold{top:0px !important}.header{position:fixed;width:100%;top:0px;z-index:100;height:49px;background:#333;border-bottom:1px solid #999;text-align:center}div.title{padding:5px 25px}div.but_back{color:#ccc;min-width:49px;height:49px;border-right:1px solid #999;border-left:1px solid #999;cursor:default;float:left;font-size:1.8em;line-height:1.5em}div.but_menu{color:#ccc;min-width:49px;height:49px;border-right:1px solid #999;border-left:1px solid #999;cursor:default;float:right;font-size:1em;line-height:1.2em}.headertitle{display:inline}.content{position:absolute;min-width:260px;width:100%;height:100%;border-left:1px solid #999;border-right:1px solid #999;overflow-y:auto;transition:width 200ms ease, left 200ms ease}div.content0{position:absolute;min-width:260px;width:100%;height:100%;border-left:1px solid #999;border-right:1px solid #999;overflow-y:auto;transition:width 200ms ease, left 200ms ease;left:0%}div.content1{position:absolute;min-width:260px;width:100%;height:100%;border-left:1px solid #999;border-right:1px solid #999;overflow-y:auto;transition:width 200ms ease, left 200ms ease;left:25%}div.content2{position:absolute;min-width:260px;width:100%;height:100%;border-left:1px solid #999;border-right:1px solid #999;overflow-y:auto;transition:width 200ms ease, left 200ms ease;left:50%}div.content3{position:absolute;min-width:260px;width:100%;height:100%;border-left:1px solid #999;border-right:1px solid #999;overflow-y:auto;transition:width 200ms ease, left 200ms ease;left:75%}div.content4{position:absolute;min-width:260px;width:100%;height:100%;border-left:1px solid #999;border-right:1px solid #999;overflow-y:auto;transition:width 200ms ease, left 200ms ease;left:100%}div.content_menu_spacer{height:49px}transition{width:200ms ease, left 200ms ease;display:none}div.headspacer{width:100%;height:49px}div.content_menu_spacer{height:55px}.search{height:49px;border-bottom:1px solid #999;text-align:center}.listitem{background:linear-gradient(#fff, #f2f2f2);border-bottom:1px solid #999;text-align:center}.li_head{margin:5px;font-size:2em;float:left;color:#999}.li_content{margin:5px;float:left;text-align:left}.li_secondline{color:#999}.listitem:hover{background:#fff}li:hover{background:#fff}.racerdetail{height:149px;border-bottom:1px solid #999}.racerpic{height:120px;width:120px;margin:15px;float:left;overflow:hidden;border-radius:60px}.racerpic img{height:120px;margin-left:-10px}.racer_number{margin:5px;font-size:2em;float:left;color:#999}
+/* CSS reset */
+/* CSS reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* End of CSS Reset*/
+@font-face {
+  font-family: 'icomoon';
+  src: url('../../icons/icomoon/fonts/icomoon.eot?77g9ef');
+  src: url('../../icons/icomoon/fonts/icomoon.eot?#iefix77g9ef') format('embedded-opentype'), url('../../icons/icomoon/fonts/icomoon.woff?77g9ef') format('woff'), url('../../icons/icomoon/fonts/icomoon.ttf?77g9ef') format('truetype'), url('../../icons/icomoon/fonts/icomoon.svg?77g9ef#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* ****** gianfett temporary ******* */
+img {
+  width: 100%;
+}
+h1 {
+  color: #ffffff;
+  text-align: center;
+  padding: 0px 15px;
+  background-color: #333333;
+  text-transform: uppercase;
+  font-style: 12pt 'Open Sans', Helvetica, sans-serif;
+}
+h1.sub {
+  color: #cccccc;
+  text-transform: none;
+  font-size: 0.6em;
+}
+html,
+body {
+  height: 100%;
+  background: #f7f7f7;
+  font-style: 12pt 'Open Sans', Helvetica, sans-serif;
+}
+li {
+  width: 100%;
+  clear: both;
+  position: relative;
+}
+.listwrapper {
+  margin: 0 15px;
+  border-bottom: 1px solid black;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 5px 0;
+  height: 49px;
+}
+.listwrapper:last-child {
+  border-bottom: 1px solid #e6e6e6;
+}
+.confirm li:hover {
+  background-color: #f7f7f7;
+}
+.confirm .listwrapper {
+  height: auto;
+  min-height: 66px;
+  border: none;
+  margin: 7px 0 0 0;
+}
+.top_content_wrapper {
+  height: 66px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.top_info_wrapper {
+  height: 49px;
+  margin: 0 15px;
+  position: relative;
+  top: 9.5px;
+  text-transform: none;
+}
+.bottom_content_wrapper {
+  margin: 0 15px 0 15px ;
+}
+p.racer_checkpointlist_heading,
+p.racer_tasklist_heading,
+.confirm_heading,
+.heading {
+  display: inline-block;
+  width: 100%;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 0;
+}
+.confirm .left_info {
+  height: 66px;
+  width: 66px;
+}
+.confirm .left_info.parcel_name {
+  border-radius: 5px;
+}
+.confirm .left_info .manifest_number {
+  height: 66px;
+  width: 66px;
+  padding-top: 20px !important;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #cccccc;
+  display: block;
+  text-align: center;
+  padding-top: 12px;
+}
+.confirm .middle_info {
+  margin-left: 66px;
+  height: auto;
+}
+.confirm .right_info:after {
+  display: none;
+}
+.left_info,
+.right_info {
+  height: 49px;
+  width: 49px;
+}
+.left_info {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50px;
+}
+.left_info > img {
+  width: 100%;
+  margin-top: -6px;
+}
+.middle_info {
+  height: 49px;
+  margin: 0px 45px 0 49px;
+  padding: 0 10px;
+  text-align: left;
+}
+.middle_info .manifest_points {
+  display: inline-block;
+  margin-right: 15px;
+  width: 50px;
+}
+.middle_info .manifest_points:after {
+  content: "\e601";
+  font-size: 14px;
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 5px;
+}
+.middle_info .manifest_maxduration {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+}
+.middle_info .manifest_maxduration:after {
+  content: "\e606";
+  font-size: 13px;
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 5px;
+}
+.middle_info p.title {
+  font-size: 1.2em;
+  color: #333333;
+  letter-spacing: 1px;
+}
+.middle_info p.description {
+  font-size: 1em;
+  color: #b3b3b3;
+}
+.confirm .middle_info p.description {
+  white-space: normal;
+}
+.middle_info p.title,
+.middle_info p.description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.right_info {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+}
+.right_info:after {
+  content: "\e60f";
+  font-family: 'icomoon';
+  color: #999999;
+  font-size: 26px;
+  position: absolute;
+  top: 15px;
+  right: -22px;
+}
+.top_info_wrapper .right_info:after {
+  display: none;
+}
+.right_info .rider_number {
+  font-size: 3em;
+  font-weight: lighter;
+  color: #b3b3b3;
+  float: right;
+  display: block;
+  letter-spacing: 1px;
+  margin-top: -8px;
+}
+.new_button {
+  color: #ffffff;
+  margin: 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #71C671;
+  text-transform: uppercase;
+  padding: 15px 0;
+  text-align: center;
+}
+input {
+  display: block;
+  font-size: 16px;
+  line-height: normal;
+  border-bottom: 1px solid #000000;
+  width: 100%;
+  padding: 15px 0px;
+  color: black;
+  background-color: transparent;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+input[type="submit"] {
+  color: #ffffff;
+  margin: 15px auto;
+  border-radius: 5px;
+  border: none;
+  background-color: #71c671;
+  text-transform: uppercase;
+  width: 93%;
+}
+input[type="submit"]:active,
+input[type="submit"]:hover {
+  background-color: #8ad08a;
+  box-shadow: 0 0 1px 1px #cccccc;
+}
+input[name="login"] {
+  margin: 15px 0;
+  width: 100%;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  padding: 15px 3px;
+  line-height: normal;
+  height: 49px;
+}
+.select_status,
+.select_racernumber,
+.select_manifestnumber {
+  width: 100%;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #cccccc;
+}
+input[type="file"] {
+  display: block;
+  width: 88px;
+  height: 99px;
+  margin: 0;
+  position: relative;
+  top: 10px;
+  padding-left: 5px;
+}
+.photo_upload {
+  z-index: 1;
+  width: 99px;
+  height: 99px;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  border: 1px dashed #999999;
+  border-radius: 50px;
+  background-color: #f5f5f5;
+}
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+}
+#manifest_detail table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+tr {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #ffffff;
+}
+tr.tableheader {
+  background-color: #f7f7f7;
+}
+th,
+td {
+  text-align: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 49px;
+}
+th {
+  background-color: #f7f7f7;
+  vertical-align: middle;
+  color: #808080;
+  font-family: 'icomoon';
+  font-size: 1em;
+  vertical-align: middle;
+}
+th.task_manifest {
+  background-image: url(../../icons/document127.png);
+  background-size: 24px;
+}
+th.checkpoint_name_first:before {
+  content: "\e604";
+}
+th.parcel_name:before {
+  content: "\e602";
+}
+th.checkpoint_name_second:before {
+  content: "\e603";
+}
+th.task_status.task_completed {
+  background-color: #71c671;
+}
+th.task_status.task_possible {
+  background-color: #ffff00;
+}
+th.task_status.task_notpossible {
+  background-color: #ff0000;
+}
+th.task_number:before {
+  content: "\e600";
+  font-family: 'icomoon';
+}
+th.manifest_points {
+  background-image: url(../../icons/coins16.png);
+  background-size: 30px;
+}
+th.manifest_description {
+  background-image: url(../../icons/information33.png);
+  background-size: 20px;
+}
+th.manifest_edit {
+  width: 49px;
+}
+th.manifest_configure {
+  width: 49px;
+}
+th.manifest_delete {
+  width: 49px;
+}
+td.drilldown:after {
+  content: "\e60f";
+  font-family: 'icomoon';
+  color: #999999;
+  vertical-align: middle;
+  font-size: 1.8em;
+}
+td.manifest_edit {
+  background-image: url(../../icons/pencil44.png);
+  background-size: 20px;
+}
+td.manifest_configure {
+  background-image: url(../../icons/settings39.png);
+  background-size: 20px;
+}
+td.manifest_delete {
+  background-image: url(../../icons/delete30.png);
+  background-size: 32px;
+}
+.indicator {
+  color: #ffffff;
+}
+tr.no_action {
+  color: #999999;
+}
+div.indicator_pos {
+  color: #ffffff;
+  background-color: #71c671;
+  height: 49px;
+}
+div.indicator_current {
+  color: #ffffff;
+  color: #71c671;
+}
+.navigation_icon {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+}
+.menu_list {
+  font-size: 1.7em;
+  color: #999999;
+  text-align: left;
+  line-height: 49px;
+}
+.menu_list:after {
+  content: "\e60f";
+  font-family: 'icomoon';
+  color: #999999;
+  vertical-align: middle;
+  font-size: 1em;
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+.menu_list.racer:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e609";
+  color: #E78927;
+}
+.menu_list.race:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e600";
+  color: #8555DC;
+}
+.menu_list.ranking:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e608";
+  color: #166D3A;
+}
+.menu_list.parcel:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e602";
+  color: #ECC816;
+}
+.menu_list.checkpoint:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e60b";
+  color: #5B99BB;
+}
+.menu_list.user:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e605";
+  color: #ECC816;
+}
+.menu_list.stockExchangeDispatch:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e600";
+  color: #4CA6D0;
+}
+.menu_list.racerTask:before {
+  font-family: 'icomoon';
+  color: #808080;
+  font-size: 0.8em;
+  margin-right: 15px;
+  content: "\e60a";
+  color: #ECC816;
+}
+span.racer_ranking {
+  margin-right: 12px;
+  color: #999999;
+  float: left;
+  width: 34px;
+}
+span.racer_ranking:after {
+  content: "\e608";
+  font-family: 'icomoon';
+  margin-left: 5px;
+  font-size: 13px;
+}
+span.racer_points {
+  color: #b3b3b3;
+  text-align: right;
+  float: left;
+  width: 60px;
+}
+span.racer_points:after {
+  content: "\e601";
+  font-family: 'icomoon';
+  margin-left: 5px;
+  font-size: 13px;
+}
+.top_content_wrapper.detail {
+  height: 88px;
+}
+.top_content_wrapper.detail .top_info_wrapper,
+.top_content_wrapper.detail .right_info {
+  height: 66px;
+  right: 0;
+}
+.top_content_wrapper.detail .top_info_wrapper .rider_number,
+.top_content_wrapper.detail .right_info .rider_number {
+  font-size: 4em;
+  margin-top: -12px;
+}
+.top_content_wrapper.detail img {
+  margin-top: -6px;
+}
+.top_content_wrapper.detail .left_info {
+  height: 66px;
+  width: 66px;
+}
+.top_content_wrapper.detail .left_info .manifest_number {
+  font-size: 1em;
+  width: 66px;
+  height: 66px;
+  text-align: center;
+  padding-top: 20px;
+}
+.top_content_wrapper.detail .middle_info {
+  height: 49px;
+  margin-left: 66px;
+}
+.top_content_wrapper.detail .middle_info.racer_ranking_points {
+  height: 24.5px;
+  color: #999999;
+}
+#tasklist .middle_info {
+  padding-left: 0;
+}
+#tasklist .middle_info .title {
+  background-image: url(../../icons/pencil44.png);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 70px;
+}
+#raceredit_racer .top_content_wrapper.registration,
+#parceledit_parcel .top_content_wrapper.registration {
+  height: 132px;
+}
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper {
+  height: 99px;
+  position: relative;
+  top: 22px;
+}
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .left_info,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .left_info {
+  height: 99px;
+  width: 99px;
+}
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .middle_info,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .middle_info {
+  margin: 0 84px 0 99px;
+}
+#raceredit_racer .top_content_wrapper.registration .top_info_wrapper .right_info,
+#parceledit_parcel .top_content_wrapper.registration .top_info_wrapper .right_info {
+  float: left;
+}
+#parceledit_parcel .left_info {
+  border-radius: 5px;
+}
+#parceledit_parcel .left_info .photo_upload {
+  border-radius: 5px;
+}
+#racertask_racertask th {
+  height: 24.5px;
+}
+#racertask_racertask tr {
+  height: 49px;
+}
+#racertask_racertask tr.tableheader {
+  height: 29px;
+  font-size: 1.2em;
+}
+#racertask_racertask tr td {
+  vertical-align: middle;
+}
+#racertask_racertask tr td.drilldown {
+  background-color: #71c671;
+  color: #ffffff;
+  text-align: left;
+  padding: 5px;
+}
+#racertask_racertask tr td.drilldown:after {
+  color: #ffffff;
+  margin-right: -20px;
+  line-height: 1.8em;
+}
+#racertask_racertask tr td.action {
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #71c671;
+  text-align: right;
+  padding-left: 5px;
+}
+#racertask_racertask tr td.goto_arrow:after {
+  content: "\e60f";
+  font-family: 'icomoon';
+  vertical-align: middle;
+}
+#racertask_racertask tr td.spacer {
+  width: 10px;
+}
+#racertask_racertask tr td.task_number {
+  overflow: hidden;
+  color: #ffffff;
+  font-weight: bold;
+  width: 49px;
+  height: 49px;
+}
+#racertask_racertask tr td.task_number .task_number_bubble {
+  background-color: #cccccc;
+  border-radius: 50px;
+  height: 49px;
+  width: 49px;
+  margin: 5px;
+}
+#racertask_racertask tr td.task_number .task_number_bubble .task_number_number {
+  position: relative;
+  top: 12px;
+}
+#racertask_racertask tr td.parcel_name div {
+  width: 49px;
+  height: 49px;
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+#racertask_racertask tr td.parcel_name img {
+  width: 100%;
+  margin-top: -4px;
+}
+.manifest_number {
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #cccccc;
+  display: block;
+  width: 49px;
+  height: 49px;
+  text-align: center;
+  padding-top: 12px;
+}
+.manifest_number.manifest_completed {
+  background-color: #71c671;
+}
+.manifest_number.manifest_possible {
+  background-color: #ffff00;
+  color: #4d4d4d;
+}
+.manifest_number.manifest_unreachable {
+  background-color: #ff0000;
+}
+#ranking_rankingdetail .middle_info {
+  margin-right: 99px;
+}
+#ranking_rankingdetail .middle_info.racer_ranking_points > p {
+  width: 120px;
+}
+#ranking_rankingdetail .right_info {
+  text-align: right;
+  width: 90px;
+}
+#ranking_rankingdetail .right_info .manifest_points:after {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e601";
+}
+#ranking_rankingdetail .right_info .manifest_maxduration:after {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e606";
+}
+.manifest_counts {
+  font-family: 'icomoon';
+  color: #999999;
+  margin-left: 6px;
+  font-size: 0.8em;
+}
+#parcelList .left_info {
+  border-radius: 5px;
+}
+#ranking_taskdetail .right_info,
+#taskedit_race .right_info {
+  width: 99px;
+  text-align: right;
+}
+#ranking_taskdetail .right_info .manifest_points:after,
+#taskedit_race .right_info .manifest_points:after {
+  font-family: 'icomoon';
+  color: #999;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e601";
+}
+#ranking_taskdetail .right_info .manifest_maxduration:after,
+#taskedit_race .right_info .manifest_maxduration:after {
+  font-family: 'icomoon';
+  color: #999;
+  margin-left: 6px;
+  font-size: 0.8em;
+  content: "\e606";
+}
+#ranking_taskdetail ul,
+#taskedit_race ul {
+  margin: 10px 0 40px 0;
+}
+#ranking_taskdetail ul li,
+#taskedit_race ul li {
+  padding: 5px 0;
+  border-bottom: none;
+  background-color: #ffffff;
+}
+#ranking_taskdetail ul li .right_info,
+#taskedit_race ul li .right_info {
+  background-color: #71c671;
+  margin-right: 5px;
+}
+#ranking_taskdetail ul li .right_info p:before,
+#taskedit_race ul li .right_info p:before {
+  content: "\e60a";
+  font-family: 'icomoon';
+  color: #ffffff;
+  font-size: 2em;
+  position: absolute;
+  top: 8px;
+  left: 20px;
+}
+p.racer_checkpointlist_heading.manifest_detail_heading {
+  margin-bottom: 10px;
+}
+#ranking_taskdetail table {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-spacing: 0;
+}
+#ranking_taskdetail table th.task_status {
+  width: 5%;
+}
+#ranking_taskdetail table th.task_number {
+  width: 15%;
+}
+#ranking_taskdetail table th.checkpoint_name_first,
+#ranking_taskdetail table th.checkpoint_name_second {
+  width: 25%;
+}
+#ranking_taskdetail table th.parcel_name {
+  width: 49px;
+}
+#ranking_taskdetail table th.goto_arrow {
+  width: 10%;
+}
+#ranking_taskdetail table th,
+#ranking_taskdetail table td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 2px 0;
+}
+#ranking_taskdetail table th.task_requirements {
+  color: red;
+  padding-left: 15px;
+  background-color: #f7f7f7;
+  opacity: 0.5;
+}
+#ranking_taskdetail table th.task_requirements.no_requirements {
+  color: #000;
+}
+#ranking_taskdetail table th.task_status.task_completed {
+  background-color: #71c671;
+}
+#ranking_taskdetail table th.task_status.task_possible {
+  background-color: #ffff00;
+}
+#ranking_taskdetail table th.task_status.task_unreachable {
+  background-color: #ff0000;
+}
+#ranking_taskdetail table td.task_number {
+  font-size: 2em;
+  color: #CCC;
+  padding-left: 15px;
+}
+#ranking_taskdetail table td.checkpoint_name_first,
+#ranking_taskdetail table td.checkpoint_name_second {
+  text-align: left;
+}
+/* End of gianfett CSS */
+.menubuttons {
+  color: #cccccc;
+  min-width: 49px;
+  height: 49px;
+  border-right: 1px solid #999999;
+  border-left: 1px solid #999999;
+  cursor: default;
+}
+p {
+  margin: 0em;
+}
+body html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0px;
+  font: 12pt 'Open Sans', Helvetica, sans-serif;
+  color: #333333;
+}
+a.ohne {
+  color: #4d4d4d;
+  text-decoration: none;
+}
+.menu {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  transition: top 300ms ease-out;
+  z-index: 100;
+}
+.menu.menu_unfold {
+  top: 0px !important;
+}
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  z-index: 100;
+  height: 49px;
+  background: #333333;
+  border-bottom: 1px solid #999999;
+  text-align: center;
+}
+div.title {
+  padding: 5px 25px;
+}
+div.but_back {
+  color: #cccccc;
+  min-width: 49px;
+  height: 49px;
+  border-right: 1px solid #999999;
+  border-left: 1px solid #999999;
+  cursor: default;
+  float: left;
+  font-size: 1.8em;
+  line-height: 1.5em;
+}
+div.but_menu {
+  color: #cccccc;
+  min-width: 49px;
+  height: 49px;
+  border-right: 1px solid #999999;
+  border-left: 1px solid #999999;
+  cursor: default;
+  float: right;
+  font-size: 1em;
+  line-height: 1.2em;
+}
+.headertitle {
+  display: inline;
+}
+.content {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+}
+div.content0 {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  left: 0%;
+}
+div.content1 {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  left: 25%;
+}
+div.content2 {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  left: 50%;
+}
+div.content3 {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  left: 75%;
+}
+div.content4 {
+  position: absolute;
+  min-width: 260px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  overflow-y: auto;
+  transition: width 200ms ease, left 200ms ease;
+  left: 100%;
+}
+div.content_menu_spacer {
+  height: 49px;
+}
+transition {
+  width: 200ms ease, left 200ms ease;
+  display: none;
+}
+div.headspacer {
+  width: 100%;
+  height: 49px;
+}
+div.content_menu_spacer {
+  height: 55px;
+}
+.search {
+  height: 49px;
+  border-bottom: 1px solid #999999;
+  text-align: center;
+}
+.listitem {
+  background: linear-gradient(#ffffff, #f2f2f2);
+  border-bottom: 1px solid #999999;
+  text-align: center;
+}
+.li_head {
+  margin: 5px;
+  font-size: 2em;
+  float: left;
+  color: #999999;
+}
+.li_content {
+  margin: 5px;
+  float: left;
+  text-align: left;
+}
+.li_secondline {
+  color: #999999;
+}
+.listitem:hover {
+  background: #ffffff;
+}
+li:hover {
+  background: #ffffff;
+}
+.racerdetail {
+  height: 149px;
+  border-bottom: 1px solid #999999;
+}
+.racerpic {
+  height: 120px;
+  width: 120px;
+  margin: 15px;
+  float: left;
+  overflow: hidden;
+  border-radius: 60px;
+}
+.racerpic img {
+  height: 120px;
+  margin-left: -10px;
+}
+.racer_number {
+  margin: 5px;
+  font-size: 2em;
+  float: left;
+  color: #999999;
+}

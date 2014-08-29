@@ -21,13 +21,10 @@
       </div> 
       <div class='middle_info'>
          <p class='title'><?php print( $racer->name ) ?></p>
-         <p class='description'><?php print( Page::printValue($racer, array( "city", "country" ), ", ") ) ?></p>
+         <p class='description'><?php print( $racer->city ) ?></p>
       </div>
       <div class='middle_info racer_ranking_points'>
-         <p>
-            <span class='racer_ranking'>1</span>
-            <span class='racer_points'>120</span>
-         </p>
+         <p><?php print($racer->country); ?></p>
       </div>
       <div class='right_info'>
          <p class='rider_number'><?php print( $racer->racerNumber ) ?></p>
@@ -37,7 +34,7 @@
 
 <div class="bottom_content_wrapper">
 
-<p class="racer_checkpointlist_heading">Possible Actions</p>
+<p class="racer_checkpointlist_heading">Possible Pick-Up Actions</p>
 
    <table>
    <tr class="tableheader">
@@ -59,20 +56,55 @@
    $dbFunction->close();
 
    foreach ( $actions as $action ) {
+      if(!$action->isDropoff){
       print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned . "&racerId=" . $racer->racerId ) . "'>
             <td class='task_number'><div class='task_number_bubble'><span class='task_number_number'>". $action->task . "</span></div></td>
 	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
             <td class='goto_arrow'></td>
 	     <td class='parcel_name'>
-        	<img src='" . Page::getImagePath( $action ) . "'></td> 
+        	<div><img src='" . Page::getImagePath( $action ) . "'></div>
+         </td> 
 	    <td class='goto_arrow'></td>
 	    <td class='checkpoint_name_second'> " . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . "</div></td>
 		<td class='spacer'></td>
-            <td class='drilldown'>" . (($action->isDropoff) ? "DP" : "PU" ) . "</td>
-				<td class='drilldown'></td>
+            <td class='drilldown'><p style='float:left;'>" . (($action->isDropoff) ? "Drop<br>off" : "Pick<br>up" ) . "</p></td>
    </tr>");
+      }
    }
 ?>
     </table>
+   <p class="racer_checkpointlist_heading">Possible Drop-Off Actions</p>
+
+   <table>
+   <tr class="tableheader">
+	  <th class="task_number"></th>
+	  <th class="checkpoint_name_first"></th>
+	  <th class="goto_arrow"></th>
+	  <th class="parcel_name"></th>
+	  <th class="goto_arrow"></th>
+	  <th class="checkpoint_name_second"></th>
+	  <th class="drilldown"></th>
+	</tr>
+   
+   <?php
+   
+   foreach ( $actions as $action ) {
+      if($action->isDropoff){
+      print("<tr onclick='" . Page::getOnClickFunction( "racerTask", "actionConfirm", $action->racerDeliveryId, "isDropoff=" . $action->isDropoff . "&manned=" . $action->manned . "&racerId=" . $racer->racerId ) . "'>
+            <td class='task_number'><div class='task_number_bubble'><span class='task_number_number'>". $action->task . "</span></div></td>
+	    <td class='checkpoint_name_first'>". (($action->isDropoff) ? "<div>" : "<div class='indicator_current'>" ) . $action->pickup . "</div></td>
+            <td class='goto_arrow'></td>
+	     <td class='parcel_name'>
+            <div><img src='" . Page::getImagePath( $action ) . "'></div>
+         </td> 
+	    <td class='goto_arrow'></td>
+	    <td class='checkpoint_name_second'> " . (($action->isDropoff) ? "<div class='indicator_current'>" : "<div>" ) . $action->dropoff . "</div></td>
+		<td class='spacer'></td>
+            <td class='drilldown'><p style='float:left;'>" . (($action->isDropoff) ? "Drop<br>off" : "Pick<br>up" ) . "</p></td>
+   </tr>");
+      }
+   }
+?>
+   
    </div> <!-- bottom_content_wrapper xxx -->
 </div>
