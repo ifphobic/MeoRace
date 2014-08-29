@@ -100,17 +100,15 @@
    <tr>
       <td class="checkpoint_name_first"><?php print( $delivery->pickupName ) ?></td>
       <td class="goto_arrow">>></td>
-      <td class="parcel_name"><?php print( $delivery->parcelName ) ?></td>
+      <td class="parcel_name"><div><img src="<?php print( Page::getImagePath( $delivery ) ) ?>"></div></td>
       <td class="goto_arrow">>></td>
       <td class="checkpoint_name_second"><?php print( $delivery->dropoffName ) ?></td>
    </tr>
 
-   <tr>
-      <td><?php print( $delivery->pickupTime ) ?></td>
+    <tr>
+      <td colspan="2"><?php print( $delivery->pickupTime ) ?></td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td><?php print( $delivery->dropoffTime ) ?></td>
+      <td colspan="2" style="text-align: right"><?php print( $delivery->dropoffTime ) ?></td>
    </tr>
 
 </table>
