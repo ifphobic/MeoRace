@@ -32,9 +32,11 @@
       }
          
       public function findById( $racerTaskId ) {
-         $query  = "select rd.pickupTime, rd.dropoffTime, ";
-         $query .= "rt.endTime - rt.endTime as taskTime, now() - rt.startTime as currentTime, rt.price, ";
+         $query  = "select DATE_FORMAT(rd.pickupTime, '%H:%i:%s') as pickupTime, DATE_FORMAT(rd.dropoffTime, '%H:%i:%s') as dropoffTime, ";
+         $query .= "TIME_TO_SEC(TIMEDIFF( rt.endTime, rt.startTime)) as taskTime, TIME_TO_SEC(TIMEDIFF( now(), rt.startTime)) as currentTime, rt.price, ";
          $query .= "t.maxDuration, t.raceFk, t.name as taskName, t.description as taskDescription, ";
+         $query .= "d.deliveryId, ";
+         $query .= "(select group_concat(previousDeliveryFk) from DeliveryCondition dc where dc.deliveryFk = d.deliveryId ) as conditions, ";
          $query .= "pickupC.name as pickupName, dropoffC.name as dropoffName, ";
          $query .= "p.name as parcelName ";
          $query .= "from RacerDelivery rd ";

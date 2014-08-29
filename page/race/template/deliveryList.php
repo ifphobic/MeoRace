@@ -143,5 +143,5 @@
 
 </table>
 
-<div class='new_button' onclick='<?php print(Page::getOnClickFunction( "race", "deliveryEdit", null, "New Delivery", "taskId=$taskId" ) ) ?> '>+ New Delivery</div>
+<div class='new_button' onclick='<?php print(Page::getOnClickFunction( "race", "deliveryEdit", null, "taskId=$taskId" ) ) ?> '>+ New Delivery</div>
  

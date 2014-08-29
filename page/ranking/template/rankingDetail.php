@@ -21,8 +21,8 @@
       </div>
       <div class='middle_info racer_ranking_points'>
          <p>
-            <span class='racer_ranking'>1</span>
-            <span class='racer_points'>120</span>
+            <span class='racer_ranking'><?php print( $_GET['ranking'] ) ?></span>
+            <span class='racer_points'><?php print( $_GET['score'] ) ?></span>
          </p>
       </div>
       <div class='right_info'>
@@ -47,32 +47,46 @@
    }
 
 
+
+
    foreach( $racerTasks as $racerTask ) {
-      $taskComplete = "manifest_completed";
-      $taskCompleteText = "Completed";
-      $time = $racerTask->taskTime;
-      if($racerTask->taskTime == null) {
-         $taskComplete = "manifest_possible";
-         $taskCompleteText = "Open";
-         $time = $racerTask->maxDuration - $racerTask->currentTime;
-         if ($time < -$racerTask->maxDuration*.5) {
-            $taskComplete = "manifest_unreachable";
-            $taskCompleteText = "Overtime";
-            $time = -$racerTask->maxDuration*.5;
-         }
+      
+      if ( $racerTask->taskTime != null ) {
+         $time = $racerTask->taskTime;
+         $taskStatusText = "Done";
+         $taskStatus = "manifest_completed";
+      } else if ( !$raceFinished ) {
+         $time = $racerTask->currentTime;
+         $taskStatusText = "Open";
+         $taskStatus = ( $time <= $racerTask->maxDuration ) ? "manifest_possible" : "manifest_unreachable"; 
+      } else {
+         $time = null;
+         $taskStatus = "manifest_unreachable";
+         $taskStatusText = "Not finished";
       }
-      ?>
+
+      $addition = "";
+      if ( $time != null ) {
+         $relative = $racerTask->maxDuration - $time;
+         if ( $relative >= 0 ) {
+            $addition = ", remaining ";
+         } else {
+            $addition = ", overtime ";
+         }
+         $addition .= Page::readableDuration( abs( $relative ) );
+      }  
+ ?>
 
       <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
         <div class="listwrapper">
          <div class="left_info">
-            <p class="manifest_number <?php print($taskComplete) ?>">
+            <p class="manifest_number <?php print( $taskStatus ) ?>">
             <?php print( $racerTask->taskName ) ?></p>
          </div> 
        
          <div class="middle_info">
             <p class="title"><?php print( $racerTask->taskDescription ) ?></p>
-            <p class="description"><?php print($taskCompleteText) ?></p>
+            <p class="description"><?php print( $taskStatusText . $addition ) ?></p>
          </div>
       
          <div class="right_info">

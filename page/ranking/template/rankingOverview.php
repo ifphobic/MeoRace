@@ -17,17 +17,18 @@
    $dbFunction->close();
 
    $raceFinished = false;
-   if ( count( $racerTasks ) > 0 && $racerTasks[0]->racerTaskId != null ) {
-      $raceFinished = RaceDbFunction::isFinished( $racerTasks[0]->raceFk );
-   }                  
+   $raceFk = null;
+   for ( $i = 0; $i < count( $racerTasks ) && $raceFk == null; $i++ ) {
+      $raceFk = $racerTasks[$i]->raceFk;
 
-
+   }
+   $raceFinished = RaceDbFunction::isFinished( $raceFk );
    $rankings = RankingCalculator::evaluate( $racerTasks, $raceFinished );
    
 
    foreach ( $rankings as $ranking ) {
       print("
-         <li onclick='" . Page::getOnClickFunction( "ranking", "rankingDetail", $ranking->racerId ) . "'>
+         <li onclick='" . Page::getOnClickFunction( "ranking", "rankingDetail", $ranking->racerId, "ranking=" . $ranking->ranking . "&score=" . $ranking->score ) . "'>
          <div class='listwrapper'>
 				<div class='left_info'>
                <img src='" . Page::getImagePath( $ranking ) . "'>

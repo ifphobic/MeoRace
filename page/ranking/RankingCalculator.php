@@ -16,7 +16,9 @@
             }
 
             $ranking = $rankings[ $racerTask->racerId ];
-            $ranking->score += RankingCalculator::calculateScore( $racerTask, $raceFinished );
+            if ( $racerTask->racerTaskId != null ) {
+               $ranking->score += RankingCalculator::calculateScore( $racerTask, $raceFinished );
+            }
 
          }
 
