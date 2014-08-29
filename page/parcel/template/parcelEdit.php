@@ -24,8 +24,8 @@
                </div>
             </div>
 				<div class='middle_info'>
-               <?php print( "<p class='title'>" . $parcel->name . "</p>"); ?>
-               <?php print( "<p class='description'>" . $parcel->description . "</p>");?>
+               <p class='title'><?php Page::printValue( $parcel, "name" ) ?></p>
+               <p class='description'><?php Page::printValue( $parcel, "description" ) ?></p>
             </div>
          </div>
       </div>
