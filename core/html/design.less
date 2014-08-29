@@ -84,7 +84,7 @@ table {
 @g1: #71C671; //for Save Buttons
 @g2: lighten(@g1, 7%); // for active Save Buttons
 
-@font: 12pt 'Open Sans', Helvetica, sans-serif, ;
+@font: 11pt 'Open Sans', Helvetica, sans-serif, ;
 
 @border: 1px solid @c5;
 @list_border: 1px solid @c2;
@@ -118,9 +118,10 @@ h1 {
     background-color: @c9;
     text-transform: uppercase;   
     font-style: @font;
+    font-size: 18px;
 }
 
-h1.sub {color: @c3; text-transform: none; font-size: 0.6em;}
+h1.sub {color: @c3; text-transform: none; font-size: 11px;}
 
 //main structure
 
@@ -243,7 +244,7 @@ padding: 5px 0;
         width: 50px;
             &:after{
                     content: "\e601";
-                    font-size: 14px;
+                    font-size: 13px;
                     font-family: 'icomoon';
                     color: @c5;
                     margin-left: 5px;
@@ -664,7 +665,7 @@ margin-left: @line-height-detail-inner;
 }
 .middle_info.racer_ranking_points{
     height: @line-height/2;
-    color: @c5;  
+    color: @c4;  
 }
 }
 
@@ -724,25 +725,25 @@ margin-left: @line-height-detail-inner;
     th{
         height: @line-height/2;
     }
-tr{
-    height: @line-height;
-    &.tableheader {
-        height: 29px;
-        font-size: 1.2em;
-    }
-    td{
-        vertical-align: middle;
-        &.drilldown{
-            background-color: @g1;
-            color: @c1;
-            text-align: left;
-            padding: 5px;
-        &:after{
-            color: @c1;
-            margin-right: -20px;
-            line-height: 1.8em;
+    tr{
+        height: @line-height;
+        &.tableheader {
+            height: 29px;
+            font-size: 1.2em;
         }
-        }
+        td{
+            vertical-align: middle;
+            &.drilldown{
+                background-color: @g1;
+                color: @c1;
+                text-align: left;
+                padding: 5px;
+            &:after{
+                color: @c1;
+                margin-right: -20px;
+                line-height: 1.8em;
+            }
+            }
         &.action{
             font-size: 1em;
             color: @c1;
@@ -791,6 +792,14 @@ tr{
         }
     }
 }
+}
+
+div.parcel_image{
+    width: @line-height;
+    height: @line-height;
+    overflow: hidden;
+    vertical-align: middle;
+    border-radius: 5px;
 }
 
 
@@ -995,8 +1004,8 @@ height:@line-height; background: @c9;
 border-bottom: @border; text-align:center;}
 
 div.title {padding: 5px 25px;}
-div.but_back {.menubuttons; float:left; font-size: 1.8em; line-height: 1.5em;}
-div.but_menu {.menubuttons; float:right; font-size: 1em; line-height: 1.2em;}
+div.but_back {.menubuttons; float:left; font-size: 3em; line-height: 1em; font-weight: bold;}
+div.but_menu {.menubuttons; float:right; font-size: 16px; line-height: 16px;}
 .headertitle {display:inline;}
 
 @colw: 100%;

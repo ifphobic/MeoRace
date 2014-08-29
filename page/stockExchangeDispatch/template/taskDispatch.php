@@ -19,21 +19,25 @@
       if ( $task->notAssigned ) {
          print( "<li onClick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=" . $_GET['id'] . "&price=$price"  ) . "'>");
       } else {
-         print( "<li style='background: #ff0000;'>");
+         print( "<li>");
       }
 ?>
 		
          <div class="listwrapper">
 			<div class="left_info">
-            <p class="manifest_number"><?php print( $task->name ) ?></p>
+            <p class="manifest_number <?php print($task->notAssigned ? "" : "manifest_unreachable"); ?>"><?php print( $task->name ) ?></p>
          </div> 
        
          <div class="middle_info">
             <p class="title"><?php print( $task->description ) ?></p>
-	         <p>
+	         <p><?php if(!$task->notAssigned){
+			   print("Already assigned");
+			   } else {
+			   ?>
                   <span class='manifest_points'><?php print( $price ) ?></span>
                   <span class='manifest_maxduration'><?php print( Page::readableDuration( $task->maxDuration ) ) ?></span>
-            </p>
+			   <?php } ?>
+			 </p>
          </div>
     
          <div class="right_info">

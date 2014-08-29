@@ -11,12 +11,14 @@
          
          $query  = "select sed.*, t.name, t.description, t.maxDuration ";
          $parameter = array();
+         $order = "";
          if ( $racerId != null ) {
             $query .= ", (select count(1) = 0 from RacerTask rt where rt.endTime is null and rt.taskFk = t.taskId and rt.racerFk = ?) as notAssigned ";
             $parameter[] = new Parameter( PDO::PARAM_INT, $racerId );
+            $order = "notAssigned DESC,";
          }
          $query .= "from StockExchangeDispatch sed ";
-         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by t.name";
+         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by $order sed.price DESC";
          $parameter[] = new Parameter( PDO::PARAM_INT, $raceId );
          $result = $this->queryArray($query, $parameter );
          return $result; 
