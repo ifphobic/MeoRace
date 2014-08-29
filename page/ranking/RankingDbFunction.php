@@ -47,7 +47,7 @@
          $query .= "join Checkpoint dropoffC on d.dropoffFk = dropoffC.checkpointId ";
          $query .= "join Parcel p on d.parcelFk = p.parcelId ";
          $query .= "where rd.racerTaskFk = ? ";
-         $query .= "order by isnull(pickupTime), pickupTime, isnull(dropOffTime), dropOffTime ";
+         $query .= "order by isnull(pickupTime), pickupTime, isnull(dropOffTime), dropOffTime, d.deliveryId ";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
          return $result;
       }
