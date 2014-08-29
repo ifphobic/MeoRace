@@ -25,9 +25,9 @@
    if ( $time != null ) {
       $relative = $racerTask->maxDuration - $time;
       if ( $relative >= 0 ) {
-         $addition = ", remaining ";
+         $addition = "Remaining ";
       } else {
-         $addition = ", overtime ";
+         $addition = "Overtime ";
       }
       $addition .= Page::readableDuration( abs( $relative ) );
    }  
@@ -44,7 +44,10 @@
       </div>
       <div class="middle_info">
          <p class="title"><?php print( $racerTask->taskDescription ) ?></p>
-         <p class="description"><?php print( $taskStatusText. $addition ) ?></p>
+         <p class="description"><?php print( $taskStatusText ) ?></p>
+      </div>
+      <div class='middle_info racer_ranking_points'>
+         <p><?php print($addition); ?></p>
       </div>
       <div class="right_info">
          <p class="manifest_points"><?php print( RankingCalculator::calculateScore( $racerTask, $raceFinished ) . "/" . $racerTask->price ) ?></p>
@@ -100,7 +103,7 @@
    <tr>
       <td class="checkpoint_name_first"><?php print( $delivery->pickupName ) ?></td>
       <td class="goto_arrow">>></td>
-      <td class="parcel_name"><div><img src="<?php print( Page::getImagePath( $delivery ) ) ?>"></div></td>
+      <td class="parcel_name"><div class='parcel_image'><img src="<?php print( Page::getImagePath( $delivery ) ) ?>"></div></td>
       <td class="goto_arrow">>></td>
       <td class="checkpoint_name_second"><?php print( $delivery->dropoffName ) ?></td>
    </tr>
