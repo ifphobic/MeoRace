@@ -143,18 +143,19 @@ h1 {
   padding: 0px 15px;
   background-color: #333333;
   text-transform: uppercase;
-  font-style: 12pt 'Open Sans', Helvetica, sans-serif;
+  font-style: 11pt 'Open Sans', Helvetica, sans-serif;
+  font-size: 18px;
 }
 h1.sub {
   color: #cccccc;
   text-transform: none;
-  font-size: 0.6em;
+  font-size: 11px;
 }
 html,
 body {
   height: 100%;
   background: #f7f7f7;
-  font-style: 12pt 'Open Sans', Helvetica, sans-serif;
+  font-style: 11pt 'Open Sans', Helvetica, sans-serif;
 }
 li {
   width: 100%;
@@ -258,7 +259,7 @@ p.racer_tasklist_heading,
 }
 .middle_info .manifest_points:after {
   content: "\e601";
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'icomoon';
   color: #999999;
   margin-left: 5px;
@@ -763,6 +764,13 @@ span.racer_points:after {
   width: 100%;
   margin-top: -4px;
 }
+div.parcel_image {
+  width: 49px;
+  height: 49px;
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: 5px;
+}
 .manifest_number {
   color: #ffffff;
   font-size: 1em;
@@ -939,7 +947,7 @@ body html {
 }
 body {
   margin: 0px;
-  font: 12pt 'Open Sans', Helvetica, sans-serif;
+  font: 11pt 'Open Sans', Helvetica, sans-serif;
   color: #333333;
 }
 a.ohne {
@@ -977,8 +985,9 @@ div.but_back {
   border-left: 1px solid #999999;
   cursor: default;
   float: left;
-  font-size: 1.8em;
-  line-height: 1.5em;
+  font-size: 3em;
+  line-height: 1em;
+  font-weight: bold;
 }
 div.but_menu {
   color: #cccccc;
@@ -988,8 +997,8 @@ div.but_menu {
   border-left: 1px solid #999999;
   cursor: default;
   float: right;
-  font-size: 1em;
-  line-height: 1.2em;
+  font-size: 16px;
+  line-height: 16px;
 }
 .headertitle {
   display: inline;
