@@ -83,11 +83,11 @@
          $query .= "    and not exists ( ";
          $query .= "       select * from DeliveryCondition dc ";
          $query .= "          join RacerDelivery previousRd on dc.previousDeliveryFk = previousRd.deliveryFk ";
-         $query .= "          where dc.deliveryFk = d.deliveryId and previousRd.dropoffTime is null ) ";
+         $query .= "          where dc.deliveryFk = d.deliveryId and previousRd.racerTaskFk = rt.racerTaskId and previousRd.dropoffTime is null ) ";
          $query .= "    and ( ( rd.pickupTime is null and d.pickupFk = ? ) ";
          $query .= "      or ( (rd.pickupTime is not null or not pickupC.manned ) and rd.dropoffTime is null and d.dropoffFk = ? ) ) ";
          $query .= "   order by isDropoff desc ";
-
+         error_log($query);
          $parameter = array(
             new Parameter( PDO::PARAM_INT, $racerId ),
             new Parameter( PDO::PARAM_INT, $checkpointId ),
