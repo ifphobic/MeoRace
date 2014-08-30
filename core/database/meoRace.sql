@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 30, 2014 at 09:28 AM
+-- Generation Time: Aug 30, 2014 at 09:42 AM
 -- Server version: 5.5.28
 -- PHP Version: 5.3.28
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `Checkpoint` (
   `name` varchar(80) NOT NULL,
   `manned` tinyint(1) NOT NULL,
   `raceFk` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `Checkpoint`
@@ -42,7 +42,10 @@ INSERT INTO `Checkpoint` (`checkpointId`, `name`, `manned`, `raceFk`) VALUES
 (2, 'Rotschi', 1, 1),
 (3, 'Jeremy', 1, 1),
 (4, 'Voxo', 1, 1),
-(5, 'Moik', 1, 1);
+(5, 'Moik', 1, 1),
+(6, 'CP 1', 1, 2),
+(7, 'CP 2', 1, 2),
+(8, 'CP 3', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -56,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `Delivery` (
   `parcelFk` int(11) DEFAULT NULL,
   `pickupFk` int(11) NOT NULL,
   `dropoffFk` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
 
 --
 -- Dumping data for table `Delivery`
@@ -112,7 +115,13 @@ INSERT INTO `Delivery` (`deliveryId`, `taskFk`, `parcelFk`, `pickupFk`, `dropoff
 (47, 17, 13, 5, 5),
 (48, 18, 9, 2, 2),
 (49, 19, 15, 4, 4),
-(50, 20, 7, 1, 1);
+(50, 20, 7, 1, 1),
+(51, 21, 16, 6, 7),
+(52, 21, 17, 7, 8),
+(53, 21, 18, 8, 6),
+(54, 22, 19, 6, 6),
+(55, 23, 19, 7, 7),
+(56, 24, 19, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -124,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `DeliveryCondition` (
 `deliveryConditionId` int(11) NOT NULL,
   `deliveryFk` int(11) NOT NULL,
   `previousDeliveryFk` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `DeliveryCondition`
@@ -160,7 +169,9 @@ INSERT INTO `DeliveryCondition` (`deliveryConditionId`, `deliveryFk`, `previousD
 (27, 36, 35),
 (28, 38, 37),
 (29, 39, 38),
-(30, 40, 39);
+(30, 40, 39),
+(31, 52, 51),
+(32, 53, 52);
 
 -- --------------------------------------------------------
 
@@ -174,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `Parcel` (
   `description` varchar(256) NOT NULL,
   `raceFk` int(11) NOT NULL,
   `image` varchar(80) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `Parcel`
@@ -195,7 +206,11 @@ INSERT INTO `Parcel` (`parcelId`, `name`, `description`, `raceFk`, `image`) VALU
 (12, 'Cargo', '', 1, NULL),
 (13, 'Beer', '', 1, NULL),
 (14, 'Foot', '', 1, NULL),
-(15, 'Dress', '', 1, NULL);
+(15, 'Dress', '', 1, NULL),
+(16, 'P1', 'Parcel 1', 2, NULL),
+(17, 'P2', 'Parcel 2', 2, NULL),
+(18, 'P3', 'Parcel 3', 2, NULL),
+(19, 'S', 'Special', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -207,14 +222,15 @@ CREATE TABLE IF NOT EXISTS `Race` (
 `raceId` int(11) NOT NULL,
   `name` varchar(256) NOT NULL,
   `status` enum('prepare','running','finished') NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `Race`
 --
 
 INSERT INTO `Race` (`raceId`, `name`, `status`) VALUES
-(1, 'BMC 14', 'prepare');
+(1, 'BCMC 14', 'prepare'),
+(2, 'Test Race', 'prepare');
 
 -- --------------------------------------------------------
 
@@ -232,7 +248,15 @@ CREATE TABLE IF NOT EXISTS `Racer` (
   `raceFk` int(11) NOT NULL,
   `status` enum('registered','active') NOT NULL,
   `image` varchar(80) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `Racer`
+--
+
+INSERT INTO `Racer` (`racerId`, `racerNumber`, `name`, `city`, `country`, `email`, `raceFk`, `status`, `image`) VALUES
+(1, 1, 'Racer 1', 'City, Country', 'male', 'mail', 2, 'registered', NULL),
+(2, 0, 'Racer 2', 'City, Country', 'female', 'mail', 2, 'registered', NULL);
 
 -- --------------------------------------------------------
 
@@ -477,7 +501,8 @@ INSERT INTO `Session` (`sessionId`, `userFk`, `loginTime`, `lastActive`) VALUES
 ('GB6SK3lgoAqNfTzs1rqZLkmDfVk69ltLMbaLZe7z6K', 26, '2014-08-29 12:15:05', '2014-08-29 12:15:05'),
 ('U89tWsClLeY3gB7gKecdXREzVZzouvI6SVeGU8Zghu', 26, '2014-08-29 11:27:12', '2014-08-29 11:27:12'),
 ('ebFDkt3U96TXIJPV3JpzO1hARbcDxjPaBSA7Ha5thP', 32, '2014-08-29 19:23:22', '2014-08-29 19:23:22'),
-('kl45jWpZq1TAkjjpjePTc3OaabkfvGz0ivtGKNBeNx', 32, '2014-08-30 08:11:29', '2014-08-30 08:11:29');
+('kl45jWpZq1TAkjjpjePTc3OaabkfvGz0ivtGKNBeNx', 32, '2014-08-30 08:11:29', '2014-08-30 08:11:29'),
+('QF9PvJvsqHPoJ8JOsdfpEVXj9kZCHp4vnYcjCPY94Q', 39, '2014-08-30 09:32:20', '2014-08-30 09:32:20');
 
 -- --------------------------------------------------------
 
@@ -492,32 +517,6 @@ CREATE TABLE IF NOT EXISTS `StockExchangeDispatch` (
   `counter` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `StockExchangeDispatch`
---
-
-INSERT INTO `StockExchangeDispatch` (`taskFk`, `raceFk`, `price`, `counter`) VALUES
-(1, 1, 100, 0),
-(2, 1, 100, 0),
-(3, 1, 100, 0),
-(4, 1, 100, 0),
-(5, 1, 100, 0),
-(6, 1, 100, 0),
-(7, 1, 100, 0),
-(8, 1, 100, 0),
-(9, 1, 100, 0),
-(10, 1, 100, 0),
-(11, 1, 100, 0),
-(12, 1, 100, 0),
-(13, 1, 100, 0),
-(14, 1, 100, 0),
-(15, 1, 100, 0),
-(16, 1, 100, 0),
-(17, 1, 100, 0),
-(18, 1, 100, 0),
-(19, 1, 100, 0),
-(20, 1, 100, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -531,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `Task` (
   `price` int(11) NOT NULL,
   `description` varchar(256) NOT NULL,
   `raceFk` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `Task`
@@ -557,7 +556,11 @@ INSERT INTO `Task` (`taskId`, `name`, `maxDuration`, `price`, `description`, `ra
 (17, 'M4', 1200, 100, 'Moik: Beer run', 1),
 (18, 'R4', 1200, 100, 'Rotschi: Foot', 1),
 (19, 'V4', 1200, 100, 'Voxo: Dress', 1),
-(20, 'A4', 1200, 100, 'Aamon: ???', 1);
+(20, 'A4', 1200, 100, 'Aamon: ???', 1),
+(21, '123', 300, 100, 'All Checkpoints', 2),
+(22, 'S1', 60, 100, 'Special 1', 2),
+(23, 'S2', 60, 100, 'Special 2', 2),
+(24, 'S3', 60, 100, 'Special 3', 2);
 
 -- --------------------------------------------------------
 
@@ -572,7 +575,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `role` varchar(80) NOT NULL,
   `raceFk` int(11) DEFAULT NULL,
   `checkpointFk` int(11) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `User`
@@ -586,7 +589,13 @@ INSERT INTO `User` (`userId`, `user`, `password`, `role`, `raceFk`, `checkpointF
 (35, 'voxo', '7c9b3e0182d17e9536091cf9f8323418fef7684a4c137feef9825e16a2b19da1', 'checkpoint', 1, 4),
 (36, 'moik', '6edf2e2cbc79085a365fb996800a766bf756d528d48b57ce4609e6b8a33bc1fd', 'checkpoint', 1, 5),
 (37, 'dispatch', '3f584eba5ee0bc275eee6cde5d8f7bae24744c19ee1c638c0ea16571cb34f492', 'dispatcher', 1, 0),
-(38, 'regi', '374224fbb80782ef115a8d70d85f9ff5d5022d2c003a7821fd1d51e288d55770', 'registration', 1, 0);
+(38, 'regi', '374224fbb80782ef115a8d70d85f9ff5d5022d2c003a7821fd1d51e288d55770', 'registration', 1, 0),
+(39, 'mTest', '36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068', 'race master', 2, 0),
+(40, 'dTest', '36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068', 'dispatcher', 2, 0),
+(41, 'rTest', '36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068', 'registration', 2, 0),
+(42, 'cTest1', '36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068', 'checkpoint', 2, 6),
+(43, 'cTest2', '36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068', 'checkpoint', 2, 7),
+(44, 'cTest3', '36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068', 'checkpoint', 2, 8);
 
 --
 -- Indexes for dumped tables
@@ -672,32 +681,32 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT for table `Checkpoint`
 --
 ALTER TABLE `Checkpoint`
-MODIFY `checkpointId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `checkpointId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `Delivery`
 --
 ALTER TABLE `Delivery`
-MODIFY `deliveryId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+MODIFY `deliveryId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `DeliveryCondition`
 --
 ALTER TABLE `DeliveryCondition`
-MODIFY `deliveryConditionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `deliveryConditionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `Parcel`
 --
 ALTER TABLE `Parcel`
-MODIFY `parcelId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `parcelId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `Race`
 --
 ALTER TABLE `Race`
-MODIFY `raceId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `raceId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `Racer`
 --
 ALTER TABLE `Racer`
-MODIFY `racerId` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `racerId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `RacerDelivery`
 --
@@ -712,12 +721,12 @@ MODIFY `racerTaskId` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `Task`
 --
 ALTER TABLE `Task`
-MODIFY `taskId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `taskId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
