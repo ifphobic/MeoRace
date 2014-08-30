@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 30, 2014 at 09:42 AM
+-- Generation Time: Aug 30, 2014 at 10:38 AM
 -- Server version: 5.5.28
 -- PHP Version: 5.3.28
 
@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `Racer` (
   `raceFk` int(11) NOT NULL,
   `status` enum('registered','active') NOT NULL,
   `image` varchar(80) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `Racer`
@@ -256,7 +256,48 @@ CREATE TABLE IF NOT EXISTS `Racer` (
 
 INSERT INTO `Racer` (`racerId`, `racerNumber`, `name`, `city`, `country`, `email`, `raceFk`, `status`, `image`) VALUES
 (1, 1, 'Racer 1', 'City, Country', 'male', 'mail', 2, 'registered', NULL),
-(2, 0, 'Racer 2', 'City, Country', 'female', 'mail', 2, 'registered', NULL);
+(2, 0, 'Racer 2', 'City, Country', 'female', 'mail', 2, 'registered', NULL),
+(3, 101, 'De Neuchâtel Wouhai #137 Adrien', 'Neuchâtel', 'male', '', 1, 'active', NULL),
+(4, 102, 'Mathias "Mate" Aebi', 'Lôz town', 'male', '', 1, 'active', NULL),
+(5, 103, 'Kempen Otto Aiko', 'Leipzsch', 'male', '', 1, 'active', NULL),
+(6, 104, 'Jakob vk133 Benz', 'st.gallen', 'male', '', 1, 'active', NULL),
+(7, 105, 'Armin Aaron Biehler', 'Basel', 'male', '', 1, 'active', NULL),
+(8, 106, 'Florian Flow Brehm', 'Basel', 'male', '', 1, 'active', NULL),
+(9, 107, 'Dominique drnuschlrvomglaibasel Candik', 'Basel', 'male', '', 1, 'active', NULL),
+(10, 108, 'Bavid  Deerli', 'B.A.S.E.L', 'male', '', 1, 'active', NULL),
+(11, 109, 'Bentz #no-name Doro', 'Neuchâtel/Basel', 'female', '', 1, 'active', NULL),
+(12, 110, 'filippo OFF filippini', 'Milano', 'male', '', 1, 'active', NULL),
+(13, 111, 'Daniele Mr.Ohm Fonelli', 'Milano', 'male', '', 1, 'active', NULL),
+(14, 112, 'Christian Chris Hadorn', 'Sankt Gallen', 'male', '', 1, 'active', NULL),
+(15, 113, 'khalil #759 hamdi', 'Basel', 'male', '', 1, 'active', NULL),
+(16, 114, 'Jan  Hubač', 'PRG', 'male', '', 1, 'active', NULL),
+(17, 115, 'Jan  Hubáč', 'PRG', 'male', '', 1, 'active', NULL),
+(18, 116, 'Hagen Hagon Hübner', 'Basel', 'male', '', 1, 'active', NULL),
+(19, 117, 'Kristine  5 Janzen', 'Toronto', 'female', '', 1, 'active', NULL),
+(20, 118, 'Mirko 798 Kienle', 'Basel', 'male', '', 1, 'active', NULL),
+(21, 119, 'Šimon  Klimt', 'PRG', 'male', '', 1, 'active', NULL),
+(22, 120, 'Winner Mund DerMundbellysuperwow Lastyear Der', 'Basel', 'male', '', 1, 'active', NULL),
+(23, 121, 'Martin El Torro Lichtenfels', 'Oxxenbach', 'male', '', 1, 'active', NULL),
+(24, 122, 'Giv #57 Mesgarzadeh', 'Lausanne', 'male', '', 1, 'active', NULL),
+(25, 123, 'Astrid Azkik Narud', 'Berlin', 'female', '', 1, 'active', NULL),
+(26, 124, 'Maurice Moe Ndotoni', 'Basel', 'male', '', 1, 'active', NULL),
+(27, 125, 'Yannik Y-King Pankrath', 'Basel', 'male', '', 1, 'active', NULL),
+(28, 126, 'raphaël doble pfeiffer', 'berne', 'male', '', 1, 'active', NULL),
+(29, 127, 'Nicolé  Riedel', 'Leipzig', 'female', '', 1, 'active', NULL),
+(30, 128, 'Mario #4078 Scandella', 'Bern', 'male', '', 1, 'active', NULL),
+(31, 129, 'Sebastian  Schachinger', 'Basel', 'male', '', 1, 'active', NULL),
+(32, 130, 'Mariuzzzzzz 964 Schliengerrrrrrr', 'Bazzle', 'male', '', 1, 'active', NULL),
+(33, 131, 'Pije pije Schmid', 'BNC', 'male', '', 1, 'active', NULL),
+(34, 132, 'Alain schwabalain Schwab', 'Basel', 'male', '', 1, 'active', NULL),
+(35, 133, 'Dominik  Seinige', '', 'male', '', 1, 'active', NULL),
+(36, 134, 'Kai #775 Sonnenrein', 'Basel', 'male', '', 1, 'active', NULL),
+(37, 135, 'Kryštof  Šorm', 'PRG', 'male', '', 1, 'active', NULL),
+(38, 136, 'Casper  Thiriet', 'Basel', 'male', '', 1, 'active', NULL),
+(39, 137, 'Jirka  Vosáhlo', '', 'male', '', 1, 'active', NULL),
+(40, 138, 'Jirka  Vosáhlo', 'PRG', 'male', '', 1, 'active', NULL),
+(41, 139, 'richard coach wilson', 'basel', 'male', '', 1, 'active', NULL),
+(42, 140, 'Florian  D.', 'BS', 'male', '', 1, 'active', NULL),
+(43, 141, 'Beni #987 Achermann', 'Basel', 'male', '', 1, 'active', NULL);
 
 -- --------------------------------------------------------
 
@@ -501,8 +542,7 @@ INSERT INTO `Session` (`sessionId`, `userFk`, `loginTime`, `lastActive`) VALUES
 ('GB6SK3lgoAqNfTzs1rqZLkmDfVk69ltLMbaLZe7z6K', 26, '2014-08-29 12:15:05', '2014-08-29 12:15:05'),
 ('U89tWsClLeY3gB7gKecdXREzVZzouvI6SVeGU8Zghu', 26, '2014-08-29 11:27:12', '2014-08-29 11:27:12'),
 ('ebFDkt3U96TXIJPV3JpzO1hARbcDxjPaBSA7Ha5thP', 32, '2014-08-29 19:23:22', '2014-08-29 19:23:22'),
-('kl45jWpZq1TAkjjpjePTc3OaabkfvGz0ivtGKNBeNx', 32, '2014-08-30 08:11:29', '2014-08-30 08:11:29'),
-('QF9PvJvsqHPoJ8JOsdfpEVXj9kZCHp4vnYcjCPY94Q', 39, '2014-08-30 09:32:20', '2014-08-30 09:32:20');
+('kl45jWpZq1TAkjjpjePTc3OaabkfvGz0ivtGKNBeNx', 32, '2014-08-30 08:11:29', '2014-08-30 08:11:29');
 
 -- --------------------------------------------------------
 
@@ -706,7 +746,7 @@ MODIFY `raceId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `Racer`
 --
 ALTER TABLE `Racer`
-MODIFY `racerId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `racerId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `RacerDelivery`
 --
