@@ -21,7 +21,7 @@
          }
 
          $query .= "from StockExchangeDispatch sed ";
-         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by $order sed.price DESC";
+         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by $order sed.price DESC, t.name ";
          $parameter[] = new Parameter( PDO::PARAM_INT, $raceId );
          $result = $this->queryArray($query, $parameter );
          return $result; 
