@@ -145,11 +145,17 @@ h1 {
   text-transform: uppercase;
   font-style: 11pt 'Open Sans', Helvetica, sans-serif;
   font-size: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 h1.sub {
   color: #cccccc;
   text-transform: none;
   font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 html,
 body {
@@ -879,6 +885,7 @@ p.racer_checkpointlist_heading.manifest_detail_heading {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-spacing: 0;
+  height: auto;
 }
 #ranking_taskdetail table th.task_status {
   width: 5%;

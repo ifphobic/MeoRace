@@ -119,9 +119,12 @@ h1 {
     text-transform: uppercase;   
     font-style: @font;
     font-size: 18px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
-h1.sub {color: @c3; text-transform: none; font-size: 11px;}
+h1.sub {color: @c3; text-transform: none; font-size: 11px; overflow: hidden; white-space:nowrap; text-overflow: ellipsis;}
 
 //main structure
 
@@ -921,6 +924,7 @@ width: 100%;
 margin-bottom: 10px;
 border: 1px solid #ccc;
 border-spacing: 0;
+height: auto;
 th.task_status{
 width: 5%;
 }
