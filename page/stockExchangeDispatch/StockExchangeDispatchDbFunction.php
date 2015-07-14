@@ -7,9 +7,9 @@
       }
 
 
-      public function findAll( $raceId, $racerId = null ) {
+      public function findAll( $raceId, $checkpointId, $racerId = null ) {
          
-         $query  = "select sed.*, t.name, t.description, t.maxDuration ";
+         $query  = "select sed.*, t.name, t.description, t.maxDuration, t.dispatchCheckpointFk, t.fixPrice ";
          $parameter = array();
          $order = "";
          if ( $racerId != null ) {
@@ -21,8 +21,11 @@
          }
 
          $query .= "from StockExchangeDispatch sed ";
-         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? order by $order sed.price DESC, t.name ";
+         $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? ";
+         $query .= "and ( t.dispatchCheckpointFk is null or t.dispatchCheckpointFk = ? ) ";
+         $query .= " order by $order sed.price DESC, t.name ";
          $parameter[] = new Parameter( PDO::PARAM_INT, $raceId );
+         $parameter[] = new Parameter( PDO::PARAM_INT, $checkpointId );
          $result = $this->queryArray($query, $parameter );
          return $result; 
       }

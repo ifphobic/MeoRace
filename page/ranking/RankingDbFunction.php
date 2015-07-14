@@ -12,7 +12,8 @@
          $query  = "select rt.racerTaskId, TIME_TO_SEC(TIMEDIFF( rt.endTime, rt.startTime ) ) as taskTime, ";
          $query .= "TIME_TO_SEC(TIMEDIFF( now(), rt.startTime ) ) as currentTime, ";
          $query .= "rt.price, t.maxDuration, r.racerId, r.racerNumber, r.name, r.city, r.country, r.status, r.image, t.raceFk, ";
-         $query .= "t.name as taskName, t.description as taskDescription ";
+         $query .= "t.name as taskName, t.description as taskDescription, ";
+         $query .= "(select count(*) from RacerDelivery rd where rt.racerTaskId = rd.racerTaskFk ) as numberOfDeliveries ";
          $query .= "from  Racer r ";
          $query .= "left outer join  RacerTask rt on rt.racerFk = r.racerId ";
          $query .= "left outer join Task t on rt.taskFk = t.taskId  ";

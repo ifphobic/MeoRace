@@ -62,11 +62,19 @@
          }
 
          $delay = $time / $racerTask->maxDuration - 1;
+        
          $timePenalty = $delay / RankingCalculator::MAX_RELATIVE_DELAY;
-         $timePenalty = min($timePenalty, 1);
-         
-         $score = $racerTask->price * RankingCalculator::DELAY_PENALTY;
-         $score = $score - ($score * $timePenalty);
+
+         if ($racerTask->price >= 0) {
+            $timePenalty = min($timePenalty, 1);
+            $score = $racerTask->price * RankingCalculator::DELAY_PENALTY;
+            $score = $score - ($score * $timePenalty);
+         } else {
+            $score = $racerTask->price * RankingCalculator::DELAY_PENALTY;
+            $score += $score * $timePenalty;
+            $score += $racerTask->price;
+         }
+
          return round( $score );
       }
 

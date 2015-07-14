@@ -74,10 +74,18 @@
             $addition = ", overtime ";
          }
          $addition .= Page::readableDuration( abs( $relative ) );
-      }  
+      }
+
+      $onClick = "";
+      if ( $racerTask->numberOfDeliveries > 0 ) {
+         $onClick = "onclick='" . Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) . "'";
+      } else {
+         $addition = ", no delivery task";
+      }
+
  ?>
 
-      <li onclick='<?php print( Page::getOnClickFunction( "ranking", "taskDetail", $racerTask->racerTaskId ) ) ?>'>
+      <li <?php print( $onClick ) ?>>
         <div class="listwrapper">
          <div class="left_info">
             <p class="manifest_number <?php print( $taskStatus ) ?>">

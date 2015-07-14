@@ -55,17 +55,20 @@
       public function startRacerTask( $racerTaskId ) {
          $query = "update RacerTask set startTime = now() where racerTaskId = ?";
          $this->query($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
+         $query = "update RacerTask set endTime = now() where racerTaskId = ? and not exists ( select * from RacerDelivery where racerTaskFk = racerTaskId ) ";
+         $this->query($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
       }
 
 
       public function stopRacerTask( $racerTaskId ) {
-         $query  = "select count(1) from RacerDelivery ";
-         $query .= "where dropoffTime is null and racerTaskFk = ? ";
-         $result = $this->queryColumn($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
-         if ( $result[0] == 0 ) {
-            $query = "update RacerTask set endTime = now() where racerTaskId = ?";
-            $this->query($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
-         }
+         $query =  "update RacerTask rt set rt.endTime = now() where rt.racerTaskId = ? ";
+         $query .= "and not exists (select * from RacerDelivery rd where rd.dropoffTime is null and rd.racerTaskFk = rt.racerTaskId)";
+         $this->query($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
+      }
+
+      public function stopAllNegativePriced( $raceId ) { 
+         $query = "update RacerTask rt set rt.endTime = now() where exists (select * from Task t where rt.taskFk = t.taskId and t.price < 0 and t.raceFk = ?)";
+         $this->query($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
       }
 
       public function determineActions( $racerId, $checkpointId ) {

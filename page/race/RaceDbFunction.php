@@ -15,7 +15,6 @@
       }
          
       public function findById( $raceId ) {
-         
          $query = "select * from Race where raceId = ?";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
          return $result[0]; 

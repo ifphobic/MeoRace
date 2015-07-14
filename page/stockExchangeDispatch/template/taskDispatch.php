@@ -21,7 +21,7 @@
 
 <?php
    $dbFunction = new StockExchangeDispatchDbFunction();
-   $tasks = $dbFunction->findAll( $raceFk, $racerId );
+   $tasks = $dbFunction->findAll( $raceFk, $user->checkpointFk, $racerId );
    $dbFunction->close();
 
    if ( $user != null ) {

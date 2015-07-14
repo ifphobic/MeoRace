@@ -11,8 +11,8 @@
             new ModulePage("taskList", "Configure Race", array(Role::RACE_MASTER), array(Role::RACE_MASTER), false, true, array("race/Task") ),
             new ModulePage("deliveryList", "Configure Task", array(Role::RACE_MASTER), array(Role::RACE_MASTER), false, false, array("race/Delivery", "race/Task", "race/DeliveryCondition") ),
             
-            new ModulePage("raceEdit", "Edit Race", array(Role::ADMIN, Role::RACE_MASTER), array(Role::ADMIN, Role::RACE_MASTER), true, false ),
-            new ModulePage("taskEdit", "Edit Task", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false, array("race/Task") ),
+            new ModulePage("raceEdit", "Edit Race", array(Role::ADMIN, Role::RACE_MASTER), array(Role::ADMIN, Role::RACE_MASTER), true, false, array("racerTask/RacerTask") ),
+            new ModulePage("taskEdit", "Edit Task", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false, array("race/Task", "checkpoint/Checkpoint") ),
             new ModulePage("taskDelete", "Delete Task", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false, array("race/Task", "race/Delivery") ),
             new ModulePage("deliveryEdit", "Edit Delivery", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false, array("race/Delivery", "checkpoint/Checkpoint", "parcel/Parcel", "race/Task", "race/DeliveryCondition" ) ),
             new ModulePage("deliveryDelete", "Delete Delivery", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false, array("race/Delivery", "race/Task", "race/DeliveryCondition" ) ),

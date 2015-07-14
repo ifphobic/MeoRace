@@ -22,13 +22,15 @@
       }
 
       public function insert( $task ) {
-         $query = "insert into Task (name, maxDuration, price, description, raceFk ) values (?, ?, ?, ?, ?)";
+         $query = "insert into Task (name, maxDuration, price, description, raceFk, dispatchCheckpointFk, fixPrice ) values (?, ?, ?, ?, ?, ?, ?)";
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $task['name'] ), 
             new Parameter( PDO::PARAM_INT, $task['maxDuration'] ), 
             new Parameter( PDO::PARAM_INT, $task['price'] ), 
             new Parameter( PDO::PARAM_STR, $task['description'] ), 
             new Parameter( PDO::PARAM_INT, $task['raceFk'] ), 
+            new Parameter( PDO::PARAM_INT, $task['dispatchCheckpointFk'] ), 
+            new Parameter( PDO::PARAM_STR, $task['fixPrice'] ), 
          );
          $this->query($query, $parameter);
       }
@@ -48,12 +50,14 @@
       }
 
       public function update( $task) {
-         $query = "update Task set name = ?, maxDuration = ?, price = ?, description = ? where taskId = ?";
+         $query = "update Task set name = ?, maxDuration = ?, price = ?, description = ?, dispatchCheckpointFk = ?, fixPrice = ?  where taskId = ?";
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $task['name'] ), 
             new Parameter( PDO::PARAM_INT, $task['maxDuration'] ), 
             new Parameter( PDO::PARAM_INT, $task['price'] ), 
             new Parameter( PDO::PARAM_STR, $task['description'] ), 
+            new Parameter( PDO::PARAM_INT, $task['dispatchCheckpointFk'] ), 
+            new Parameter( PDO::PARAM_STR, $task['fixPrice'] ), 
             new Parameter( PDO::PARAM_INT, $task['taskId'] ),
          );
          $this->query($query, $parameter);

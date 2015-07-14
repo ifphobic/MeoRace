@@ -28,7 +28,7 @@
 
       protected function query( $query, $parameters ) {
         
-         //print($query);
+         // error_log("-- query -- " .  $query);
          
          try {
             $statement = $this->connection->prepare( $query );
