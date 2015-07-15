@@ -7,10 +7,13 @@
       }
 
 
-      public function findAll( $unused ) {
+      public function findAll( $userId ) {
          
-         $query = "select * from Race order by raceId";
-         $result = $this->queryArray($query, array() );
+         $query = "select * from Race r ";
+         $query .= "where exists (select * from UserRace ur where ur.raceFk = r.raceId and ur.userFk = ?) ";
+         $query .= "or exists (select * from User u where u.userId = ? and role = '" . Role::ADMIN . "' ) ";
+         $query .= "order by raceId";
+         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $userId ), new Parameter( PDO::PARAM_INT, $userId ) ) );
          return $result; 
       }
          
@@ -25,6 +28,15 @@
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $race['name'] ), 
             new Parameter( PDO::PARAM_STR, $race['status'] ), 
+         );
+         $this->query($query, $parameter);
+      }
+
+      public function insertUserRace( $userId, $raceId ) {
+         $query = "insert into UserRace ( userFk, raceFk ) values (?, ?)";
+         $parameter = array( 
+            new Parameter( PDO::PARAM_INT, $userId ), 
+            new Parameter( PDO::PARAM_INT, $raceId ) 
          );
          $this->query($query, $parameter);
       }

@@ -189,6 +189,7 @@
                 if(xmlhttp.readyState != 4) {
                     element(elementId).innerHTML = 'Seite wird geladen ...';
                 } else if(xmlhttp.status == 200) {
+                  setTitelNewRace(xmlhttp.responseText);
                   tabParameter[index] = xmlhttp.responseText;
                   if ( tabParameter[index] == "" ) {
                      tabParameter[index] = null;
@@ -204,6 +205,34 @@
             return false;
          }
         
+         function setTitelNewRace( parameter ) {
+            searchParameter = "newRace=";
+            position = parameter.indexOf( searchParameter );
+            if ( position != -1 ) {
+               positionEnd = parameter.indexOf( "&", position + 1 );
+               if ( positionEnd == -1 ) {
+                  positionEnd = parameter.length;
+               }
+               position += searchParameter.length;
+               raceName = decodeURIComponent( parameter.substring(position,  positionEnd) );
+               setLoginTitle( raceName );
+            }
+         }
+
+         function setLoginTitle( raceName ) {
+
+               
+               <?php
+                  $user = CommonDbFunction::getUser();         
+                  if ( $user != null ) {
+                    print("defaultRaceName='" . $user->raceName . "';\n");  
+                    print("element('loginTitle').innerHTML='Logged in as: " . $user->user . " (" . $user->role . "/' + ((raceName != null) ? raceName : defaultRaceName) + ')'" );
+                  } else {
+                    print("element('loginTitle').innerHTML='Public view without login'");
+                  }
+               ?>
+         }
+
          function refreshTab() {
             for (var i = 0; i < tabParameter.length; i++) {
                if ( tabParameter[i] != null ) {
@@ -275,6 +304,7 @@
            setColumnWidth();
            setVisibility();
            setLeft();
+           setLoginTitle( null );
            if ( mode == "tv" ) {
                showPage(0, "module=stockExchangeDispatch&page=taskDispatch" , false);
                showPage(1, "module=stockExchangeDispatch&page=taskDispatch" , false);
@@ -326,15 +356,7 @@
          </a></p></div>
          <div class="title">
             <h1>Messenger Race Software</h1>
-            <h1 class=sub>
-               <?php
-                  $user = CommonDbFunction::getUser();         
-                  if ( $user != null ) {
-                     print(" Logged in as: " . $user->user . " (" . $user->role . "/" . $user->raceName . ") " );
-                  } else {
-                     print("Public view without login");
-                  }
-               ?>
+            <h1 class=sub id="loginTitle">
             </h1>
          </div>
       </div>

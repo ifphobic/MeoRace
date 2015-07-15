@@ -23,17 +23,17 @@
          } else {
             $dbFunction->insert( $content );
             $id = $dbFunction->getLastId();
+            $content[ $key.'Id'] = $id;
             
             $newFile = $this->saveImage( $key, $id );
             if ( $newFile != null ) {
-               $content[ $key.'Id'] = $id;
                $content['image'] = $newFile;
                $dbFunction->update( $content );
             }
 
          }
          $dbFunction->close();
-         return new NextPage( $moduleName, $pageName, $parameter );
+         return new NextPage( $moduleName, $pageName, $parameter, $content );
 
       }
 

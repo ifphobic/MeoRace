@@ -15,7 +15,7 @@
          $query .= "left outer join Checkpoint c on u.checkpointFk = c.checkpointId ";
          $parameter = array();
          if ( isset( $raceId ) ) {
-            $query .= " where u.raceFk = ?";
+            $query .= " where u.raceFk = ? and u.role <> 'admin' ";
             $parameter[] = new Parameter( PDO::PARAM_INT, $raceId );
          }
          $result = $this->queryArray($query, $parameter );
@@ -59,6 +59,15 @@
             new Parameter( PDO::PARAM_INT, $user['raceFk'] ),
             new Parameter( PDO::PARAM_INT, $user['checkpointFk'] ),
             new Parameter( PDO::PARAM_INT, $user['userId'] )
+         );
+         $this->query($query, $parameter);
+      }
+
+      public function updateRace( $userId, $raceId ) {
+         $query = "update User set raceFk = ? where userId = ?";
+         $parameter = array( 
+            new Parameter( PDO::PARAM_INT, $raceId ),
+            new Parameter( PDO::PARAM_INT, $userId )
          );
          $this->query($query, $parameter);
       }

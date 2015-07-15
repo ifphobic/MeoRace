@@ -6,8 +6,8 @@
 
       public function CheckpointModule() {
          $this->pages = array(
-            new ModulePage("checkpointList", "Checkpoint List", array(Role::RACE_MASTER), null, false, true ), 
-            new ModulePage("checkpointEdit", "Edit Checkpoint", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false )
+            new ModulePage("checkpointList", "Checkpoint List", array(Role::ADMIN, Role::RACE_MASTER), null, false, CommonDbFunction::userHasRace() ), 
+            new ModulePage("checkpointEdit", "Edit Checkpoint", array(Role::ADMIN, Role::RACE_MASTER), array(Role::ADMIN, Role::RACE_MASTER), true, false )
          );
       }
 

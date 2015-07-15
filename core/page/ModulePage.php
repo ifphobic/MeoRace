@@ -11,7 +11,6 @@ class ModulePage {
    public $navigation;
    public $depencenies;
 
-
    public function ModulePage ( $page, $title, $rolesPage, $rolesCommit, $form, $navigation, $depencenies = array() ) {
       $this->page = $page;
       $this->title = $title;

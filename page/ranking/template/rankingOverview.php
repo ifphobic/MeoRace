@@ -23,7 +23,7 @@
       $raceFk = $racerTasks[$i]->raceFk;
 
    }
-   $raceFinished = RaceDbFunction::isFinished( $raceFk );
+   $raceFinished = $raceFk != null && RaceDbFunction::isFinished( $raceFk );
    $rankings = RankingCalculator::evaluate( $racerTasks, $raceFinished );
    
 

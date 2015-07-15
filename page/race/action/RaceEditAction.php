@@ -8,7 +8,27 @@
             $dbFunction->stopAllNegativePriced( $content['raceId'] );
             $dbFunction->close();
          }
-         return $this->genericCommit("race", "race", "raceEdit", $content);
+         
+         $result = $this->genericCommit("race", "race", "raceEdit", $content);
+         if ( !isset( $content['raceId'] ) ) {
+            $userId = CommonDbFunction::getUser()->userId;
+            $raceId = $result->getContent()['raceId'];
+            
+            $dbFunction = new RaceDbFunction();
+            $dbFunction->insertUserRace( $userId, $raceId );
+            $dbFunction->close();
+            
+            $dbFunction = new UserDbFunction();
+            $dbFunction->updateRace( $userId, $raceId );
+            $dbFunction->close();
+
+            $parameter = $result->getParameter();
+            $dbFunction = new CommonDbFunction();
+            $parameter['newRace'] = rawurlencode( $dbFunction->determineCurrentUser()->raceName );
+            $dbFunction->close();
+            $result->setParameter( $parameter );
+         }
+         return $result;
       }
    
    }

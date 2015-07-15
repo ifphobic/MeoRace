@@ -3,9 +3,9 @@
    <th>Status</th>
    <th>Edit</th>
    <?php
-   
+      $user = CommonDbFunction::getUser();
       $dbFunction = new RaceDbFunction();
-      $races = $dbFunction->findAll( null );
+      $races = $dbFunction->findAll( $user->userId );
       $dbFunction->close();
 
       foreach ( $races as $race ) {
@@ -21,5 +21,9 @@
    ?>
 <table>
 
-<?php print( CommonPageFunction::getLink( "race", "raceEdit", null, "New Race" ) );
- 
+<?php 
+ if ( $user->role == Role::RACE_MASTER ) {
+   print( CommonPageFunction::getLink( "race", "raceEdit", null, "New Race" ) );
+ }
+
+?>

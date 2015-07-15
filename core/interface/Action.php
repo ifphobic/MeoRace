@@ -12,11 +12,13 @@
       private $module;
       private $page;
       private $parameter;
+      private $content;
 
-      public function NextPage( $module, $page, $parameter = null ) {
+      public function NextPage( $module, $page, $parameter = null, $content = null ) {
          $this->module = $module;
          $this->page = $page;
-         $this->parameter= $parameter;
+         $this->parameter = $parameter;
+         $this->content = $content;
       }
 
       public function getModule() {
@@ -31,6 +33,13 @@
          return $this->parameter;
       }
 
+      public function setParameter($parameter) {
+         $this->parameter = $parameter;
+      }
+
+      public function getContent() {
+         return $this->content;
+      }
 
    }
 

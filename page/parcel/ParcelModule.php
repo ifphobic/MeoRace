@@ -6,8 +6,8 @@
 
       public function ParcelModule() {
          $this->pages = array(
-            new ModulePage("parcelList", "Parcel List", array(Role::RACE_MASTER), null, false, true ), 
-            new ModulePage("parcelEdit", "Edit Parcel", array(Role::RACE_MASTER), array(Role::RACE_MASTER), true, false )
+            new ModulePage("parcelList", "Parcel List", array(Role::RACE_MASTER, Role::ADMIN), null, false, CommonDbFunction::userHasRace() ), 
+            new ModulePage("parcelEdit", "Edit Parcel", array(Role::RACE_MASTER, Role::ADMIN), array(Role::RACE_MASTER, Role::ADMIN), true, false )
          );
       }
 
