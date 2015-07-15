@@ -380,14 +380,14 @@
             </h1>
          </div>
       </div>
-    <div class="menu_wrapper" id="menuwrapper" style="box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.5); position:absolute; min-width: 280px; height=0px; right:0px; transition: height 400ms cubic-bezier(0, 1.1, 1, 1.1);">
-      <div class="menu_top menu2" id="menu2" style="position: absolute; font-size:1.7em; right: 0px; top: 0px; height: 49px; min-width: 280px; z-index: 50; background: linear-gradient(#ffffff, #f2f2f2); border-bottom: 1px solid #999999; transition: top 400ms cubic-bezier(0, 1.1, 1, 1.1);">
+    <div class="menu_wrapper" id="menuwrapper" style="box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.5); position:absolute; min-width: 280px; height=0px; right:0px; transition: height 400ms cubic-bezier(0.7, 1.5, 0.7, 0.85);">
+      <div class="menu_top menu2" id="menu2" style="position: absolute; font-size:1.7em; right: 0px; top: 0px; height: 49px; min-width: 280px; z-index: 50; background: linear-gradient(#ffffff, #f2f2f2); border-bottom: 1px solid #999999; transition: top 400ms cubic-bezier(0.7, 1.5, 0.7, 0.85);">
         <span style="font-family: 'icomoon'; color: #808080; font-size: 0.8em; margin-right: 15px; margin-left: 15px; color: #166D3A;"></span>
          <a class="ohne" style="color: #ccc;" href="login.php">
            Select Race
         </a>
       </div>
-      <div class="menu_top menu1" id="menu1" style="position: absolute; font-size:1.7em; right: 0px; top: 0px; height: 49px; min-width: 280px; z-index: 50; background: linear-gradient(#ffffff, #f2f2f2); border-bottom: 1px solid #999999; transition: top 400ms cubic-bezier(0, 1.1, 1, 1.1);">
+      <div class="menu_top menu1" id="menu1" style="position: absolute; font-size:1.7em; right: 0px; top: 0px; height: 49px; min-width: 280px; z-index: 50; background: linear-gradient(#ffffff, #f2f2f2); border-bottom: 1px solid #999999; transition: top 400ms cubic-bezier(0.7, 1.5, 0.7, 0.85);">
         <span style="font-family: 'icomoon'; color: #808080; font-size: 0.8em; margin-right: 15px; margin-left: 15px; color: #166D3A;"></span>
         <a class="ohne" style="color: #ccc;" href="login.php">
           <?php
