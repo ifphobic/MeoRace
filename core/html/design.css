@@ -1019,6 +1019,7 @@ div.but_menu {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
+  -webkit-overflow-scrolling: touch;
 }
 div.content0 {
   position: absolute;
@@ -1029,6 +1030,7 @@ div.content0 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
+  -webkit-overflow-scrolling: touch;
   left: 0%;
 }
 div.content1 {
@@ -1040,6 +1042,7 @@ div.content1 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
+  -webkit-overflow-scrolling: touch;
   left: 25%;
 }
 div.content2 {
@@ -1051,6 +1054,7 @@ div.content2 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
+  -webkit-overflow-scrolling: touch;
   left: 50%;
 }
 div.content3 {
@@ -1062,6 +1066,7 @@ div.content3 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
+  -webkit-overflow-scrolling: touch;
   left: 75%;
 }
 div.content4 {
@@ -1073,6 +1078,7 @@ div.content4 {
   border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
+  -webkit-overflow-scrolling: touch;
   left: 100%;
 }
 div.content_menu_spacer {
