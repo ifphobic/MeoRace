@@ -1,4 +1,4 @@
-<?php 
+<?php
    include "core/include.php";
    $dbFunction = new CommonDbFunction();
    $user = $dbFunction->determineCurrentUSer();
@@ -14,12 +14,12 @@
       <script language = 'JavaScript'>
 
          var numberOfTabs = 5;
-         var screenSizes = new Array( 1120, 840, 560 ); 
+         var screenSizes = new Array( 1120, 840, 560 );
          var currentTab = 0;
          var viewportLeftIndex = 0;
          var numberOfColums = 0;
          var tabParameter = new Array();
-         
+
          // ---------- screen resize ---------
          function resizeScreen() {
             var newNumber = determineNumberOfColumns();
@@ -32,7 +32,7 @@
             }
             showTab(currentTab);
          }
-         
+
          function determineNumberOfColumns() {
             var counter = screenSizes.length + 1;
             for ( var i = 0; i < screenSizes.length; i++ ) {
@@ -43,7 +43,7 @@
             }
             return counter;
          }
-         
+
          function setColumnWidth() {
             var columnWidth = 100 / numberOfColums;
             for (var i = 0; i < numberOfTabs; i++) {
@@ -57,7 +57,7 @@
             viewportMove = determineViewportMove( tabIndex );
             if ( viewportMove == 0 ) {
                return;
-            } 
+            }
             numberOfColums += Math.abs(viewportMove);
             setVisibility();
             numberOfColums -= Math.abs(viewportMove);
@@ -91,7 +91,7 @@
 //            alert ( "visible: " + visible + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
             }
          }
-         
+
          function setLeft() {
             for (var i = 0; i < numberOfTabs; i++) {
                var left = ( i - viewportLeftIndex ) * 100 / numberOfColums;
@@ -103,12 +103,12 @@
 
 
          // ---------- interval reload --------
-         
+
          var reloadTabs = new Array();
          var reloadTask = null;
-         
+
          function initReload( input, tabId ) {
-        
+
             var result = input.match( /<reload *\/ *>/ );
             if ( result != null && result.length > 0 ) {
                   var found = false;
@@ -143,7 +143,7 @@
          // --------- tab content ----------
 
          function showPage( index, parameter, clicked ) {
-            
+
             tabParameter[index] = parameter;
             if (clicked ) {
                clearReload( index );
@@ -154,11 +154,11 @@
             }
             var xmlhttp = createRequest();
             elementId = 'content' + index;
-            element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen';
+            element(elementId).innerHTML = '<div class="headspacer"></div>loading ...';
             xmlhttp.open("GET", "content.php?index=" + index + "&" + parameter, false);
             xmlhttp.onreadystatechange = function() {
                if(xmlhttp.readyState != 4) {
-                 element(elementId).innerHTML = '<div class="headspacer"></div>Seite wird geladen ...';
+                 element(elementId).innerHTML = '<div class="headspacer"></div>loading ...';
                } else if(xmlhttp.status == 200) {
                   element(elementId).innerHTML = xmlhttp.responseText;
                   initReload( xmlhttp.responseText, index );
@@ -180,14 +180,14 @@
             data = result[1];
 
             elementId = 'content' + index;
-            element(elementId).innerHTML = 'Seite wird geladen';
+            element(elementId).innerHTML = 'loading ...';
             xmlhttp.open("POST", "commit.php", true);
 //            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 //            xmlhttp.setRequestHeader("Content-length", data.length);
 
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState != 4) {
-                    element(elementId).innerHTML = 'Seite wird geladen ...';
+                    element(elementId).innerHTML = 'loading ...';
                 } else if(xmlhttp.status == 200) {
                   setTitelNewRace(xmlhttp.responseText);
                   tabParameter[index] = xmlhttp.responseText;
@@ -204,7 +204,7 @@
             xmlhttp.send(data);
             return false;
          }
-        
+
          function setTitelNewRace( parameter ) {
             searchParameter = "newRace=";
             position = parameter.indexOf( searchParameter );
@@ -221,11 +221,11 @@
 
          function setLoginTitle( raceName ) {
 
-               
+
                <?php
-                  $user = CommonDbFunction::getUser();         
+                  $user = CommonDbFunction::getUser();
                   if ( $user != null ) {
-                    print("defaultRaceName='" . $user->raceName . "';\n");  
+                    print("defaultRaceName='" . $user->raceName . "';\n");
                     print("element('loginTitle').innerHTML='Logged in as: " . $user->user . " (" . $user->role . "/' + ((raceName != null) ? raceName : defaultRaceName) + ')'" );
                   } else {
                     print("element('loginTitle').innerHTML='Public view without login'");
@@ -261,7 +261,7 @@
 //                  data += elements[i].checked ? 1 : 0;
 //               }
 //               data += "&";
-//            } 
+//            }
             var data = new FormData( element('myForm') );
             return new Array(index, data);
          }
@@ -274,9 +274,9 @@
                 return xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
          }
-         
+
          // -------- no browser back ---------
-         
+
          history.pushState({ page: 1 }, "MeoRace", "#nbb");
          window.onhashchange = function (event) {
              window.location.hash = "nbb";
@@ -284,22 +284,22 @@
 
 
          // -------- util ---------
-         
+
          function PreviewImage() {
             var oFReader = new FileReader();
             oFReader.readAsDataURL(element("uploadImage").files[0]);
-    
+
             oFReader.onload = function (oFREvent) {
                element("uploadPreview").src = oFREvent.target.result;
             };
          };
-        
+
          function element(id) {
             return document.getElementById(id);
          }
 
          function onload( mode ) {
-           
+
            numberOfColums = determineNumberOfColumns();
            setColumnWidth();
            setVisibility();
@@ -336,6 +336,22 @@
             //moveToCurrentTab();
          }
 
+         function menuOpen() {
+           if (element('menu1').style.top == "0px") {
+             element('menuwrapper').style.height= "150px";
+           } else {
+             element('menuwrapper').style.height= "0px";
+           }
+           for (var i = 1; i < 3; i++) {
+              if (element('menu' + i).style.top == "0px") {
+                element('menu' + i).style.top = i * 50 + "px";
+              } else {
+                element('menu' + i).style.top = 0 + "px";
+              }
+
+            }
+         }
+
       </script>
    </head>
 <?php
@@ -347,19 +363,42 @@
    <body onload="onload( '<?php print( $mode ) ?>')">
       <div class="header">
          <div class="but_back" onclick="back()"><</div>
-         <div class="but_menu"><p style=" margin-top: 5px;"><a class="ohne" style="color: #ccc;" href="login.php">
-<?php   
-   if ( $user == null) {
-      print("log<br />in");
-   } else {print("log<br />out");}
-?>
-         </a></p></div>
+         <div class="but_menu" onclick="menuOpen()">
+           <span style="font-family: 'icomoon'; color: #808080; font-size: 1.7em; line-height: 1.7em; margin-right: 15px; margin-left: 15px; color: #166D3A;"></span>
+           </div>
          <div class="title">
             <h1>Messenger Race Software</h1>
             <h1 class=sub id="loginTitle">
+               <?php
+                  $user = CommonDbFunction::getUser();
+                  if ( $user != null ) {
+                     print(" Logged in as: " . $user->user . " (" . $user->role . "/" . $user->raceName . ") " );
+                  } else {
+                     print("Public view without login");
+                  }
+               ?>
             </h1>
          </div>
       </div>
+    <div class="menu_wrapper" id="menuwrapper" style="box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.5); position:absolute; min-width: 280px; height=0px; right:0px; transition: height 400ms cubic-bezier(0, 1.1, 1, 1.1);">
+      <div class="menu_top menu2" id="menu2" style="position: absolute; font-size:1.7em; right: 0px; top: 0px; height: 49px; min-width: 280px; z-index: 50; background: linear-gradient(#ffffff, #f2f2f2); border-bottom: 1px solid #999999; transition: top 400ms cubic-bezier(0, 1.1, 1, 1.1);">
+        <span style="font-family: 'icomoon'; color: #808080; font-size: 0.8em; margin-right: 15px; margin-left: 15px; color: #166D3A;"></span>
+         <a class="ohne" style="color: #ccc;" href="login.php">
+           Select Race
+        </a>
+      </div>
+      <div class="menu_top menu1" id="menu1" style="position: absolute; font-size:1.7em; right: 0px; top: 0px; height: 49px; min-width: 280px; z-index: 50; background: linear-gradient(#ffffff, #f2f2f2); border-bottom: 1px solid #999999; transition: top 400ms cubic-bezier(0, 1.1, 1, 1.1);">
+        <span style="font-family: 'icomoon'; color: #808080; font-size: 0.8em; margin-right: 15px; margin-left: 15px; color: #166D3A;"></span>
+        <a class="ohne" style="color: #ccc;" href="login.php">
+          <?php
+             if ( $user == null) {
+                print("Login");
+             } else {print("Logout");}
+          ?>
+        </a>
+      </div>
+
+    </div>
       <div class="content0" id="content0"> </div>
       <div class="content1" id="content1"> </div>
       <div class="content2" id="content2"> </div>
@@ -367,6 +406,3 @@
       <div class="content4" id="content4"> </div>
    </body>
 </html>
-
-
-
