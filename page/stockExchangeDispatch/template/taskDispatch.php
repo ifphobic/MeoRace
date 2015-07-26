@@ -4,18 +4,21 @@
 
    if ( $user != null ) {
       $raceFk = $user->raceFk;
-      $racerId = $_GET['id'];
       $checkpointFk = $user->checkpointFk;
    } else {
       $raceFk = Configuration::CURRENT_RACE;
-      $racerId = null;
       $checkpointFk = null;
    }
+      
+   $racerId = null;
+   if ( isset($_GET['id'] ) ) {
+      $racerId = $_GET['id'];
+   }
 
-
-   if ( $user != null && RaceDbFunction::printFinished( $raceFk ) ) {
+   if ( $user != null && $user->role != Role::NO_ROLE && RaceDbFunction::printFinished( $raceFk ) ) {
       exit;
    }
+
 ?>
 
 <div class="content_tab" id="taskdispatch_dispatch">
@@ -38,7 +41,7 @@
    for ( ; $i < $end; $i ++  ) {
       $task = $tasks[$i];
       $price = round( $task->price );
-      if ( $task->notAssigned && $user != null ) {
+      if ( $task->notAssigned && $user != null && $user->role != Role::NO_ROLE ) {
          print( "<li onClick='" . Page::getOnClickFunction( "stockExchangeDispatch", "dispatchConfirm", $task->taskFk,  "racerId=$racerId&price=$price"  ) . "'>");
       } else {
          print( "<li>");
