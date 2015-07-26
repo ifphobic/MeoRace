@@ -10,8 +10,10 @@
       public function findAll( $userId ) {
          
          $query = "select * from Race r ";
-         $query .= "where exists (select * from UserRace ur where ur.raceFk = r.raceId and ur.userFk = ?) ";
-         $query .= "or exists (select * from User u where u.userId = ? and role = '" . Role::ADMIN . "' ) ";
+         if ( $userId != null ) {
+            $query .= "where exists (select * from UserRace ur where ur.raceFk = r.raceId and ur.userFk = ?) ";
+            $query .= "or exists (select * from User u where u.userId = ? and ( role = '" . Role::ADMIN . "' or role = '" . Role::NO_ROLE . "' ) ) ";
+         }
          $query .= "order by raceId";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $userId ), new Parameter( PDO::PARAM_INT, $userId ) ) );
          return $result; 

@@ -6,7 +6,7 @@
 
       public function RaceModule() {
          $this->pages = array(
-            new ModulePage("raceList", "Race List", array(Role::ADMIN, Role::RACE_MASTER), null, false, true ), 
+            new ModulePage("raceList", "Race List", array(Role::ADMIN, Role::RACE_MASTER, Role::NO_ROLE), null, false, true ), 
             
             new ModulePage("taskList", "Configure Race", array(Role::ADMIN, Role::RACE_MASTER), array(Role::ADMIN, Role::RACE_MASTER), false, CommonDbFunction::userHasRace(), array("race/Task") ),
             new ModulePage("deliveryList", "Configure Task", array(Role::ADMIN, Role::RACE_MASTER), array(Role::ADMIN, Role::RACE_MASTER), false, false, array("race/Delivery", "race/Task", "race/DeliveryCondition") ),

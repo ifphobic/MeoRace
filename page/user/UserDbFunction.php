@@ -72,11 +72,16 @@
          $this->query($query, $parameter);
       }
 
-      public function insertSession( $user ) {
+      public function insertSession( $userId, $raceId ) {
          
          $sessionId = $this->generateSessionId();
-         $query = "insert into Session ( sessionId, userFk, loginTime, lastActive) values ( ?, ?, now(), now() )";
-         $this->query($query, array( new Parameter( PDO::PARAM_STR, $sessionId ), new Parameter( PDO::PARAM_INT, $user->userId ) ) );
+         $query = "insert into Session ( sessionId, userFk, raceFk, loginTime, lastActive) values ( ?, ?, ?, now(), now() )";
+         $parameter = array( 
+            new Parameter( PDO::PARAM_STR, $sessionId ), 
+            new Parameter( PDO::PARAM_INT, $userId ), 
+            new Parameter( PDO::PARAM_INT, $raceId ) 
+         );
+         $this->query( $query, $parameter );
          setcookie("sessionId", $sessionId, time() + 36000); 
          return $sessionId;
       }

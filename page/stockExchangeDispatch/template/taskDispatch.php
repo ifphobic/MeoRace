@@ -5,9 +5,11 @@
    if ( $user != null ) {
       $raceFk = $user->raceFk;
       $racerId = $_GET['id'];
+      $checkpointFk = $user->checkpointFk;
    } else {
       $raceFk = Configuration::CURRENT_RACE;
       $racerId = null;
+      $checkpointFk = null;
    }
 
 
@@ -21,7 +23,7 @@
 
 <?php
    $dbFunction = new StockExchangeDispatchDbFunction();
-   $tasks = $dbFunction->findAll( $raceFk, $user->checkpointFk, $racerId );
+   $tasks = $dbFunction->findAll( $raceFk, $checkpointFk, $racerId );
    $dbFunction->close();
 
    if ( $user != null ) {

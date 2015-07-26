@@ -7,12 +7,7 @@
    
    include 'page/ranking/RankingCalculator.php';
 
-   if ( CommonDbFunction::getUser() != null ) {
-      $raceId = CommonDbFunction::getUser()->raceFk;
-   } else {
-      $raceId = Configuration::CURRENT_RACE;
-   }
-
+   $raceId = CommonDbFunction::getUser()->raceFk;
    $dbFunction = new RankingDbFunction();
    $racerTasks = $dbFunction->findAll( $raceId );
    $dbFunction->close();

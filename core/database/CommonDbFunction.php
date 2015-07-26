@@ -14,7 +14,11 @@
          if ( !isset( $_COOKIE['sessionId'] ) ) {
             return null;
          }
-         $query = "select  u.userId, u.user, u.role, u.raceFk, u.checkpointFk, r.name as raceName from User u join Session s on u.userId = s.userFk left outer join Race r on u.raceFk = r.raceId where sessionId = ?";
+         $query = "select  u.userId, u.user, u.role, COALESCE(u.raceFk, s.raceFk) as raceFk, u.checkpointFk, COALESCE(ru.name, rs.name) as raceName ";
+         $query .= "from User u join Session s on u.userId = s.userFk ";
+         $query .= "left outer join Race ru on u.raceFk = ru.raceId ";
+         $query .= "left outer join Race rs on s.raceFk = rs.raceId ";
+         $query .= "where sessionId = ?";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_STR, $_COOKIE['sessionId']  ) ) );
          if ( count( $result ) == 0 ) {
             return null;

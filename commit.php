@@ -15,7 +15,7 @@
    }
 
    $modules = ModuleReader::readAllModules( $role );
-   //print("module: " . $moduleName . ", page: " . $pageName);
+//   error_log("module: " . $moduleName . ", page: " . $pageName);
    $page = $modules[ $moduleName ][ $pageName ];
    if ( ! in_array( $role, $page->getRolesCommit() ) ) {
       throw new Exception( "No permission for commit ");

@@ -2,6 +2,7 @@
    include "core/include.php";
    $dbFunction = new CommonDbFunction();
    $user = $dbFunction->determineCurrentUSer();
+   $dbFunction->close();
 ?>
 <!DOCTYPE html>
 <html>
@@ -223,7 +224,6 @@
 
 
                <?php
-                  $user = CommonDbFunction::getUser();
                   if ( $user != null ) {
                     print("defaultRaceName='" . $user->raceName . "';\n");
                     print("element('loginTitle').innerHTML='Logged in as: " . $user->user . " (" . $user->role . "/' + ((raceName != null) ? raceName : defaultRaceName) + ')'" );
@@ -314,8 +314,14 @@
                   reloadTabs.push(i);
                }
                reloadTask = window.setInterval("reloadTasks()", 5000 );
+           } else if ( mode == "user" ) {
+              showPage(0, "module=menu&page=menuList" , true);
+           } else if ( mode == "ranking" ) {
+              showPage(0, "module=menu&page=menuList" , true);
+              showPage(1, "module=ranking&page=rankingOverview" , true);
            } else {
               showPage(0, "module=menu&page=menuList" , true);
+              showPage(1, "module=race&page=raceList" , true);
            }
            window.addEventListener('resize', resizeScreen, true);
          }
@@ -358,7 +364,12 @@
    $mode = "standard";
    if ( isset( $_GET['tv'] ) ) {
       $mode = "tv";
+   } else if ( isset($_GET['ranking'] ) ) {
+      $mode = "ranking";
+   } else if ( $user != null ) {
+      $mode = "user";
    }
+
 ?>
    <body onload="onload( '<?php print( $mode ) ?>')">
       <div class="header">
@@ -370,7 +381,6 @@
             <h1>Messenger Race Software</h1>
             <h1 class=sub id="loginTitle">
                <?php
-                  $user = CommonDbFunction::getUser();
                   if ( $user != null ) {
                      print(" Logged in as: " . $user->user . " (" . $user->role . "/" . $user->raceName . ") " );
                   } else {
