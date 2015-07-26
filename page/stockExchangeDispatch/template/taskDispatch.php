@@ -5,6 +5,9 @@
    if ( $user != null ) {
       $raceFk = $user->raceFk;
       $checkpointFk = $user->checkpointFk;
+      if ( $user->role == Role::NO_ROLE ) {
+         print("<reload />");
+      }
    } else {
       $raceFk = Configuration::CURRENT_RACE;
       $checkpointFk = null;
@@ -18,6 +21,7 @@
    if ( $user != null && $user->role != Role::NO_ROLE && RaceDbFunction::printFinished( $raceFk ) ) {
       exit;
    }
+
 
 ?>
 

@@ -45,6 +45,10 @@
       public static function userHasCheckpoint() {
          return CommonDbFunction::$currentUser != null && CommonDbFunction::$currentUser->checkpointFk != null;
       }
+      
+      public static function userIsNoRole() {
+         return CommonDbFunction::$currentUser != null && CommonDbFunction::$currentUser->role == Role::NO_ROLE;
+      }
   }
       
 
