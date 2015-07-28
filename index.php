@@ -89,14 +89,14 @@
             for (var i = 0; i < numberOfTabs; i++) {
                var visible = ( i >= viewportLeftIndex && i < (viewportLeftIndex + numberOfColums) );
                element('content' + i).style.display = ( visible) ? 'block' : 'none';
-//            alert ( "visible: " + visible + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
+               //alert ( "visible: " + visible + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
             }
          }
 
          function setLeft() {
             for (var i = 0; i < numberOfTabs; i++) {
                var left = ( i - viewportLeftIndex ) * 100 / numberOfColums;
-//            alert ( "left: " + left + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
+               //alert ( "left: " + left + " index: " + index + " viewPortLeft: " + viewportLeftIndex + " numberOfColums: " + numberOfColums );
                element('content' + i).style.left = left + "%";
             }
          }
@@ -183,8 +183,8 @@
             elementId = 'content' + index;
             element(elementId).innerHTML = 'loading ...';
             xmlhttp.open("POST", "commit.php", true);
-//            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//            xmlhttp.setRequestHeader("Content-length", data.length);
+            //xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //xmlhttp.setRequestHeader("Content-length", data.length);
 
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState != 4) {
@@ -245,7 +245,7 @@
 
          function createFormData() {
 
-//            var data = '';
+           //var data = '';
 
             var index = -1;
             var elements = element('myForm').elements;
@@ -254,14 +254,14 @@
                   index = elements[i].value;
                }
             }
-//               data += elements[i].name + "=";
-//              if ( elements[i].type != "checkbox" ) {
-//                  data += elements[i].value;
-//               } else {
-//                  data += elements[i].checked ? 1 : 0;
-//               }
-//               data += "&";
-//            }
+            //               data += elements[i].name + "=";
+            //              if ( elements[i].type != "checkbox" ) {
+            //                  data += elements[i].value;
+            //               } else {
+            //                  data += elements[i].checked ? 1 : 0;
+            //               }
+            //               data += "&";
+            //            }
             var data = new FormData( element('myForm') );
             return new Array(index, data);
          }
