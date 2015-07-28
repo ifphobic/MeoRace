@@ -16,7 +16,7 @@
    $parameter = "";
    if (isset( $_GET['raceId'] ) ) {
       $dbFunction = new UserDbFunction();
-      $sessionId = $dbFunction->insertSession( Configuration::GUEST_USER_ID, $_GET['raceId'] );   
+      $sessionId = $dbFunction->insertSession( Configuration::GUEST_USER_ID, $_GET['raceId'] );
       $dbFunction->close();
       $parameter = "?ranking";
    } else if ( isset( $_POST["user"] ) && isset( $_POST["password"] ) ) {
@@ -33,7 +33,7 @@
    }
 
    if ( isset( $sessionId ) ) {
-      print("<head><meta http-equiv='refresh' content='0; URL=index.php$parameter' /></head> "); 
+      print("<head><meta http-equiv='refresh' content='0; URL=index.php$parameter' /></head> ");
       exit;
    }
 
@@ -48,12 +48,29 @@
    </head>
 
    <body>
-      <div style="max-width: 560px; padding: 15px;">
-      <form method='post' action='login.php'>
-         <label for="User" class="User"> <input name="user" type="text" placeholder="User" /><br>
-         <label for="Password" class="Password"> <input name="password" type="password" placeholder="Password" /><br>
-         <input type='submit' name='login' />
-         <input type="button" onclick="location.href='index.php';" value="cancle" />
+
+      <div class="flexbox-wrapper">
+
+        <header class="flexbox-header">
+
+          <div class="back-button">
+          <a href="index.php"></a>
+          </div>
+
+        </header>
+
+        <div class="login-wrapper">
+
+          <h1 class="login">Login to RSW<h1>
+
+          <form method='post' action='login.php'>
+          <label for="User" class="User"> <input name="user" type="text" placeholder="User" /><br>
+          <label for="Password" class="Password"> <input name="password" type="password" placeholder="Password" /><br>
+          <input type='submit' name='login' />
+          <input type="button" onclick="location.href='index.php';" value="cancle" />
+
+       </div><!-- login-wrapper -->
+       
       </form>
       </div>
    </body>

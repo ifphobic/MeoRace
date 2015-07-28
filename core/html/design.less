@@ -126,12 +126,58 @@ h1 {
 
 h1.sub {color: @c3; text-transform: none; font-size: 11px; overflow: hidden; white-space:nowrap; text-overflow: ellipsis;}
 
+h1.login {
+	font-size: 36px;
+	line-height: 98px;
+}
+
 //main structure
 
 html, body{
     height: 100%;
     background: @main_bgcolor;
     font-style: @font;
+}
+
+.flexbox-wrapper {
+	display: flex;
+	max-width: 560px;
+	height: 100%;
+	padding: 0 15px 15px 15px;
+	margin: 0 auto;
+	flex-direction: column;
+	background-color: #333;
+}
+
+.flexbox-header {
+	background-color: #333;
+	height: 49px;
+	border-bottom: 1px solid #CCC;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.back-button a{
+width: 49px;
+height: 49px;
+display: block;
+}
+
+.back-button a:before {
+	content: "\e60f";
+	font-family: 'icomoon';
+	color: #CCC;
+	vertical-align: middle;
+	font-size: 50px;
+	display: inline-block;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+	-webkit-transition-timing-function: ease-in; /* Safari and Chrome */
+	transition: color 400ms ease-in;
+
 }
 
 li {
