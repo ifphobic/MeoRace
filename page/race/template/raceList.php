@@ -13,7 +13,9 @@
       Page::printFormStart("race", "raceChoose");
    }
 ?>
+
 <ul>
+
 <?php
       foreach ( $races as $race ) {
          print ("
@@ -21,22 +23,25 @@
               <div class='race_icon'>
               <span class='date month'>August</span>
               <span class='date day'>25</span>
-              <span class='date year'>2014</span></div>
-               <div class='list_content'>
+              <span class='date year'>2014</span>
+              </div>
+
+              <div class='list_content'>
                <span class='list_title'>" . $race->name . "</span>
                <span class='list_subtitle'>" . $race->status . "</span>
-               </div>
+              </div>
          ");
          if ( $user != null && ( $user->role == Role::RACE_MASTER || $user->role == Role::ADMIN ) ) {
-            print (" <td>" . CommonPageFunction::getLink( "race", "raceEdit", $race->raceId, "edit") . "</td>");
+            print (" <div>" . CommonPageFunction::getLink( "race", "raceEdit", $race->raceId, "edit") . "</div>");
          } else {
-            print (" <td><a href='login.php?raceId=" . $race->raceId. "'>choose</a></td>");
+            print (" <div><a href='login.php?raceId=" . $race->raceId. "'>choose</a></div>");
          }
          print (" </li> ");
       }
 
 
    ?>
+
 <ul>
 
 <?php
