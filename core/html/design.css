@@ -382,7 +382,7 @@ input {
   display: block;
   font-size: 16px;
   line-height: normal;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #CCC;
   width: 100%;
   padding: 15px 0px;
   color: black;
@@ -395,6 +395,8 @@ select:focus,
 textarea:focus,
 button:focus {
   outline: none;
+  color: #FFF;
+  border-bottom: 1px solid #FFF;
 }
 input[type="submit"] {
   color: #ffffff;
@@ -410,6 +412,11 @@ input[type="submit"]:hover {
   background-color: #8ad08a;
   box-shadow: 0 0 1px 1px #cccccc;
 }
+input[type="button"] {
+  color: #FFF;
+  border-bottom: none;
+}
+
 input[name="login"] {
   margin: 15px 0;
   width: 100%;

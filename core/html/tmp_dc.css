@@ -1,0 +1,22 @@
+
+.jb_listitem:after {
+    display: flex;
+    justify-content: center;
+    content: "\e60f";
+    font-family: 'icomoon';
+    color: #999999;
+    vertical-align: middle;
+    font-size: 25px;
+    position: absolute;
+    right: 0;
+    top: 8px;
+  }
+
+.list_subtitle {
+    -webkit-flex: 1;
+    flex: 1;
+  }
+
+.list_content {
+    border-bottom: 1px solid #999;
+}

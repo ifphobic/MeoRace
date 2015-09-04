@@ -17,28 +17,26 @@
 <ul>
 
 <?php
-      foreach ( $races as $race ) {
-         print ("
-            <li class='jb_listitem'>
-              <div class='race_icon'>
-              <span class='date month'>August</span>
-              <span class='date day'>25</span>
-              <span class='date year'>2014</span>
+
+      foreach ( $races as $race ) { ?>
+            <li class="jb_listitem" onclick="location.href='login.php?raceId=<?php echo $race->raceId; ?>'">
+              <div class="race_icon item-<?php echo $race->raceId; ?>">
+              <span class="date month">August</span>
+              <span class="date day">25</span>
+              <span class="date year">2014</span>
               </div>
 
-              <div class='list_content'>
-               <span class='list_title'>" . $race->name . "</span>
-               <span class='list_subtitle'>" . $race->status . "</span>
+              <div class="list_content">
+               <span class="list_title"><?php echo $race->name; ?></span>
+               <span class="list_subtitle"><?php echo $race->status; ?></span>
               </div>
-         ");
+
+      <?php
          if ( $user != null && ( $user->role == Role::RACE_MASTER || $user->role == Role::ADMIN ) ) {
-            print (" <div>" . CommonPageFunction::getLink( "race", "raceEdit", $race->raceId, "edit") . "</div>");
-         } else {
-            print (" <div><a href='login.php?raceId=" . $race->raceId. "'>choose</a></div>");
+            print (" <div class='race_edit'>" . CommonPageFunction::getLink( "race", "raceEdit", $race->raceId, "edit") . "</div>");
          }
-         print (" </li> ");
+         print ("</li> ");
       }
-
 
    ?>
 

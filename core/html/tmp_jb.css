@@ -1,6 +1,5 @@
 .jb_listitem {
   background: linear-gradient(#ffffff, #f2f2f2);
-  border-bottom: 1px solid #999999;
   text-align: center;
   display: -webkit-flex;
   display: flex;
@@ -10,9 +9,9 @@
 
 .race_icon {
   padding: 5px;
+  border-bottom: 1px solid #FFF;
   height: 49px;
   width: 49px;
-  flex: start;
   background: #999;
   display: -webkit-flex;
   display: flex;
@@ -47,16 +46,18 @@
 }
 
 .list_content {
-  padding: 5px;
-  text-align: left;
-  -webkit-flex: 1;
-  flex: 1;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: flex-start;
+  padding: 5px;
+  text-align: left;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
   justify-content: flex-start;
+  flex: 1 auto;
+}
+
+.list_content span {
+
 }
 
 .menu_wrapper {
@@ -77,12 +78,8 @@ body {
 }
 
 div.content0, div.content1, div.content2, div.content3, div.content4 {
-  position: relative;
   min-width: 260px;
   width: 100%;
-  height: auto;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
   overflow-y: auto;
   transition: width 200ms ease, left 200ms ease;
   -webkit-overflow-scrolling: touch;
