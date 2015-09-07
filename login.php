@@ -67,7 +67,7 @@
           <label for="User" class="User"> <input name="user" type="text" placeholder="User" /><br>
           <label for="Password" class="Password"> <input name="password" type="password" placeholder="Password" /><br>
           <input type='submit' name='login' />
-          <input type="button" onclick="location.href='index.php';" value="cancle" />
+          <input type="button" onclick="location.href='index.php';" value="cancel" />
 
        </div><!-- login-wrapper -->
        
