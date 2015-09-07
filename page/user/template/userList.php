@@ -1,11 +1,6 @@
-<table>
-   <th>User</th>
-   <th>Role</th>
-   <th>Race</th>
-   <th>Checkpoint</th>
-   <th>Edit</th>
+<ul>
    <?php
-   
+
       $dbFunction = new UserDbFunction();
       $raceFk = null;
       $currentUser = CommonDbFunction::getUser();
@@ -16,19 +11,23 @@
       $dbFunction->close();
 
       foreach ( $users as $user ) {
+        $onClick = Page::getOnClickFunction( "user", "userEdit", $user->userId);
       print ("
-         <tr>
-            <td>" . $user->user . "</td>
-            <td>" . $user->role . "</td>
-            <td>" . $user->raceName . "</td>
-            <td>" . $user->checkpoint . "</td>
-            <td>" . CommonPageFunction::getLink( "user", "userEdit", $user->userId, "edit") . "</td>
-         </tr>
+         <li class='jb_listitem' onclick='$onClick'>
+         <div class='list_content'>
+         <span class='list_title'>$user->user</span>
+         <span class='list_subtitle'>$user->role"
+       );
+        if($user->checkpoint != null){
+          print (" (" . $user->checkpoint . ") ");
+        }
+      print ("@" . $user->raceName . "</span>
+        </li>
       ");
       }
 
    ?>
-<table>
-
-<?php print( CommonPageFunction::getLink( "user", "userEdit", null, "New User" ) );
- 
+</ul>
+<div class="new_button" onclick='<?php print(Page::getOnClickFunction( "user", "userEdit", null)); ?>'>
+  New User
+</div>

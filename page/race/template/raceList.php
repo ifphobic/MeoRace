@@ -24,7 +24,7 @@
       } else {
          $onClick = 'location.href="login.php?raceId=' . $race->raceId .'"';
       }
-      
+
       $day = "";
       $month = "";
       $year = "";
@@ -38,7 +38,7 @@
 
       print("
          <li class='jb_listitem' onclick='$onClick'>
-         
+
          <div class='race_icon item-$race->raceId'>
            <span class='date month'>$month</span>
            <span class='date day'>$day</span>
@@ -56,12 +56,13 @@
 
    ?>
 
-<ul>
+</ul>
 
 <?php
 
  if ( $user != null && ( $user->role == Role::RACE_MASTER || $user->role == Role::ADMIN ) ) {
-   print( CommonPageFunction::getLink( "race", "raceEdit", null, "New Race" ) );
+   $onClick = Page::getOnClickFunction( "race", "raceEdit", null);
+   print ("<div class='new_button' onclick='$onClick'>New Race</div>");
  } else {
    print("</form>");
  }
