@@ -14,7 +14,7 @@
             $query .= "where exists (select * from UserRace ur where ur.raceFk = r.raceId and ur.userFk = ?) ";
             $query .= "or exists (select * from User u where u.userId = ? and ( role = '" . Role::ADMIN . "' or role = '" . Role::NO_ROLE . "' ) ) ";
          }
-         $query .= "order by raceId";
+         $query .= "order by raceDate desc";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $userId ), new Parameter( PDO::PARAM_INT, $userId ) ) );
          return $result; 
       }
