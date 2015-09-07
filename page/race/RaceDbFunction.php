@@ -26,10 +26,11 @@
       }
 
       public function insert( $race ) {
-         $query = "insert into Race (name, status ) values (?, ?)";
+         $query = "insert into Race (name, status, raceDate ) values (?, ?, ?)";
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $race['name'] ), 
             new Parameter( PDO::PARAM_STR, $race['status'] ), 
+            new Parameter( PDO::PARAM_STR, $race['raceDate'] ), 
          );
          $this->query($query, $parameter);
       }
@@ -44,10 +45,11 @@
       }
 
       public function update( $race) {
-         $query = "update Race set name = ?, status = ? where raceId = ?";
+         $query = "update Race set name = ?, status = ?, raceDate = ? where raceId = ?";
          $parameter = array( 
             new Parameter( PDO::PARAM_STR, $race['name'] ), 
             new Parameter( PDO::PARAM_STR, $race['status'] ),
+            new Parameter( PDO::PARAM_STR, $race['raceDate'] ),
             new Parameter( PDO::PARAM_INT, $race['raceId'] ),
          );
          $this->query($query, $parameter);

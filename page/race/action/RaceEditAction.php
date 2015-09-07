@@ -9,6 +9,10 @@
             $dbFunction->close();
          }
          
+         if ( $content['raceDate'] == "" ) {
+            $content['raceDate'] = null;
+         }
+
          $result = $this->genericCommit("race", "race", "raceEdit", $content);
          if ( !isset( $content['raceId'] ) ) {
             $userId = CommonDbFunction::getUser()->userId;

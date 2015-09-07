@@ -18,25 +18,41 @@
 
 <?php
 
-      foreach ( $races as $race ) { ?>
-            <li class="jb_listitem" onclick="location.href='login.php?raceId=<?php echo $race->raceId; ?>'">
-              <div class="race_icon item-<?php echo $race->raceId; ?>">
-              <span class="date month">August</span>
-              <span class="date day">25</span>
-              <span class="date year">2014</span>
-              </div>
-
-              <div class="list_content">
-               <span class="list_title"><?php echo $race->name; ?></span>
-               <span class="list_subtitle"><?php echo $race->status; ?></span>
-              </div>
-
-      <?php
-         if ( $user != null && ( $user->role == Role::RACE_MASTER || $user->role == Role::ADMIN ) ) {
-            print (" <div class='race_edit'>" . CommonPageFunction::getLink( "race", "raceEdit", $race->raceId, "edit") . "</div>");
-         }
-         print ("</li> ");
+   foreach ( $races as $race ) {
+      if ( $user != null && ( $user->role == Role::RACE_MASTER || $user->role == Role::ADMIN ) ) {
+         $onClick = Page::getOnClickFunction( "race", "raceEdit", $race->raceId );
+      } else {
+         $onClick = 'location.href="login.php?raceId=' . $race->raceId .'"';
       }
+      
+      $day = "";
+      $month = "";
+      $year = "";
+      if ($race->raceDate != null ) {
+         $date = strtotime($race->raceDate);
+         $day = date('d', $date);
+         $month = date('F', $date);
+         $year = date('Y', $date);
+      }
+
+
+      print("
+         <li class='jb_listitem' onclick='$onClick'>
+         
+         <div class='race_icon item-$race->raceId'>
+           <span class='date month'>$month</span>
+           <span class='date day'>$day</span>
+           <span class='date year'>$year</span>
+         </div>
+
+         <div class='list_content'>
+           <span class='list_title'>$race->name</span>
+           <span class='list_subtitle'>$race->status</span>
+         </div>
+
+         </li>
+      ");
+   }
 
    ?>
 
