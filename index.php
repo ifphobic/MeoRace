@@ -10,7 +10,7 @@
       <title>MeoRace</title>
       <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
       <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-      <link href="core/html/design.css" rel="stylesheet">
+      <link href="core/html/design_new.css" rel="stylesheet">
       <link href="core/html/tmp_jb.css" rel="stylesheet">
       <link href="core/html/tmp_dc.css" rel="stylesheet">
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>

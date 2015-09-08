@@ -43,7 +43,7 @@
       <title>MeoRace Login</title>
       <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
       <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-      <link href="core/html/design.css" rel="stylesheet">
+      <link href="core/html/design_new.css" rel="stylesheet">
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
    </head>
 
@@ -61,16 +61,16 @@
 
         <div class="login-wrapper">
 
-          <h1 class="login">Login to RSW<h1>
+          <h1 class="login">Login to RSW</h1>
 
           <form method='post' action='login.php'>
-          <label for="User" class="User"> <input name="user" type="text" placeholder="User" /><br>
-          <label for="Password" class="Password"> <input name="password" type="password" placeholder="Password" /><br>
+          <label for="User" class="User"> <input name="user" type="text" placeholder="User" />
+          <label for="Password" class="Password"> <input name="password" type="password" placeholder="Password" />
           <input type='submit' name='login' />
           <input type="button" onclick="location.href='index.php';" value="cancel" />
 
-       </div><!-- login-wrapper -->
-       
+      </div><!-- login-wrapper -->
+
       </form>
       </div>
    </body>

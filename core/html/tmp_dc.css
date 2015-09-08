@@ -1,3 +1,7 @@
+/*login */
+
+
+/*listitems */
 
 .jb_listitem:after {
     display: flex;
@@ -15,10 +19,20 @@
 .list_subtitle {
   color: #777;
   font-size: 0.8em;
-    -webkit-flex: 1;
-    flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
   }
 
 .list_content {
     border-bottom: 1px solid #999;
+}
+
+.list_navigation {
+  display: -webkit-flex;
+  display: flex;
+  padding: 5px;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  flex: 1 auto;
 }

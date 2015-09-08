@@ -48,6 +48,7 @@
          <div class='list_content'>
            <span class='list_title'>$race->name</span>
            <span class='list_subtitle'>$race->status</span>
+           <span class='list_navigation'></span>
          </div>
 
          </li>

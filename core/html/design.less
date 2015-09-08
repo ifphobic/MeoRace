@@ -375,8 +375,6 @@ padding: 5px 0;
    text-align: center;
  }
 
-
-
 input {
     display: block;
     font-size: 16px;
@@ -388,31 +386,56 @@ input {
     background-color: transparent;
     -webkit-appearance: none;
     border-radius: 0;
+		&[name="user"],
+		&[name="password"]{
+			color: #CCC;
+			border-bottom: 1px solid #CCC;
+			&:active, &:hover, &:focus, &:visited {
+	 		 	color: #FFF;
+	 			border-bottom: 1px solid @c1;
+				outline: none;
+		}
+	}
+		&[type="button"] {
+			color: @c5;
+			border: none;
+			&:active, &:hover, &:focus, &:visited {
+				border: 0;
+				border-style: none;
+				outline-offset: 0;
+				outline: none;
+				color: @c1;
+				cursor: pointer;
+			}
+		}
+		&[type="submit"] {
+			color: @c1;
+			margin: 15px auto;
+			border-radius: 5px;
+			border: none;
+			background-color: @g1;
+			text-transform: uppercase;
+			width: 93%;
+			&:active, &:hover, &:focus, &:visited {
+				 background-color: @g2;
+				 box-shadow: 0 0 1px 1px @c3;
+				 outline: none;
+				 border: none;
+				 border-style: none;
+				 cursor: pointer;
+			 }
+		 }
 }
 
-input:focus,
+
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
-}
-
-input[type="submit"]{
-   color: @c1;
-   margin: 15px auto;
-   border-radius: 5px;
-   border: none;
-   background-color: @g1;
-   text-transform: uppercase;
-   width: 93%;
-   &:active, &:hover{
-      background-color: @g2;
-      box-shadow: 0 0 1px 1px @c3;
-   }
+  outline: none;
 }
 
 input[name="login"]{
-   margin: 15px 0;
+   margin-top: 60px;
    width: 100%;
 }
 

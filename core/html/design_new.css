@@ -382,7 +382,7 @@ input {
   display: block;
   font-size: 16px;
   line-height: normal;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #000000;
   width: 100%;
   padding: 15px 0px;
   color: black;
@@ -390,7 +390,38 @@ input {
   -webkit-appearance: none;
   border-radius: 0;
 }
-
+input[name="user"],
+input[name="password"] {
+  color: #CCC;
+  border-bottom: 1px solid #CCC;
+}
+input[name="user"]:active,
+input[name="password"]:active,
+input[name="user"]:hover,
+input[name="password"]:hover,
+input[name="user"]:focus,
+input[name="password"]:focus,
+input[name="user"]:visited,
+input[name="password"]:visited {
+  color: #FFF;
+  border-bottom: 1px solid #ffffff;
+  outline: none;
+}
+input[type="button"] {
+  color: #999999;
+  border: none;
+}
+input[type="button"]:active,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="button"]:visited {
+  border: 0;
+  border-style: none;
+  outline-offset: 0;
+  outline: none;
+  color: #ffffff;
+  cursor: pointer;
+}
 input[type="submit"] {
   color: #ffffff;
   margin: 15px auto;
@@ -401,17 +432,23 @@ input[type="submit"] {
   width: 93%;
 }
 input[type="submit"]:active,
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:visited {
   background-color: #8ad08a;
   box-shadow: 0 0 1px 1px #cccccc;
+  outline: none;
+  border: none;
+  border-style: none;
+  cursor: pointer;
 }
-input[type="button"] {
-  color: #FFF;
-  border-bottom: none;
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
 }
-
 input[name="login"] {
-  margin: 15px 0;
+  margin-top: 60px;
   width: 100%;
 }
 input[type="search"] {
