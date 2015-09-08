@@ -91,3 +91,47 @@ div.content0, div.content1, div.content2, div.content3, div.content4 {
   -webkit-flex: 1;
   flex: 1;
 }
+
+td.label {
+  color: #666;
+  text-align: left;
+  padding: 5px;
+}
+td.inputSelect {
+  text-align: left;
+}
+
+input {
+  font-size: 1.2em;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 1.2em;
+  margin-right: 10px;
+  padding: 5px 35px 5px 5px;
+  height: 40px;
+  -webkit-flex: 1;
+  flex: 1;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}
+div.selectWrap {
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+}
+select:focus {
+  background: #eee;
+}
+div.selectWrap::after {
+  content: "\25BC";
+  color: #999999;
+  height: 1em;
+  font-size: 1em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%; margin-top: -.5em;
+  position: absolute;
+}

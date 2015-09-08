@@ -1,7 +1,7 @@
 <?php
 
    class CommonPageFunction {
-      
+
       public static function getLink( $module, $page, $id, $text, $parameter = null, $tabOffset = 1 ) {
          $link = "<a href='javascript:" . Page::getOnClickFunction( $module, $page, $id, $parameter, $tabOffset ) . "'>";
          $link .= "$text</a>";
@@ -10,27 +10,32 @@
       }
 
       public static function getLable( $key, $object, $text) {
-         $result = "<tr><td>$text:</td><td>" . ( isset( $object ) ? $object->$key : " " ) ."</td></tr>";
+         $result = "<tr><td class='label'>$text:</td><td>" . ( isset( $object ) ? $object->$key : " " ) ."</td></tr>";
          return $result;
       }
 
       public static function getInputField( $key, $object, $text) {
-         $result = "<tr><td>$text:</td><td><input name='$key' value='" . ( isset( $object ) ? $object->$key : "" ) ."' /></td></tr>";
+         $result = "<tr><td class='label'>$text:</td><td><input name='$key' value='" . ( isset( $object ) ? $object->$key : "" ) ."' /></td></tr>";
+         return $result;
+      }
+
+      public static function getInputDate( $key, $object, $text) {
+         $result = "<tr><td class='label'>$text:</td><td><input name='$key' type='date' value='" . ( isset( $object ) ? $object->$key : "" ) ."' /></td></tr>";
          return $result;
       }
 
       public static function getCheckbox( $key, $object, $text) {
-         $result = "<tr><td>$text:</td><td><input type='checkbox' name='$key' value='1' " . ( ( isset( $object ) && $object->$key == 1) ? "checked" : "" ) . " /></td></tr>";
+         $result = "<tr><td class='label'>$text:</td><td><input type='checkbox' name='$key' value='1' " . ( ( isset( $object ) && $object->$key == 1) ? "checked" : "" ) . " /></td></tr>";
          return $result;
       }
 
       public static function getCombobox($key, $object, $text, $options, $optionKey = null, $addNone = false ) {
          $result = "";
          if ( $text != null ) {
-            $result = "<tr><td>$text</td><td>";
+            $result = "<tr><td class='label'>$text</td><td class='inputSelect'><div class='selectWrap'>";
          }
          $result .= "<select name='$key' size='1' >";
-         
+
          if ( $addNone ) {
             $result .= "<option value='' " . ( ( isset( $object ) && strcmp( "", $object->$key)  == 0) ? "selected" : "" ). " > </option>";
          }
@@ -47,12 +52,12 @@
          }
          $result .= "</select>";
          if ( $text != null ) {
-            $result .= "</td></tr>";
+            $result .= "</div></td></tr>";
          }
          return $result;
-         
+
       }
-   
+
    }
 
 ?>

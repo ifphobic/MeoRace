@@ -8,10 +8,9 @@
          print( "<input type='hidden' name='raceId' value='" . $race->raceId ."' />" );
       }
    ?>
-  
+
    <table>
       <?php print( CommonPageFunction::getInputField( "name", $race, "Name") ) ?>
-      <?php print( CommonPageFunction::getInputField( "raceDate", $race, "Date") ) ?>
+      <?php print( CommonPageFunction::getInputDate( "raceDate", $race, "Date") ) ?>
       <?php print( CommonPageFunction::getCombobox( "status", $race, "Status", array("prepare", "running", "finished")) ) ?>
    </table>
-   
