@@ -64,8 +64,8 @@
           <h1 class="login">Login to RSW</h1>
 
           <form method='post' action='login.php'>
-          <label for="User" class="User"> <input name="user" type="text" placeholder="User" />
-          <label for="Password" class="Password"> <input name="password" type="password" placeholder="Password" />
+          <label for="User" class="User"> <input name="user" type="text" placeholder="User" class="login" />
+          <label for="Password" class="Password"> <input name="password" type="password" placeholder="Password" class="login" />
           <input type='submit' name='login' />
           <input type="button" onclick="location.href='index.php';" value="cancel" />
 

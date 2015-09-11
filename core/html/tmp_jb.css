@@ -134,4 +134,5 @@ div.selectWrap::after {
   right: 1.2em;
   top: 50%; margin-top: -.5em;
   position: absolute;
+  pointer-events: none;
 }
