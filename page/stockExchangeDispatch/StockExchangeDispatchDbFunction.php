@@ -8,7 +8,7 @@
 
 
       public function findAll( $raceId, $checkpointId, $racerId = null ) {
-         
+
          $query  = "select sed.*, t.name, t.description, t.maxDuration, t.dispatchCheckpointFk, t.fixPrice ";
          $parameter = array();
          $order = "";
@@ -22,25 +22,30 @@
 
          $query .= "from StockExchangeDispatch sed ";
          $query .= "join Task t on sed.taskFk = t.taskId where sed.raceFk = ? ";
-         $query .= "and ( t.dispatchCheckpointFk is null or t.dispatchCheckpointFk = ? ) ";
-         $query .= " order by $order sed.price DESC, t.name ";
+
          $parameter[] = new Parameter( PDO::PARAM_INT, $raceId );
-         $parameter[] = new Parameter( PDO::PARAM_INT, $checkpointId );
+         if (isset( $checkpointId ) ) {
+           $query .= "and ( t.dispatchCheckpointFk is null or t.dispatchCheckpointFk = ? ) ";
+           $parameter[] = new Parameter( PDO::PARAM_INT, $checkpointId );
+         } else {
+           $query .= "and t.fixPrice = 0 ";
+         }
+         $query .= " order by $order sed.price DESC, t.name ";
          $result = $this->queryArray($query, $parameter );
-         return $result; 
+         return $result;
       }
-         
+
       public function findById( $taskId ) {
-         
+
          $query = "select * from StockExchangeDispatch where taskId = ?";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $taskId ) ) );
-         return $result[0]; 
+         return $result[0];
       }
 
       public function update( $racerTask ) {
          $query = "update StockExchangeDispatch set price = ?, counter = ? where  taskFk = ?";
-         $parameter = array( 
-            new Parameter( PDO::PARAM_STR, $racerTask->price ), 
+         $parameter = array(
+            new Parameter( PDO::PARAM_STR, $racerTask->price ),
             new Parameter( PDO::PARAM_INT, $racerTask->counter ),
             new Parameter( PDO::PARAM_INT, $racerTask->taskFk )
          );
