@@ -8,12 +8,12 @@
 
 
       public function findAll( $raceId ) {
-         
+
 //         $query = "select * from RacerTask where raceFk = ? ";
 //         $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
-//         return $result; 
+//         return $result;
       }
-      
+
       public function findRacerTaskById($racerTaskId) {
          $query  = "select rt.racerTaskId, TIME_TO_SEC(TIMEDIFF( rt.endTime, rt.startTime ) ) as taskTime, ";
          $query .= "TIME_TO_SEC(TIMEDIFF( now(), rt.startTime ) ) as currentTime, ";
@@ -23,17 +23,17 @@
          $query .= "left outer join Task t on rt.taskFk = t.taskId  ";
          $query .= "where racerTaskId = ? ";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
-         return $result[0]; 
+         return $result[0];
       }
 
       public function findRacerDeliveryById( $racerDeliveryId ) {
-         
+
          $query  = "select rd.racerDeliveryId, rd.racerTaskFk, p.name as parcel, p.description as description, p.image from RacerDelivery rd ";
          $query .= "join Delivery d on rd.deliveryFk = d.deliveryId ";
          $query .= "join Parcel p on d.parcelFk = p.parcelId ";
          $query .= "where racerDeliveryId = ?";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_INT, $racerDeliveryId ) ) );
-         return $result[0]; 
+         return $result[0];
       }
 
       public function doAction( $racerDeliveryId, $dropoff, $manned ) {
@@ -47,7 +47,7 @@
 
          if ( $dropoff ) {
             $query .= "dropoffTime = now() ";
-         }  
+         }
          $query .= "where racerDeliveryId = ?";
          $this->query($query, array( new Parameter( PDO::PARAM_INT, $racerDeliveryId ) ) );
       }
@@ -66,13 +66,13 @@
          $this->query($query, array( new Parameter( PDO::PARAM_INT, $racerTaskId ) ) );
       }
 
-      public function stopAllNegativePriced( $raceId ) { 
-         $query = "update RacerTask rt set rt.endTime = now() where exists (select * from Task t where rt.taskFk = t.taskId and t.price < 0 and t.raceFk = ?)";
+      public function stopAllNegativePriced( $raceId ) {
+         $query = "update RacerTask rt set rt.endTime = now() where rt.endTime is null and exists (select * from Task t where rt.taskFk = t.taskId and t.price < 0 and t.raceFk = ?)";
          $this->query($query, array( new Parameter( PDO::PARAM_INT, $raceId ) ) );
       }
 
       public function determineActions( $racerId, $checkpointId ) {
-         
+
          $query  = "select rd.racerDeliveryId, pickupC.name as pickup, dropoffC.name as dropoff, p.name as parcel, p.image, ";
          $query .= "      (rd.pickupTime is not null or !pickupC.manned ) as isDropoff, pickupC.manned, t.name as task ";
          $query .= "   from RacerDelivery rd ";
@@ -101,8 +101,8 @@
 
       public function dispatch( $racerId, $taskId, $price ) {
          $query = "insert into RacerTask ( racerFk, taskFk, price ) values ( ?, ?, ? )";
-         $parameter = array( 
-            new Parameter( PDO::PARAM_INT, $racerId ), 
+         $parameter = array(
+            new Parameter( PDO::PARAM_INT, $racerId ),
             new Parameter( PDO::PARAM_INT, $taskId ),
             new Parameter( PDO::PARAM_INT, $price )
          );
@@ -111,8 +111,8 @@
          $racerTaskId = $this->getLastId();
 
          $query = "insert into RacerDelivery ( deliveryFk, racerTaskFk) select deliveryId, ? from Delivery where taskFk = ?";
-         $parameter = array( 
-            new Parameter( PDO::PARAM_INT, $racerTaskId ), 
+         $parameter = array(
+            new Parameter( PDO::PARAM_INT, $racerTaskId ),
             new Parameter( PDO::PARAM_INT, $taskId ),
          );
          $this->query($query, $parameter);
