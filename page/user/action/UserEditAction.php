@@ -11,10 +11,11 @@
             $content['raceFk'] = null;
          }
          $result = $this->genericCommit("user", "user", "userEdit", $content);
-         
-         if (  $user->raceFk != $content['raceFk'] && $user->userId == $result->getContent()['userId']  ) {
+
+         $resultContent = $result->getContent();
+         if (  $user->raceFk != $content['raceFk'] && $user->userId == $resultContent['userId']  ) {
             $parameter = $result->getParameter();
-            
+
             $dbFunction = new CommonDbFunction();
             $parameter['newRace'] = rawurlencode( $dbFunction->determineCurrentUser()->raceName );
             $dbFunction->close();
@@ -23,7 +24,7 @@
          }
          return $result;
       }
-   
+
    }
 
 ?>

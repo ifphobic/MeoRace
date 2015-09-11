@@ -8,7 +8,7 @@
             $dbFunction->stopAllNegativePriced( $content['raceId'] );
             $dbFunction->close();
          }
-         
+
          if ( $content['raceDate'] == "" ) {
             $content['raceDate'] = null;
          }
@@ -16,12 +16,13 @@
          $result = $this->genericCommit("race", "race", "raceEdit", $content);
          if ( !isset( $content['raceId'] ) ) {
             $userId = CommonDbFunction::getUser()->userId;
-            $raceId = $result->getContent()['raceId'];
-            
+            $resultContent = $result->getContent();
+            $raceId = $resultContent['raceId'];
+
             $dbFunction = new RaceDbFunction();
             $dbFunction->insertUserRace( $userId, $raceId );
             $dbFunction->close();
-            
+
             $dbFunction = new UserDbFunction();
             $dbFunction->updateRace( $userId, $raceId );
             $dbFunction->close();
@@ -34,7 +35,7 @@
          }
          return $result;
       }
-   
+
    }
 
 ?>
