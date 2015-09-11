@@ -303,7 +303,7 @@ p.racer_tasklist_heading,
 .middle_info .manifest_points {
   display: inline-block;
   margin-right: 15px;
-  width: 50px;
+  width: 40%;
 }
 .middle_info .manifest_points:after {
   content: "\e601";
@@ -390,19 +390,18 @@ input {
   -webkit-appearance: none;
   border-radius: 0;
 }
-input[name="user"],
-input[name="password"] {
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+}
+input.login {
   color: #CCC;
   border-bottom: 1px solid #CCC;
 }
-input[name="user"]:active,
-input[name="password"]:active,
-input[name="user"]:hover,
-input[name="password"]:hover,
-input[name="user"]:focus,
-input[name="password"]:focus,
-input[name="user"]:visited,
-input[name="password"]:visited {
+input.login:active,
+input.login:hover,
+input.login:focus,
+input.login:visited {
   color: #FFF;
   border-bottom: 1px solid #ffffff;
   outline: none;
