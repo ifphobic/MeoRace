@@ -309,10 +309,10 @@
            setLoginTitle( null );
            if ( mode == "tv" ) {
                showPage(0, "module=stockExchangeDispatch&page=taskDispatch" , false);
-               showPage(1, "module=stockExchangeDispatch&page=taskDispatch" , false);
-               showPage(2, "module=stockExchangeDispatch&page=taskDispatch" , false);
-               showPage(3, "module=stockExchangeDispatch&page=taskDispatch" , false);
-               for ( i = 0; i < 4; i++ ) {
+               //showPage(1, "module=stockExchangeDispatch&page=taskDispatch" , false);
+               showPage(2, "module=ranking&page=rankingOverview&tv" , false);
+               showPage(3, "module=ranking&page=rankingOverview&tv" , false);
+               for ( i = 0; i < 1; i++ ) {
                   reloadTabs.push(i);
                }
                reloadTask = window.setInterval("reloadTasks()", 5000 );

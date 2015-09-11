@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 11. Sep 2015 um 19:45
+-- Erstellungszeit: 11. Sep 2015 um 22:59
 -- Server Version: 5.5.40
 -- PHP-Version: 5.3.28
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `Checkpoint` (
   `name` varchar(80) NOT NULL,
   `manned` tinyint(1) NOT NULL,
   `raceFk` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Daten für Tabelle `Checkpoint`
@@ -47,7 +47,8 @@ INSERT INTO `Checkpoint` (`checkpointId`, `name`, `manned`, `raceFk`) VALUES
 (9, 'HQ', 1, 2),
 (11, 'Heaven Devils', 1, 2),
 (12, 'Delirium Inc', 1, 2),
-(13, 'Absolution', 1, 2);
+(13, 'Absolution', 1, 2),
+(14, '-', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `Delivery` (
   `parcelFk` int(11) DEFAULT NULL,
   `pickupFk` int(11) NOT NULL,
   `dropoffFk` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=102 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=103 ;
 
 --
 -- Daten für Tabelle `Delivery`
@@ -162,7 +163,8 @@ INSERT INTO `Delivery` (`deliveryId`, `taskFk`, `parcelFk`, `pickupFk`, `dropoff
 (47, 17, 13, 5, 5),
 (48, 18, 9, 2, 2),
 (49, 19, 15, 4, 4),
-(50, 20, 7, 1, 1);
+(50, 20, 7, 1, 1),
+(102, 38, 24, 14, 9);
 
 -- --------------------------------------------------------
 
@@ -174,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `DeliveryCondition` (
 `deliveryConditionId` int(11) NOT NULL,
   `deliveryFk` int(11) NOT NULL,
   `previousDeliveryFk` int(11) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=92 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=95 ;
 
 --
 -- Daten für Tabelle `DeliveryCondition`
@@ -256,7 +258,10 @@ INSERT INTO `DeliveryCondition` (`deliveryConditionId`, `deliveryFk`, `previousD
 (27, 36, 35),
 (28, 38, 37),
 (29, 39, 38),
-(30, 40, 39);
+(30, 40, 39),
+(92, 99, 98),
+(93, 100, 99),
+(94, 101, 100);
 
 -- --------------------------------------------------------
 
@@ -270,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `Parcel` (
   `description` varchar(256) NOT NULL,
   `raceFk` int(11) NOT NULL,
   `image` varchar(80) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Daten für Tabelle `Parcel`
@@ -294,12 +299,13 @@ INSERT INTO `Parcel` (`parcelId`, `name`, `description`, `raceFk`, `image`) VALU
 (15, 'Dress for success', 'invitation to a business party. get your race gear off and put on some fancy stuff. the. race to the party for one round.', 1, 'parcel/15-.jpg'),
 (16, 'big', 'Big Box', 2, NULL),
 (17, 'small', 'Small Box', 2, NULL),
-(18, 'text', 'A Letter', 2, NULL),
+(18, 'letter', 'A Letter', 2, NULL),
 (19, 'bag', 'A plastic bag', 2, NULL),
 (20, 'tallbike', '', 1, 'parcel/20-3.jpg'),
 (21, '4B', '4 Big Boxes', 2, NULL),
-(22, '2T', '2 Letters', 2, NULL),
-(23, 'lock', 'Good old rusty lock', 2, NULL);
+(22, '2L', '2 Letters', 2, NULL),
+(23, 'lock', 'Good old rusty lock', 2, NULL),
+(24, 'cargo', 'Cargo Bike', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -338,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `Racer` (
   `raceFk` int(11) NOT NULL,
   `status` enum('registered','active') NOT NULL,
   `image` varchar(80) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=116 ;
 
 --
 -- Daten für Tabelle `Racer`
@@ -375,7 +381,72 @@ INSERT INTO `Racer` (`racerId`, `racerNumber`, `name`, `city`, `country`, `email
 (46, 49, 'Tim', 'Frankfurt', 'male', '', 1, 'registered', 'racer/46-.jpg'),
 (47, 3, 'Kevin Hedige', 'Basel', 'male', '', 1, 'registered', 'racer/47-.jpg'),
 (48, 2, 'Adrian', 'Neuchatel', 'male', '', 1, 'registered', 'racer/48-.jpg'),
-(49, 18, 'Leonardo Burgos', 'Basel', '', '', 1, 'registered', 'racer/49-.jpg');
+(49, 18, 'Leonardo Burgos', 'Basel', '', '', 1, 'registered', 'racer/49-.jpg'),
+(51, 600, 'Bavid  Deerli ', 'Basel', 'male', 'davidbeerli@yahoo.com', 2, 'registered', ''),
+(52, 501, 'Benjamin CHAOT829 Frei ', 'BASEL', 'male', 'bkr.frei@gmail.com', 2, 'registered', ''),
+(53, 502, 'David rainman Dinort ', 'Basel', 'male', 'david.dinort@hotmail.com', 2, 'registered', ''),
+(54, 503, 'Astried Piksi Huebner', 'Basel', 'female', 'astrid.huebner@me.com', 2, 'registered', ''),
+(55, 504, 'Ro Rosie Zi', 'Basel', 'female', 'gyszrozsa@gmail.com', 2, 'registered', ''),
+(56, 505, 'Giv  Mesgarzadeh', 'Lausanne', 'male', 'giv.mesgarzadeh@gmail.com', 2, 'registered', ''),
+(57, 506, 'Jakob VK133 Benz', 'St.Gallen', 'male', 'jakob.benz@gmx.ch', 2, 'registered', ''),
+(58, 507, 'Beni b#987 Achermann', 'Basel', 'male', 'beniachermann@gmail.com', 2, 'registered', ''),
+(59, 508, 'Fabrizio  Volante', 'Basel', 'male', 'fabrizio.volante@gmail.com', 2, 'registered', ''),
+(60, 509, 'Lukas  Schläpfer', 'Basel', 'male', 'lukas.sch95@gmail.com', 2, 'registered', ''),
+(61, 510, 'Gabriel KLEIN Aeschbach', 'Basel', 'male', 'gabriel.aeschbach@gmail.com', 2, 'registered', ''),
+(62, 511, 'Szajlu  Di', 'budapest/basel', 'female', 'cecileannd@gmail.com', 2, 'registered', ''),
+(63, 512, 'Klaudia Klaudi Sczendzina', 'Duisburg', 'female', 'klaudia.sczendzina@gmx.de', 2, 'registered', ''),
+(64, 513, 'Christian Chris Hadorn', 'Sankt Gallen', 'male', 'c.hadorn@gmx.ch', 2, 'registered', ''),
+(65, 514, 'Anton Plankton Benedix', 'Dresden', 'male', 'anton.benedix@gmail.com', 2, 'registered', ''),
+(66, 515, 'Versa Versa Dogic', 'Bolzano/ Cologne ', 'female', 'Verra_v@yahoo.de', 2, 'registered', ''),
+(67, 516, 'Diego  Renner', 'Basel', 'male', 'diego.renner@hotmail.com', 2, 'registered', ''),
+(68, 517, 'yannick #208 schwarz', 'Bern', 'male', 'yaennu.s@bluewin.ch', 2, 'registered', ''),
+(69, 518, 'Kevin 244 Renz', 'Basel', 'male', 'renzkevin@hotmail.com', 2, 'registered', ''),
+(70, 519, 'Rahel  Lieberherr', 'Sankt Gallä', 'female', 'rahel.lieberherr@gmx.ch', 2, 'registered', ''),
+(71, 520, 'Lisa  Kromm', 'Karlsruhe', 'female', 'lisa.kromm@gmx.de', 2, 'registered', ''),
+(72, 521, 'Beno B59 Herzog', 'Santi Hans', 'male', 'bherzog@me.com', 2, 'registered', ''),
+(73, 522, 'Bernat Torpedo Berny Schneider', 'Kassel', 'male', 'bernat.schneider@hotmail.de', 2, 'registered', ''),
+(74, 523, 'Pius  Cottier', 'Allschwil', 'male', 'pius_93@hotmail.com', 2, 'registered', ''),
+(75, 524, 'simon  gerber', '', 'male', 'gerber.s@gmx.net', 2, 'registered', ''),
+(76, 525, 'astrid  narud', 'berlin', 'female', 'astridnarud@hotmail.com', 2, 'registered', ''),
+(77, 526, 'Konrad Konny Medicke', 'Karlsruhe', 'male', 'konrad.medicke@gmx.de', 2, 'registered', ''),
+(78, 527, 'Matanzo pe73r Pedro', 'Madrid', 'male', 'onelesscop@gmail.com', 2, 'registered', ''),
+(79, 528, 'Yannick 913 Thommen', 'Basel', 'male', 'yannick.thommen01@gmail.com', 2, 'registered', ''),
+(80, 529, 'Albert Dr.Albi Dr. Hofstetter', 'Basel', 'male', 'alboeser@msn.com', 2, 'registered', ''),
+(81, 530, 'Meret  Hornstein', 'Basel', 'female', 'meret.hornstein@gmail.com', 2, 'registered', ''),
+(82, 531, 'Florian  Stöcklin', 'Basel', 'male', 'florian.stoecklin@bluewin.ch', 2, 'registered', ''),
+(83, 532, 'Micha courti Merzi', 'Duisburg', 'male', 'eigentlichmicha@yahoo.de', 2, 'registered', ''),
+(84, 533, 'André   Sumo ', '', 'male', 'andresumo@web.de', 2, 'registered', ''),
+(85, 534, 'Surmann   Philipp ', '', 'male', 'Nil-tarasca@web.de ', 2, 'registered', ''),
+(86, 535, 'Michael Beege Barczay', 'Basel', 'male', 'michibike@gmail.com', 2, 'registered', ''),
+(87, 536, 'Lukas  Luc Unternährer', 'Glarus', 'male', 'l.unternaehrer@outlook.com', 2, 'registered', ''),
+(88, 537, 'Mirko Prof. Kienlein Kienle', 'Basel', 'male', 'mkienle@gmail.com', 2, 'registered', ''),
+(89, 538, 'André   Sumo ', '', 'male', 'andresumo@web.de', 2, 'registered', ''),
+(90, 539, 'Florian Brehmboss Brehm', '', 'male', 'brehmflorian10@gmail.com', 2, 'registered', ''),
+(91, 540, 'Daniel 233dispodahhn Hermey', 'Essen', 'male', 'dahhn77@googlemail.com', 2, 'registered', ''),
+(92, 541, 'Razvan Taz Matei', 'Zürich', 'male', 'safranicus@gmail.com', 2, 'registered', ''),
+(93, 542, 'Till  Szabo', 'Basel', 'male', 'tillszabo@gmx.ch', 2, 'registered', ''),
+(94, 543, 'Lou  Halter', 'Basel', 'male', 'louhalter@sunrise.ch', 2, 'registered', ''),
+(95, 544, 'Tanja tati Ditzler', 'Basel', 'female', 'tanja_ditzler@msn.com', 2, 'registered', ''),
+(96, 545, 'Marius 964 Schlienger', 'Basilea', 'male', 'Schlienger@gmx.net', 2, 'registered', ''),
+(97, 546, 'Matthias plati Plattner', 'Zureich', 'male', 'the_havoc69@hotmail.com', 2, 'registered', ''),
+(98, 547, 'Dominik döme Mullis', 'züri', 'male', 'deadplanet@gmx.ch', 2, 'registered', ''),
+(99, 548, 'Noah  Halter', 'Basel', 'male', 'nepomuk.halter@gmail.com', 2, 'registered', ''),
+(100, 549, 'nico nico hauenstein', 'rafz', 'male', 'nicohauenstein@yahoo.de', 2, 'registered', ''),
+(101, 550, 'Moritz Moritz Eisxzeit', 'Darmstadt', 'male', 'exodos2k2@yahoo.de', 2, 'registered', ''),
+(102, 551, 'nico nico hauenstein', 'rafz', 'male', 'nicohauenstein@yahoo.de', 2, 'registered', ''),
+(103, 552, 'Pije #11 Schmid', 'Bienne', 'male', 'sokratez@gmx.ch', 2, 'registered', ''),
+(104, 553, 'Matthias  Weber', 'Basel', 'male', 'matthias.weber@hyperwerk.ch', 2, 'registered', ''),
+(105, 554, 'Reto RetoZ Zeltner', 'Basel', 'male', 'reto.zeltner@gmail.com', 2, 'registered', ''),
+(106, 555, 'Houssine The Hou Riabi', 'Paris', 'male', 'houssine.riabi@gmail.com', 2, 'registered', ''),
+(107, 556, 'Alexandre Alex Beytrison', 'Geneva', 'male', 'alexandre.beytrison@hotmail.fr', 2, 'registered', ''),
+(108, 557, 'Remy  Vuillemin', 'Züri', 'male', 'mess947@hotmail.com', 2, 'registered', ''),
+(109, 558, 'Adrian ahdi toggebuag', 'Züri', 'male', 'gustavae@gmail.com', 2, 'registered', ''),
+(110, 559, 'margaux  delayre', '', 'female', 'mcsqueeze@gmail.com', 2, 'registered', ''),
+(111, 560, 'Stefan   Schroers ', 'Duisburg', 'male', 'schrostef@gmail.com ', 2, 'registered', ''),
+(112, 561, 'Stefan   Schroers ', 'Duisburg', 'male', 'schrostef@gmail.com ', 2, 'registered', ''),
+(113, 562, 'Luca mr. longfinger Fiechter', 'basel', 'male', 'luca.fiechter@gmail.com', 2, 'registered', ''),
+(114, 563, 'Dorian  Guibert', 'lôz', 'male', 'dorianguibert267@gmail.com', 2, 'registered', ''),
+(115, 564, 'Olivier  Joliat', 'Kleinbasel', 'male', 'ojoliat@gmail.com', 2, 'registered', '');
 
 -- --------------------------------------------------------
 
@@ -1954,7 +2025,9 @@ INSERT INTO `Session` (`sessionId`, `userFk`, `raceFk`, `loginTime`, `lastActive
 ('xmoLvQPZ2BfWL4jYCd5YHTPvKmcttt8qdXilF2TFwR', 37, NULL, '2014-08-30 16:52:36', '2014-08-30 16:52:36'),
 ('hKEeZjiACsyX31kfDuJuM9OaoWPVIMIsPazF3gFKiq', 32, NULL, '2014-08-30 16:16:12', '2014-08-30 16:16:12'),
 ('q01KmWoQgE3dvmMuzTWSEV5qfKfEI7cuPSuhvVv5wK', 46, 1, '2015-09-11 19:43:29', '2015-09-11 19:43:29'),
-('iVNg9g9kbfZtgIVstzAc2r66Wb2DeTR8pJyUQ04VXr', 32, NULL, '2015-09-11 19:43:04', '2015-09-11 19:43:04');
+('iVNg9g9kbfZtgIVstzAc2r66Wb2DeTR8pJyUQ04VXr', 32, NULL, '2015-09-11 19:43:04', '2015-09-11 19:43:04'),
+('x4vOyr4Iu9ogoejuYngnQkA6VC8tlNzi1eGmXLpmv1', 32, NULL, '2015-09-11 22:21:00', '2015-09-11 22:21:00'),
+('nJArZHnmm6MemY4inQaqgbVpX1lpn0cqj7rAfEPC36', 32, NULL, '2015-09-11 22:55:41', '2015-09-11 22:55:41');
 
 -- --------------------------------------------------------
 
@@ -2230,22 +2303,22 @@ ALTER TABLE `UserRace`
 -- AUTO_INCREMENT for table `Checkpoint`
 --
 ALTER TABLE `Checkpoint`
-MODIFY `checkpointId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `checkpointId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `Delivery`
 --
 ALTER TABLE `Delivery`
-MODIFY `deliveryId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
+MODIFY `deliveryId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT for table `DeliveryCondition`
 --
 ALTER TABLE `DeliveryCondition`
-MODIFY `deliveryConditionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=92;
+MODIFY `deliveryConditionId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=95;
 --
 -- AUTO_INCREMENT for table `Parcel`
 --
 ALTER TABLE `Parcel`
-MODIFY `parcelId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+MODIFY `parcelId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `Race`
 --
@@ -2255,7 +2328,7 @@ MODIFY `raceId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `Racer`
 --
 ALTER TABLE `Racer`
-MODIFY `racerId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+MODIFY `racerId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=116;
 --
 -- AUTO_INCREMENT for table `RacerDelivery`
 --

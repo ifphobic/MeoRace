@@ -4,7 +4,7 @@
    <ul>
 
 <?php
-   
+
    include 'page/ranking/RankingCalculator.php';
 
    $raceId = CommonDbFunction::getUser()->raceFk;
@@ -20,15 +20,24 @@
    }
    $raceFinished = $raceFk != null && RaceDbFunction::isFinished( $raceFk );
    $rankings = RankingCalculator::evaluate( $racerTasks, $raceFinished );
-   
 
-   foreach ( $rankings as $ranking ) {
+   if ( !isset($_GET['tv']) ) {
+      $i = 0;
+      $end = count( $rankings );
+   } else {
+      $i = (Page::getTabIndex() - 2 )* Configuration::TV_SIZE;
+      $end =  min( $i + Configuration::TV_SIZE, count( $rankings ));
+   }
+
+
+   for ( ; $i < $end; $i ++  ) {
+      $ranking = $rankings[$i];
       print("
          <li onclick='" . Page::getOnClickFunction( "ranking", "rankingDetail", $ranking->racerId, "ranking=" . $ranking->ranking . "&score=" . $ranking->score ) . "'>
          <div class='listwrapper'>
 				<div class='left_info'>
                <img src='" . Page::getImagePath( $ranking ) . "'>
-            </div> 
+            </div>
             <div class='middle_info'>
                <p class='title'>" . $ranking->name . "</p>
                <p>
