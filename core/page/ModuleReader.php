@@ -2,10 +2,10 @@
 
 
    class ModuleReader {
-      
+
 
       public static function readAllModules( $role ) {
-   
+
          $moduleNames = self::readModuleNames( Configuration::MODULE_FOLDER );
          $modules = array();
          foreach ( $moduleNames as $moduleName ) {
@@ -17,7 +17,7 @@
             foreach ( $pages as $page ) {
                $roles = $page->getRolesPage();
                if ( in_array( $role, $roles ) ) {
-                  $selected[ $page->getPage() ] = $page; 
+                  $selected[ $page->getPage() ] = $page;
                }
             }
             if ( !empty( $selected ) ) {

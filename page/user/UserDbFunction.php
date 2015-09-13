@@ -8,7 +8,7 @@
 
 
       public function findAll( $raceId ) {
-         
+
          $query  = "select u.userId, u.user, u.role, u.checkpointFk, r.name as raceName, c.name as checkpoint ";
          $query .= "from User u ";
          $query .= "left outer join Race r on u.raceFk = r.raceId ";
@@ -21,16 +21,16 @@
          $result = $this->queryArray($query, $parameter );
          return $result;
       }
-         
+
       public function findById( $userId ) {
-         
+
          $query = "select * from User where userId = ?";
          $result = $this->queryArray( $query, array( new Parameter( PDO::PARAM_INT, $userId ) ) );
          return $result[0];
       }
 
       public function findUser( $userName ) {
-         
+
          $query = "select u.* from User u left outer join Checkpoint c on u.checkpointFk = c.checkpointId  where user = ?";
          $result = $this->queryArray($query, array( new Parameter( PDO::PARAM_STR, $userName ) ) );
          if ( count( $result ) > 0 ) {
@@ -41,8 +41,8 @@
 
       public function insert( $user ) {
          $query = "insert into User (user, password, role, raceFk, checkpointFk ) values (?, ?, ?, ?, ?)";
-         $parameter = array( 
-            new Parameter( PDO::PARAM_STR, $user['user'] ), 
+         $parameter = array(
+            new Parameter( PDO::PARAM_STR, $user['user'] ),
             new Parameter( PDO::PARAM_STR, hash ( "sha256" , $user['password']) ),
             new Parameter( PDO::PARAM_STR, $user['role'] ),
             new Parameter( PDO::PARAM_INT, $user['raceFk'] ),
@@ -53,8 +53,8 @@
 
       public function update( $user ) {
          $query = "update User set user = ?, role = ?, raceFk = ?, checkpointFk = ? where userId = ?";
-         $parameter = array( 
-            new Parameter( PDO::PARAM_STR, $user['user'] ), 
+         $parameter = array(
+            new Parameter( PDO::PARAM_STR, $user['user'] ),
             new Parameter( PDO::PARAM_STR, $user['role'] ),
             new Parameter( PDO::PARAM_INT, $user['raceFk'] ),
             new Parameter( PDO::PARAM_INT, $user['checkpointFk'] ),
@@ -65,7 +65,7 @@
 
       public function updateRace( $userId, $raceId ) {
          $query = "update User set raceFk = ? where userId = ?";
-         $parameter = array( 
+         $parameter = array(
             new Parameter( PDO::PARAM_INT, $raceId ),
             new Parameter( PDO::PARAM_INT, $userId )
          );
@@ -73,21 +73,22 @@
       }
 
       public function insertSession( $userId, $raceId ) {
-         
+
          $sessionId = $this->generateSessionId();
          $query = "insert into Session ( sessionId, userFk, raceFk, loginTime, lastActive) values ( ?, ?, ?, now(), now() )";
-         $parameter = array( 
-            new Parameter( PDO::PARAM_STR, $sessionId ), 
-            new Parameter( PDO::PARAM_INT, $userId ), 
-            new Parameter( PDO::PARAM_INT, $raceId ) 
+         $parameter = array(
+            new Parameter( PDO::PARAM_STR, $sessionId ),
+            new Parameter( PDO::PARAM_INT, $userId ),
+            new Parameter( PDO::PARAM_INT, $raceId )
          );
          $this->query( $query, $parameter );
-         setcookie("sessionId", $sessionId, time() + 36000); 
+         error_log("axaxax set cookie");
+         setcookie("sessionId", $sessionId, time() + 36000);
          return $sessionId;
       }
-      
+
       private function generateSessionId() {
-      
+
          $sessionId = "";
          for ( $i = 0; $i < 42; $i++ ) {
             $char = mt_rand( 0, 61 );
@@ -103,5 +104,4 @@
       }
 
    }
-
 ?>

@@ -2,7 +2,7 @@
 
 
    class CommonDbFunction extends AbstractDbFunction {
-     
+
       private static $currentUser;
 
       public function CommonDbFunction() {
@@ -41,15 +41,15 @@
       public static function userHasRace() {
          return CommonDbFunction::$currentUser != null && CommonDbFunction::$currentUser->raceFk != null;
       }
-      
+
       public static function userHasCheckpoint() {
          return CommonDbFunction::$currentUser != null && CommonDbFunction::$currentUser->checkpointFk != null;
       }
-      
+
       public static function userIsNoRole() {
          return CommonDbFunction::$currentUser != null && CommonDbFunction::$currentUser->role == Role::NO_ROLE;
       }
   }
-      
+
 
 ?>

@@ -4,7 +4,6 @@
    <ul>
 
 <?php
-
    include 'page/ranking/RankingCalculator.php';
 
    $raceId = CommonDbFunction::getUser()->raceFk;

@@ -24,7 +24,7 @@
             $dbFunction->insert( $content );
             $id = $dbFunction->getLastId();
             $content[ $key.'Id'] = $id;
-            
+
             $newFile = $this->saveImage( $key, $id );
             if ( $newFile != null ) {
                $content['image'] = $newFile;
@@ -67,9 +67,7 @@
          }
          return Configuration::IMAGE_UPLOAD_FOLDER. $filename;
       }
-      
+
 
    }
-
-
 ?>

@@ -1,11 +1,11 @@
 <?php
-   
+
    abstract class AbstractDbFunction {
 
       private $connection;
 
       protected function AbstractDbFunction() {
-         
+
          $this->connection = new PDO("mysql:host=" . Configuration::DB_HOST . ";dbname=" . Configuration::DB_NAME, Configuration::DB_USER, Configuration::DB_PASSWORD);
          $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
          $this->connection->beginTransaction( );
@@ -14,29 +14,29 @@
       protected function queryArray( $query, $parameters ) {
 
          $statement = $this->query( $query, $parameters );
-         return $statement->fetchAll( PDO::FETCH_OBJ );   
-      
+         return $statement->fetchAll( PDO::FETCH_OBJ );
+
       }
-      
+
       protected function queryColumn( $query, $parameters ) {
 
          $statement = $this->query( $query, $parameters );
-         return $statement->fetchAll( PDO::FETCH_COLUMN );   
-      
+         return $statement->fetchAll( PDO::FETCH_COLUMN );
+
       }
 
 
       protected function query( $query, $parameters ) {
-        
+
          // error_log("-- query -- " .  $query);
-         
+
          try {
             $statement = $this->connection->prepare( $query );
 
             if ( !$statement ) {
                throw new Exception( "Prepare failed: (" . $this->mysqli->errno . ") " . $this->mysqli->error );
             }
-         
+
             $index = 1;
             foreach ( $parameters as $parameter ) {
                $statement->bindParam( $index++, $parameter->value, $parameter->type );
@@ -67,7 +67,7 @@
    }
 
    class Parameter {
-      
+
       const STRING = "s";
       const INTEGER = "i";
 

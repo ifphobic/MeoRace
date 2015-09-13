@@ -60,8 +60,8 @@
       public static function getImagePath( $object ) {
 
          if ($object == null || empty( $object->image ) ) {
-            return Configuration::IMAGE_UPLOAD_FOLDER. "none.jpg"; 
-         }  
+            return Configuration::IMAGE_UPLOAD_FOLDER. "none.jpg";
+         }
 
          return Configuration::IMAGE_UPLOAD_FOLDER. $object->image;
 
@@ -69,7 +69,7 @@
 
 
       public static function getOnClickFunction( $moduleName, $pageName = null, $id = null, $parameters = null, $tabOffset = 1 ) {
-         
+
          $parameter = "module=" . $moduleName;
          if ( $pageName != null ) {
             $parameter .= "&page=" . $pageName;
@@ -86,7 +86,7 @@
       }
 
       public static function getListItem( $title, $onClickFunction, $firstLine = "", $secondLine = "") {
-         $result = " 
+         $result = "
             <div class=listitem onclick='" . $onClickFunction . "'>
                <div class=li_head>$title</div>
                <div class=li_content>
@@ -112,10 +112,8 @@
 
          $result = sprintf( "%s%02d:%02d:%02d", $prefix, $hours, $minutes, $seconds);
          //$result = gmdate("H:i:s", $seconds%86400);
-         return $result; 
+         return $result;
       }
    }
 
 ?>
-
-
